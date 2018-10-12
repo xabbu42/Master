@@ -234,9 +234,36 @@ Similarly we get a Gentzen-Style System for LP with the following rules:
 
 \end{longtable}
 
-In all this rules, arbitrary formulas which occur in the premises and the conclusion (denoted by repeated multisets $Γ$, $Δ$) are called side formulas. Arbitrary formulas which only occur in the conclusion (denoted by new multisets $Γ$, $Δ$, $Γ'$, $Δ'$) are called weakening formulas. The remaining single new formula in the conclusion is called the principal formula of the rule. Notice that weaking formulas only occur in axioms and the rules $(⊃ □)$, $(◇ ⊃)$.
+In all this rules, arbitrary formulas which occur in the premises and
+the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
+are called side formulas. Arbitrary formulas which only occur in the
+conclusion (denoted by new multisets $Γ$, $Δ$, $Γ'$, $Δ'$) are called
+weakening formulas.[^1] The remaining single new formula in the conclusion
+is called the principal formula of the rule. The remaining formulas in
+the premises are called active formulas. Active formulas are always
+used as subformulas of the principal formula.
 
-Every symbol occurrence in a premise corresponds to at most one symbol occurrence in the conclusion. Therefore all symbol occurrences in a proof can be divided in disjunct corresponding families of symbol occurrences. For us the occurrences of the symbol $□$ are of special importance.
+[^1]: Notice that weakening formulas only occur in axioms and the rules $(⊃
+□)$, $(◇ ⊃)$, which are also the only rules which restrict the
+possible side formulas.
+
+We relate the symbol occurrences in a proof as follows:
+
+* Every occurrence in a side formula of the conclusion corresponds to
+  the same occurrence of that symbol in the same side formula in all the
+  premises.
+
+* Every occurrence in an active formula of a premise corresponds to
+  the same occurrence of that symbol in the corrsponding subformula in
+  the principal formula of the rule.
+
+Every symbol occurrence in a premise corresponds to at exactly one
+symbol occurrence in the conclusion. Therefore all symbol occurrences
+in a proof can be divided in disjunct corresponding families of symbol
+occurrences. For every such familiy there is exactly one occurrence in
+the root sequent of the proof. For us the occurrences of the symbol
+$□$ are of special importance. Given a S4 proof $T$, we therefore
+enumerate the families of $□$ as $f_0, f_1, ..., f_n$.
 
 
 Annotated S4 Formulas and Proofs
