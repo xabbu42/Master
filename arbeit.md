@@ -7,20 +7,28 @@ Throughout this text, we will only use the modal logik S4 and the logic of proof
 Syntax
 ======
 
-The language of S4 is given by $A := ⊥ ∣ P ∣ A ∧ A  ∣ A ∨ A ∣ A → A ∣ □A ∣ ◇A$.
-By using the known definitions for $∧$, $∨$ and $◇$ by formulas using the remaining syntax, we can reduce that to the minimal language $A := ⊥ ∣ p ∣ A → A ∣ □A$.
+The language of S4 is given by $A := ⊥ ∣ P ∣ A ∧ A ∣ A ∨ A ∣ A → A ∣
+□A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
+formulas using the remaining syntax, we can reduce that to the minimal
+language $A := ⊥ ∣ p ∣ A → A ∣ □A$.
 
-The language of LP consists of terms given by $t := c ∣ x ∣ t ⋅ t ∣ t + t ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A → A ∣ t{:}A$.
+The language of LP consists of terms given by $t := c ∣ x ∣ t ⋅ t ∣ t
++ t ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A → A ∣ t{:}A$.
 
 Gentzen Systems for S4 and LP
 =============================
 
-In the following text capital greek letters $Γ$, $Δ$ are used for multisets of formulas, latin letters $P$, $Q$ for atomic formulas and latin letters $A$,$B$ for arbitrary formulas. We also use the following shortforms:
+In the following text capital greek letters $Γ$, $Δ$ are used for
+multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
+latin letters $A$,$B$ for arbitrary formulas. We also use the
+following shortforms:
+
 $$□Γ := \{□x ∣ x ∈ Γ\}$$
 $$Γ,A := Γ ∪ \{A\}$$
 $$Γ,Δ := Γ ∪ Δ$$
 
-Throughout this text, we will work with the G3s calculus from []. This is a Gentzen-style calculus with the following rules:
+Throughout this text, we will work with the G3s calculus from []. This
+is a Gentzen-style calculus with the following rules:
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -108,7 +116,9 @@ Throughout this text, we will work with the G3s calculus from []. This is a Gent
 
 \end{longtable}
 
-Again by using the standard definitions for $∨$, $∧$ and $◇$, we can reduce and simplify the rules to the following minimal but equivalent system:
+Again by using the standard definitions for $∨$, $∧$ and $◇$, we can
+reduce and simplify the rules to the following minimal but equivalent
+system:
 
 \begin{longtable}{cc}
 
@@ -281,8 +291,10 @@ Main Proof
 
 Yu proofes in [] the following theorem:
 
-Theorem 7 (Necessity of Left Prehistoric Loop for Self-referentiality).
-If an S4−theorem $φ$ has a left-prehistoric-loop-free G3s−proof, then there is an LP−formula $ψ$ s.t. $ψ^◦ = φ$ and $⊢_{LP(CS^⊛)} ψ$.
+Theorem 7 (Necessity of Left Prehistoric Loop for
+Self-referentiality).  If an S4−theorem $A$ has a
+left-prehistoric-loop-free G3s−proof, then there is an LP−formula $B$
+s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} A$
 
 Literature
 ==========
