@@ -262,8 +262,7 @@ symbol occurrence in the conclusion. Therefore all symbol occurrences
 in a proof can be divided in disjunct corresponding families of symbol
 occurrences. For every such familiy there is exactly one occurrence in
 the root sequent of the proof. For us the occurrences of the symbol
-$□$ are of special importance. Given a S4 proof $T$, we therefore
-enumerate the families of $□$ as $f_0, f_1, ..., f_n$.
+$□$ are of special importance.
 
 
 Annotated S4 Formulas and Proofs
@@ -276,18 +275,66 @@ subformulas occurrences $B$ in $A$ as follows:
 
 * If an occurrence $B → C$ in $A$ already has a polarity, then the
   corresponding occurrence of $C$ in $B → C$ has the same polarity and
-  the corresponding occurnece of $B$ in $B → C$ has the opposite
+  the corresponding occurrence of $B$ in $B → C$ has the opposite
   polarity.
 
 * If an occurrence $□B$  already has a polarity, then the corresponding
   occurrence of $B$ in $□B$ has the same polarity.
 
-We want to define an annotated version of S4 formulas by
-distinguishing all occurrences of $□$ by subscripts and also marking
-if the occurrence has positive or negative polarity.
+Similarly all occurrences of subformulas in a sequent $Γ ⊃ Δ$ get
+assigned a polarity as follows:
 
-We therefore define $an_A(B)$ recursively on all occurrences of
-subformulas $B$ in $A$ as follows:
+* An occurrence of a subformula $B$ in a formula $A$ in $Γ$ has the
+  opposite polarity relativ to the sequent $Γ ⊃ Δ$ as the same
+  occurance $B$ in the formula $A$ has relativ to $A$.
+
+* An occurrence of a subformula $B$ in a formula $A$ in $Δ$ has the
+  same polarity relativ to the sequent $Γ ⊃ Δ$ as the same
+  occurance $B$ in the formula $A$ has relativ to $A$.
+
+This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
+they would have in the equivalent formula $⋀Γ → ⋁Δ$.^[TODO explain
+used syntax and equivalence or remove]
+
+The rules of S4 respect the polarities of the subformulas, so that all
+corresponding occurrances of subformulas have the same polarity
+throughout the proof. We therefore assign positive polarity to
+families of positive occurrances and negativ polarity to families of
+negative occurrances. Moreover, positive families in a S4 proof which
+have occurances introduced by a $(⊃ □)$ rule are called prinicipal
+positive families. The remaining  positive families are called
+non-principal positive families.
+
+Given a S4 proof we annotate the formulas $A$ in the proof in the
+following way:
+
+Enumerate all principal positive families as $p_0, ... ,
+p_n$, all non-principal positive families as $o_0, ..., o_m$ and all
+negative families as $n_0, ..., n_k$.
+
+Define $an_T(A)$ recursively on all occurrences of subformulas $A$ in a
+proof $T$ as follows:
+
+* If $A$ is the occurrence of an atomic formula $P$ or $⊥$, then
+  $an_T(A) := A$.
+
+* If $A = A_0 → A_1$, then $an_T(A) := an_T(A_0) → an_T(A_1)$
+
+* If $A = □A_0$ and the $□$ belongs to a principal positive family $p_i$, then $an_T(A) := ⊞_i an_T(A_0)$.
+
+* If $A = □A_0$ and the $□$ belongs to a non-principal positive family
+  $o_i$, then $an_T(A) := ⊡_i an_T(A_0)$.
+
+* If $A = □A_0$ and the $□$ belongs to a negative family $n_i$, then $an_T(A) := ⊟_i
+  an_T(A_0)$.
+
+Similarly we define annotated formulas without the context of a proof
+tree by distinguishing all $□$ occurances as seperate families and
+droping the distinction between principal positive and non-principal
+positive. This leads to the following definition:
+
+$an_A(B)$ is defined recursively on all occurrences of subformulas $B$ in a
+formula $A$ as follows:
 
 * If $B$ is the occurrence of an atomic formula $P$ or $⊥$, then
   $an_A(B) := B$.
@@ -300,18 +347,10 @@ subformulas $B$ in $A$ as follows:
 * If $B = □B_0$ and has negative polarity in $A$, then $an_A(B) := ⊟_i
   an_A(B_0)$ for a new $⊟_i$.
 
-The annotated version $an(A)$ of $A$ is then $an(A) := an_A(A)$ for
-the only occurrence of $A$ in $A$. So for example the annoteded version
-of $□((R → □R) → ⊥) → ⊥$ is $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 
-For an annotated Gentzen proof of an S4 formula, we first annotate the
-root sequent as above, using completely new subscripts for all
-formulas. We then use the same annotated box symbol for all
-corresponding occurrences of that box in the proof. Every formula $B$
-in the proof corresponds to an occurrence of a subformula $B$ in a
-formula $A$ of the root sequent. In the annotated proof that formula
-$B$ is therefore replaced by $an_A(B)$ of the corresponding occurrence
-of $B$ in $A$.
+So for example the annoteded version of $□((R → □R) → ⊥) → ⊥$ is
+$⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
+
 
 Main Proof
 ==========
