@@ -94,8 +94,8 @@ Gentzen-style calculus with the following rules:
 \\
 
 \RightLabel{$(□ ⊃)$}
-\AXC{$Γ, A, □A ⊃ Δ$}
-\UIC{$Γ, □A ⊃ Δ$}
+\AXC{$A, □A, Γ ⊃ Δ$}
+\UIC{$□A, Γ⊃ Δ$}
 \DP
 
 &
@@ -228,31 +228,42 @@ also based on G3s and therefore directly comparable to G3s:
 
 \\
 
+\multicolumn{2}{c}{
 \RightLabel{$(⊃ ⋅)$}
 \AXC{$Γ ⊃ Δ, s{:}(A → B)$}
 \AXC{$Γ ⊃ Δ, t{:}A$}
 \BIC{$Γ ⊃ Δ, s⋅t{:}B$}
 \DP
+}
 
-&
+\\
 
-\RightLabel{$(⊃ :)$, $A$ an axiom}
+\RightLabel{$(⊃ :)_c$, $A$ an axiom}
 \AXC{$Γ ⊃ Δ, A$}
 \UIC{$Γ ⊃ Δ, c{:}A$}
 \DP
 
+&
+
+\RightLabel{$(⊃ :)_x$}
+\AXC{$Γ, x{:}A ⊃ Δ, A$}
+\UIC{$Γ, x{:}A ⊃ Δ, x{:}A$}
+\DP
+
 \end{longtable}
+
+TODO: proof correct/complete of this system, as I invented it.
 
 In all this rules, arbitrary formulas which occur in the premises and
 the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
 are called side formulas. Arbitrary formulas which only occur in the
 conclusion (denoted by new multisets $Γ$, $Δ$, $Γ'$, $Δ'$) are called
-weakening formulas.[^1] The remaining single new formula in the conclusion
+weakening formulas.[^weak] The remaining single new formula in the conclusion
 is called the principal formula of the rule. The remaining formulas in
 the premises are called active formulas. Active formulas are always
 used as subformulas of the principal formula.
 
-[^1]: Notice that weakening formulas only occur in axioms and the rules $(⊃
+[^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
 □)$, $(◇ ⊃)$, which are also the only rules which restrict the
 possible side formulas.
 
