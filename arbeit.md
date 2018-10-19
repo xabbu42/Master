@@ -27,8 +27,13 @@ $$□Γ := \{□x ∣ x ∈ Γ\}$$
 $$Γ,A := Γ ∪ \{A\}$$
 $$Γ,Δ := Γ ∪ Δ$$
 
-Throughout this text, we will work with the G3s calculus from []. This
-is a Gentzen-style calculus with the following rules:
+Throughout this text, we will work with the G3s calculus from
+@troelstra2000 [p287], which also used by in @yu2010. It is important to
+use a system with the axioms restricted to atomic rules for the
+definition of prehistoric loops as the build-up of a sequent $□A, Γ ⊃
+Δ, □A$ can introduce prehistoric relations which would otherwise be
+missed ^[TODO find an actual example for that]. This is a
+Gentzen-style calculus with the following rules:
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -161,7 +166,11 @@ system:
 
 \end{longtable}
 
-Similarly we get a Gentzen-Style System for LP with the following rules:
+In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
+the logic of proofs LP using explicit contraction and weakening
+rules, i.e. based on G1c as defined in @troelstra2000 [p.61]. As our
+used system for S4 G3s is based on G3c instead, we use a variant G3lp
+also based on G3s and therefore directly comparable to G3s:
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -302,8 +311,12 @@ throughout the proof. We therefore assign positive polarity to
 families of positive occurrances and negativ polarity to families of
 negative occurrances. Moreover, positive families in a S4 proof which
 have occurances introduced by a $(⊃ □)$ rule are called prinicipal
-positive families. The remaining  positive families are called
-non-principal positive families.
+positive families or simply principal families. The remaining
+positive families are called non-principal positive families. [^essential]
+
+[^essential]: This is the same terminology as used in @yu2010. In many texts
+principal families are also called essential families [for example
+@artemov2001].
 
 Given a S4 proof we annotate the formulas $A$ in the proof in the
 following way:
@@ -355,7 +368,7 @@ $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 Main Proof
 ==========
 
-Yu proofes in [] the following theorem:
+Yu proofes in [@yu2010] the following theorem:
 
 Theorem 7 (Necessity of Left Prehistoric Loop for
 Self-referentiality).  If an S4−theorem $A$ has a
