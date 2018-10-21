@@ -245,9 +245,9 @@ also based on G3s and therefore directly comparable to G3s:
 
 &
 
-\RightLabel{$(⊃ :)_x$}
-\AXC{$Γ, x{:}A ⊃ Δ, A$}
-\UIC{$Γ, x{:}A ⊃ Δ, x{:}A$}
+\RightLabel{$(⊃ :)_t$}
+\AXC{$t{:}A, Γ ⊃ Δ, A$}
+\UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
 \DP
 
 \end{longtable}
