@@ -284,6 +284,22 @@ occurrences. For every such familiy there is exactly one occurrence in
 the root sequent of the proof. For us the occurrences of the symbol
 $□$ are of special importance.
 
+Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
+:= {s_0, ..., s_n}$ is the set of occurrences of sequents, and $R :=
+\{(s_i,s_j) ∈ T × T ∣ \text{$s_i$ is the conclusion of a rule which
+has $s_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
+$s_r$. A leaf sequent $s$ is a sequent without any premises, i.e $∀ s'
+∈ T s \not R s'$ ^[TODO typeset that correctly].  The relation $R$ is
+the inverse of the the parent function $P := \{(s_j, s_i) ∈ T × T ∣
+s_i R s_j\}$ defined on $T ∖ \{s_r\}$.
+
+A path in the proof is a list of related sequents $s_r R s_n R ... R
+s_0$ starting from the root sequent $s_r$ and ending in a leaf sequent
+$s_0$. The path is fully defined by the leaf sequent $s_0$. So we
+will use path $s_0$ to mean the full path $s_r R s_n R ... R s_0$ from
+$s_0$ to the root $s_r$. $T ↾ s$ denotes the subtree of $T$ with root
+$s$. The transitive closure of $R$ is denoted by $R^+$ and the
+reflexive-transitive closure is denoted by $R^*$.
 
 Annotated S4 Formulas and Proofs
 ================================
