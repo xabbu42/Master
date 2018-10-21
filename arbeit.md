@@ -15,6 +15,19 @@ language $A := ⊥ ∣ p ∣ A → A ∣ □A$.
 The language of LP consists of terms given by $t := c ∣ x ∣ t ⋅ t ∣ t
 + t ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A → A ∣ t{:}A$.
 
+A Hilbert style system for LP is given by the following Axioms and the
+rules modus ponens and axiom necessitation. [@artemov2001 p.8]
+
+* $A0$: Finite set of axiom schemes of classical propositional logic
+* $A1$: $t{:}F → F$ (Reflection)
+* $A2$: $s{:}(F → G) → (t{:}F → (s·t){:}G)$ (Application)
+* $A3$: $t{:}F →\;!t{:}(t{:}F)$ (Proof Checker)
+* $A4$: $s{:}F → (s+t){:}F$, $t{:}F → (s+t){:}F$ (Sum)
+
+* $R1$: $F → G, F ⊢ G$ (Modus Ponens)
+* $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
+        (Axiom Necessitatio)
+
 Gentzen Systems for S4 and LP
 =============================
 
