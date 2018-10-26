@@ -1,6 +1,7 @@
 \usepackage[all]{hypcap}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{verbatim}
 \usepackage{bussproofs}
 \EnableBpAbbreviations
@@ -12,7 +13,28 @@
 \usepackage{newunicodechar}
 \usepackage{pbox}
 
+%necessary for parskip and amsthm to play nice togeter
+\begingroup
+\makeatletter
+   \@for\theoremstyle:=definition,remark,plain\do{%
+     \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+        \addtolength\thm@preskip\parskip
+     }%
+   }
+\endgroup
+
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\renewcommand\qedsymbol{$\blacksquare$}
+
 \newunicodechar{□}{\Box}
 \newunicodechar{◇}{\Diamond}
 \newunicodechar{↾}{\mathord{\upharpoonright}}
 
+%for markdown inside of definitions and theorems
+\newcommand{\hideFromPandoc}[1]{#1}
+\hideFromPandoc{
+    \let\Begin\begin
+    \let\End\end
+}

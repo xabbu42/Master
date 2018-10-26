@@ -287,7 +287,8 @@ reflexive-transitive closure is denoted by $R^*$.
 Annotated S4 Formulas and Proofs
 ================================
 
-We assign a positive or negative polarity relativ to $A$ to all
+\Begin{definition}[polarity]
+We assign a *positive* or *negative polarity* relativ to $A$ to all
 subformulas occurrences $B$ in $A$ as follows:
 
 * The only occurrence of $A$ in $A$ has positive polarity.
@@ -301,7 +302,7 @@ subformulas occurrences $B$ in $A$ as follows:
   occurrence of $B$ in $□B$ has the same polarity.
 
 Similarly all occurrences of subformulas in a sequent $Γ ⊃ Δ$ get
-assigned a polarity as follows:
+assigned a *polarity* as follows:
 
 * An occurrence of a subformula $B$ in a formula $A$ in $Γ$ has the
   opposite polarity relativ to the sequent $Γ ⊃ Δ$ as the same
@@ -310,6 +311,8 @@ assigned a polarity as follows:
 * An occurrence of a subformula $B$ in a formula $A$ in $Δ$ has the
   same polarity relativ to the sequent $Γ ⊃ Δ$ as the same
   occurance $B$ in the formula $A$ has relativ to $A$.
+
+\End{definition}
 
 This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
 they would have in the equivalent formula $⋀Γ → ⋁Δ$.^[TODO explain
@@ -328,7 +331,7 @@ positive families are called non-principal positive families. [^essential]
 principal families are also called essential families [for example
 @artemov2001].
 
-Given a S4 proof we annotate the formulas $A$ in the proof in the
+Given a S4 proof $T$ we annotate the formulas $A$ in the proof in the
 following way:
 
 Enumerate all principal positive families as $p_0, ... ,
@@ -356,7 +359,7 @@ tree by distinguishing all $□$ occurances as seperate families and
 droping the distinction between principal positive and non-principal
 positive. This leads to the following definition:
 
-$an_A(B)$ is defined recursively on all occurrences of subformulas $B$ in a
+Define $an_A(B)$ recursively on all occurrences of subformulas $B$ in a
 formula $A$ as follows:
 
 * If $B$ is the occurrence of an atomic formula $P$ or $⊥$, then
@@ -378,35 +381,41 @@ $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 Realization of S4 in LP
 =======================
 
-Definition (realization function): A realization function $r_A$ for a
-formula $A$ is a mapping from the set of different $□$ symbols used in
-$an_A(A)$ to arbitrary LP terms.  Similarly a realization function
-$r_T$ for a proof $T$ is a mapping from the set of different $□$
-symbols used in $an_T(T)$ to arbitrary LP terms. ^[TODO define
-$an_T(T)$]
+\Begin{definition}[realization function]
+A *realization function* $r_A$ for a formula $A$ is a mapping from the
+set of different $□$ symbols used in $an_A(A)$ to arbitrary LP terms.
+Similarly a *realization function* $r_T$ for a proof $T$ is a mapping
+from the set of different $□$ symbols used in $an_T(T)$ to arbitrary
+LP terms.
+\End{definition}
 
-Definition (LP-realization): By an LP-realization of a modal formula $A$ we mean an
-assignment of proof polynomials to all occurrences of the modality in
-$A$ along with a constant specification of all constants occurring in
-those proof polynomials. By $A^r$ we understand the image of $A$ under a
+\Begin{definition}[LP-realization]
+By an *LP-realization* of a modal formula $A$ we mean an assignment of
+proof polynomials to all occurrences of the modality in $A$ along with
+a constant specification of all constants occurring in those proof
+polynomials. By $A^r$ we understand the image of $A$ under a
 realization $r$ [@artemov2001, 25].
+\End{definition}
 
 A LP-realization of $A$ is fully determined by a realization function
 $r_A$ and a constant specification of all constants occuring in $r_A$
 with $A^r := r_A(an_A(A))$.
 
-A realization function is normal if all symbols for negative families
+\Begin{definition}[normal]
+A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
-proof variables. A LP-realization is normal if the corresponding
+proof variables. A LP-realization is *normal* if the corresponding
 realization function is normal and the $CS$ is injective.
+\End{definition}
 
-Theorem (Realization): If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
+\Begin{theorem}[Realization]
+If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
 LP-realization $r$.
+\End{theorem}
 
-Proof:
-
-$S4 ⊢ A$, so there exists a G3s proof $T$ of $⊃ A$ by the completness
-of G3s.
+\Begin{proof}
+Because of $S4 ⊢ A$ and the completeness of G3s, there
+exists a G3s proof $𝒯 = (T, R)$ of $⊃ A$.
 
 For all principal families $⊞_i$ in $an_T(T)$, enumerate the
 $(⊃ □)$ rules principally introducing an occurrance of $⊞_i$ as
@@ -483,6 +492,7 @@ constant specification $CS := CS^N$ we have that $r_T(an_T(T))$ is a
 correct G3lp proof based on $CS$ of $⊃ r_T(A)$. So by correctness of
 G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation $r$ given by
 $r_T$ and the injective constant specification $CS$.
+\End{proof}
 
 
 Main Proof
@@ -490,10 +500,10 @@ Main Proof
 
 Yu proofes in [@yu2010] the following theorem:
 
-Theorem 7 (Necessity of Left Prehistoric Loop for
-Self-referentiality):  If an S4−theorem $A$ has a
-left-prehistoric-loop-free G3s−proof, then there is an LP−formula $B$
-s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} A$
+\Begin{theorem}[Necessity of Left Prehistoric Loop for Self-referentiality]
+If an S4−theorem $A$ has a left-prehistoric-loop-free G3s−proof, then
+there is an LP−formula $B$ s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} A$
+\End{theorem}
 
 Literature
 ==========
