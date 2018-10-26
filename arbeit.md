@@ -183,7 +183,9 @@ In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
 the logic of proofs LP using explicit contraction and weakening
 rules, i.e. based on G1c as defined in @troelstra2000 [p.61]. As our
 used system for S4 G3s is based on G3c instead, we use a variant G3lp
-also based on G3s and therefore directly comparable to G3s:
+also based on G3s and therefore directly comparable to G3s. This
+variant resembles closely the LPG0 + "lifting rule" system from
+@yu2010.
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -213,20 +215,6 @@ also based on G3s and therefore directly comparable to G3s:
 
 \\
 
-\RightLabel{$(⊃ +)_L$}
-\AXC{$Γ ⊃ Δ, t{:}A$}
-\UIC{$Γ ⊃ Δ, t+s{:}A$}
-\DP
-
-&
-
-\RightLabel{$(⊃ +)_R$}
-\AXC{$Γ ⊃ Δ, t{:}A$}
-\UIC{$Γ ⊃ Δ, s+t{:}A$}
-\DP
-
-\\
-
 \RightLabel{$({:} ⊃)$}
 \AXC{$A, t{:}A, Γ ⊃ Δ$}
 \UIC{$t{:}A, Γ ⊃ Δ$}
@@ -234,38 +222,20 @@ also based on G3s and therefore directly comparable to G3s:
 
 &
 
-\RightLabel{$(⊃ !)$}
-\AXC{$Γ ⊃ Δ, t{:}A$}
-\UIC{$Γ ⊃ Δ, !t{:}t{:}A$}
-\DP
-
-\\
-
-\multicolumn{2}{c}{
-\RightLabel{$(⊃ ⋅)$}
-\AXC{$Γ ⊃ Δ, s{:}(A → B)$}
-\AXC{$Γ ⊃ Δ, t{:}A$}
-\BIC{$Γ ⊃ Δ, s⋅t{:}B$}
-\DP
-}
-
-\\
-
-\RightLabel{$(⊃ :)_c$, $A$ an axiom}
-\AXC{$Γ ⊃ Δ, A$}
-\UIC{$Γ ⊃ Δ, c{:}A$}
-\DP
-
-&
-
+\pbox{8cm}{
 \RightLabel{$(⊃ :)_t$}
-\AXC{$t{:}A, Γ ⊃ Δ, A$}
-\UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
+\AXC{$t_1{:}A_1, ..., t_n{:}A_n ⊃ A$}
+\UIC{$Γ, t_1{:}A_1, ..., t_n{:}A_n ⊃ t{:}A, Δ$}
 \DP
+\newline
+for any $t$ where $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
+}
 
 \end{longtable}
 
-TODO: proof correct/complete of this system, as I invented it.
+
+
+TODO: proof correct/complete of this system. better display of last rule
 
 In all this rules, arbitrary formulas which occur in the premises and
 the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
