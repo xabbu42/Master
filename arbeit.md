@@ -375,6 +375,116 @@ So for example the annoteded version of $□((R → □R) → ⊥) → ⊥$ is
 $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 
 
+Realization of S4 in LP
+=======================
+
+Definition (realization function): A realization function $r_A$ for a
+formula $A$ is a mapping from the set of different $□$ symbols used in
+$an_A(A)$ to arbitrary LP terms.  Similarly a realization function
+$r_T$ for a proof $T$ is a mapping from the set of different $□$
+symbols used in $an_T(T)$ to arbitrary LP terms. ^[TODO define
+$an_T(T)$]
+
+Definition (LP-realization): By an LP-realization of a modal formula $A$ we mean an
+assignment of proof polynomials to all occurrences of the modality in
+$A$ along with a constant specification of all constants occurring in
+those proof polynomials. By $A^r$ we understand the image of $A$ under a
+realization $r$ [@artemov2001, 25].
+
+A LP-realization of $A$ is fully determined by a realization function
+$r_A$ and a constant specification of all constants occuring in $r_A$
+with $A^r := r_A(an_A(A))$.
+
+A realization function is normal if all symbols for negative families
+and non-principal positive families are mapped to distinct
+proof variables. A LP-realization is normal if the corresponding
+realization function is normal and the $CS$ is injective.
+
+Theorem (Realization): If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
+LP-realization $r$.
+
+Proof:
+
+$S4 ⊢ A$, so there exists a G3s proof $T$ of $⊃ A$ by the completness
+of G3s.
+
+For all principal families $⊞_i$ in $an_T(T)$, enumerate the
+$(⊃ □)$ rules principally introducing an occurrance of $⊞_i$ as
+$R_{i,0}, ... R_{i,l_i}$.  We will use $I_{i,0}, ... I_{i,l_i}$ to
+denote the premises and $O_{i,0}, ... O_{i,l_i}$ to denote the
+conclusions of this rules (so for all $i ≤ n$, $j ≤ l_i$ we have
+$I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}l_i$ $(⊃
+□)$ rules in the proof $T$.
+
+We choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
+□)$ rules such that $ε(i_2,j_2) < ε(i_1,j_1)$ whenever
+$O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $s_r$ are
+later in this order).
+
+We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
+u_{i,0} + ... + u_{i,l_i}$ and the injective constant specification
+$CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all have a
+direct equivalent in G3lp, so the the proof tree $r_T^0(an_T(T))$ formally is
+a G3lp proof tree. However it is not a correct proof as the $(⊃ :)$
+rule is used without fullfilling the necessary precondition on the
+introduced term $t$.
+
+We therefore define inductively the normal realization functions
+$r_T^{ε(i,j)}$ and injective constant specifications $CS^{ε(i,j)}$
+such that $r_T^{ε(i,j)}(an_T(T↾O_{i_0,j_0}))$ is a correct G3lp proof
+based on $CS^{ε(i,j)}$ for all $(i_0,j_0)$ such that $ε(i_0,j_0) ≤ ε(i,j)$.
+
+The rule $R_{i,j}$ has the following annotated form:
+
+\begin{center}
+\AXC{$⊟_{k_0} B_{k_0}, ..., ⊟_{k_q} B_{k_q} ⊃ A$}
+\UIC{$Γ', ⊟_{k_0} B_{k_0}, ..., ⊟_{k_q} B_{k_q} ⊃ ⊞_i A$}
+\DP
+\end{center}
+
+By the induction hypothesis there exists an injective constant
+specification $CS^{ε(i,j) - 1}$ and a normal realization function
+$r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
+a correct G3lp proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$ such that
+$ε(i_0,j_0) ≤ ε(i,j) - 1$. From this it follows by a trivial induction
+on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$ is also a
+correct G3lp proof. By the correctness of G3lp we therefore have:
+
+\begin{equation}
+LP(CS^{ε(i,j) - 1}) ⊢ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q} → A)
+\end{equation}
+
+By the lifting lemma we get a new proof term $t_{i,j}(x_{k_0}, ...,
+x_{k_q})$ and a new injective $CS'^{ε(i,j)} ⊃ CS^{ε(i,j) - 1}$ such
+that:
+
+\begin{equation}
+LP(CS'^{ε(i,j)}) ⊢ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q}) → t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
+\end{equation}
+
+Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
+$t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. As $t$ does not contain
+any variables $u_{i',j'}$, the formula $r_T^k(⊞_i):A$ will have the
+form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i}){:}A$
+for any $k ∈ \{ε(i,j), ..., N\}$. Therefore $LP0 ⊢ t_{i,j}{:}A →
+r_T^k(⊞_i){:}A$ follows from repeated use of $A4$. Together with (2)
+we get the precondition required for the final $(⊃ :)$ rule in
+$r_T^{ε(i,j)}(an_T(T ↾ O_{i,j}))$:
+
+\begin{equation}
+LP(CS^{ε(i,j)}) ⊢ r_T^{ε(i,j)}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q} ⊃ ⊞_i:A)
+\end{equation}
+
+Moreover, this precondition remains fullfilled for the $(⊃ :)$ rule
+$R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$.
+
+For the final normal realization function $r_T := r_T^N$ and injective
+constant specification $CS := CS^N$ we have that $r_T(an_T(T))$ is a
+correct G3lp proof based on $CS$ of $⊃ r_T(A)$. So by correctness of
+G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation $r$ given by
+$r_T$ and the injective constant specification $CS$.
+
+
 Main Proof
 ==========
 
