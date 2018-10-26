@@ -26,7 +26,7 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 
 * $R1$: $F → G, F ⊢ G$ (Modus Ponens)
 * $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
-        (Axiom Necessitatio)
+        (Axiom Necessitation)
 
 Gentzen Systems for S4 and LP
 =============================
@@ -260,7 +260,7 @@ We relate the symbol occurrences in a proof as follows:
   the same occurrence of that symbol in the corrsponding subformula in
   the principal formula of the rule.
 
-Every symbol occurrence in a premise corresponds to at exactly one
+Every symbol occurrence in a premise corresponds to exactly one
 symbol occurrence in the conclusion. Therefore all symbol occurrences
 in a proof can be divided in disjunct corresponding families of symbol
 occurrences. For every such familiy there is exactly one occurrence in
@@ -279,8 +279,8 @@ s_i R s_j\}$ defined on $T ∖ \{s_r\}$.
 A path in the proof is a list of related sequents $s_r R s_n R ... R
 s_0$ starting from the root sequent $s_r$ and ending in a leaf sequent
 $s_0$. The path is fully defined by the leaf sequent $s_0$. So we
-will use path $s_0$ to mean the full path $s_r R s_n R ... R s_0$ from
-$s_0$ to the root $s_r$. $T ↾ s$ denotes the subtree of $T$ with root
+will use path $s_0$ to mean the full and unique path $s_r R s_n R ... R s_0$ from
+the root $s_r$ to the leaf $s_0$. $T↾s$ denotes the subtree of $T$ with root
 $s$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
 
@@ -381,7 +381,7 @@ Main Proof
 Yu proofes in [@yu2010] the following theorem:
 
 Theorem 7 (Necessity of Left Prehistoric Loop for
-Self-referentiality).  If an S4−theorem $A$ has a
+Self-referentiality):  If an S4−theorem $A$ has a
 left-prehistoric-loop-free G3s−proof, then there is an LP−formula $B$
 s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} A$
 
