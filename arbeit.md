@@ -494,6 +494,107 @@ G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation $r$ given by
 $r_T$ and the injective constant specification $CS$.
 \End{proof}
 
+Prehistoric Phenomena
+=====================
+
+\Begin{definition}[History]
+In branch $s$ of the form $s_rR^*O_{i,j}RI_{i,j}R^*s$ in a
+G3s−proof $T$, the path $s_rR^*O_{i,j}$ is called a *history* of $p_i$
+in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
+*pre-history* of $p_i$ in branch $s$. ^[vgl. @yu2010, 389]
+\End{definition}
+
+\Begin{definition}[Prehistoric Relation]
+For any principal positive families $p_i$ and $p_h$ and any branch $s$ of
+the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a annotated S4 proof $T$:
+
+(1) If $I_{i,j}$ has the annotated form $⊟_{k_0}B_{k_0}, ...,
+⊟_{k}B_{k_q}(⊞_h:C)), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
+prehistoric family* of $p_i$ in $s$ with notation $h ≺^s_L i$.
+
+(2) If $I_{i,j}$ has the annotated form $⊟_{k_0} B_{k_0} ∧ ... ∧
+⊟_{k_q}B_{k_q} ⊃ A(⊞_h:C)$ then $p_h$ is a *right prehistoric family*
+of $p_i$ in $s$ with notation $h ≺^s_R i$.
+
+(3) The relation of *prehistoric family* in $s$ is defined by: $≺^s := ≺^s_L ∪ ≺^s_R$.
+The relation of *(left, right) prehistoric family* in $T$ is defined by:
+$≺_L := ⋃\{≺^s_L |\text{$s$ is a leaf}\}$, $≺_R := ⋃\{≺^s_R |\text{$s$
+is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
+
+\End{definition}
+
+The following lemma provides the connection between these two definitions:
+
+\Begin{lemma}
+There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the branch
+$s$ iff $h ≺^s i$.
+\End{lemma}
+
+\Begin{proof}
+
+(⇒): $⊞_h$ occurres in a sequent $s'$ in a pre-history of $p_i$ in the
+path $s$, so the path $s$ has the form
+$s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j ∈ \{0,...,n_i\}$. As
+any symbol occurrance in a premise is related to exactly one symbol
+occurrance in the conclusion, there is an occurrance of $⊞_h$ in
+$I_{i,j}$. If this occurrence is on the left we have $h ≺^s_L i$, if
+it is on right we have $h ≺^s_R i$. In both cases $h ≺^s  i$ holds.
+
+(⇐): By definition there is a $I_{i,j}$ in $s$, where $⊞_h$ occurres
+either on the left (for $h ≺^s_L i$) or on the right (for $h ≺^s_R
+i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $s$.
+
+\End{proof}
+
+TODO: paraphrase some of the remarks from @yu2010.
+
+\Begin{lemma} \label{noref}
+For any principal positive family $p_i$, $i \nprec_R i$. ^[TODO proof]
+\End{lemma}
+
+\Begin{lemma} \label{trans}
+If $k ≺_R j$ and $j ▹ i$, then $k ▹ i$, where $▹$ is any one of $≺$, $≺_L$, $≺_R$, $≺^s$ , $≺^s_L$ or $≺^s_R$.
+\End{lemma}
+
+\Begin{proof}
+Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
+principally introduced $⊞_j$. So wherever $⊞_j$ occurs, there is a
+$⊞_k$ occurring in the scope of it. ^[TODO either add necessary
+theorem from @yu2010, or add the necessary arguments here]
+
+For any $▹$, we have $j ▹ i$ because some occurrance of $⊞_j$ in a
+subformula of the premise of a rule $R_{i,q}$. By the previous
+statement there is also an occurrance of $⊞_k$ in the same scope, and
+therefore also $k ▹ i$.
+\End{proof}
+
+\Begin{definition}[Prehistoric Loop]
+In a G3s−proof $T$, the ordered list of principal positive families
+$p_{i_0},..., p_{i_{n-1}}$ with length $n$ is called a *prehistoric loop* or *left
+prehistoric loop* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
+i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
+\End{definition}
+
+\Begin{theorem}
+$T$ has a prehistoric loop iff $T$ has a left prehistoric loop.
+\End{theorem}
+
+\Begin{proof}
+The (⇐) direction is trivial. The (⇒) direction is proven by complete
+induction on the length of the loop as follow:
+
+$n = 1$: $i_0 ≺ i_0$ so either $i_0 ≺_R i_0$ or $i_0 ≺_L i_0$. As $i_0
+≺_R i_0$ is impossible by lemma \ref{noref}, we have $i_0 ≺_L i_0$ and the
+loop already is a left prehistoric loop.
+
+$n - 1 ⇒ n$: If $i_k ≺_L i_{k+1 \mod n}$ for all $k ≤ n$, then the loop
+already is a left prehistoric loop and we are finished. Otherwise
+there is a $k ≤ n$ such that $i_k ≺_R i_{k+1 \mod n} ≺ i_{k+2 \mod
+n}$. By lemma \ref{trans} we have $i_k ≺ i_{k+2 \mod n}$. So the sublist of
+length $n - 1$ without $i_{k+1 \mod n}$ is a prehistoric loop. By the
+induction hypothesis, $T$ has a left prehistoric loop.
+\End{proof}
+
 
 Main Proof
 ==========
