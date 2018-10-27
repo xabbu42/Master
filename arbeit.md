@@ -184,7 +184,7 @@ the logic of proofs LP using explicit contraction and weakening
 rules, i.e. based on G1c as defined in @troelstra2000 [p.61]. As our
 used system for S4 G3s is based on G3c instead, we use a variant G3lp
 also based on G3s and therefore directly comparable to G3s. This
-variant resembles closely the LPG0 + "lifting rule" system from
+variant resembles closely the "LPG_0 + Lifting Lemma Rule" system from
 @yu2010.
 
 \renewcommand{\arraystretch}{3}
@@ -531,7 +531,6 @@ $s$ iff $h ≺^s i$.
 \End{lemma}
 
 \Begin{proof}
-
 (⇒): $⊞_h$ occurres in a sequent $s'$ in a pre-history of $p_i$ in the
 path $s$, so the path $s$ has the form
 $s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j ∈ \{0,...,n_i\}$. As
@@ -543,7 +542,6 @@ it is on right we have $h ≺^s_R i$. In both cases $h ≺^s  i$ holds.
 (⇐): By definition there is a $I_{i,j}$ in $s$, where $⊞_h$ occurres
 either on the left (for $h ≺^s_L i$) or on the right (for $h ≺^s_R
 i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $s$.
-
 \End{proof}
 
 TODO: paraphrase some of the remarks from @yu2010.
@@ -587,12 +585,13 @@ $n = 1$: $i_0 ≺ i_0$ so either $i_0 ≺_R i_0$ or $i_0 ≺_L i_0$. As $i_0
 ≺_R i_0$ is impossible by lemma \ref{noref}, we have $i_0 ≺_L i_0$ and the
 loop already is a left prehistoric loop.
 
-$n - 1 ⇒ n$: If $i_k ≺_L i_{k+1 \mod n}$ for all $k ≤ n$, then the loop
-already is a left prehistoric loop and we are finished. Otherwise
-there is a $k ≤ n$ such that $i_k ≺_R i_{k+1 \mod n} ≺ i_{k+2 \mod
-n}$. By lemma \ref{trans} we have $i_k ≺ i_{k+2 \mod n}$. So the sublist of
-length $n - 1$ without $i_{k+1 \mod n}$ is a prehistoric loop. By the
-induction hypothesis, $T$ has a left prehistoric loop.
+$n - 1 ⇒ n$: If $i_k ≺_L i_{k+1 \mod n}$ for all $k < n$, then the
+loop already is a left prehistoric loop and we are finished. Otherwise
+there is a $k < n$ such that $i_k ≺_R i_{k+1 \mod n} ≺ i_{k+2 \mod
+n}$. By lemma \ref{trans} we also have $i_k ≺ i_{k+2 \mod n}$ and
+therefore the sublist of length $n - 1$ without $i_{k+1 \mod n}$ is
+also a prehistoric loop. By the induction hypothesis, $T$ has a left
+prehistoric loop.
 \End{proof}
 
 
