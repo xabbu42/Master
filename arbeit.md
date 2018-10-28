@@ -279,7 +279,8 @@ We relate the subformula (symbol) occurrences in a proof as follows:
 * Every subformula (symbol) occurrence in an active formula of a
   premise corresponds to the same occurrence of that symbol in the
   corrsponding subformula in the principal formula of the rule.
-\End
+
+\End{definition}
 
 Every subformula (symbol) occurrence in a premise corresponds to
 exactly one subformula (symbol) occurrence in the
@@ -302,9 +303,10 @@ one* subformula (symbol) occurrance of the root sequent $s$ of $T↾s$.
 Any subformula (symbol) occurrance in a complete Gentzen style
 (pre-)proof $T$ in the systems G3lp and G3s correpsonds to *exactly*
 one subformula (symbol) occurrance in the root sequent $s_r$ of $T$.
-\End
+\End{theorem}
 
 \Begin{proof}
+TODO
 \End{proof}
 
 Annotated S4 Formulas and Proofs
