@@ -28,6 +28,16 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
         (Axiom Necessitation)
 
+\Begin{theorem}[lifting lemma] \label{lift}
+If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$, then
+there is a term $t = t(x_1,···,x_n)$ s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP}
+t(x_1,···,x_n){:}B$. [@artemov2001, 9]
+\End{theorem}
+
+\Begin{proof}
+TODO
+\End{proof}
+
 Gentzen Systems for S4 and LP
 =============================
 
@@ -430,7 +440,8 @@ with $A^r := r_A(an_A(A))$.
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
 proof variables. A LP-realization is *normal* if the corresponding
-realization function is normal and the $CS$ is injective.
+realization function is normal and the $CS$ is injective. ^[TODO
+probably shoud not misuse normal here for non-principal positive families]
 \End{definition}
 
 \Begin{theorem}[Realization]
@@ -457,11 +468,11 @@ later in this order).
 
 We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
 u_{i,0} + ... + u_{i,l_i}$ and the injective constant specification
-$CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all have a
-direct equivalent in G3lp, so the the proof tree $r_T^0(an_T(T))$ formally is
-a G3lp proof tree. However it is not a correct proof as the $(⊃ :)$
-rule is used without fullfilling the necessary precondition on the
-introduced term $t$.
+$CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
+have a direct equivalent in G3lp, so by a trivial induction the proof
+tree $r_T^0(an_T(T))$ is a G3lp preproof. However it is not a G3lp
+proof as none of the $(⊃ :)$ rules fullfill the necessary precondition
+on the introduced term $t$.
 
 We therefore define inductively the normal realization functions
 $r_T^{ε(i,j)}$ and injective constant specifications $CS^{ε(i,j)}$
@@ -488,7 +499,7 @@ correct G3lp proof. By the correctness of G3lp we therefore have:
 LP(CS^{ε(i,j) - 1}) ⊢ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q} → A)
 \end{equation}
 
-By the lifting lemma we get a new proof term $t_{i,j}(x_{k_0}, ...,
+By the lifting lemma \ref{lift} we get a new proof term $t_{i,j}(x_{k_0}, ...,
 x_{k_q})$ and a new injective $CS'^{ε(i,j)} ⊃ CS^{ε(i,j) - 1}$ such
 that:
 
@@ -500,9 +511,9 @@ Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
 $t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. As $t$ does not contain
 any variables $u_{i',j'}$, the formula $r_T^k(⊞_i):A$ will have the
 form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i}){:}A$
-for any $k ∈ \{ε(i,j), ..., N\}$. Therefore $LP0 ⊢ t_{i,j}{:}A →
-r_T^k(⊞_i){:}A$ follows from repeated use of $A4$. Together with (2)
-we get the precondition required for the final $(⊃ :)$ rule in
+for any $k ≥ ε(i,j)$. Therefore $LP0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$
+follows from repeated use of $A4$. Together with (2) we get the
+precondition required for the final $(⊃ :)$ rule in
 $r_T^{ε(i,j)}(an_T(T ↾ O_{i,j}))$:
 
 \begin{equation}
@@ -531,13 +542,13 @@ in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
 
 \Begin{definition}[Prehistoric Relation]
 For any principal positive families $p_i$ and $p_h$ and any branch $s$ of
-the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a annotated S4 proof $T$:
+the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a S4 proof $𝒯 = (T, R)$:
 
-(1) If $I_{i,j}$ has the annotated form $⊟_{k_0}B_{k_0}, ...,
+(1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
 ⊟_{k}B_{k_q}(⊞_h:C)), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
 prehistoric family* of $p_i$ in $s$ with notation $h ≺^s_L i$.
 
-(2) If $I_{i,j}$ has the annotated form $⊟_{k_0} B_{k_0} ∧ ... ∧
+(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0} ∧ ... ∧
 ⊟_{k_q}B_{k_q} ⊃ A(⊞_h:C)$ then $p_h$ is a *right prehistoric family*
 of $p_i$ in $s$ with notation $h ≺^s_R i$.
 
