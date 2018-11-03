@@ -28,15 +28,130 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
         (Axiom Necessitation)
 
-\Begin{theorem}[lifting lemma] \label{lift}
-If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$, then
-there is a term $t = t(x_1,···,x_n)$ s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP}
-t(x_1,···,x_n){:}B$. [@artemov2001, 9]
+A Hilbert style derivation $d$ is sequence of formulas $A_0, ... A_n$
+such that any formula is either an axiom A0-A4 or derived from earlier
+formulas by a rule R1 or R2. When formulating such derivations, we
+will introduce propositional tautologies without derivation and use
+the term propositional reasoning for any use of modus ponens together
+with a propositional tautology. This is of course correct as axioms A0
+together with the modus ponens rule R1 are a complete Hilbert style
+system for classical propositional logic. Its easy to see by a simple
+complete induction on the proof length that this derivations do
+not introduce any new terms not already occurring in the final
+propositional tautology.
+
+A constant specification $CS$ is a set of of formulas of the form
+$c:A$ with $c$ a proof constant and $A$ an axiom A0-A4. Every LP
+derivation naturally generates a finite constant specification of all
+formulas derived by axiom necessitation (R2). For a given constant
+specification $CS$, $LP(CS)$ is the logic with axiom necessitation
+restricted to that $CS$. $LP_0 := LP(∅)$ is the logic without axiom
+necessiation.  A constant specification $CS$ is injective, if for each
+proof constant $c$, there is at most one formula $c{:}A ∈ CS$.
+
+\Begin{lemma}[substitution] \label{subst}
+If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
+with a derivation $d'$ acquired by replacing all occurrences of a
+proof variable $x$ by a proof term $t$ in $Γ$, $CS$ and $d$.
+\End{lemma}
+
+\Begin{proof}
+Trivial induction over the derivation $d$.
+\End{proof}
+
+\Begin{theorem}[deduction theorem] \label{ded}
+If $Γ, A ⊢_{LP(CS)} B$, then $Γ ⊢_{LP(CS)} A → B$ [@artemov2001, 9]
 \End{theorem}
 
 \Begin{proof}
-TODO
+From a proof $d$ for $A, Γ ⊢_{LP} B$ we inductively construct a proof
+$d'$ for $Γ ⊢_{LP} A → B$ as follows:
+
+1. case: $B ≡ A$, then $A → B ≡ A → A$ is a propositional tautology
+and derivable from axioms A0 and modus ponens.
+
+2. case: $B$ is an assumption or an axiom A0-A4. Then $d'$ is the
+derivation $B$, $B → (A → B)$, $A → B$.
+
+3. case: $B ≡ c:B_0$ is derived by axiom necessitation. Then $d'$ is
+the derivation $B_0$, $c{:}B_0$, $c{:}B_0 → (A → c{:}B_0)$, $A → c{:}B_0$.
+
+4. case: $B$ is derived by modus ponens. So there are derivations
+$d_l$ and $d_r$ for the premises $C → B$ and $C$. By induction
+hypothesis, there are derivations $d_l'$ and $d_r'$ for $A → (C → B)$
+and $A → C$. The derivation $d'$ is $(A → (C → B)) → ((A
+→ C) → (A → B))$, $d_l'$, $(A → C) → (A → B)$, $d_r'$, $A → B$
+
 \End{proof}
+
+\Begin{corollary} \label{dedvar}
+The deduction $d'$ for $Γ ⊢_{LP(CS)} A → B$ only uses variables $x$ also occurring in the
+deduction $d$ for $A, Γ ⊢_{LP(CS)} B$.
+\End{corollary}
+
+\Begin{proof}
+As constructed in the main proof, the new deduction $d'$ only uses
+subformulas of $d$ and does not introduce any new terms.
+\End{proof}
+
+\Begin{theorem}[lifting lemma] \label{lift}
+If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$, then there is a term $t$
+s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t{:}B$. [@artemov2001, 9]
+\End{theorem}
+
+\Begin{proof}
+From a proof $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$
+we inductively construct a term $t$ and a proof
+$d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t(x_1,···,x_n){:}B$
+as follows:
+
+1. case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and
+$d'$ is the derivation $x_i{:}A_i$, $x_i{:}A_i → !x_i{:}x_i{:}A_i$.
+
+2. case: $B$ is an axiom A0-A4. Then $t := c$ for a new constant
+$c$ and $d'$ is the derivation $B$, $c{:}B$.
+
+3. case: $B ≡ c{:}B_0$ is derived by axiom necessitation. Then $t := !c$
+and $d'$ is the derivation $B_0$, $c{:}B_0$, $c{:}B_0 → !c{:}c{:}B_0$,
+$!c{:}c{:}B_0$ as $B_0$ is an axiom.
+
+4. case: $B$ is derived by modus ponens. So there are derivations
+$d_l$ and $d_r$ for the premises $C → B$ and $C$. By induction
+hypothesis, there are terms $t_l$ and $t_r$ and derivations $d_l'$ and
+$d_r'$ for $t_l{:}(C → B)$ and $t_r{:}C$. Set $t := t_l⋅t_r$ and the
+derivation $d'$ is $t_l{:}(C → B) → (t_r{:}C → t_l⋅t_r{:}B)$, $d_l'$,
+$t_r{:}C → t_l⋅t_r{:}B$, $d_r'$, $t_l⋅t_r{:}B$
+
+\End{proof}
+
+\Begin{corollary} \label{liftcs}
+If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS)} B$ based on an injective
+constant specification $CS$, then there is a term $t$ and a injective
+constant specification $CS' ⊃ CS$ s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS')}
+t{:}B$.
+\End{corollary}
+
+\Begin{proof}
+The proof is exactly the same as for the main theorem, except in the
+4. case. In that case we just have to reuse a constant $c ∈ CS$ for
+the exact same axiom, if it already exists or else we add the new
+constant $c ∉ CS$ to the new constant specification $CS'$.
+\End{proof}
+
+\Begin{corollary} \label{liftvar}
+The deduction $d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS')}
+t(x_1,···,x_n){:}B$ and the constant specification of the new
+constants $CS' ∖ CS$ only uses variables $x$ also occurring in the
+deduction $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$.
+\End{corollary}
+
+\Begin{proof}
+As constructed in the main proof, the new deduction $d'$ only uses
+true subformulas and variables already occuring in $d$. Moreover it only
+introduces new constants $c$ for axioms $A$ occuring in $d$. Therefore
+no new variables are introduced in $d'$ or $CS'$.
+\End{proof}
+
 
 Gentzen Systems for S4 and LP
 =============================
@@ -176,8 +291,8 @@ system:
 \\
 
 \RightLabel{$(□ ⊃)$}
-\AXC{$Γ, A, □A ⊃ Δ$}
-\UIC{$Γ, □A ⊃ Δ$}
+\AXC{$A, □A, Γ ⊃ Δ$}
+\UIC{$□A, Γ ⊃ Δ$}
 \DP
 
 &
@@ -194,7 +309,7 @@ the logic of proofs LP using explicit contraction and weakening
 rules, i.e. based on G1c as defined in @troelstra2000 [p.61]. As our
 used system for S4 G3s is based on G3c instead, we use a variant G3lp
 also based on G3s and therefore directly comparable to G3s. This
-variant resembles closely the "LPG_0 + Lifting Lemma Rule" system from
+variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
 @yu2010.
 
 \renewcommand{\arraystretch}{3}
@@ -255,7 +370,7 @@ the premises are called active formulas. Active formulas are always
 used as subformulas of the principal formula.
 
 [^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
-□)$, $(◇ ⊃)$, which are also the only rules which restrict the
+□)$, $(◇ ⊃)$ and $(⊃ :)$, which are also the only rules which restrict the
 possible side formulas.
 
 Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
@@ -263,7 +378,7 @@ Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
 \{(s_i,s_j) ∈ T × T ∣ \text{$s_i$ is the conclusion of a rule which
 has $s_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
 $s_r$. A leaf sequent $s$ is a sequent without any premises, i.e $∀ s'
-∈ T s \not R s'$ ^[TODO typeset that correctly].  The relation $R$ is
+∈ T s \not R s'$ ^[TODO typeset that correctly]. The relation $R$ is
 the inverse of the the parent function $P := \{(s_j, s_i) ∈ T × T ∣
 s_i R s_j\}$ defined on $T ∖ \{s_r\}$.
 
@@ -319,6 +434,121 @@ one subformula (symbol) occurrance in the root sequent $s_r$ of $T$.
 TODO
 \End{proof}
 
+G3lp is sound and complete
+==========================
+
+We will show in this section that G3lp is adequate by showing it is equivalent to the
+Hilbert system LP from @artemov2001 as introduced in section \ref{syntax}.
+
+\Begin{theorem} \label{equiv1}
+$G3lp ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
+\End{theorem}
+
+\Begin{proof}
+We construct a LP derivation $d$ of $⋁Δ$ by structural induction over
+the proof tree $𝒯 = (T, R)$ for $Γ ⊃ Δ$.
+
+1. case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom. Then $P$, $P
+→ ⋁Δ' ∨ P$, $⋁Δ' ∨ P ≡ ⋁Δ$ is the required LP derivation.
+^[TODO usage of ≡ for sequents here and following cases is confusing]
+
+2. case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
+the required LP derivation.
+
+3. case: $Γ ⊃ Δ ≡ A → B, Γ' ⊃ Δ$ is derived by a $(→ ⊃)$ rule. So the
+premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃ Δ$. By the induction hypothesis
+there exists LP derivations $d_L$ and $d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and
+$B, Γ' ⊢_{LP} ⋁Δ$. By the deduction theorem \ref{ded} there exists a LP
+derivation $d_R'$ for $Γ' ⊢_{LP} B → ⋁Δ$. Using $d_R'$, the assumption $A → B$
+and propositional reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.
+By appending $d_L$ and propositional reasoning we get the final $(A →
+B), Γ' ⊢_{LP} ⋁Δ$
+
+4. case: $Γ ⊃ Δ ≡ Γ ⊃ Δ', A → B$ is derived by a $(⊃ →)$ rule. So the
+premise is $A, Γ ⊃ Δ', B$. By the induction hypothesis there exists a
+LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨ B$. From the deduction
+theorem \ref{ded} we get $Γ ⊢_{LP} A → (⋁Δ' ∨ B)$. By propositional reasoning we
+get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A → B) ≡ Γ ⊢_{LP} ⋁Δ$.
+
+5. case: $Γ ⊃ Δ ≡ t{:}A, Γ' ⊃ Δ$ is derived by a $(: ⊃)$ rule. So the
+premise is $A, t{:}A, Γ' ⊃ Δ$. By the induction hypothesis there
+exists a LP derivation $d$ for $A, t{:}A, Γ' ⊢_{LP} ⋁Δ$. By adding
+$t{:}A, t{:}A → A, A$ to the beginning of $d$ we get the necessary
+derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
+
+6. case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
+by a $(⊃ :)$ rule. By the precondition on $t$ there exists a
+derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
+
+\End{proof}
+
+\Begin{corollary} \label{equiv1var}
+The deduction $d$ for $Γ ⊢_{LP} ⋁Δ$ only uses variables $x$ which also
+occur in the proof tree $𝒯 = (T, R)$ for $G3lp ⊢ Γ ⊃ Δ$ or any
+deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ used in
+case 6.
+\End{corollary}
+
+\Begin{proof}
+As constructed in the main proof, the deduction $d$ only uses true
+subformulas and variables already occuring in $T$. For cases 1 and 2
+this is immediate as the given derivations directly use subformulas
+from $T$. In cases 3, 4 and 5, the starting derivations do not
+introduce new variables by induction hypothesis and the use of the
+deduction theorem does not introduce new variables by corollary
+\ref{dedvar}. The derivation for case 6 is already included in the
+corollary and therefore trivially does not introduce new variables.
+\End{proof}
+
+\Begin{lemma}[reversability of $(⊃ →)$ rule] \label{revers}
+$G3lp ⊢ Γ ⊃ Δ, A → B ⇔ G3lp ⊢ A, Γ ⊃ Δ, B$
+\End{lemma}
+
+\Begin{lemma}[weakening for G3lp] \label{weak}
+$G3lp ⊢ Γ ⊃ Δ ⇒ G3lp ⊢ Γ, Γ' ⊃ Δ, Δ'$
+\End{lemma}
+
+\Begin{lemma}[cut elemination for G3lp] \label{cut}
+If $G3lp ⊢ A, Γ ⊃ Δ$ and $G3lp ⊢ Γ ⊃ Δ, A$ then $G3lp ⊢ Γ ⊃ Δ$.
+\End{lemma} ^[TODO wrong for : rules, adapt G3lp or find proof...]
+
+\Begin{lemma} \label{genax}
+$G3lp ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
+\End{lemma}
+
+\Begin{theorem} \label{equiv2}
+$Γ ⊢_{LP} A ⇒ G3lp ⊢ Γ ⊃ A$
+\End{theorem}
+
+\Begin{proof}
+By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
+
+1. case $A$ is an axiom A0. By the completeness of G3c included in
+G3lp there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
+
+2. case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
+A$ can be derived for each axiom using lemma \ref{genax} for the base
+cases. $Γ ⊃ A$ follows from weakening.
+
+TODO
+
+3. case $A ∈ Γ$ is an assumption. We get the required proof for $A,
+Γ' ⊃ A$ directly from lemma \ref{genax}.
+
+4. case $A ≡ c:B$ is derived by rule R1 (Axiom Necessitation). Then
+$B$ is an axiom and there is a G3lp proof for $⊃ B$ by induction
+hypothesis. Appending a $(⊃ :)$ rule with $t = c$ gives a G3lp proof
+for $Γ ⊃ c:A$.
+
+5. case $A$ is dericed by rule R0 (Modus Ponens). By induction
+hypothesis, we have G3lp proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
+premises of the modus ponens rule. By lemma \ref{revers} we get a G3lp
+proof for $B, Γ⊃ A$ and by lemma \ref{cut} we get the required proof
+for $Γ ⊃ A$.
+
+\End{proof}
+
+
 Annotated S4 Formulas and Proofs
 ================================
 
@@ -370,8 +600,8 @@ Given a S4 proof $T$ we annotate the formulas $A$ in the proof in the
 following way:
 
 Enumerate all principal positive families as $p_0, ... ,
-p_n$, all non-principal positive families as $o_0, ..., o_m$ and all
-negative families as $n_0, ..., n_k$.
+p_{n_p}$, all non-principal positive families as $o_0, ..., o_{n_o}$ and all
+negative families as $n_0, ..., n_{n_n}$.
 
 Define $an_T(A)$ recursively on all occurrences of subformulas $A$ in a
 proof $T$ as follows:
@@ -444,7 +674,7 @@ realization function is normal and the $CS$ is injective. ^[TODO
 probably shoud not misuse normal here for non-principal positive families]
 \End{definition}
 
-\Begin{theorem}[Realization]
+\Begin{theorem}[Realization] \label{realization}
 If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
 LP-realization $r$.
 \End{theorem}
@@ -455,10 +685,10 @@ exists a G3s proof $𝒯 = (T, R)$ of $⊃ A$.
 
 For all principal families $⊞_i$ in $an_T(T)$, enumerate the
 $(⊃ □)$ rules principally introducing an occurrance of $⊞_i$ as
-$R_{i,0}, ... R_{i,l_i}$.  We will use $I_{i,0}, ... I_{i,l_i}$ to
-denote the premises and $O_{i,0}, ... O_{i,l_i}$ to denote the
-conclusions of this rules (so for all $i ≤ n$, $j ≤ l_i$ we have
-$I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}l_i$ $(⊃
+$R_{i,0}, ... R_{i,n_i}$.  We will use $I_{i,0}, ... I_{i,n_i}$ to
+denote the premises and $O_{i,0}, ... O_{i,n_i}$ to denote the
+conclusions of this rules (so for all $i ≤ n$, $j ≤ n_i$ we have
+$I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}n_i$ $(⊃
 □)$ rules in the proof $T$.
 
 We choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
@@ -467,7 +697,7 @@ $O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $s_r$ are
 later in this order).
 
 We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
-u_{i,0} + ... + u_{i,l_i}$ and the injective constant specification
+u_{i,0} + ... + u_{i,n_i}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lp, so by a trivial induction the proof
 tree $r_T^0(an_T(T))$ is a G3lp preproof. However it is not a G3lp
@@ -490,44 +720,72 @@ The rule $R_{i,j}$ has the following annotated form:
 By the induction hypothesis there exists an injective constant
 specification $CS^{ε(i,j) - 1}$ and a normal realization function
 $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
-a correct G3lp proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$ such that
-$ε(i_0,j_0) ≤ ε(i,j) - 1$. From this it follows by a trivial induction
-on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$ is also a
-correct G3lp proof. By the correctness of G3lp we therefore have:
+a correct G3lp proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
+such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
+induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
+is also a correct G3lp proof. By theorem \ref{equiv1} we therefore
+have a derivation for:
 
-\begin{equation}
-LP(CS^{ε(i,j) - 1}) ⊢ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q} → A)
+\begin{equation} \label{start}
+r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS^{ε(i,j) - 1})} r_T^{ε(i,j) - 1}(A)
 \end{equation}
 
-By the lifting lemma \ref{lift} we get a new proof term $t_{i,j}(x_{k_0}, ...,
-x_{k_q})$ and a new injective $CS'^{ε(i,j)} ⊃ CS^{ε(i,j) - 1}$ such
-that:
+By the corollary \ref{liftcs} of the lifting lemma, we get a new proof
+term $t_{i,j}(x_{k_0}, ..., x_{k_q})$ and a new injective
+$CS'^{ε(i,j)} = CS^{ε(i,j) - 1} ∪ \{c_{i,j,0}{:}A_{i,j,0}, ...,
+c_{i,j,m_{i,j}}:A_{i,j,m_{i,j}}\}$ such that:
 
-\begin{equation}
-LP(CS'^{ε(i,j)}) ⊢ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q}) → t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
+\begin{equation} \label{lifted}
+r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS'^{ε(i,j)})} t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
 \end{equation}
 
 Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
-$t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. As $t$ does not contain
-any variables $u_{i',j'}$, the formula $r_T^k(⊞_i):A$ will have the
-form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i}){:}A$
-for any $k ≥ ε(i,j)$. Therefore $LP0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$
-follows from repeated use of $A4$. Together with (2) we get the
-precondition required for the final $(⊃ :)$ rule in
-$r_T^{ε(i,j)}(an_T(T ↾ O_{i,j}))$:
+$t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. By the substitution
+lemma \ref{subst}, \ref{lifted} still holds for $r_T^{ε(i,j)}$ and
+$CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the form $(s_0 + ···
++s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{n_i}){:}A$. Therefore $LP_0 ⊢
+t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows from repeated use of $A4$
+Together with the substituted \ref{lifted} we get the precondition
+required for the final $(⊃ :)$ rule in $r_T^{ε(i,j)}(an_T(T ↾
+O_{i,j}))$:
 
-\begin{equation}
-LP(CS^{ε(i,j)}) ⊢ r_T^{ε(i,j)}(⊟_{k_0} B_{k_0} ∧ ... ∧ ⊟_{k_q} B_{k_q} ⊃ ⊞_i:A)
+
+\begin{equation} \label{precond}
+r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q}
+B_{k_q}) ⊢_{LP(CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
 \end{equation}
 
 Moreover, this precondition remains fullfilled for the $(⊃ :)$ rule
-$R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$.
+$R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$ again by
+the substitution lemma \ref{subst}.
 
-For the final normal realization function $r_T := r_T^N$ and injective
-constant specification $CS := CS^N$ we have that $r_T(an_T(T))$ is a
-correct G3lp proof based on $CS$ of $⊃ r_T(A)$. So by correctness of
-G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation $r$ given by
-$r_T$ and the injective constant specification $CS$.
+For the final normal realization function $r_T^N$ and injective
+constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
+correct G3lp proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
+\ref{equiv1} of G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation
+$r$ given by $r_T^N$ and the injective constant specification $CS^N$.
+\End{proof}
+
+\Begin{corollary} \label{realvar}
+There exist derivations $d^k_{i,j}$ for the precondition
+\ref{precond} of all rules $R_{i,j}$ in $r_T^k(an_T(T))$ and for any
+$k ≥ ε(i,j)$, which do not introduce new variables.
+\End{corollary}
+
+\Begin{proof}
+Proof by complete induction over the order $ε(i,j)$.
+
+Given a rule $R_{i,j}$, there exist derivations $d^k_{i0,j0}$
+which do not introduce new variables for the precondition of any rule
+$R_{i_0,j_0}$ in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0)
+< ε(i,j) ≤ k$ for all this rules. Using the exact same steps as in the
+main proof but using the realization function $r_T^k$, we get a
+derivation $d$ for \ref{start} which does not introduce new variables
+by the corollary \ref{equiv1var}, a derivation $d'$ for \ref{lifted}
+which does not introduce new variables by the corollary \ref{liftvar}
+and finally a derivation $d^k_{i,j}$ for \ref{precond} which also does
+not introduce new variables.^[TODO possibly clearer by using
+$d^{ε(i,j)}_{i0,j0}$] and substitution lemma]
 \End{proof}
 
 Prehistoric Phenomena
@@ -561,7 +819,7 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 
 The following lemma provides the connection between these two definitions:
 
-\Begin{lemma}
+\Begin{lemma} \label{prehist}
 There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the branch
 $s$ iff $h ≺^s i$.
 \End{lemma}
@@ -589,9 +847,9 @@ For any principal positive family $p_i$, $i \nprec_R i$.
 \Begin{proof}
 Assume for a contradiction that $i ≺_R i$. It follows from the
 definition of $≺_R$, that there is a rule $R_{i,j}$ with $⊞_iA(⊞_iB)$
-as the principal formula. By the subformula theorem \ref{sub}
+as the principal formula. By the subformula property \ref{sub}
 $⊞_iA(⊞_iB)$ corresponds to a subformula in the root sequent. Also by
-the subformula theorem there is only one occurrance of $⊞_i$ in the
+the subformula property there is only one occurrance of $⊞_i$ in the
 root sequent.
 \End{proof}
 
@@ -604,7 +862,7 @@ Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
 principally introduced $⊞_j$. All corresponding occurrances of $⊞_j$
 are part of corresponding occurrances of the subformula $⊞_jA(⊞_kB)$,
 with exactly one occurrance in the root sequent $s_r$ by the
-subformula theorem \ref{sub}. So wherever $⊞_j$ occurs in the proof
+subformula property \ref{sub}. So wherever $⊞_j$ occurs in the proof
 $T$, there is a $⊞_k$ occurring in the scope of it.
 
 For any $▹$, we have $j ▹ i$ because some occurrance of $⊞_j$ in a
@@ -645,12 +903,89 @@ prehistoric loop.
 Main Proof
 ==========
 
-Yu proofes in [@yu2010] the following theorem:
+\Begin{lemma} \label{variablefree}
+Any provisional variable $u_{x,y}$, which does not occur in
+$I^{ε(i,j)−1}_{i,j}$, does not occur in $CS^{ε(i,j)}$.
+\End{lemma}
+
+\Begin{proof}
+By the subformula property \ref{sub} for G3lp proofs, $u_{x,y}$ does
+not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
+\ref{equiv1var} using corollary \ref{realvar} for case 6, the
+derivation $d_{i,j}$ as constructed in the realization proof does not
+contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
+theorem \ref{lift}, $CS'_{i,j}$ and $t_{i,j}$ do not contain
+$u_{x,y}$. So also $CS_{i,j}$ does not contain $u_{x,y}$.
+\End{proof}
+
+\Begin{lemma} \label{epsilon}
+If a G3s−proof $T$ is prehistoric-loop-free, then we can realize it in
+such a way that: If $h_2 ≺ h_1$, then $ε(h_2,j_2) < ε(h_1,j_1)$ for any
+$j_1 ≤ l_{h_1}$ and $j_2 ≤ m_{h_2}$.
+\End{lemma}
+
+\Begin{proof}
+For a prehistoric-loop-free proof $T$, $≺$ describes a directed
+acyclic graph. Therefore there exists a topological order
+$p_{k_0},...,p_{k_{n_p}}$ of the $n_p + 1$ principal positive families
+$p_0, ..., p_{n_p}$. For any path $s$ of the form
+$s_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*s$, we have $i_2 ≺ i_1$ by lemma
+\ref{prehist}. So the order $ε(k_x,j) := Σ_{w = 0}^{x-1}l_{k_w}$
+defined for each family $p_{k_x}$ and $j ≤ l_{k_x}$ by handling the
+families $p_i$ in the given topological order $k_x$ fullfills the
+necessary condition to be used in the realization theorem
+\ref{realization} and at the same time the condition given in this
+lemma.
+\End{proof}
+
+\Begin{lemma} \label{constants}
+Assume the proof tree is prehistoric-loop-free. Taken the $ε$ as
+defined in lemma \ref{epsilon}, we have: If $ε(i_0,j_0) ≥ ε(i,j)$,
+then for any $k_0 ≤ m_{i_0,j_0}$ and any $k ≤ m_{i,j}$,
+$c_{i_0,j_0,k_0}$ does not occur in $A^N_{i,j,k}$ for the single
+$A^N_{i,j,k}$ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
+\End{lemma}
+
+\Begin{proof}
+By the construction in the proof of the realization theorem
+\ref{realization}, $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
+1}(an_T(I_{i,j}))$. For any $⊞_h$ occuring in $I_{i,j}$, we have by
+definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
+ε(i,j)$ for all $j_h ≤ m_h$. So any provisional variable $u_{h,j_h}$
+occuring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
+- 1}(an_T(I_{i,j}))$, which is therefore provisional variable free. So
+by the lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
+variable free and $A^N_{i,j,k} ≡ A_{i,j,k}$ for any
+$c_{i,j,k}{:}A_{i,j,k}$ introduced in $CS^{ε(i,j)}$. As any
+$c_{i_0,j_0,k_0}$ for any $ε(i_0,j_0) ≥ ε(i,j)$ is not yet introduced
+in $r_T^{ε(i,j) - 1}(an_T(I_{i,j}))$, it does not occur in $A_{i,j,k}$
+and therefor also not in $A^N_{i,j,k} ≡ A_{i,j,k}$
+\End{proof}
+
+With this three lemmas we can finally proof the main result of @yu2010
+[394]:
 
 \Begin{theorem}[Necessity of Left Prehistoric Loop for Self-referentiality]
-If an S4−theorem $A$ has a left-prehistoric-loop-free G3s−proof, then
-there is an LP−formula $B$ s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} A$
+If a S4−theorem $A$ has a left-prehistoric-loop-free G3s−proof, then
+there is a LP−formula $B$ s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
 \End{theorem}
+
+\Begin{proof}
+Given a left-prehistoric-loop-free G3s−proof $T$ for $A$, use lemma
+\ref{epsilon} and the realization theorem \ref{realization} to
+construct a realization function $r_T^N$ and a constant specification
+$CS^N$ such that $B := r_T^N(an_T(A))$ is a realization of $A$.
+
+Assume for contradiction, that the generated $CS^N$ is
+self-referential, i.e. there exist constants
+$c_{i_0,j_0,k_0},...,c_{i_{n-1},j_{n-1},k_{n-1}}$ such that for all $x
+< n$ the single $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ CS^N$ contains
+the next constant $c_{i_{x'},j_{x'},k_{x'}}$ with $x' := x + 1 \mod
+n$. By the lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
+ε(i_x,j_x)$ for all $x ≤ n$. So $ε(i_n,j_n) < ... < ε(i_1,j_1) <
+ε(i_0,j_0) < ε(i_n,j_n)$, which is impossible. Therefore the generated
+$CS^N$ is not self-referential and we have $⊢_{LP(CS^⊛)} B$.
+\End{proof}
 
 Literature
 ==========
