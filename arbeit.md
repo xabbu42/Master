@@ -653,7 +653,7 @@ G3lp there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
 
 2. case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
 A$ can be derived for each axiom using lemma \ref{genax} for the base
-cases. $Γ ⊃ A$ follows from weakening.
+cases. $Γ ⊃ A$ follows from weakening (\ref{weak}).
 
 TODO
 
@@ -1080,7 +1080,7 @@ definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h ≤ m_h$. So any provisional variable $u_{h,j_h}$
 occuring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
 - 1}(an_T(I_{i,j}))$, which is therefore provisional variable free. So
-by the lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
+by lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
 variable free and $A^N_{i,j,k} ≡ A_{i,j,k}$ for any
 $c_{i,j,k}{:}A_{i,j,k}$ introduced in $CS^{ε(i,j)}$. As any
 $c_{i_0,j_0,k_0}$ for any $ε(i_0,j_0) ≥ ε(i,j)$ is not yet introduced
@@ -1107,7 +1107,7 @@ self-referential, i.e. there exist constants
 $c_{i_0,j_0,k_0},...,c_{i_{n-1},j_{n-1},k_{n-1}}$ such that for all $x
 < n$ the single $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ CS^N$ contains
 the next constant $c_{i_{x'},j_{x'},k_{x'}}$ with $x' := x + 1 \mod
-n$. By the lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
+n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 ε(i_x,j_x)$ for all $x ≤ n$. So $ε(i_n,j_n) < ... < ε(i_1,j_1) <
 ε(i_0,j_0) < ε(i_n,j_n)$, which is impossible. Therefore the generated
 $CS^N$ is not self-referential and we have $⊢_{LP(CS^⊛)} B$.
