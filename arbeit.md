@@ -377,10 +377,10 @@ Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
 := {s_0, ..., s_n}$ is the set of occurrences of sequents, and $R :=
 \{(s_i,s_j) ∈ T × T ∣ \text{$s_i$ is the conclusion of a rule which
 has $s_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
-$s_r$. A leaf sequent $s$ is a sequent without any premises, i.e $∀ s'
-∈ T s \not R s'$ ^[TODO typeset that correctly]. The relation $R$ is
-the inverse of the the parent function $P := \{(s_j, s_i) ∈ T × T ∣
-s_i R s_j\}$ defined on $T ∖ \{s_r\}$.
+$s_r$. A leaf sequent $s$ is a sequent without any premises, i.e $s
+\slashed{R} s'$ for all $s' ∈ T$. The relation $R$ is the inverse of
+the the parent function $P := \{(s_j, s_i) ∈ T × T ∣ s_i R s_j\}$
+defined on $T ∖ \{s_r\}$.
 
 A path in the proof is a list of related sequents $s_r R s_n R ... R
 s_0$ starting from the root sequent $s_r$ and ending in a leaf sequent
@@ -402,8 +402,9 @@ We relate the subformula (symbol) occurrences in a proof as follows:
   of the conclusion.
 
 * Every subformula (symbol) occurrence in an active formula of a
-  premise corresponds to the same occurrence of that symbol in the
-  corrsponding subformula in the principal formula of the rule.
+  premise corresponds to the same occurrence of that subformula
+  (symbol) in the corrsponding subformula in the principal formula of
+  the rule.
 
 \End{definition}
 
@@ -915,7 +916,8 @@ not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
 theorem \ref{lift}, $CS'_{i,j}$ and $t_{i,j}$ do not contain
-$u_{x,y}$. So also $CS_{i,j}$ does not contain $u_{x,y}$.
+$u_{x,y}$. So also $CS_{i,j}$ does not contain $u_{x,y}$. ^[TODO check
+and better formulation]
 \End{proof}
 
 \Begin{lemma} \label{epsilon}
