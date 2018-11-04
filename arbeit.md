@@ -349,11 +349,11 @@ variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
 
 \pbox{8cm}{
 \RightLabel{$(⊃ :)_t$}
-\AXC{$t_1{:}A_1, ..., t_n{:}A_n ⊃ A$}
-\UIC{$Γ, t_1{:}A_1, ..., t_n{:}A_n ⊃ t{:}A, Δ$}
+\AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A$}
+\UIC{$Γ, t_1{:}B_1, ..., t_n{:}B_n ⊃ t{:}A, Δ$}
 \DP
 \newline
-for any $t$ where $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
+for any $t$ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}A$.
 }
 
 \end{longtable}
@@ -501,17 +501,141 @@ deduction theorem does not introduce new variables by corollary
 corollary and therefore trivially does not introduce new variables.
 \End{proof}
 
-\Begin{lemma}[reversability of $(⊃ →)$ rule] \label{revers}
-$G3lp ⊢ Γ ⊃ Δ, A → B ⇔ G3lp ⊢ A, Γ ⊃ Δ, B$
-\End{lemma}
-
 \Begin{lemma}[weakening for G3lp] \label{weak}
 $G3lp ⊢ Γ ⊃ Δ ⇒ G3lp ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
+\Begin{lemma}[contraction for G3lp] \label{contr}
+$G3lp ⊢ A, A, Γ ⊃ Δ ⇒ G3lp ⊢ A, Γ ⊃ Δ$
+$G3lp ⊢ Γ ⊃ Δ, A, A ⇒ G3lp ⊢ Γ ⊃ Δ, A$
+\End{lemma}
+
+\Begin{lemma}[inversion of $(: ⊃)$] \label{drop}
+$G3lp ⊢ B, t:B, Γ ⊃ Δ ⇔ G3lp ⊢ B, Γ ⊃ Δ$
+\End{lemma}
+
+\Begin{proof}
+The $(⇐)$ direction is just a weakening (\ref{weak}). The $(⇒)$ direction is shown 
+by a structural induction over the proof tree for $B, t{:}B, Γ ⊃ Δ$:
+
+1\.\ case: $t{:}B$ is a weakening formula of an axiom or a $(⊃ :)$
+rule. Then leaving out $t{:}B$ keeps the proof intact.
+
+2\.\ case: $t{:}B$ is a side formula of the last rule. By induction hypothesis
+the premises of the rules are provable without $t{:}B$. Append the same
+rule to get a proof of $B, Γ ⊃ Δ$.
+
+3\.\ case: $t{:}B$ is the principal formula of the last rule, then the premise
+is $B, B, t{:}B, Γ ⊃ Δ$. By induction hypothesis we get a proof for
+$B, B, Γ ⊃ Δ$ and by contraction (\ref{contr}) we get $B, Γ ⊃ Δ$.
+
+\End{proof}
+
+\Begin{lemma}[inversion of $(⊃ →)$] \label{revers}
+$G3lp ⊢ Γ ⊃ Δ, A → B ⇔ G3lp ⊢ A, Γ ⊃ Δ, B$
+\End{lemma}
+
+\Begin{proof}
+The $(⇐)$ direction is trivial by appending a $(⊃ →)$ rule to the
+given proof.  The $(⇒)$ direction is shown by a structural induction
+on the proof tree for $Γ ⊃ Δ, A → B$:
+
+1\.\ case: $A → B$ is a weakening formula of an axiom or a $(⊃ :)$
+rule. Then weakening in $A$ on the left and $B$ on the right instead
+leaves the proof intact.
+
+2\.\ case: $A → B$ is a side formula of the last rule. By induction hypothesis
+the premises of the rules are provable with $A → B$ replaced
+by $A$ on the left and $B$ on the right. Append the same
+rule to get a proof of $A, Γ ⊃ Δ, B$.
+
+3\.\ case: $A → B$ is the principal formula of the last rule, then the premise
+is the required $A, Γ ⊃ Δ, B$ and removing the last rule gives the
+required proof.
+\End{proof}
+
 \Begin{lemma}[cut elemination for G3lp] \label{cut}
-If $G3lp ⊢ A, Γ ⊃ Δ$ and $G3lp ⊢ Γ ⊃ Δ, A$ then $G3lp ⊢ Γ ⊃ Δ$.
-\End{lemma} ^[TODO wrong for : rules, adapt G3lp or find proof...]
+If $G3lp ⊢ A, Γ ⊃ Δ$ and $G3lp ⊢ Γ' ⊃ Δ', A$ then $G3lp ⊢ Γ,Γ' ⊃ Δ,Δ'$.
+\End{lemma}
+
+\Begin{proof}
+By a simultanous structural induction over the proof trees $𝒯_L$ for
+$A, Γ ⊃ Δ$, $𝒯_R$ for $Γ' ⊃ Δ', A$ and the build up of $A$ (i.e we
+will use the induction hypothesis to cut with the same formulas but
+shorter subtrees of the given proof trees as well as to cut different
+proof trees with lower rank formulas):
+
+1\.\ case: $A$ is a weakening formula in the last rule of one of the proofs. We get the
+required proof for $Γ ⊃ Δ$ by leaving out $A$ from that proof.
+
+2\.\ case: $A$ is a side formula in the last rule of $𝒯_L$. By induction
+hypothesis we can cut the premises $A, Γ_i ⊃ Δ_i$ of that rule with
+$Γ' ⊃ Δ', A$ to get $Γ_i, Γ' ⊃ Δ_i, Δ'$. Applying the same rule we get
+the required proof for $Γ,Γ' ⊃ Δ,Δ'$.
+
+3\.\ case: $A$ is a side formula in the last rule of $𝒯_R$. This case is
+handled simetrical to the previous one.
+
+4\.\ case: $A$ is the principal formula in the last rules of $𝒯_L$ and
+$𝒯_R$. Then we have the following subcases:
+
+4.1: The last rules are axioms. Then $A$ is atomic and $A ∈ Δ$ and $A
+∈ Γ'$ as there is no axiom with a principal $⊥$ on the
+right. Therefore also $Γ,Γ' ⊃ Δ,Δ'$ is an axiom.
+
+4.2:  $A$ has the form $A_0 → A_1$. Then the last rules of $𝒯_L$ and
+$𝒯_R$ have the following form:
+
+\renewcommand{\arraystretch}{3}
+\begin{longtable}{cc}
+
+\RightLabel{$(→ ⊃)$}
+\AXC{$Γ ⊃ Δ, A_0$}
+\AXC{$A_1, Γ ⊃ Δ$}
+\BIC{$A_0 → A_1, Γ ⊃ Δ$}
+\DP
+
+&
+
+\RightLabel{$(⊃ →)$}
+\AXC{$A_0, Γ' ⊃ Δ', A_1$}
+\UIC{$Γ' ⊃ Δ', A_0 → A_1$}
+\DP
+\end{longtable}
+
+By induction hypothesis for the lower rank formulas $A_0$ and $A_1$ we
+can cut the single premise $A_0, Γ' ⊃ Δ', A_1$ of the $(⊃ →)$ rule
+with both premises of the $(→ ⊃)$ rule to get a proof for $Γ, Γ, Γ',
+Γ' ⊃ Δ, Δ, Δ', Δ'$. By contraction (\ref{contr}) we get the required
+proof for $Γ, Γ' ⊃ Δ, Δ'$.
+
+4.3:  $A$ has the form $t{:}A_0$. Then the last rules of $𝒯_L$ and
+$𝒯_R$ have the following form:
+
+\renewcommand{\arraystretch}{3}
+\begin{longtable}{cc}
+
+\RightLabel{$({:} ⊃)$}
+\AXC{$A_0, t{:}A_0, Γ ⊃ Δ$}
+\UIC{$t{:}A_0, Γ ⊃ Δ$}
+\DP
+
+&
+
+\RightLabel{$(⊃ :)_t$}
+\AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A_0$}
+\UIC{$Γ'', t_1{:}B_1, ..., t_n{:}B_n ⊃ t{:}A_0, Δ'$}
+\DP
+
+\end{longtable}
+
+By lemma \ref{drop}, we have a proof for $A_0, Γ ⊃ Δ$. By the
+induction hypothesis for the lower rank formula $A_0$ we can cut that
+with the premise $t_1{:}B_1, ..., t_n{:}B_n ⊃ A_0$ to get $Γ, t_1{:}B_1,
+..., t_n{:}B_n ⊃ Δ$. By weakening (\ref{weak}) we finally get the
+required proof for $Γ, Γ' ⊃ Δ, Δ'$ as $\{t_1{:}B_1, ..., t_n{:}B_n\} ⊆
+Γ'$.
+\End{proof}
 
 \Begin{lemma} \label{genax}
 $G3lp ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
