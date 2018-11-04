@@ -67,16 +67,16 @@ If $Γ, A ⊢_{LP(CS)} B$, then $Γ ⊢_{LP(CS)} A → B$ [@artemov2001, 9]
 From a proof $d$ for $A, Γ ⊢_{LP} B$ we inductively construct a proof
 $d'$ for $Γ ⊢_{LP} A → B$ as follows:
 
-1. case: $B ≡ A$, then $A → B ≡ A → A$ is a propositional tautology
+1\.\ case: $B ≡ A$, then $A → B ≡ A → A$ is a propositional tautology
 and derivable from axioms A0 and modus ponens.
 
-2. case: $B$ is an assumption or an axiom A0-A4. Then $d'$ is the
+2\.\ case: $B$ is an assumption or an axiom A0-A4. Then $d'$ is the
 derivation $B$, $B → (A → B)$, $A → B$.
 
-3. case: $B ≡ c:B_0$ is derived by axiom necessitation. Then $d'$ is
+3\.\ case: $B ≡ c:B_0$ is derived by axiom necessitation. Then $d'$ is
 the derivation $B_0$, $c{:}B_0$, $c{:}B_0 → (A → c{:}B_0)$, $A → c{:}B_0$.
 
-4. case: $B$ is derived by modus ponens. So there are derivations
+4\.\ case: $B$ is derived by modus ponens. So there are derivations
 $d_l$ and $d_r$ for the premises $C → B$ and $C$. By induction
 hypothesis, there are derivations $d_l'$ and $d_r'$ for $A → (C → B)$
 and $A → C$. The derivation $d'$ is $(A → (C → B)) → ((A
@@ -105,17 +105,17 @@ we inductively construct a term $t$ and a proof
 $d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t(x_1,···,x_n){:}B$
 as follows:
 
-1. case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and
+1\.\ case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and
 $d'$ is the derivation $x_i{:}A_i$, $x_i{:}A_i → !x_i{:}x_i{:}A_i$.
 
-2. case: $B$ is an axiom A0-A4. Then $t := c$ for a new constant
+2\.\ case: $B$ is an axiom A0-A4. Then $t := c$ for a new constant
 $c$ and $d'$ is the derivation $B$, $c{:}B$.
 
-3. case: $B ≡ c{:}B_0$ is derived by axiom necessitation. Then $t := !c$
+3\.\ case: $B ≡ c{:}B_0$ is derived by axiom necessitation. Then $t := !c$
 and $d'$ is the derivation $B_0$, $c{:}B_0$, $c{:}B_0 → !c{:}c{:}B_0$,
 $!c{:}c{:}B_0$ as $B_0$ is an axiom.
 
-4. case: $B$ is derived by modus ponens. So there are derivations
+4\.\ case: $B$ is derived by modus ponens. So there are derivations
 $d_l$ and $d_r$ for the premises $C → B$ and $C$. By induction
 hypothesis, there are terms $t_l$ and $t_r$ and derivations $d_l'$ and
 $d_r'$ for $t_l{:}(C → B)$ and $t_r{:}C$. Set $t := t_l⋅t_r$ and the
@@ -449,14 +449,14 @@ $G3lp ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 We construct a LP derivation $d$ of $⋁Δ$ by structural induction over
 the proof tree $𝒯 = (T, R)$ for $Γ ⊃ Δ$.
 
-1. case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom. Then $P$, $P
+1\.\ case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom. Then $P$, $P
 → ⋁Δ' ∨ P$, $⋁Δ' ∨ P ≡ ⋁Δ$ is the required LP derivation.
-^[TODO usage of ≡ for sequents here and following cases is confusing]
+^[TODO usage of $≡$ for sequents here and following cases is confusing]
 
-2. case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
+2\.\ case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
 the required LP derivation.
 
-3. case: $Γ ⊃ Δ ≡ A → B, Γ' ⊃ Δ$ is derived by a $(→ ⊃)$ rule. So the
+3\.\ case: $Γ ⊃ Δ ≡ A → B, Γ' ⊃ Δ$ is derived by a $(→ ⊃)$ rule. So the
 premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃ Δ$. By the induction hypothesis
 there exists LP derivations $d_L$ and $d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and
 $B, Γ' ⊢_{LP} ⋁Δ$. By the deduction theorem \ref{ded} there exists a LP
@@ -465,19 +465,19 @@ and propositional reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.
 By appending $d_L$ and propositional reasoning we get the final $(A →
 B), Γ' ⊢_{LP} ⋁Δ$
 
-4. case: $Γ ⊃ Δ ≡ Γ ⊃ Δ', A → B$ is derived by a $(⊃ →)$ rule. So the
+4\.\ case: $Γ ⊃ Δ ≡ Γ ⊃ Δ', A → B$ is derived by a $(⊃ →)$ rule. So the
 premise is $A, Γ ⊃ Δ', B$. By the induction hypothesis there exists a
 LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨ B$. From the deduction
 theorem \ref{ded} we get $Γ ⊢_{LP} A → (⋁Δ' ∨ B)$. By propositional reasoning we
 get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A → B) ≡ Γ ⊢_{LP} ⋁Δ$.
 
-5. case: $Γ ⊃ Δ ≡ t{:}A, Γ' ⊃ Δ$ is derived by a $(: ⊃)$ rule. So the
+5\.\ case: $Γ ⊃ Δ ≡ t{:}A, Γ' ⊃ Δ$ is derived by a $(: ⊃)$ rule. So the
 premise is $A, t{:}A, Γ' ⊃ Δ$. By the induction hypothesis there
 exists a LP derivation $d$ for $A, t{:}A, Γ' ⊢_{LP} ⋁Δ$. By adding
 $t{:}A, t{:}A → A, A$ to the beginning of $d$ we get the necessary
 derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
 
-6. case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
+6\.\ case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
 by a $(⊃ :)$ rule. By the precondition on $t$ there exists a
 derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
 
