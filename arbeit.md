@@ -347,18 +347,17 @@ variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
 
 &
 
-\pbox{8cm}{
 \RightLabel{$(⊃ :)_t$}
 \AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A$}
-\UIC{$Γ, t_1{:}B_1, ..., t_n{:}B_n ⊃ t{:}A, Δ$}
+\UIC{$t_1{:}B_1, ..., t_n{:}B_n, Γ ⊃ Δ, t{:}A$}
 \DP
-\newline
-for any $t$ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}A$.
-}
 
+\\[-3ex]
+
+&
+
+for any $t$ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}A$
 \end{longtable}
-
-TODO: proof correct/complete of this system. better display of last rule
 
 In all this rules, arbitrary formulas which occur in the premises and
 the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
