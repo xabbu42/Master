@@ -49,6 +49,17 @@ restricted to that $CS$. $LP_0 := LP(∅)$ is the logic without axiom
 necessiation.  A constant specification $CS$ is injective, if for each
 proof constant $c$, there is at most one formula $c{:}A ∈ CS$.
 
+\Begin{definition}[forgetful projection] \label{proj}
+The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
+
+* if $A$ is atomic or $⊥$, then $A˚ := A$.
+* if $A$ is the formula $A_0 → A_1$ then $A˚ := A_0˚ → A_1˚$
+* if $A$ is the formula $t{:}A_0$ then $A˚ := □A_0$
+
+The definition is expanded to sets, multisets and sequents of LP
+formulas in the natural way.
+\End{definition}
+
 \Begin{lemma}[substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
 with a derivation $d'$ acquired by replacing all occurrences of a
