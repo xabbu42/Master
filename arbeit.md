@@ -185,12 +185,12 @@ Gentzen-style calculus with the following rules:
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
 
-\AXC{$P, Γ ⊃ Δ, P$ ($P$ atomic)}
+\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
 \DP
 
 &
 
-\AXC{$⊥, Γ ⊃ Δ$}
+\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
 \DP
 
 \\
@@ -274,12 +274,12 @@ system:
 
 \begin{longtable}{cc}
 
-\AXC{$P,Γ ⊃ Δ,P$ ($P$ atomic)}
+\AXC{$P,Γ ⊃ Δ,P$ $(Ax)$ ($P$ atomic)}
 \DP
 
 &
 
-\AXC{$⊥, Γ ⊃ Δ$}
+\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
 \DP
 
 \\
@@ -332,12 +332,12 @@ the later used system G3lp.
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
 
-\AXC{$P, Γ ⊃ Δ, P$ ($P$ atomic)}
+\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
 \DP
 
 &
 
-\AXC{$⊥, Γ ⊃ Δ$}
+\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
 \DP
 
 \\
@@ -386,7 +386,7 @@ the premises are called active formulas. Active formulas are always
 used as subformulas of the principal formula.
 
 [^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
-□)$, $(◇ ⊃)$ and $(⊃ :)$, which are also the only rules which restrict the
+□)$, $(◇ ⊃)$ and $(lift)$, which are also the only rules which restrict the
 possible side formulas.
 
 Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
@@ -465,11 +465,11 @@ $G3lift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 We construct a LP derivation $d$ of $⋁Δ$ by structural induction over
 the proof tree $𝒯 = (T, R)$ for $Γ ⊃ Δ$.
 
-1\.\ case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom. Then $P$, $P
+1\.\ case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom $(Ax)$. Then $P$, $P
 → ⋁Δ' ∨ P$, $⋁Δ' ∨ P ≡ ⋁Δ$ is the required LP derivation.
 ^[TODO usage of $≡$ for sequents here and following cases is confusing]
 
-2\.\ case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
+2\.\ case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom $(⊥ ⊃)$. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
 the required LP derivation.
 
 3\.\ case: $Γ ⊃ Δ ≡ A → B, Γ' ⊃ Δ$ is derived by a $(→ ⊃)$ rule. So the
@@ -534,7 +534,7 @@ $G3lift ⊢ B, t:B, Γ ⊃ Δ ⇔ G3lift ⊢ B, Γ ⊃ Δ$
 The $(⇐)$ direction is just a weakening (\ref{weak}). The $(⇒)$ direction is shown
 by a structural induction over the proof tree for $B, t{:}B, Γ ⊃ Δ$:
 
-1\.\ case: $t{:}B$ is a weakening formula of an axiom or a $(⊃ :)$
+1\.\ case: $t{:}B$ is a weakening formula of an axiom or a $(lift)$
 rule. Then leaving out $t{:}B$ keeps the proof intact.
 
 2\.\ case: $t{:}B$ is a side formula of the last rule. By induction hypothesis
@@ -556,7 +556,7 @@ The $(⇐)$ direction is trivial by appending a $(⊃ →)$ rule to the
 given proof.  The $(⇒)$ direction is shown by a structural induction
 on the proof tree for $Γ ⊃ Δ, A → B$:
 
-1\.\ case: $A → B$ is a weakening formula of an axiom or a $(⊃ :)$
+1\.\ case: $A → B$ is a weakening formula of an axiom or a $(lift)$
 rule. Then weakening in $A$ on the left and $B$ on the right instead
 leaves the proof intact.
 
@@ -1135,22 +1135,26 @@ The following is minimal subset of the Gentzen style system G3lp
 without structural rules as introduced by @pulver2010 [62].
 
 \renewcommand{\arraystretch}{3}
-\begin{longtable}{ccc}
+\begin{longtable}{cc}
 
-\RightLabel{$(Ax)$}
-\AXC{$P, Γ ⊃ Δ, P$ ($P$ atomic)}
+\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
+\DP
+
+&
+
+\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
+\DP
+
+\\
+
+\RightLabel{$(Ax)_c$}
+\AXC{$Γ ⊃ Δ, c{:}A$ $(Ax)_c$ ($A$ an axiom of LP)}
 \DP
 
 &
 
 \RightLabel{$(Ax)_t$}
-\AXC{$t{:}A, Γ ⊃ Δ, t{:}A$}
-\DP
-
-&
-
-\RightLabel{$(⊥ ⊃)$}
-\AXC{$⊥, Γ ⊃ Δ$}
+\AXC{$t{:}A, Γ ⊃ Δ, t{:}A$ $(Ax)_t$}
 \DP
 
 \\
