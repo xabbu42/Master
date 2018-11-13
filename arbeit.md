@@ -92,7 +92,6 @@ $d_l$ and $d_r$ for the premises $C → B$ and $C$. By induction
 hypothesis, there are derivations $d_l'$ and $d_r'$ for $A → (C → B)$
 and $A → C$. The derivation $d'$ is $(A → (C → B)) → ((A
 → C) → (A → B))$, $d_l'$, $(A → C) → (A → B)$, $d_r'$, $A → B$
-
 \End{proof}
 
 \Begin{corollary} \label{dedvar}
@@ -132,7 +131,6 @@ hypothesis, there are terms $t_l$ and $t_r$ and derivations $d_l'$ and
 $d_r'$ for $t_l{:}(C → B)$ and $t_r{:}C$. Set $t := t_l⋅t_r$ and the
 derivation $d'$ is $t_l{:}(C → B) → (t_r{:}C → t_l⋅t_r{:}B)$, $d_l'$,
 $t_r{:}C → t_l⋅t_r{:}B$, $d_r'$, $t_l⋅t_r{:}B$
-
 \End{proof}
 
 \Begin{corollary} \label{liftcs}
