@@ -153,8 +153,8 @@ no new variables are introduced in $d'$ or $CS'$.
 \End{proof}
 
 
-Gentzen Systems for S4 and LP
-=============================
+Gentzen System for S4
+=====================
 
 In the following text capital greek letters $Γ$, $Δ$ are used for
 multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
@@ -305,12 +305,20 @@ system:
 \end{longtable}
 
 In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
-the logic of proofs LP using explicit contraction and weakening
-rules, i.e. based on G1c as defined in @troelstra2000 [p.61]. As our
-used system for S4 G3s is based on G3c instead, we use a variant G3lp
-also based on G3s and therefore directly comparable to G3s. This
-variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
-@yu2010.
+the logic of proofs LP using explicit contraction and weakening rules,
+i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will follow
+@pulver2010 instead and use G3lp with the structural rules absorbed,
+but with the classical rules reduced to the same minimal subset as above.
+
+For now the following system closely resembling the only hinted at
+"$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is actually the
+most practical for our purpose. The reason for this is that it exactly
+mirrors the rules of G3s. Other than $LPG_0$ from @yu2010 and
+the original Gentzen style systems from @artemov2001 [p.14], it does
+not actually deconstruct proof terms but falls back on the Hilbert
+style definition of $LP$ to introduce proof terms already fully
+constructed. We will call this system G3lift to differentate it from
+the later used system G3lp.
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -347,7 +355,7 @@ variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
 
 &
 
-\RightLabel{$(⊃ :)_t$}
+\RightLabel{$(lift)$}
 \AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A$}
 \UIC{$t_1{:}B_1, ..., t_n{:}B_n, Γ ⊃ Δ, t{:}A$}
 \DP
@@ -356,7 +364,7 @@ variant resembles closely the "$LPG_0$ + Lifting Lemma Rule" system from
 
 &
 
-for any $t$ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}A$
+where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
 \end{longtable}
 
 In all this rules, arbitrary formulas which occur in the premises and
@@ -414,19 +422,19 @@ can be divided in disjunct corresponding families of symbol
 occurrences. For every such familiy there is exactly one occurrence in
 the root sequent of the proof.
 
-\Begin{definition}[G3lp preproof]
-A *G3lp preproof* is a proof tree using the rules of $G3lp$, but where
-the $(⊃ :)$ rule may be used without fullfilling the necessary
+\Begin{definition}[G3lift preproof]
+A *G3lift preproof* is a proof tree using the rules of $G3lift, but where
+the $(lift)$ rule may be used without fullfilling the necessary
 precondition on the introduced term $t$.
 \End{definition}
 
 \Begin{theorem}[subformula property] \label{sub}
 Any subformula (symbol) occurrance in a partial Gentzen style
-(pre-)proof $T↾s$ in the systems G3lp and G3s corresponds to *at least
+(pre-)proof $T↾s$ in the systems G3lift and G3s corresponds to *at least
 one* subformula (symbol) occurrance of the root sequent $s$ of $T↾s$.
 
 Any subformula (symbol) occurrance in a complete Gentzen style
-(pre-)proof $T$ in the systems G3lp and G3s correpsonds to *exactly*
+(pre-)proof $T$ in the systems G3lift and G3s correpsonds to *exactly*
 one subformula (symbol) occurrance in the root sequent $s_r$ of $T$.
 \End{theorem}
 
@@ -434,14 +442,14 @@ one subformula (symbol) occurrance in the root sequent $s_r$ of $T$.
 TODO
 \End{proof}
 
-G3lp is sound and complete
-==========================
+G3lift is sound and complete
+============================
 
-We will show in this section that G3lp is adequate by showing it is equivalent to the
+We will show in this section that G3lift is adequate by showing it is equivalent to the
 Hilbert system LP from @artemov2001 as introduced in section \ref{syntax}.
 
 \Begin{theorem} \label{equiv1}
-$G3lp ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
+$G3lift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 \End{theorem}
 
 \Begin{proof}
@@ -477,14 +485,14 @@ $t{:}A, t{:}A → A, A$ to the beginning of $d$ we get the necessary
 derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
 
 6\.\ case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
-by a $(⊃ :)$ rule. By the precondition on $t$ there exists a
+by a $(lift)$ rule. By the precondition on $t$ there exists a
 derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
 
 \End{proof}
 
 \Begin{corollary} \label{equiv1var}
 The deduction $d$ for $Γ ⊢_{LP} ⋁Δ$ only uses variables $x$ which also
-occur in the proof tree $𝒯 = (T, R)$ for $G3lp ⊢ Γ ⊃ Δ$ or any
+occur in the proof tree $𝒯 = (T, R)$ for $G3lift ⊢ Γ ⊃ Δ$ or any
 deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ used in
 case 6.
 \End{corollary}
@@ -500,17 +508,17 @@ deduction theorem does not introduce new variables by corollary
 corollary and therefore trivially does not introduce new variables.
 \End{proof}
 
-\Begin{lemma}[weakening for G3lp] \label{weak}
-$G3lp ⊢ Γ ⊃ Δ ⇒ G3lp ⊢ Γ, Γ' ⊃ Δ, Δ'$
+\Begin{lemma}[weakening for G3lift] \label{weak}
+$G3lift ⊢ Γ ⊃ Δ ⇒ G3lift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
-\Begin{lemma}[contraction for G3lp] \label{contr}
-$G3lp ⊢ A, A, Γ ⊃ Δ ⇒ G3lp ⊢ A, Γ ⊃ Δ$
-$G3lp ⊢ Γ ⊃ Δ, A, A ⇒ G3lp ⊢ Γ ⊃ Δ, A$
+\Begin{lemma}[contraction for G3lift] \label{contr}
+$G3lift ⊢ A, A, Γ ⊃ Δ ⇒ G3lift ⊢ A, Γ ⊃ Δ$
+$G3lift ⊢ Γ ⊃ Δ, A, A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
 \End{lemma}
 
 \Begin{lemma}[inversion of $(: ⊃)$] \label{drop}
-$G3lp ⊢ B, t:B, Γ ⊃ Δ ⇔ G3lp ⊢ B, Γ ⊃ Δ$
+$G3lift ⊢ B, t:B, Γ ⊃ Δ ⇔ G3lift ⊢ B, Γ ⊃ Δ$
 \End{lemma}
 
 \Begin{proof}
@@ -531,7 +539,7 @@ $B, B, Γ ⊃ Δ$ and by contraction (\ref{contr}) we get $B, Γ ⊃ Δ$.
 \End{proof}
 
 \Begin{lemma}[inversion of $(⊃ →)$] \label{revers}
-$G3lp ⊢ Γ ⊃ Δ, A → B ⇔ G3lp ⊢ A, Γ ⊃ Δ, B$
+$G3lift ⊢ Γ ⊃ Δ, A → B ⇔ G3lift ⊢ A, Γ ⊃ Δ, B$
 \End{lemma}
 
 \Begin{proof}
@@ -553,8 +561,8 @@ is the required $A, Γ ⊃ Δ, B$ and removing the last rule gives the
 required proof.
 \End{proof}
 
-\Begin{lemma}[cut elemination for G3lp] \label{cut}
-If $G3lp ⊢ A, Γ ⊃ Δ$ and $G3lp ⊢ Γ' ⊃ Δ', A$ then $G3lp ⊢ Γ,Γ' ⊃ Δ,Δ'$.
+\Begin{lemma}[cut elemination for G3lift] \label{cut}
+If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
 \End{lemma}
 
 \Begin{proof}
@@ -621,7 +629,7 @@ $𝒯_R$ have the following form:
 
 &
 
-\RightLabel{$(⊃ :)_t$}
+\RightLabel{$(lift)$}
 \AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A_0$}
 \UIC{$Γ'', t_1{:}B_1, ..., t_n{:}B_n ⊃ t{:}A_0, Δ'$}
 \DP
@@ -637,39 +645,38 @@ required proof for $Γ, Γ' ⊃ Δ, Δ'$ as $\{t_1{:}B_1, ..., t_n{:}B_n\} ⊆
 \End{proof}
 
 \Begin{lemma} \label{genax}
-$G3lp ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
+$G3lift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
 \Begin{theorem} \label{equiv2}
-$Γ ⊢_{LP} A ⇒ G3lp ⊢ Γ ⊃ A$
+$Γ ⊢_{LP} A ⇒ G3lift ⊢ Γ ⊃ A$
 \End{theorem}
 
 \Begin{proof}
 By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
 
-1. case $A$ is an axiom A0. By the completeness of G3c included in
-G3lp there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
+1\.\ case $A$ is an axiom A0. By the completeness of G3c included in
+G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
 
-2. case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
+2\.\ case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
 A$ can be derived for each axiom using lemma \ref{genax} for the base
 cases. $Γ ⊃ A$ follows from weakening (\ref{weak}).
 
 TODO
 
-3. case $A ∈ Γ$ is an assumption. We get the required proof for $A,
+3\.\ case $A ∈ Γ$ is an assumption. We get the required proof for $A,
 Γ' ⊃ A$ directly from lemma \ref{genax}.
 
-4. case $A ≡ c:B$ is derived by rule R1 (Axiom Necessitation). Then
-$B$ is an axiom and there is a G3lp proof for $⊃ B$ by induction
-hypothesis. Appending a $(⊃ :)$ rule with $t = c$ gives a G3lp proof
+4\.\ case $A ≡ c:B$ is derived by rule R1 (Axiom Necessitation). Then
+$B$ is an axiom and there is a G3lift proof for $⊃ B$ by induction
+hypothesis. Appending a $(⊃ :)$ rule with $t = c$ gives a G3lift proof
 for $Γ ⊃ c:A$.
 
-5. case $A$ is dericed by rule R0 (Modus Ponens). By induction
-hypothesis, we have G3lp proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
-premises of the modus ponens rule. By lemma \ref{revers} we get a G3lp
+5\.\ case $A$ is dericed by rule R0 (Modus Ponens). By induction
+hypothesis, we have G3lift proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
+premises of the modus ponens rule. By lemma \ref{revers} we get a G3lift
 proof for $B, Γ⊃ A$ and by lemma \ref{cut} we get the required proof
 for $Γ ⊃ A$.
-
 \End{proof}
 
 
@@ -823,14 +830,14 @@ later in this order).
 We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
 u_{i,0} + ... + u_{i,n_i}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
-have a direct equivalent in G3lp, so by a trivial induction the proof
-tree $r_T^0(an_T(T))$ is a G3lp preproof. However it is not a G3lp
-proof as none of the $(⊃ :)$ rules fullfill the necessary precondition
+have a direct equivalent in G3lift, so by a trivial induction the proof
+tree $r_T^0(an_T(T))$ is a G3lift preproof. However it is not a G3lift
+proof as none of the $(lift)$ rules fullfill the necessary precondition
 on the introduced term $t$.
 
 We therefore define inductively the normal realization functions
 $r_T^{ε(i,j)}$ and injective constant specifications $CS^{ε(i,j)}$
-such that $r_T^{ε(i,j)}(an_T(T↾O_{i_0,j_0}))$ is a correct G3lp proof
+such that $r_T^{ε(i,j)}(an_T(T↾O_{i_0,j_0}))$ is a correct G3lift proof
 based on $CS^{ε(i,j)}$ for all $(i_0,j_0)$ such that $ε(i_0,j_0) ≤ ε(i,j)$.
 
 The rule $R_{i,j}$ has the following annotated form:
@@ -844,10 +851,10 @@ The rule $R_{i,j}$ has the following annotated form:
 By the induction hypothesis there exists an injective constant
 specification $CS^{ε(i,j) - 1}$ and a normal realization function
 $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
-a correct G3lp proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
+a correct G3lift proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
-is also a correct G3lp proof. By theorem \ref{equiv1} we therefore
+is also a correct G3lift proof. By theorem \ref{equiv1} we therefore
 have a derivation for:
 
 \begin{equation} \label{start}
@@ -885,8 +892,8 @@ the substitution lemma \ref{subst}.
 
 For the final normal realization function $r_T^N$ and injective
 constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
-correct G3lp proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
-\ref{equiv1} of G3lp we have $LP ⊢ A^r$ for the normal LP-realiziation
+correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
+\ref{equiv1} of G3lift we have $LP ⊢ A^r$ for the normal LP-realiziation
 $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \End{proof}
 
@@ -1033,7 +1040,7 @@ $I^{ε(i,j)−1}_{i,j}$, does not occur in $CS^{ε(i,j)}$.
 \End{lemma}
 
 \Begin{proof}
-By the subformula property \ref{sub} for G3lp proofs, $u_{x,y}$ does
+By the subformula property \ref{sub} for G3lift proofs, $u_{x,y}$ does
 not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
 \ref{equiv1var} using corollary \ref{realvar} for case 6, the
 derivation $d_{i,j}$ as constructed in the realization proof does not
