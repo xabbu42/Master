@@ -575,7 +575,7 @@ If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ
 \End{lemma}
 
 \Begin{proof}
-By a simultanous structural induction over the proof trees $𝒯_L$ for
+By a simultanous induction over the proof trees $𝒯_L$ for
 $A, Γ ⊃ Δ$, $𝒯_R$ for $Γ' ⊃ Δ', A$ and the build up of $A$ (i.e we
 will use the induction hypothesis to cut with the same formulas but
 shorter subtrees of the given proof trees as well as to cut different
@@ -1225,7 +1225,7 @@ Because of this we will use the following global definition for
 prehistoric relations between any two $□$ families in a G3s + $(Cut)$
 proof:
 
-\Begin{definition}[prehistoric relation in G3s + $(Cut)] \label{global}
+\Begin{definition}[prehistoric relation in G3s + $(Cut)$] \label{global}
 A family $□_i$ has a *prehistoric relation* to another familiy $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrance
 of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
@@ -1236,7 +1236,7 @@ Notice that there can be prehistoric relations with $□$ families which
 localy have negative polarity, as the family could be part of a cut
 formula and therefore also occur with positive polarity in the other
 branch of the cut. Also there can be prehistoric relations with
-families not occuring in the relevant $(⊃ □)$ rule again because the
+families not occuring in the relevant $(⊃ □)$ rule because the
 family in question is part of a cut formula which was already cut.
 
 With the following lemmas and theorems we will establish a
@@ -1245,7 +1245,8 @@ will be corollaries showing that the constructions do not introduce
 prehistoric loops in the global sense given above. By lemma
 \ref{prehist} the global definition and the original local definition
 \ref{local} are equivalent in G3s and therefore the G3s proof for $Γ˚
-⊃ Δ˚$ will be prehistoric loop free in the original sense.
+⊃ Δ˚$ will be prehistoric loop free in the original sense if the
+proof in G3lp was prehistoric loop free.
 
 It is important to note, that all the corollaries are not restricted
 to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given by the
