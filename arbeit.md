@@ -517,143 +517,45 @@ deduction theorem does not introduce new variables by corollary
 corollary and therefore trivially does not introduce new variables.
 \End{proof}
 
-\Begin{lemma}[weakening for G3lift] \label{weak}
+The proofs for the following standard lemmas for G3lift exactly mirror
+the proofs for the same lemmas for G3s, as G3lift exactly
+mirrors G3s. The only trivial difference is that the precondition of
+the (lift) rule has to be checked whenever a different/new (lift)
+rule gets introduced. Because of this and also because the following
+result is just included for completeness and not actually used in the
+remaining of the text, we will omit the proofs here and refer the
+reader to the proofs for $G3s$ in @pulver2010 [40ff.] as well as later
+in this text.
+
+\Begin{lemma}[weakening for G3lift] \label{liftweak}
 $G3lift ⊢ Γ ⊃ Δ ⇒ G3lift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
-\Begin{lemma}[contraction for G3lift] \label{contr}
-$G3lift ⊢ A, A, Γ ⊃ Δ ⇒ G3lift ⊢ A, Γ ⊃ Δ$
-$G3lift ⊢ Γ ⊃ Δ, A, A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
+\Begin{lemma}[inversion for G3lift] \label{liftinverse}
+
+* $G3lift ⊢ Γ ⊃ Δ, A → B ⇒ G3lift ⊢ A, Γ ⊃ Δ, B$
+
+* $G3lift ⊢ A → B, Γ ⊃ Δ ⇒ G3lift ⊢ Γ ⊃ Δ, A \text{ and } G3lift ⊢ B, Γ ⊃ Δ$
+
+* $G3lift ⊢ t:A, Γ ⊃ Δ ⇒ G3lift ⊢ A, t:A, Γ ⊃ Δ$
+
+* $G3lift ⊢ Γ ⊃ Δ, t:A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
+
 \End{lemma}
 
-\Begin{lemma}[inversion of $(: ⊃)$] \label{drop}
-$G3lift ⊢ B, t:B, Γ ⊃ Δ ⇔ G3lift ⊢ B, Γ ⊃ Δ$
+\Begin{lemma}[contraction for G3lift] \label{liftcontr}
+
+* $G3lift ⊢ A, A, Γ ⊃ Δ ⇒ G3lift ⊢ A, Γ ⊃ Δ$
+
+* $G3lift ⊢ Γ ⊃ Δ, A, A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
+
 \End{lemma}
 
-\Begin{proof}
-The $(⇐)$ direction is just a weakening (\ref{weak}). The $(⇒)$ direction is shown
-by a structural induction over the proof tree for $B, t{:}B, Γ ⊃ Δ$:
-
-1\.\ case: $t{:}B$ is a weakening formula of an axiom or a $(lift)$
-rule. Then leaving out $t{:}B$ keeps the proof intact.
-
-2\.\ case: $t{:}B$ is a side formula of the last rule. By induction hypothesis
-the premises of the rules are provable without $t{:}B$. Append the same
-rule to get a proof of $B, Γ ⊃ Δ$.
-
-3\.\ case: $t{:}B$ is the principal formula of the last rule, then the premise
-is $B, B, t{:}B, Γ ⊃ Δ$. By induction hypothesis we get a proof for
-$B, B, Γ ⊃ Δ$ and by contraction (\ref{contr}) we get $B, Γ ⊃ Δ$.
-
-\End{proof}
-
-\Begin{lemma}[inversion of $(⊃ →)$] \label{revers}
-$G3lift ⊢ Γ ⊃ Δ, A → B ⇔ G3lift ⊢ A, Γ ⊃ Δ, B$
-\End{lemma}
-
-\Begin{proof}
-The $(⇐)$ direction is trivial by appending a $(⊃ →)$ rule to the
-given proof.  The $(⇒)$ direction is shown by a structural induction
-on the proof tree for $Γ ⊃ Δ, A → B$:
-
-1\.\ case: $A → B$ is a weakening formula of an axiom or a $(lift)$
-rule. Then weakening in $A$ on the left and $B$ on the right instead
-leaves the proof intact.
-
-2\.\ case: $A → B$ is a side formula of the last rule. By induction hypothesis
-the premises of the rules are provable with $A → B$ replaced
-by $A$ on the left and $B$ on the right. Append the same
-rule to get a proof of $A, Γ ⊃ Δ, B$.
-
-3\.\ case: $A → B$ is the principal formula of the last rule, then the premise
-is the required $A, Γ ⊃ Δ, B$ and removing the last rule gives the
-required proof.
-\End{proof}
-
-\Begin{lemma}[cut elemination for G3lift] \label{cut}
+\Begin{lemma}[cut elemination for G3lift] \label{liftcut}
 If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
 \End{lemma}
 
-\Begin{proof}
-By a simultanous induction over the proof trees $𝒯_L$ for
-$A, Γ ⊃ Δ$, $𝒯_R$ for $Γ' ⊃ Δ', A$ and the build up of $A$ (i.e we
-will use the induction hypothesis to cut with the same formulas but
-shorter subtrees of the given proof trees as well as to cut different
-proof trees with lower rank formulas):
-
-1\.\ case: $A$ is a weakening formula in the last rule of one of the proofs. We get the
-required proof for $Γ ⊃ Δ$ by leaving out $A$ from that proof.
-
-2\.\ case: $A$ is a side formula in the last rule of $𝒯_L$. By induction
-hypothesis we can cut the premises $A, Γ_i ⊃ Δ_i$ of that rule with
-$Γ' ⊃ Δ', A$ to get $Γ_i, Γ' ⊃ Δ_i, Δ'$. Applying the same rule we get
-the required proof for $Γ,Γ' ⊃ Δ,Δ'$.
-
-3\.\ case: $A$ is a side formula in the last rule of $𝒯_R$. This case is
-handled simetrical to the previous one.
-
-4\.\ case: $A$ is the principal formula in the last rules of $𝒯_L$ and
-$𝒯_R$. Then we have the following subcases:
-
-4.1: The last rules are axioms. Then $A$ is atomic and $A ∈ Δ$ and $A
-∈ Γ'$ as there is no axiom with a principal $⊥$ on the
-right. Therefore also $Γ,Γ' ⊃ Δ,Δ'$ is an axiom.
-
-4.2:  $A$ has the form $A_0 → A_1$. Then the last rules of $𝒯_L$ and
-$𝒯_R$ have the following form:
-
-\renewcommand{\arraystretch}{3}
-\begin{longtable}{cc}
-
-\RightLabel{$(→ ⊃)$}
-\AXC{$Γ ⊃ Δ, A_0$}
-\AXC{$A_1, Γ ⊃ Δ$}
-\BIC{$A_0 → A_1, Γ ⊃ Δ$}
-\DP
-
-&
-
-\RightLabel{$(⊃ →)$}
-\AXC{$A_0, Γ' ⊃ Δ', A_1$}
-\UIC{$Γ' ⊃ Δ', A_0 → A_1$}
-\DP
-\end{longtable}
-
-By induction hypothesis for the lower rank formulas $A_0$ and $A_1$ we
-can cut the single premise $A_0, Γ' ⊃ Δ', A_1$ of the $(⊃ →)$ rule
-with both premises of the $(→ ⊃)$ rule to get a proof for $Γ, Γ, Γ',
-Γ' ⊃ Δ, Δ, Δ', Δ'$. By contraction (\ref{contr}) we get the required
-proof for $Γ, Γ' ⊃ Δ, Δ'$.
-
-4.3:  $A$ has the form $t{:}A_0$. Then the last rules of $𝒯_L$ and
-$𝒯_R$ have the following form:
-
-\renewcommand{\arraystretch}{3}
-\begin{longtable}{cc}
-
-\RightLabel{$({:} ⊃)$}
-\AXC{$A_0, t{:}A_0, Γ ⊃ Δ$}
-\UIC{$t{:}A_0, Γ ⊃ Δ$}
-\DP
-
-&
-
-\RightLabel{$(lift)$}
-\AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A_0$}
-\UIC{$Γ'', t_1{:}B_1, ..., t_n{:}B_n ⊃ t{:}A_0, Δ'$}
-\DP
-
-\end{longtable}
-
-By lemma \ref{drop}, we have a proof for $A_0, Γ ⊃ Δ$. By the
-induction hypothesis for the lower rank formula $A_0$ we can cut that
-with the premise $t_1{:}B_1, ..., t_n{:}B_n ⊃ A_0$ to get $Γ, t_1{:}B_1,
-..., t_n{:}B_n ⊃ Δ$. By weakening (\ref{weak}) we finally get the
-required proof for $Γ, Γ' ⊃ Δ, Δ'$ as $\{t_1{:}B_1, ..., t_n{:}B_n\} ⊆
-Γ'$.
-\End{proof}
-
-\Begin{lemma} \label{genax}
+\Begin{lemma} \label{liftgenax}
 $G3lift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
@@ -668,24 +570,24 @@ By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
 G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
 
 2\.\ case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
-A$ can be derived for each axiom using lemma \ref{genax} for the base
-cases. $Γ ⊃ A$ follows from weakening (\ref{weak}).
+A$ can be derived for each axiom using lemma \ref{liftgenax} for the base
+cases. $Γ ⊃ A$ follows from weakening (\ref{liftweak}).
 
 TODO
 
 3\.\ case $A ∈ Γ$ is an assumption. We get the required proof for $A,
-Γ' ⊃ A$ directly from lemma \ref{genax}.
+Γ' ⊃ A$ directly from lemma \ref{liftgenax}.
 
 4\.\ case $A ≡ c:B$ is derived by rule R1 (Axiom Necessitation). Then
 $B$ is an axiom and there is a G3lift proof for $⊃ B$ by induction
-hypothesis. Appending a $(⊃ :)$ rule with $t = c$ gives a G3lift proof
+hypothesis. Appending a (lift) rule with $t = c$ gives a G3lift proof
 for $Γ ⊃ c:A$.
 
 5\.\ case $A$ is dericed by rule R0 (Modus Ponens). By induction
 hypothesis, we have G3lift proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
-premises of the modus ponens rule. By lemma \ref{revers} we get a G3lift
-proof for $B, Γ⊃ A$ and by lemma \ref{cut} we get the required proof
-for $Γ ⊃ A$.
+premises of the modus ponens rule. By the inversion lemma we get a
+G3lift proof for $B, Γ⊃ A$ and by cut elimination we get the required
+proof for $Γ ⊃ A$.
 \End{proof}
 
 
@@ -938,7 +840,7 @@ in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
 *pre-history* of $p_i$ in branch $s$. ^[vgl. @yu2010, 389]
 \End{definition}
 
-\Begin{definition}[Prehistoric Relation]
+\Begin{definition}[Prehistoric Relation] \label{local}
 For any principal positive families $p_i$ and $p_h$ and any branch $s$ of
 the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a S4 proof $𝒯 = (T, R)$:
 
@@ -1132,7 +1034,9 @@ G3lp
 ====
 
 The following is minimal subset of the Gentzen style system G3lp
-without structural rules as introduced by @pulver2010 [62].
+without structural rules as introduced by @pulver2010 [62]. We do replace
+the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$ in order
+to not hide the prehistoric relations of the proof.
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -1147,14 +1051,16 @@ without structural rules as introduced by @pulver2010 [62].
 
 \\
 
-\RightLabel{$(Ax)_c$}
-\AXC{$Γ ⊃ Δ, c{:}A$ $(Ax)_c$ ($A$ an axiom of LP)}
+\AXC{$Γ ⊃ Δ, A$}
+\RightLabel{$(⊃ :)_c$ ($A$ an axiom of LP)}
+\UIC{$Γ ⊃ Δ, c{:}A$}
 \DP
 
 &
 
-\RightLabel{$(Ax)_t$}
-\AXC{$t{:}A, Γ ⊃ Δ, t{:}A$ $(Ax)_t$}
+\AXC{$t{:}A, Γ ⊃ Δ, A$}
+\RightLabel{$(⊃ :)_t$}
+\UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
 \DP
 
 \\
@@ -1203,29 +1109,31 @@ without structural rules as introduced by @pulver2010 [62].
 
 \end{longtable}
 
+The classification and annotations for families of $□$ in G3s as well
+as the definition of prehistoric relation carry over to G3lp without a
+problem. One difference is that the families in G3lp consist not
+of occurrences of a single symbol $□$ but of occurrences of the set of
+subterms $s$ of a term $t$ in the root sequent. The other difference
+is that we have two rules introducing positive proof terms $(⊃ :)_c$
+and $(⊃ :)_t$, which will both have a prehistoric period.
+
 
 Prehistoric relations in G3s + $(Cut)$ and G3lp
 ===============================================
 
-The classification and annotations for families of $□$ in G3s as well as the definition
-of prehistoric relation carry over to G3lp without a problem. The only
-difference is that the families in G3lp consist not of occurrences of
-a single symbol $□$ but of occurrences of the set of subterms $s$ of a
-term $t$ in the root sequent.
-
 Neither classification and annotations for families of $□$ as the
-definition of prehistoric relation carry over as easely to G3s +
-$(Cut)$. The classification and annotations do not carry over as the $(Cut)$ rule uses
-the cut formula in different polarities for the two premises.
-The prehistoric relations do not carry over as
-the $(Cut)$ formula no longer fullfills the subformula
-property used for proofing lemma \ref{prehist}.
+definition of prehistoric relation carry over directly to G3s +
+$(Cut)$. The classification and annotations do not carry over as the
+$(Cut)$ rule uses the cut formula in different polarities for the two
+premises.  The prehistoric relations do not carry over as the $(Cut)$
+formula no longer fullfills the subformula property used for proofing
+lemma \ref{prehist}.
 
 Because of this we will use the following global definition for
 prehistoric relations between any two $□$ families in a G3s + $(Cut)$
 proof:
 
-\Begin{definition}[prehistoric relation in G3s + $(Cut)$] \label{global}
+\Begin{definition}[Prehistoric Relation in G3s + $(Cut)$] \label{global}
 A family $□_i$ has a *prehistoric relation* to another familiy $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrance
 of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
@@ -1243,10 +1151,10 @@ With the following lemmas and theorems we will establish a
 constructive proof for $G3lp ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ˚ ⊃ Δ˚$. Moreover there
 will be corollaries showing that the constructions do not introduce
 prehistoric loops in the global sense given above. By lemma
-\ref{prehist} the global definition and the original local definition
-\ref{local} are equivalent in G3s and therefore the G3s proof for $Γ˚
-⊃ Δ˚$ will be prehistoric loop free in the original sense if the
-proof in G3lp was prehistoric loop free.
+\ref{prehist} the global definition \ref{global} and the original
+local definition \ref{local} are equivalent in G3s and therefore the
+G3s proof for $Γ˚ ⊃ Δ˚$ will be prehistoric loop free in the original
+sense if the proof in G3lp was prehistoric loop free.
 
 It is important to note, that all the corollaries are not restricted
 to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given by the
@@ -1256,45 +1164,120 @@ have only a single occurrance in the sequents of the lemma or theorem
 and the results can also be used in subtrees $T↾s$ together with an
 annotation $an_T$ for the complete tree.
 
-\Begin{lemma}[reversability of $(⊃ □)$] \label{boxrev}
-$G3s ⊢ Γ ⊃ Δ, □A ⇒ G3s ⊢ Γ ⊃ Δ, A$
+
+\Begin{lemma}[weakening for G3s] \label{weak}
+$G3s ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
 \Begin{proof}
-By structural induction over the proof tree $𝒯 = (T, R)$ for $Γ ⊃ Δ,
-□A$:
+By structural induction on the proof tree:
 
-1\.\ case: $□A$ is a weakening formula of the last rule. Then just
-weaken in $A$ instead.
+1\.\ case: $Γ ⊃ Δ$ is an axiom. Then also $Γ, Γ' ⊃ Δ, Δ'$ is an axiom.
 
-2\.\ case: $□A$ is a side formula of the last rule. Use the induction
-hypothesis on the premises to replace $□A$ by $A$ and append the same
-rule.
+2\.\ case: $Γ ⊃ Δ$ is proven by a rule different from $(⊃ □)$. Use the
+induction hypothesis on the premises and append the same rule for a
+proof of $Γ, Γ' ⊃ Δ, Δ'$.
 
-3\.\ case: $□A$ is the principal formula of the last rule. Then the
-last rule is a $(⊃ □)$ rule and the proof of the premise is the
-required proof.
+3\.\ case: $Γ ⊃ Δ$ is proven by a $(⊃ □)$ rule. Add Γ' and Δ' as
+weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 \End{proof}
 
-\Begin{corollary}
-For any annotation $an$ and any proof $T$ for $Γ ⊃ Δ, □A$, the
-constructed proof $T'$ for $Γ ⊃ Δ, A$ does not introduce any new
-prehistoric relations.
-\End{corollary}
+\Begin{lcorollary} \label{weakprehist}
+For any annotation $an$ the proof for $G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$ as constructed in the main proof
+has the exact same prehistoric relations as the original proof for
+$G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with "weakening occurrances are isolated" in @yu2017 [787]]
+\End{lcorollary}
 
 \Begin{proof}
-The constructed proof $T'$ is exactly the proof $T$ with some $(⊃ □)$
-rules and occurrances of $□$ removed. If $i ≺ j$ in $T'$ for
-some families $□_i$ and $□_j$, we have a $(⊃ □)$
-introducing an occurance $□_j$ with an occurrances of $□_i$ in the
-prehistory of that rule by definition \ref{global}. All the occurrences as
-well as the $(⊃ □)$ rule are also part of the proof $T$ by the first
-statement. So also $i ≺ j$ in $T$.
+$(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rule that
+use the exact same proof for the premise and only in the history add
+the new weakening formulas. So all prehistoric branches are unchanged and
+all prehistoric relations remain the same.
 \End{proof}
 
-\Begin{lemma}[cut elemination for G3s] \label{cut}
+
+\Begin{lemma}[inversion for G3s] \label{invers}
+
+* $G3s ⊢ Γ ⊃ Δ, A → B ⇒ G3s ⊢ A, Γ ⊃ Δ, B$
+
+* $G3s ⊢ A → B, Γ ⊃ Δ ⇒ G3s ⊢ Γ ⊃ Δ, A \text{ and } G3s ⊢ B, Γ ⊃ Δ$
+
+* $G3s ⊢ □A, Γ ⊃ Δ ⇒ G3s ⊢ A, □A, Γ ⊃ Δ$
+
+* $G3s ⊢ Γ ⊃ Δ, □A ⇒ G3s ⊢ Γ ⊃ Δ, A$
+
+\End{lemma}
+
+\Begin{proof}
+For any formula $C$ to inverse, we proof the lemma by structural
+induction on the proof tree:
+
+1\.\ case: $C$ is weakening formula of the last rule. Just weaken in the necessary
+deconstructed formulas instead.
+
+2\.\ case: $C$ is a side formula of the last rule. By induction
+hypothesis we can replace $C$ by the necessary deconstructed formulas
+and append the same rule to get the necessary proof(s).
+
+3\.\ case: $C$ is the principal formula of the last rule. Then leaving
+out the last rule give the necessary proof(s).
+\End{proof}
+
+\Begin{lcorollary} \label{inversprehist}
+For any annotation $an$ the constructed proofs do not introduce any
+new prehistoric relations.
+\End{lcorollary}
+
+\Begin{proof}
+In the 1\. case we only remove occurrances of $□$ so no new
+prehistoric relations are introduced. In the 2\.\ case no new
+prehistoric relations are introduced by the induction
+hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
+the prehistory of the new rule also occur in the prehistory of the
+original rule. In the 3\.\ case, only a $(⊃ □)$ rule is removed, which
+again can not introduce new prehistoric relations.
+\End{proof}
+
+\Begin{lemma}[contraction for G3s] \label{contr}
+
+* $G3s ⊢ A, A, Γ ⊃ Δ ⇒ G3s ⊢ A, Γ ⊃ Δ$
+
+* $G3s ⊢ Γ ⊃ Δ, A, A ⇒ G3s ⊢ Γ ⊃ Δ, A$
+
+\End{lemma}
+
+\Begin{proof}
+By simultanous induction over the proof tree and the build up of $A$:
+
+1\.\ case: At least one occurance of $A$ is a weakining formula of the
+last rule. Just remove it.
+
+2\.\ case: Both occurrances of $A$ are side formulas of the last
+rule. By induction hypothesis the premises of the rule are provable
+with the two $A$ contracted. Append the same rule for the necessary proof.
+
+3\.\ case: One of the occurrances of $A$ is the principal formula of
+the last rule, the other is a side formula. Use the appropriate
+inversion lemma (\ref{invers}) on the side formula $A$ in the
+premises and the induction hypothesis to contract the deconstructed
+parts of $A$. Append the same last rule without $A$ as side formula to
+get the necessary proof.
+\End{proof}
+
+\Begin{lcorollary}
+For any annotation $an$ the constructed proofs do not introduce any
+new prehistoric relations if the two contracted formulas $A$
+correspond to each other (and therefore also all symbol occurrances in
+the formulas)
+\End{lcorollary}
+
+\Begin{proof}
+TODO
+\End{proof}
+
+\Begin{theorem}[cut elemination for G3s] \label{cut}
 If $G3s ⊢ Γ ⊃ Δ, A$ and $G3s ⊢ A, Γ ⊃ Δ$ then $G3s ⊢ Γ ⊃ Δ$.
-\End{lemma}
+\End{theorem}
 
 \Begin{proof}
 By a simultanous induction over the depths of the proof trees $𝒯_L$
@@ -1472,9 +1455,9 @@ cut formula such that $i_k ≺ i'_k ≺ i_{k+1 \mod n}$. Therefore we also
 have a prehistoric loop in the original proof.
 \End{proof}
 
-\Begin{lemma}[$(□Cut)$ elimination] \label{boxcut}
+\Begin{theorem}[$(□Cut)$ elimination] \label{boxcut}
 If $G3s ⊢ Γ ⊃ Δ, □A$ and $G3s ⊢ Γ ⊃ Δ, □(A → B)$ then $G3s ⊢ Γ ⊃ Δ, □B$
-\End{lemma}
+\End{theorem}
 
 \Begin{proof}
 By a structural induction over the proof trees $𝒯_L$ for
@@ -1543,7 +1526,6 @@ $(□Cut)$ + $(Cut)$.
 \End{lemma}
 
 \Begin{proof}
-
 The subset G3c is shared by G3lp and G3s and is therefore trivially
 admissible. The forgetful projection of the rule $(⊃ +)$ is just a
 contraction and therefore also admissible. We are left with the
