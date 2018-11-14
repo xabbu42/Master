@@ -1249,7 +1249,7 @@ not introduce new prehistoric relations.
 By simultanous induction over the proof tree and the build up of $A$:
 
 1\.\ case: At least one occurance of $A$ is a weakining formula of the
-last rule. Just remove it.
+last rule. Just remove it. Not that this case also covers all axioms.
 
 2\.\ case: Both occurrances of $A$ are side formulas of the last
 rule. By induction hypothesis the premises of the rule are provable
@@ -1268,6 +1268,8 @@ For any annotation $an$ the constructed proofs do not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
+TODO decide for a proof, adapt main proof for correspondance?
+
 \Begin{proof}
 In the 1\. case we only remove occurrances of $□$ so no new
 prehistoric relations are introduced. In the 2\.\ case no new
@@ -1279,6 +1281,20 @@ new prehistoric relations are introduced for the new proof where both
 occurrances of $A$ are deconstructed. Moreover, in the case of
 appending a $(⊃ □)$ rule, all occurrances in the new proof are also in
 the old proof and therefore no new prehistoric relations get introduced.
+\End{proof}
+
+\Begin{proof}
+The algorithm implicitely described in the main proof is as follows:
+
+1. Remove all corresponding subformulas of one of the $A$ in the final
+sequent from the proof.
+
+2. Remove any rule used for the build up of the same final occurrance
+of $A$ from the proof (from the first step the active formulas and the
+principal formula of all this rules are already removed).
+
+As the new proof is in a way a strict subset of the old proof, no new
+prehistoric relations can be introduced.
 \End{proof}
 
 \Begin{theorem}[cut elemination for G3s] \label{cut}
