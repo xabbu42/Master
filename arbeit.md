@@ -1211,8 +1211,8 @@ all prehistoric relations remain the same.
 For any formula $C$ to inverse, we proof the lemma by structural
 induction on the proof tree:
 
-1\.\ case: $C$ is weakening formula of the last rule. Just weaken in the necessary
-deconstructed formulas instead.
+1\.\ case: $C$ is weakening formula of the last rule. Just weaken in
+the necessary deconstructed formulas instead.
 
 2\.\ case: $C$ is a side formula of the last rule. By induction
 hypothesis we can replace $C$ by the necessary deconstructed formulas
@@ -1233,8 +1233,8 @@ prehistoric relations are introduced. In the 2\.\ case no new
 prehistoric relations are introduced by the induction
 hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
 the prehistory of the new rule also occur in the prehistory of the
-original rule. In the 3\.\ case, only a $(⊃ □)$ rule is removed, which
-again can not introduce new prehistoric relations.
+original rule. In the 3\.\ case, a rule is removed, which again can
+not introduce new prehistoric relations.
 \End{proof}
 
 \Begin{lemma}[contraction for G3s] \label{contr}
@@ -1263,15 +1263,22 @@ parts of $A$. Append the same last rule without $A$ as side formula to
 get the necessary proof.
 \End{proof}
 
-\Begin{lcorollary}
+\Begin{lcorollary} \label{contrprehist}
 For any annotation $an$ the constructed proofs do not introduce any
-new prehistoric relations if the two contracted formulas $A$
-correspond to each other (and therefore also all symbol occurrances in
-the formulas)
+new prehistoric relations.
 \End{lcorollary}
 
 \Begin{proof}
-TODO
+In the 1\. case we only remove occurrances of $□$ so no new
+prehistoric relations are introduced. In the 2\.\ case no new
+prehistoric relations are introduced by the induction
+hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
+the prehistory of the new rule also occur in the prehistory of the
+original rule. In the 3\.\ case,  by corollary \ref{inversprehist} no
+new prehistoric relations are introduced for the new proof where both
+occurrances of $A$ are deconstructed. Moreover, in the case of
+appending a $(⊃ □)$ rule, all occurrances in the new proof are also in
+the old proof and therefore no new prehistoric relations get introduced.
 \End{proof}
 
 \Begin{theorem}[cut elemination for G3s] \label{cut}
@@ -1416,7 +1423,7 @@ proof:
 \End{proof}
 
 
-\Begin{corollary}
+\Begin{corollary} \label{cutprehist}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ only
 introduces new prehistoric relations $i ≺ j$ between families $□_i$ and $□_j$
 occurring in $Γ ⊃ Δ$ where there exists a familiy $□_k$ in
@@ -1425,22 +1432,23 @@ $A$ such that $i ≺ k ≺ j$ in the original proof.
 
 \Begin{proof}
 The used weakenings and contractions do not introduce any new
-prehistoric relations by lemmas \ref{TODO} and \ref{TODO}. Also
-leaving out formulas as in case 1 and 3.1, removing $(⊃ □)$ rules as in case
-3.3 or rearranging rules which are not $(⊃ □)$ rules as in case 3.2 do
-not introduce any new prehistoric relations.
+prehistoric relations by the corollaries \ref{weakprehist} and
+\ref{contrprehist}. Also leaving out formulas as in case 1 and 3.1,
+removing $(⊃ □)$ rules as in case 3.3 or rearranging rules which are
+not $(⊃ □)$ rules as in case 3.2 do not introduce any new prehistoric
+relations.
 
 So the only place where new prehistoric relations get introduced is by
 the new $(⊃ □)$ in case 2.3. All prehistoric relations from $T_R$ are
 already present from the $(⊃ □)$ rule on the right in the original
-proof. So only prehistorcy relations from $T_L$ are new. For all
+proof. So only prehistoric relations from $T_L$ are new. For all
 families $□_i$ in the prehistory $T_L$ we have $i ≺ k$ for the
 family $□_k$ in the cut formula introduced by the $(⊃ □)$ rule on the
 left. Moreover, we have $k ≺ j$ for the same familiy because of the
 occurance of $□A0$ on the right.
 \End{proof}
 
-\Begin{corollary}
+\Begin{corollary} \label{cutloop}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
 introduce prehistoric loops.
 \End{corollary}
