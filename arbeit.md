@@ -1182,13 +1182,14 @@ weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 \End{proof}
 
 \Begin{lcorollary} \label{weakprehist}
-For any annotation $an$ the proof for $G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$ as constructed in the main proof
-has the exact same prehistoric relations as the original proof for
-$G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with "weakening occurrances are isolated" in @yu2017 [787]]
+For any annotation $an$ the proof for $G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
+constructed in the main proof has the exact same prehistoric relations
+as the original proof for $G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with
+"weakening occurrances are isolated" in @yu2017 [787]]
 \End{lcorollary}
 
 \Begin{proof}
-$(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rule that
+$(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
 use the exact same proof for the premise and only in the history add
 the new weakening formulas. So all prehistoric branches are unchanged and
 all prehistoric relations remain the same.
@@ -1218,8 +1219,9 @@ the necessary deconstructed formulas instead.
 hypothesis we can replace $C$ by the necessary deconstructed formulas
 and append the same rule to get the necessary proof(s).
 
-3\.\ case: $C$ is the principal formula of the last rule. Then leaving
-out the last rule give the necessary proof(s).
+3\.\ case: $C$ is the principal formula of the last rule. Then
+proof(s) of the premise(s) without the last rule is/are already the
+necessary proof(s).
 \End{proof}
 
 \Begin{lcorollary} \label{inversprehist}
@@ -1248,19 +1250,19 @@ not introduce new prehistoric relations.
 \Begin{proof}
 By simultanous induction over the proof tree and the build up of $A$:
 
-1\.\ case: At least one occurance of $A$ is a weakining formula of the
-last rule. Just remove it. Not that this case also covers all axioms.
+1\.\ case: At least one occurance of $A$ is a weakening formula of the
+last rule. Just remove it. Note that this case also covers all axioms.
 
 2\.\ case: Both occurrances of $A$ are side formulas of the last
 rule. By induction hypothesis the premises of the rule are provable
 with the two $A$ contracted. Append the same rule for the necessary proof.
 
 3\.\ case: One of the occurrances of $A$ is the principal formula of
-the last rule, the other is a side formula. Use the appropriate
-inversion lemma (\ref{invers}) on the side formula $A$ in the
-premises and the induction hypothesis to contract the deconstructed
-parts of $A$. Append the same last rule without $A$ as side formula to
-get the necessary proof.
+the last rule, the other is a side formula. Use the inversion lemma
+(\ref{invers}) on the side formula $A$ in the premises and the
+induction hypothesis to contract the deconstructed parts of
+$A$. Append the same last rule without $A$ as side formula to get the
+necessary proof.
 \End{proof}
 
 \Begin{lcorollary} \label{contrprehist}
@@ -1297,6 +1299,38 @@ As the new proof is in a way a strict subset of the old proof, no new
 prehistoric relations can be introduced.
 \End{proof}
 
+\Begin{lemma} \label{drop}
+$G3s ⊢ B, □B, Γ ⊃ Δ ⇔ G3s ⊢ B, Γ ⊃ Δ$
+\End{lemma}
+
+\Begin{proof}
+The $(⇐)$ direction is just a weakening. The $(⇒)$ direction is shown
+by a structural induction over the proof tree for $B, □B, Γ ⊃ Δ$:
+
+1\.\ case: $□B$ is a weakening formula of the last rule. Then removing
+it keeps the proof intact.
+
+2\.\ case: $□B$ is a side formula of the last rule. By induction hypothesis
+the premises of the rules are provable without $□B$. Append the same
+rule to get a proof of $B, Γ ⊃ Δ$.
+
+3\.\ case: $□B$ is the principal formula of the last rule, then the premise
+is $B, B, □B, Γ ⊃ Δ$. By induction hypothesis we get a proof for
+$B, B, Γ ⊃ Δ$ and by contraction we get $B, Γ ⊃ Δ$.
+\End{proof}
+
+\Begin{lcorollary} \label{dropprehist}
+For any annotation $an$ the constructed proof does not introduce any
+new prehistoric relations.
+\End{lcorollary}
+
+\Begin{proof}
+The new proof is the old proof with $□B$ removed and $□ ⊃$ rules with
+$□B$ as principal formula replaced by contractions, which do not
+introduce new prehistoric relations by corollary \ref{contrprehist}.
+So the new proof can not introduce any new prehistoric relations.
+\End{proof}
+
 \Begin{theorem}[cut elemination for G3s] \label{cut}
 If $G3s ⊢ Γ ⊃ Δ, A$ and $G3s ⊢ A, Γ ⊃ Δ$ then $G3s ⊢ Γ ⊃ Δ$.
 \End{theorem}
@@ -1329,7 +1363,7 @@ side formulas on the right.
 2\.3 case: $A$ is a side formula in the last rule of $𝒯_R$, which is a
 $(⊃ □)$ rule and a principal formula in the last rule of $𝒯_L$. Then
 $A$ has the form $□A_0$ as it is a side formula of a $(⊃ □)$ on the
-left. So the last rule of $𝒯_R$ is also a $(⊃ □)$ rule and the proof
+right. So the last rule of $𝒯_L$ is also a $(⊃ □)$ rule and the proof
 has the following form:
 
 \AXC{$𝒯_L$} \noLine
@@ -1364,8 +1398,8 @@ We can move the cut up on the right using weakening as follows:
 \UIC{$Γ, □Γ_R, □Γ_L ⊃ Δ', □B$}
 \DP
 
-By contraction we get the required proof for $Γ ⊃ Δ$ as $□Γ_0 ⊆ Γ$ and
-$□Γ'_0 ⊆ Γ$.
+By the induction hypothesis and a contraction we get the required
+proof for $Γ ⊃ Δ$ as $□Γ_0 ⊆ Γ$ and $□Γ'_0 ⊆ Γ$.
 
 3\.\ case: $A$ is the principal formula in the last rules of $𝒯_L$ and
 $𝒯_R$. Then we have the following subcases:
@@ -1407,6 +1441,9 @@ transform that into:
 \BIC{$Γ ⊃ Δ$}
 \DP
 
+Using the induction hypothesis we get the required cut-free proof for
+$Γ ⊃ Δ$.
+
 3\.3:  $A$ has the form $□A_0$. Then the proof has the following form:
 
 
@@ -1424,7 +1461,7 @@ transform that into:
 \BIC{$Γ ⊃ Δ$}
 \DP
 
-From the lemma \ref{revbox2}, we get a proof $𝒯'_R$ for $A_0, Γ ⊃ Δ$
+From the lemma \ref{drop}, we get a proof $𝒯'_R$ for $A_0, Γ ⊃ Δ$
 and by weakening we get a proof $𝒯'_L$ for $Γ ⊃ Δ, A_0$. From this and
 using a cut with the lower rank formula $A_0$ we get the following
 proof:
@@ -1436,6 +1473,9 @@ proof:
 \RightLabel{$(Cut)$}
 \BIC{$Γ ⊃ Δ$}
 \DP
+
+Using the induction hypothesis we get the required cut-free proof for
+$Γ ⊃ Δ$.
 \End{proof}
 
 
@@ -1447,12 +1487,15 @@ $A$ such that $i ≺ k ≺ j$ in the original proof.
 \End{corollary}
 
 \Begin{proof}
+
 The used weakenings and contractions do not introduce any new
 prehistoric relations by the corollaries \ref{weakprehist} and
-\ref{contrprehist}. Also leaving out formulas as in case 1 and 3.1,
-removing $(⊃ □)$ rules as in case 3.3 or rearranging rules which are
-not $(⊃ □)$ rules as in case 3.2 do not introduce any new prehistoric
-relations.
+\ref{contrprehist}. Also leaving out formulas as in case 1 and 3.1, as
+well as rearranging rules which are not $(⊃ □)$ rules as in case 3.2
+do not introduce any new prehistoric relations.  Finally the use of
+lemma \ref{drop} in case 3.3 does not introduce any new prehistoric
+relations by corollary \ref{dropprehist} and leaving out the $(⊃ □)$
+rule also can not introduce any new prehistoric relations.
 
 So the only place where new prehistoric relations get introduced is by
 the new $(⊃ □)$ in case 2.3. All prehistoric relations from $T_R$ are
@@ -1461,7 +1504,7 @@ proof. So only prehistoric relations from $T_L$ are new. For all
 families $□_i$ in the prehistory $T_L$ we have $i ≺ k$ for the
 family $□_k$ in the cut formula introduced by the $(⊃ □)$ rule on the
 left. Moreover, we have $k ≺ j$ for the same familiy because of the
-occurance of $□A0$ on the right.
+occurance of $□A_0$ on the right.
 \End{proof}
 
 \Begin{corollary} \label{cutloop}
@@ -1486,7 +1529,7 @@ If $G3s ⊢ Γ ⊃ Δ, □A$ and $G3s ⊢ Γ ⊃ Δ, □(A → B)$ then $G3s ⊢
 By a structural induction over the proof trees $𝒯_L$ for
 $Γ ⊃ Δ, □A$ and $𝒯_R$ for $Γ ⊃ Δ, □(A → B)$.
 
-1\.\ case: $□(A → B)$ or $□A$ is a weaking formula of the last
+1\.\ case: $□(A → B)$ or $□A$ is a weakening formula of the last
 rule. Just weaken in $□B$ instead in that proof.
 
 2\.\ case: $□(A → B)$ or $□A$ is a side formula of the last rule.
@@ -1511,9 +1554,9 @@ rule. Then the last rules have the following form:
 \DP
 where $Δ = Δ', □B$ and $Γ = Γ'_L, □Γ_L = Γ'_R, □Γ_R$.
 
-By reversability of $(⊃ →)$ (\ref{arrowrev}) we get a proof
-$𝒯'_R$ for $A, □Γ_R ⊃ B$ from the first premise $□Γ_R ⊃ A → B$.
-Using weakening and a normal cut on the formula $A$ we get the following proof:
+By inversion for $(⊃ →)$ we get a proof $𝒯'_R$ for $A, □Γ_R ⊃ B$ from
+the first premise $□Γ_R ⊃ A → B$.  Using weakening and a normal cut on
+the formula $A$ we get the following proof:
 
 \AXC{$𝒯'_L$} \noLine
 \UIC{$□Γ_L, □Γ_R ⊃ A$}
@@ -1525,22 +1568,30 @@ Using weakening and a normal cut on the formula $A$ we get the following proof:
 \UIC{$Γ, □Γ_L, □Γ_R ⊃ Δ, □B$}
 \DP
 
-By contraction we get the required proof for $Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$
-and $□Γ_R ⊆ Γ$.
+By contraction and a cut elimination we get the required G3s proof for
+$Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 \End{proof}
 
 \Begin{corollary} \label{boxcutloop}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
-introduce prehistoric relations if the two $□$ symbols of the
-active formulas belong to the same family.
+introduce prehistoric loops if the two $□$ symbols of the active
+formulas belong to the same family as the $□$ symbol in $□B$.
 \End{corollary}
 
 \Begin{proof}
-Replacing $□(A→B)$ with $□B$ in weakening formulas or side formulas
+Replacing $□(A→B)$ or $□A$ with $□B$ in weakening formulas or side formulas
 does not change prehistoric relations as the two $□$-symbols belong to
-the same family. In case 3 the prehistory of $□B$ remains the same and for any
-family $□_i$ in $𝒯_R$ we still have $i ≺ k$ for the family $□_k$
-in the formula $□(A → B)$ as this is the same family as in $□B$.
+the same family.
+
+Any prehistoric relation because of the new $(⊃ □)$ in case 3 already
+exists in the original proof, as every $□$ occurrance in the new
+prehistory was in one of the two prehistories of $□A$ and $□(A → B)$
+of the original proof.
+
+So the new proof with $(□Cut)$ rules replaced by $(Cut)$ rules does
+not introduce new prehistoric relations and therefore also no new
+prehistoric loops. By corollary \ref{cutloop}, the cut elimination to
+get a G3s proof does not introduce prehistoric loops.
 \End{proof}
 
 \Begin{lemma}
