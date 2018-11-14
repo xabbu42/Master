@@ -95,8 +95,8 @@ and $A → C$. The derivation $d'$ is $(A → (C → B)) → ((A
 \End{proof}
 
 \Begin{corollary} \label{dedvar}
-The deduction $d'$ for $Γ ⊢_{LP(CS)} A → B$ only uses variables $x$ also occurring in the
-deduction $d$ for $A, Γ ⊢_{LP(CS)} B$.
+The deduction $d'$ for $Γ ⊢_{LP(CS)} A → B$ only uses variables $x$
+also occurring in the deduction $d$ for $A, Γ ⊢_{LP(CS)} B$.
 \End{corollary}
 
 \Begin{proof}
@@ -364,7 +364,7 @@ the later used system G3lp.
 
 &
 
-\RightLabel{$(lift)$}
+\RightLabel{(lift)}
 \AXC{$t_1{:}B_1, ..., t_n{:}B_n ⊃ A$}
 \UIC{$t_1{:}B_1, ..., t_n{:}B_n, Γ ⊃ Δ, t{:}A$}
 \DP
@@ -386,7 +386,7 @@ the premises are called active formulas. Active formulas are always
 used as subformulas of the principal formula.
 
 [^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
-□)$, $(◇ ⊃)$ and $(lift)$, which are also the only rules which restrict the
+□)$, $(◇ ⊃)$ and (lift), which are also the only rules which restrict the
 possible side formulas.
 
 Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
@@ -433,7 +433,7 @@ the root sequent of the proof.
 
 \Begin{definition}[G3lift preproof]
 A *G3lift preproof* is a proof tree using the rules of $G3lift, but where
-the $(lift)$ rule may be used without fullfilling the necessary
+the (lift) rule may be used without fullfilling the necessary
 precondition on the introduced term $t$.
 \End{definition}
 
@@ -494,9 +494,8 @@ $t{:}A, t{:}A → A, A$ to the beginning of $d$ we get the necessary
 derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
 
 6\.\ case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
-by a $(lift)$ rule. By the precondition on $t$ there exists a
+by a (lift) rule. By the precondition on $t$ there exists a
 derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
-
 \End{proof}
 
 \Begin{corollary} \label{equiv1var}
@@ -743,7 +742,7 @@ u_{i,0} + ... + u_{i,n_i}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lift, so by a trivial induction the proof
 tree $r_T^0(an_T(T))$ is a G3lift preproof. However it is not a G3lift
-proof as none of the $(lift)$ rules fullfill the necessary precondition
+proof as none of the (lift) rules fullfill the necessary precondition
 on the introduced term $t$.
 
 We therefore define inductively the normal realization functions
