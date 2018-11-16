@@ -1039,33 +1039,45 @@ $CS^N$ is not self-referential and we have $⊢_{LP(CS^⊛)} B$.
 Prehistoric relations in G3s with cut rules
 ===========================================
 
-Neither classification and annotations for families of $□$ as the
-definition of prehistoric relation carry over directly to G3s +
-$(Cut)$. The classification and annotations do not carry over as the
-$(Cut)$ rule uses the cut formula in different polarities for the two
-premises.  The prehistoric relations do not carry over as the $(Cut)$
-formula no longer fullfills the subformula property used for proofing
-lemma \ref{prehist}.
+In this chapter we will define prehistoric relations in the system G3s
++ (Cut). The (context sharing) cut rule has the following definition
+[@troelstra2000 67]:
 
-Because of this we will use the following global definition for
-prehistoric relations between any two $□$ families in a G3s + $(Cut)$
-proof:
+\Begin{definition}[$(Cut)$ rule]
 
-\Begin{definition}[Prehistoric Relation in G3s + $(Cut)$] \label{global}
-A family $□_i$ has a *prehistoric relation* to another familiy $□_j$, in
-notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrance
-of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
-in $T↾s$.
+\AXC{$G3s ⊢ Γ ⊃ Δ, A$}
+\AXC{$G3s ⊢ A, Γ ⊃ Δ$}
+\RightLabel{$(Cut)$}
+\BIC{$G3s ⊢ Γ ⊃ Δ$}
+\DP
+
 \End{definition}
 
 It is also necessary to expand the definition of correspondance
-(\ref{corr}) as follows:
+(\ref{corr}) to $(Cut)$ rules as follows:
 
 \Begin{definition}[correspondance for $(Cut)$]
 
 * The active formulas (and their symbols) in the premises of a $(Cut)$ rule correspond
 to each other.
 
+\End{definition}
+
+Neither classification and annotations for families of $□$ nor the
+definition of prehistoric relation carry over directly to G3s +
+$(Cut)$. The classification and annotations do not carry over as the
+$(Cut)$ rule uses the cut formula in different polarities for the two
+premises.  The prehistoric relations do not carry over as the $(Cut)$
+formula no longer fullfills the subformula property used for proofing
+lemma \ref{prehist}. Because of this we will use the following global
+definition for prehistoric relations between any two $□$ families in a
+G3s + $(Cut)$ proof:
+
+\Begin{definition}[Prehistoric Relation in G3s + $(Cut)$] \label{global}
+A family $□_i$ has a *prehistoric relation* to another familiy $□_j$, in
+notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrance
+of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
+in $T↾s$.
 \End{definition}
 
 Notice that there can be prehistoric relations with $□$ families which
@@ -1556,6 +1568,33 @@ So the new proof with $(□Cut)$ rules replaced by $(Cut)$ rules does
 not introduce new prehistoric relations and therefore also no new
 prehistoric loops. By corollary \ref{cutloop}, the cut elimination to
 get a G3s proof does not introduce prehistoric loops.
+\End{proof}
+
+\Begin{definition}
+The cycle-free fragment of a system $Y$, denoted by $Y^⊗$, is the
+collection of all sequents that each has a prehistoric-cycle-free
+$Y$-proof [@yu2017 787].
+\End{definition}
+
+\Begin{theorem}
+The cycle-free fragments of $G3s + (□Cut)$, $G3s + (Cut)$ and $G3s$ are
+identical.
+\End{theorem}
+
+\Begin{proof}
+
+A prehistoric-cycle-free proof in $G3s$ by the original local
+definition (\ref{local}) is also prehistoric-cycle-free by the the
+global definition (\ref{global}) by lemma \ref{prehist} and because in
+a $G3s$-proof a negative family can not have prehistoric relations
+^[TODO on the left, smaller, what terminology to use?]. So any sequent
+$Γ ⊂ Δ ∈ G3s^⊗$ is trivially also proofable prehistoric-cycle-free in
+$G3s + (Cut)$ and $G3s + (□Cut)$ and we have $G3s^⊗ ⊆ (G3s +
+(□Cut))^⊗$ and $G3s^⊗ ⊆ (G3s + (Cut))^⊗$. Moreover $(G3s + (Cut))^⊗ ⊆
+G3s^⊗$ by corollary \ref{boxcutloop} and $(G3s + (□Cut))^⊗ ⊆ (G3s +
+(Cut))^⊗ ⊆ G3s^⊗$ by corollary \ref{cutloop}. All together we get:
+
+$G3s^⊗ = (G3s + (Cut))^⊗ = (G3s + (□Cut))^⊗$
 \End{proof}
 
 Prehistoric relations and G3lp
