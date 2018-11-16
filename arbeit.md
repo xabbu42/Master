@@ -406,7 +406,7 @@ the root $s_r$ to the leaf $s_0$. $T↾s$ denotes the subtree of $T$ with root
 $s$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
 
-\Begin{definition}[correspondance]
+\Begin{definition}[correspondance] \label{corr}
 We relate the subformula (symbol) occurrences in a proof as follows:
 
 * Every subformula (symbol) occurrance in a side formula of a premise
@@ -1050,14 +1050,14 @@ to not hide the prehistoric relations of the proof.
 
 \\
 
-\AXC{$Γ ⊃ Δ, A$}
+\AXC{$⊃ A$}
 \RightLabel{$(⊃ :)_c$ ($A$ an axiom of LP)}
 \UIC{$Γ ⊃ Δ, c{:}A$}
 \DP
 
 &
 
-\AXC{$t{:}A, Γ ⊃ Δ, A$}
+\AXC{$t{:}A ⊃ A$}
 \RightLabel{$(⊃ :)_t$}
 \UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
 \DP
@@ -1110,11 +1110,14 @@ to not hide the prehistoric relations of the proof.
 
 The classification and annotations for families of $□$ in G3s as well
 as the definition of prehistoric relation carry over to G3lp without a
-problem. One difference is that the families in G3lp consist not
-of occurrences of a single symbol $□$ but of occurrences of the set of
+problem. One difference is that the families in G3lp consist not of
+occurrences of a single symbol $□$ but of occurrences of the set of
 subterms $s$ of a term $t$ in the root sequent. The other difference
 is that we have two rules introducing positive proof terms $(⊃ :)_c$
-and $(⊃ :)_t$, which will both have a prehistoric period.
+and $(⊃ :)_t$, which will both have a prehistoric period. Note that in
+G3lp proof terms for different formulas can be in the same family,
+whereas in G3s every occurrence of a family $⊞_i$ is part of the same
+family of subformulas $⊞_i A$.
 
 
 Prehistoric relations in G3s + $(Cut)$ and G3lp
@@ -1139,12 +1142,26 @@ of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
 in $T↾s$.
 \End{definition}
 
+It is also necessary to expand the definition of correspondance
+(\ref{corr}) as follows:
+
+\Begin{definition}[correspondance for $(Cut)$]
+
+* The active formulas (and their symbols) in the premises of a $(Cut)$ rule correspond
+to each other.
+
+\End{definition}
+
 Notice that there can be prehistoric relations with $□$ families which
 localy have negative polarity, as the family could be part of a cut
 formula and therefore also occur with positive polarity in the other
 branch of the cut. Also there can be prehistoric relations with
 families not occuring in the relevant $(⊃ □)$ rule because the
 family in question is part of a cut formula which was already cut.
+Finally, adding prehistoric relations with negative families
+in a cut free G3s proof does not introduce prehistoric loops, as in
+G3s a negative family is never introduced by a $(⊃ □)$ rule and
+therefore has no prehistoric families itself.
 
 With the following lemmas and theorems we will establish a
 constructive proof for $G3lp ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ˚ ⊃ Δ˚$. Moreover there
@@ -1152,17 +1169,47 @@ will be corollaries showing that the constructions do not introduce
 prehistoric loops in the global sense given above. By lemma
 \ref{prehist} the global definition \ref{global} and the original
 local definition \ref{local} are equivalent in G3s and therefore the
-G3s proof for $Γ˚ ⊃ Δ˚$ will be prehistoric loop free in the original
-sense if the proof in G3lp was prehistoric loop free.
+G3s proof for $Γ˚ ⊃ Δ˚$ will be prehistoric loop free by the original
+definition if the proof in G3lp was prehistoric loop free.
 
-It is important to note, that all the corollaries are not restricted
-to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given by the
-premise of the lemma but still hold for arbitrary annotations
+To achieve this, we introduce a new rule $(□Cut)$ for a modus ponens
+under $□$ as follows:
+
+\Begin{definition}[$(□Cut)$ rule]
+
+\AXC{$G3s ⊢ Γ ⊃ Δ, □A$}
+\AXC{$G3s ⊢ Γ ⊃ Δ, □(A → B)$}
+\RightLabel{$(□Cut)$}
+\BIC{$G3s ⊢ Γ ⊃ Δ, □B$}
+\DP
+
+\End{definition}
+
+Again it is also necessary to expand the definition of correspondance
+(\ref{corr}) for this rule:
+
+\Begin{definition}[correspondance for $(□Cut)$]
+
+* The topmost $□$ occurrance in the active formulas and the principal
+  formula correspond to each other.
+
+* The subformulas $A$ in the active formula of the premises correspond
+  to each other.
+
+\End{definition}
+
+Notice that with this expansion, $□$ occurrances of the same family no
+longer are always part of the same subformula $□C$. Also similar to
+the $(Cut)$ rule, we add correspondance between negative and positive
+occurrances of $□$ symbols.
+
+It is important to note, that all the following corollaries are not
+restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
+by the premise of the lemma but still hold for arbitrary annotations
 $an$. That means there is no implicit assumption that the families
 have only a single occurrance in the sequents of the lemma or theorem
 and the results can also be used in subtrees $T↾s$ together with an
 annotation $an_T$ for the complete tree.
-
 
 \Begin{lemma}[weakening for G3s] \label{weak}
 $G3s ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$
@@ -1399,7 +1446,7 @@ We can move the cut up on the right using weakening as follows:
 \DP
 
 By the induction hypothesis and a contraction we get the required
-proof for $Γ ⊃ Δ$ as $□Γ_0 ⊆ Γ$ and $□Γ'_0 ⊆ Γ$.
+proof for $Γ ⊃ Δ$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 
 3\.\ case: $A$ is the principal formula in the last rules of $𝒯_L$ and
 $𝒯_R$. Then we have the following subcases:
@@ -1574,14 +1621,13 @@ $Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 
 \Begin{corollary} \label{boxcutloop}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
-introduce prehistoric loops if the two $□$ symbols of the active
-formulas belong to the same family as the $□$ symbol in $□B$.
+introduce prehistoric loops.
 \End{corollary}
 
 \Begin{proof}
-Replacing $□(A→B)$ or $□A$ with $□B$ in weakening formulas or side formulas
-does not change prehistoric relations as the two $□$-symbols belong to
-the same family.
+Replacing $□(A→B)$ or $□A$ with $□B$ in weakening formulas or side
+formulas does not change prehistoric relations as the two $□$-symbols
+belong to the same family.
 
 Any prehistoric relation because of the new $(⊃ □)$ in case 3 already
 exists in the original proof, as every $□$ occurrance in the new
@@ -1596,18 +1642,16 @@ get a G3s proof does not introduce prehistoric loops.
 
 \Begin{lemma}
 The forgetful projection of all rules in G3lp ar admissible in G3s +
-$(□Cut)$ + $(Cut)$.
+$(□Cut)$.
 \End{lemma}
 
 \Begin{proof}
 The subset G3c is shared by G3lp and G3s and is therefore trivially
 admissible. The forgetful projection of the rule $(⊃ +)$ is just a
-contraction and therefore also admissible. We are left with the
-following three rules:
+contraction and therefore also admissible. The forgetful projection of
+the rules $(⊃ :)_t$ and $(⊃ :)_c$ are $(⊃ □)$ rules in G3s.
 
-$(⊃ :)_t$: By the lemma \ref{TODO} $G3s ⊢ □A, Γ ⊃ Δ, □A$ for any $□A$.
-
-$(⊃ :)_c$: By the lemma \ref{TODO} $G3s ⊢ Γ ⊃ Δ, □A$ for any LP axiom A0-A4.
+We are left with the following two rules:
 
 $(⊃ ⋅)$: The forgetful projection of a $(⊃ ⋅)$ rule is admissible by the
 following derivation using a $(□Cut)$ and contraction:
@@ -1621,15 +1665,24 @@ following derivation using a $(□Cut)$ and contraction:
 $(⊃ !)$: The forgetful projection of a $(⊃ !)$ rule has the following
 form:
 
-\AXC{$Γ ⊃ Δ, □A, □□B$}
+\AXC{$Γ ⊃ Δ, □A, □□A$}
 \RightLabel{$(⊃ !)˚$}
-\UIC{$Γ ⊃ Δ, □□B$}
+\UIC{$Γ ⊃ Δ, □□A$}
 \DP
 
-By the reversibility of $(⊃ □)$ and contraction we get a proof for the
+By inversion of $(⊃ □)$ and contraction we get a proof for the
 conclusion of that rule from a proof of the premise.
 \End{proof}
 
+\Begin{lcorollary}
+The forgetful projection of a G3lp proof has the same prehistoric
+relations as the original G3lp proof.
+\End{lcorollary}
+
+\Begin{proof}
+All contractions are on already related subformulas and $□$ symbols.
+The newly introduced $(□Cut)$ is used on related $□$ symbols. ^[TODO]
+\End{proof}
 
 Literature
 ==========
