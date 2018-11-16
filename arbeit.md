@@ -1029,99 +1029,9 @@ n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 $CS^N$ is not self-referential and we have $⊢_{LP(CS^⊛)} B$.
 \End{proof}
 
-G3lp
-====
 
-The following is minimal subset of the Gentzen style system G3lp
-without structural rules as introduced by @pulver2010 [62]. We do replace
-the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$ in order
-to not hide the prehistoric relations of the proof.
-
-\renewcommand{\arraystretch}{3}
-\begin{longtable}{cc}
-
-\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
-\DP
-
-&
-
-\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
-\DP
-
-\\
-
-\AXC{$⊃ A$}
-\RightLabel{$(⊃ :)_c$ ($A$ an axiom of LP)}
-\UIC{$Γ ⊃ Δ, c{:}A$}
-\DP
-
-&
-
-\AXC{$t{:}A ⊃ A$}
-\RightLabel{$(⊃ :)_t$}
-\UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
-\DP
-
-\\
-
-\RightLabel{$(→ ⊃)$}
-\AXC{$Γ ⊃ Δ, A$}
-\AXC{$B, Γ ⊃ Δ$}
-\BIC{$A → B, Γ ⊃ Δ$}
-\DP
-
-&
-
-\RightLabel{$(⊃ →)$}
-\AXC{$A, Γ ⊃ Δ, B$}
-\UIC{$Γ ⊃ Δ, A → B$}
-\DP
-
-\\
-
-\RightLabel{$({:} ⊃)$}
-\AXC{$A, t{:}A, Γ ⊃ Δ$}
-\UIC{$t{:}A, Γ ⊃ Δ$}
-\DP
-
-&
-
-\RightLabel{$(⊃ !)$}
-\AXC{$Γ ⊃ Δ, t{:}A, !t{:}t{:}A$}
-\UIC{$Γ ⊃ Δ, !t{:}t{:}A$}
-\DP
-
-\\
-
-\RightLabel{$(⊃ +)$}
-\AXC{$Γ ⊃ Δ, s{:}A, t{:}A, (s+t){:}A$}
-\UIC{$Γ ⊃ Δ, (s+t){:}A$}
-\DP
-
-&
-
-\RightLabel{$(⊃ ⋅)$}
-\AXC{$Γ ⊃ Δ, s{:}(A → B), s⋅t{:}B$}
-\AXC{$Γ ⊃ Δ, t{:}A, s⋅t{:}B$}
-\BIC{$Γ ⊃ Δ, s⋅t{:}A$}
-\DP
-
-\end{longtable}
-
-The classification and annotations for families of $□$ in G3s as well
-as the definition of prehistoric relation carry over to G3lp without a
-problem. One difference is that the families in G3lp consist not of
-occurrences of a single symbol $□$ but of occurrences of the set of
-subterms $s$ of a term $t$ in the root sequent. The other difference
-is that we have two rules introducing positive proof terms $(⊃ :)_c$
-and $(⊃ :)_t$, which will both have a prehistoric period. Note that in
-G3lp proof terms for different formulas can be in the same family,
-whereas in G3s every occurrence of a family $⊞_i$ is part of the same
-family of subformulas $⊞_i A$.
-
-
-Prehistoric relations in G3s + $(Cut)$ and G3lp
-===============================================
+Prehistoric relations in G3s with cut rules
+===========================================
 
 Neither classification and annotations for families of $□$ as the
 definition of prehistoric relation carry over directly to G3s +
@@ -1163,17 +1073,10 @@ in a cut free G3s proof does not introduce prehistoric loops, as in
 G3s a negative family is never introduced by a $(⊃ □)$ rule and
 therefore has no prehistoric families itself.
 
-With the following lemmas and theorems we will establish a
-constructive proof for $G3lp ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ˚ ⊃ Δ˚$. Moreover there
-will be corollaries showing that the constructions do not introduce
-prehistoric loops in the global sense given above. By lemma
-\ref{prehist} the global definition \ref{global} and the original
-local definition \ref{local} are equivalent in G3s and therefore the
-G3s proof for $Γ˚ ⊃ Δ˚$ will be prehistoric loop free by the original
-definition if the proof in G3lp was prehistoric loop free.
+To handle proof terms $s⋅t$ in the next chapter, we will also need a
+rule for modus ponens under $□$. We therefore introduce here also the
+new rule $(□Cut)$ as follows:
 
-To achieve this, we introduce a new rule $(□Cut)$ for a modus ponens
-under $□$ as follows:
 
 \Begin{definition}[$(□Cut)$ rule]
 
@@ -1202,6 +1105,16 @@ Notice that with this expansion, $□$ occurrances of the same family no
 longer are always part of the same subformula $□C$. Also similar to
 the $(Cut)$ rule, we add correspondance between negative and positive
 occurrances of $□$ symbols.
+
+With the following lemmas and theorems we will establish a
+constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
+G3s ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
+constructions do not introduce prehistoric loops in the global sense
+given above. By lemma \ref{prehist} the global definition \ref{global}
+and the original local definition \ref{local} are equivalent in G3s
+and therefore the G3s proof for $Γ ⊃ Δ$ will be prehistoric loop
+free by the original definition if the proof in G3s + $(□Cut)$ was
+prehistoric loop free.
 
 It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
@@ -1528,13 +1441,12 @@ $Γ ⊃ Δ$.
 
 \Begin{corollary} \label{cutprehist}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ only
-introduces new prehistoric relations $i ≺ j$ between families $□_i$ and $□_j$
-occurring in $Γ ⊃ Δ$ where there exists a familiy $□_k$ in
+introduces new prehistoric relations $i ≺ j$ between families $□_i$
+and $□_j$ occurring in $Γ ⊃ Δ$ where there exists a familiy $□_k$ in
 $A$ such that $i ≺ k ≺ j$ in the original proof.
 \End{corollary}
 
 \Begin{proof}
-
 The used weakenings and contractions do not introduce any new
 prehistoric relations by the corollaries \ref{weakprehist} and
 \ref{contrprehist}. Also leaving out formulas as in case 1 and 3.1, as
@@ -1639,6 +1551,96 @@ not introduce new prehistoric relations and therefore also no new
 prehistoric loops. By corollary \ref{cutloop}, the cut elimination to
 get a G3s proof does not introduce prehistoric loops.
 \End{proof}
+
+Prehistoric relations and G3lp
+==============================
+
+The following is minimal subset of the Gentzen style system G3lp
+without structural rules as introduced by @pulver2010 [62]. We do replace
+the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$ in order
+to not hide the prehistoric relations of the proof.
+
+\renewcommand{\arraystretch}{3}
+\begin{longtable}{cc}
+
+\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
+\DP
+
+&
+
+\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
+\DP
+
+\\
+
+\AXC{$⊃ A$}
+\RightLabel{$(⊃ :)_c$ ($A$ an axiom of LP)}
+\UIC{$Γ ⊃ Δ, c{:}A$}
+\DP
+
+&
+
+\AXC{$t{:}A ⊃ A$}
+\RightLabel{$(⊃ :)_t$}
+\UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
+\DP
+
+\\
+
+\RightLabel{$(→ ⊃)$}
+\AXC{$Γ ⊃ Δ, A$}
+\AXC{$B, Γ ⊃ Δ$}
+\BIC{$A → B, Γ ⊃ Δ$}
+\DP
+
+&
+
+\RightLabel{$(⊃ →)$}
+\AXC{$A, Γ ⊃ Δ, B$}
+\UIC{$Γ ⊃ Δ, A → B$}
+\DP
+
+\\
+
+\RightLabel{$({:} ⊃)$}
+\AXC{$A, t{:}A, Γ ⊃ Δ$}
+\UIC{$t{:}A, Γ ⊃ Δ$}
+\DP
+
+&
+
+\RightLabel{$(⊃ !)$}
+\AXC{$Γ ⊃ Δ, t{:}A, !t{:}t{:}A$}
+\UIC{$Γ ⊃ Δ, !t{:}t{:}A$}
+\DP
+
+\\
+
+\RightLabel{$(⊃ +)$}
+\AXC{$Γ ⊃ Δ, s{:}A, t{:}A, (s+t){:}A$}
+\UIC{$Γ ⊃ Δ, (s+t){:}A$}
+\DP
+
+&
+
+\RightLabel{$(⊃ ⋅)$}
+\AXC{$Γ ⊃ Δ, s{:}(A → B), s⋅t{:}B$}
+\AXC{$Γ ⊃ Δ, t{:}A, s⋅t{:}B$}
+\BIC{$Γ ⊃ Δ, s⋅t{:}A$}
+\DP
+
+\end{longtable}
+
+The classification and annotations for families of $□$ in G3s as well
+as the definition of prehistoric relation carry over to G3lp without a
+problem. One difference is that the families in G3lp consist not of
+occurrences of a single symbol $□$ but of occurrences of the set of
+subterms $s$ of a term $t$ in the root sequent. The other difference
+is that we have two rules introducing positive proof terms $(⊃ :)_c$
+and $(⊃ :)_t$, which will both have a prehistoric period. Note that in
+G3lp proof terms for different formulas can be in the same family,
+whereas in G3s every occurrence of a family $⊞_i$ is part of the same
+family of subformulas $⊞_i A$.
 
 \Begin{lemma}
 The forgetful projection of all rules in G3lp ar admissible in G3s +
