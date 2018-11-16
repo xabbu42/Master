@@ -1,8 +1,14 @@
 
+
+TODOS
+=====
+
+* replace loop with cycle, add explanation and ref to @yu2017
+* fix typesetting of cut rules (same as lift)
+
+
 Introduction
 ============
-
-Throughout this text, we will only use the modal logik S4 and the logic of proofs LP.
 
 Syntax
 ======
