@@ -1109,7 +1109,7 @@ new rule $(□Cut)$ as follows:
 Again it is also necessary to expand the definition of correspondance
 (\ref{corr}) for this rule:
 
-\Begin{definition}[correspondance for $(□Cut)$]
+\Begin{definition}[correspondance for $(□Cut)$] \label{boxcutcorr}
 
 * The topmost $□$ occurrance in the active formulas and the principal
   formula correspond to each other.
@@ -1601,9 +1601,12 @@ Prehistoric relations and G3lp
 ==============================
 
 The following is minimal subset of the Gentzen style system G3lp
-without structural rules as introduced by @pulver2010 [62]. We do replace
-the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$ in order
-to not hide the prehistoric relations of the proof.
+without structural rules as introduced by @pulver2010 [62]. We do
+replace the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$
+to keep to the prehistoric relations of the proof intact. As there is
+a proof for $⊃ A$ for any axiom A and also for $A ⊃ A$ for any formula
+A, this two rules are equivalent to the two axioms and invertible.
+^[TODO more formal, relate to @pulver2010 65]
 
 \renewcommand{\arraystretch}{3}
 \begin{longtable}{cc}
@@ -1671,21 +1674,36 @@ to not hide the prehistoric relations of the proof.
 \RightLabel{$(⊃ ⋅)$}
 \AXC{$Γ ⊃ Δ, s{:}(A → B), s⋅t{:}B$}
 \AXC{$Γ ⊃ Δ, t{:}A, s⋅t{:}B$}
-\BIC{$Γ ⊃ Δ, s⋅t{:}A$}
+\BIC{$Γ ⊃ Δ, s⋅t{:}B$}
 \DP
 
 \end{longtable}
 
-The classification and annotations for families of $□$ in G3s as well
-as the definition of prehistoric relation carry over to G3lp without a
-problem. One difference is that the families in G3lp consist not of
-occurrences of a single symbol $□$ but of occurrences of the set of
-subterms $s$ of a term $t$ in the root sequent. The other difference
-is that we have two rules introducing positive proof terms $(⊃ :)_c$
-and $(⊃ :)_t$, which will both have a prehistoric period. Note that in
-G3lp proof terms for different formulas can be in the same family,
-whereas in G3s every occurrence of a family $⊞_i$ is part of the same
-family of subformulas $⊞_i A$.
+TODO repeat necessary results from @pulver2010
+
+We expand the definition of correspondance \ref{corr} to G3lp proofs
+in the natural way. That is, we consider all topmost proof terms in
+active formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ as
+corresponding to each other. That leads to two main differences
+between annotations for G3lp proofs and G3s proofs:
+
+1. Families of proof terms in G3lp consist not of occurrences of a
+single term $t$ but of occurrences of the set of subterms $s$ of a
+term $t$ in the root sequent.
+
+2. Similar to the cut rules in G3s, $(⊃ ⋅)$ relates subformulas and
+symbols of different polarities.
+
+So we will use the same approach as in the last chapter and use the
+global definitions of prehistoric relations for all families where the
+role of the $(⊃ □)$ rule is replaced by the $(⊃ :)$ rules as follows:
+
+\Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
+A family $t_i$ has a *prehistoric relation* to another familiy $t_j$, in
+notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrance
+of $t_j$ with premise $s$, such that there is an occurrance of $t_i$
+in $T↾s$.^[TODO clearer and better definition and notation for families of terms]
+\End{definition}
 
 \Begin{lemma}
 The forgetful projection of all rules in G3lp ar admissible in G3s +
@@ -1717,18 +1735,23 @@ form:
 \UIC{$Γ ⊃ Δ, □□A$}
 \DP
 
-By inversion of $(⊃ □)$ and contraction we get a proof for the
-conclusion of that rule from a proof of the premise.
+This rule is admissible by lemma \ref{drop}.
 \End{proof}
 
 \Begin{lcorollary}
 The forgetful projection of a G3lp proof has the same prehistoric
-relations as the original G3lp proof.
+relations as the original G3lp proof. ^[TODO formulate oneway only or
+actually proof that]
 \End{lcorollary}
 
 \Begin{proof}
-All contractions are on already related subformulas and $□$ symbols.
-The newly introduced $(□Cut)$ is used on related $□$ symbols. ^[TODO]
+As we replace $(⊃ :)$ rules directly with $(⊃ □)$ rules, the two
+global definitions of prehistoric relations match. Moreover, all
+contractions are on already related subformulas and $□$ symbols.  The
+newly introduced $(□Cut)$ is also used on related $□$ symbols and
+subformulas. So by corollaries \ref{contrprehist} and
+\ref{dropprehist} as well as definition \ref{boxcutcorr}, no new
+prehistoric relations are introduced in the forgetful projection.
 \End{proof}
 
 Literature
