@@ -1053,7 +1053,7 @@ In this chapter we will define prehistoric relations in the system G3s
 
 \End{definition}
 
-It is also necessary to expand the definition of correspondance
+It is necessary to expand the definition of correspondance
 (\ref{corr}) to $(Cut)$ rules as follows:
 
 \Begin{definition}[correspondance for $(Cut)$]
@@ -1091,10 +1091,13 @@ in a cut free G3s proof does not introduce prehistoric loops, as in
 G3s a negative family is never introduced by a $(⊃ □)$ rule and
 therefore has no prehistoric families itself.
 
-To handle proof terms $s⋅t$ in the next chapter, we will also need a
-rule for modus ponens under $□$. We therefore introduce here also the
-new rule $(□Cut)$ as follows:
+We do not have any transitivity results for global prehistoric
+relations, as two prehistoric relations involving the same family can
+emerge from completeley different branches of the proof.
 
+To handle proof terms $s⋅t$ in the next chapter, we will also need a
+rule for modus ponens under $□$. We therefore introduce here the
+new rule $(□Cut)$ as follows:
 
 \Begin{definition}[$(□Cut)$ rule]
 
@@ -1195,7 +1198,7 @@ the necessary deconstructed formulas instead.
 
 2\.\ case: $C$ is a side formula of the last rule. By induction
 hypothesis we can replace $C$ by the necessary deconstructed formulas
-and append the same rule to get the necessary proof(s).
+in the premises and append the same rule to get the necessary proof(s).
 
 3\.\ case: $C$ is the principal formula of the last rule. Then
 proof(s) of the premise(s) without the last rule is/are already the
