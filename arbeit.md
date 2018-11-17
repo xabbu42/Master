@@ -13,13 +13,13 @@ Introduction
 Syntax
 ======
 
-The language of S4 is given by $A := ⊥ ∣ P ∣ A ∧ A ∣ A ∨ A ∣ A → A ∣
+The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣ A_0 → A_1 ∣
 □A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
 formulas using the remaining syntax, we can reduce that to the minimal
-language $A := ⊥ ∣ p ∣ A → A ∣ □A$.
+language $A := ⊥ ∣ p ∣ A_0 → A_1 ∣ □A$.
 
-The language of LP consists of terms given by $t := c ∣ x ∣ t ⋅ t ∣ t
-+ t ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A → A ∣ t{:}A$.
+The language of LP consists of terms given by $t := c ∣ x ∣ t_0 ⋅ t_1 ∣ t_0
++ t_0 ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A_0 → A_1 ∣ t{:}A$.
 
 A Hilbert style system for LP is given by the following Axioms and the
 rules modus ponens and axiom necessitation. [@artemov2001 p.8]
