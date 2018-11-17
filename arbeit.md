@@ -46,14 +46,28 @@ complete induction on the proof length that this derivations do
 not introduce any new terms not already occurring in the final
 propositional tautology.
 
-A constant specification $CS$ is a set of of formulas of the form
-$c:A$ with $c$ a proof constant and $A$ an axiom A0-A4. Every LP
-derivation naturally generates a finite constant specification of all
-formulas derived by axiom necessitation (R2). For a given constant
-specification $CS$, $LP(CS)$ is the logic with axiom necessitation
-restricted to that $CS$. $LP_0 := LP(∅)$ is the logic without axiom
-necessiation.  A constant specification $CS$ is injective, if for each
-proof constant $c$, there is at most one formula $c{:}A ∈ CS$.
+\Begin{definition}[Constant Specification]
+A *constant specification* $CS$ is a set of of formulas of the form
+$c:A$ with $c$ a proof constant and $A$ an axiom A0-A4.
+\End{definition}
+
+Every LP derivation naturally generates a finite constant
+specification of all formulas derived by axiom necessitation (R2). For
+a given constant specification $CS$, $LP(CS)$ is the logic with axiom
+necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
+without axiom necessiation.  A constant specification $CS$ is
+injective, if for each proof constant $c$, there is at most one
+formula $c{:}A ∈ CS$.
+
+\Begin{definition}[directly self-referential]
+A constant specification $CS$ is *directly self-referential* if there is a
+constant $c$ such that $c:A(c) ∈ CS$.
+\End{definition}
+
+\Begin{definition}[self-referential]
+A constant specification $CS$ is *self-referential* if there is a
+subset $A ⊆ CS$ such that $A := {c_0:A(c_1), ..., c_{n-1}:A(c_0)}$.
+\End{definition}
 
 \Begin{definition}[forgetful projection] \label{proj}
 The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
@@ -438,7 +452,7 @@ occurrences. For every such familiy there is exactly one occurrence in
 the root sequent of the proof.
 
 \Begin{definition}[G3lift preproof]
-A *G3lift preproof* is a proof tree using the rules of $G3lift, but where
+A *G3lift preproof* is a proof tree using the rules of G3lift, but where
 the (lift) rule may be used without fullfilling the necessary
 precondition on the introduced term $t$.
 \End{definition}
