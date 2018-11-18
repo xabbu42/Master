@@ -5,7 +5,7 @@ TODOS
 
 * replace loop with cycle, add explanation and ref to @yu2017
 * fix typesetting of cut rules (same as lift)
-
+* consistent numbering and handling of lists (is it worth the noise?)
 
 Introduction
 ============
@@ -588,25 +588,90 @@ By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
 1\.\ case $A$ is an axiom A0. By the completeness of G3c included in
 G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
 
-2\.\ case $A$ is an axiom $A1-A4$. As the following derivations show, $⊃
-A$ can be derived for each axiom using lemma \ref{liftgenax} for the base
-cases. $Γ ⊃ A$ follows from weakening (\ref{liftweak}).
+2\.\ case $A$ is an axiom $A1-A4$. As the derivations in figure
+\ref{axiomproofs} show, $⊃ A$ can be derived for each axiom using
+lemma \ref{liftgenax} for the base cases. $Γ ⊃ A$ follows from
+weakening (\ref{liftweak}).
 
-TODO
+\begin{figure} \caption{G3lift proofs for LP axioms} \label{axiomproofs}
+\begin{longtable}{cc}
+
+\AXC{$F, t{:}F ⊃ F$}
+\RightLabel{$(:⊃)$}
+\UIC{$t{:}F ⊃ F$}
+\RightLabel{$(⊃→)$}
+\UIC{$⊃ t{:}F → F$}
+\DP
+
+&
+
+\AXC{$F, t{:}F ⊃ F$}
+\RightLabel{$(:⊃)$}
+\UIC{$t{:}F ⊃ F$}
+\RightLabel{(lift)}
+\UIC{$t{:}F ⊃ t{:}F$}
+\RightLabel{(lift)}
+\UIC{$t{:}F ⊃ !t{:}t{:}F$}
+\RightLabel{$(⊃→)$}
+\UIC{$⊃ t{:}F → !t{:}t{:}F$}
+\DP
+
+\\[30pt]
+
+\AXC{$F, t{:}F ⊃ F$}
+\RightLabel{$(:⊃)$}
+\UIC{$ t{:}F ⊃ F$}
+\RightLabel{(lift)}
+\UIC{$ t{:}F ⊃ (s + t)F$}
+\RightLabel{$(⊃→)$}
+\UIC{$⊃ t{:}F → (s + t)F$}
+\DP
+
+&
+
+\AXC{$F, s{:}F ⊃ F$}
+\RightLabel{$(:⊃)$}
+\UIC{$ s{:}F ⊃ F$}
+\RightLabel{(lift)}
+\UIC{$ s{:}F ⊃ (s + t)F$}
+\RightLabel{$(⊃→)$}
+\UIC{$⊃ s{:}F → (s + t)F$}
+\DP
+
+\end{longtable}
+
+\begin{center}
+\AXC{$F, s{:}(F→G), t{:}F ⊃ G, F$}
+\RightLabel{$(:⊃)$}
+\UIC{$s{:}(F→G), t{:}F ⊃ G, F$}
+\AXC{$G, s{:}(F→G), t{:}F ⊃ G$}
+\RightLabel{$(→⊃)$}
+\BIC{$F→G, s{:}(F→G), t{:}F ⊃ G$}
+\RightLabel{$(:⊃)$}
+\UIC{$s{:}(F→G), t{:}F ⊃ G$}
+\RightLabel{(lift)}
+\UIC{$s{:}(F→G), t{:}F ⊃ s⋅t{:}G$}
+\RightLabel{$(⊃→)$}
+\UIC{$s{:}(F→G) ⊃ t{:}F → s⋅t{:}G$}
+\RightLabel{$(⊃→)$}
+\UIC{$⊃ s{:}(F→G) → (t{:}F → s⋅t{:}G)$}
+\DP
+\end{center}
+\end{figure}
 
 3\.\ case $A ∈ Γ$ is an assumption. We get the required proof for $A,
 Γ' ⊃ A$ directly from lemma \ref{liftgenax}.
 
-4\.\ case $A ≡ c:B$ is derived by rule R1 (Axiom Necessitation). Then
-$B$ is an axiom and there is a G3lift proof for $⊃ B$ by induction
-hypothesis. Appending a (lift) rule with $t = c$ gives a G3lift proof
-for $Γ ⊃ c:A$.
+4\.\ case $A ≡ c:A_0$ is derived by rule R1 (Axiom Necessitation). Then
+$A_0$ is an axiom and there is a G3lift proof for $⊃ A_0$ by induction
+hypothesis. Appending a (lift) rule gives a G3lift proof
+for $Γ ⊃ c:A_0$.
 
 5\.\ case $A$ is derived by rule R0 (Modus Ponens). By induction
 hypothesis, we have G3lift proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
 premises of the modus ponens rule. By the inversion lemma we get a
-G3lift proof for $B, Γ⊃ A$ and by cut elimination we get the required
-proof for $Γ ⊃ A$.
+G3lift proof for $B, Γ⊃ A$ and by cut elimination and contraction we
+get the required proof for $Γ ⊃ A$.
 \End{proof}
 
 
@@ -856,7 +921,7 @@ Prehistoric Phenomena
 In branch $s$ of the form $s_rR^*O_{i,j}RI_{i,j}R^*s$ in a
 G3s−proof $T$, the path $s_rR^*O_{i,j}$ is called a *history* of $p_i$
 in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
-*pre-history* of $p_i$ in branch $s$. ^[vgl. @yu2010, 389]
+*pre-history* of $p_i$ in branch $s$. ^[see @yu2010, 389]
 \End{definition}
 
 \Begin{definition}[Prehistoric Relation] \label{local}
