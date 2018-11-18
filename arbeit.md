@@ -55,7 +55,7 @@ Every LP derivation naturally generates a finite constant
 specification of all formulas derived by axiom necessitation (R2). For
 a given constant specification $CS$, $LP(CS)$ is the logic with axiom
 necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
-without axiom necessiation.  A constant specification $CS$ is
+without axiom necessitation.  A constant specification $CS$ is
 injective, if for each proof constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
 
@@ -176,8 +176,8 @@ deduction $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$.
 
 \Begin{proof}
 As constructed in the main proof, the new deduction $d'$ only uses
-true subformulas and variables already occuring in $d$. Moreover it only
-introduces new constants $c$ for axioms $A$ occuring in $d$. Therefore
+true subformulas and variables already occurring in $d$. Moreover it only
+introduces new constants $c$ for axioms $A$ occurring in $d$. Therefore
 no new variables are introduced in $d'$ or $CS'$.
 \End{proof}
 
@@ -188,7 +188,7 @@ Gentzen System for S4
 In the following text capital greek letters $Γ$, $Δ$ are used for
 multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
 latin letters $A$,$B$ for arbitrary formulas. We also use the
-following shortforms:
+following short forms:
 
 $$□Γ := \{□x ∣ x ∈ Γ\}$$
 $$Γ,A := Γ ∪ \{A\}$$
@@ -346,7 +346,7 @@ mirrors the rules of G3s. Other than $LPG_0$ from @yu2010 and
 the original Gentzen style systems from @artemov2001 [p.14], it does
 not actually deconstruct proof terms but falls back on the Hilbert
 style definition of $LP$ to introduce proof terms already fully
-constructed. We will call this system G3lift to differentate it from
+constructed. We will call this system G3lift to differentiate it from
 the later used system G3lp.
 
 \renewcommand{\arraystretch}{3}
@@ -409,7 +409,7 @@ used as subformulas of the principal formula.
 □)$, $(◇ ⊃)$ and (lift), which are also the only rules which restrict the
 possible side formulas.
 
-Formally, a gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
+Formally, a Gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
 := {s_0, ..., s_n}$ is the set of occurrences of sequents, and $R :=
 \{(s_i,s_j) ∈ T × T ∣ \text{$s_i$ is the conclusion of a rule which
 has $s_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
@@ -426,20 +426,20 @@ the root $s_r$ to the leaf $s_0$. $T↾s$ denotes the subtree of $T$ with root
 $s$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
 
-\Begin{definition}[correspondance] \label{corr}
+\Begin{definition}[correspondence] \label{corr}
 We relate the subformula (symbol) occurrences in a proof as follows:
 
-* Every subformula (symbol) occurrance in a side formula of a premise
+* Every subformula (symbol) occurrence in a side formula of a premise
   corresponds to the same occurrence of that subformula (symbol) in
   the same side formula in the conclusion.
 
 * Every active formula of a premise correspond to the topmost
-  subformula occurrance of the same formula in the principal formula
+  subformula occurrence of the same formula in the principal formula
   of the conclusion.
 
 * Every subformula (symbol) occurrence in an active formula of a
   premise corresponds to the same occurrence of that subformula
-  (symbol) in the corrsponding subformula in the principal formula of
+  (symbol) in the corresponding subformula in the principal formula of
   the rule.
 
 \End{definition}
@@ -447,24 +447,24 @@ We relate the subformula (symbol) occurrences in a proof as follows:
 Every subformula (symbol) occurrence in a premise corresponds to
 exactly one subformula (symbol) occurrence in the
 conclusion. Therefore all subformula (symbol) occurrences in a proof
-can be divided in disjunct corresponding families of symbol
-occurrences. For every such familiy there is exactly one occurrence in
+can be divided in disjoint corresponding families of symbol
+occurrences. For every such family there is exactly one occurrence in
 the root sequent of the proof.
 
 \Begin{definition}[G3lift preproof]
 A *G3lift preproof* is a proof tree using the rules of G3lift, but where
-the (lift) rule may be used without fullfilling the necessary
+the (lift) rule may be used without fulfilling the necessary
 precondition on the introduced term $t$.
 \End{definition}
 
 \Begin{theorem}[subformula property] \label{sub}
-Any subformula (symbol) occurrance in a partial Gentzen style
+Any subformula (symbol) occurrence in a partial Gentzen style
 (pre-)proof $T↾s$ in the systems G3lift and G3s corresponds to *at least
-one* subformula (symbol) occurrance of the root sequent $s$ of $T↾s$.
+one* subformula (symbol) occurrence of the root sequent $s$ of $T↾s$.
 
-Any subformula (symbol) occurrance in a complete Gentzen style
-(pre-)proof $T$ in the systems G3lift and G3s correpsonds to *exactly*
-one subformula (symbol) occurrance in the root sequent $s_r$ of $T$.
+Any subformula (symbol) occurrence in a complete Gentzen style
+(pre-)proof $T$ in the systems G3lift and G3s corresponds to *exactly*
+one subformula (symbol) occurrence in the root sequent $s_r$ of $T$.
 \End{theorem}
 
 \Begin{proof}
@@ -527,7 +527,7 @@ case 6.
 
 \Begin{proof}
 As constructed in the main proof, the deduction $d$ only uses true
-subformulas and variables already occuring in $T$. For cases 1 and 2
+subformulas and variables already occurring in $T$. For cases 1 and 2
 this is immediate as the given derivations directly use subformulas
 from $T$. In cases 3, 4 and 5, the starting derivations do not
 introduce new variables by induction hypothesis and the use of the
@@ -570,7 +570,7 @@ $G3lift ⊢ Γ ⊃ Δ ⇒ G3lift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 
 \End{lemma}
 
-\Begin{lemma}[cut elemination for G3lift] \label{liftcut}
+\Begin{lemma}[cut elimination for G3lift] \label{liftcut}
 If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
 \End{lemma}
 
@@ -602,7 +602,7 @@ $B$ is an axiom and there is a G3lift proof for $⊃ B$ by induction
 hypothesis. Appending a (lift) rule with $t = c$ gives a G3lift proof
 for $Γ ⊃ c:A$.
 
-5\.\ case $A$ is dericed by rule R0 (Modus Ponens). By induction
+5\.\ case $A$ is derived by rule R0 (Modus Ponens). By induction
 hypothesis, we have G3lift proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
 premises of the modus ponens rule. By the inversion lemma we get a
 G3lift proof for $B, Γ⊃ A$ and by cut elimination we get the required
@@ -614,7 +614,7 @@ Annotated S4 Formulas and Proofs
 ================================
 
 \Begin{definition}[polarity]
-We assign a *positive* or *negative polarity* relativ to $A$ to all
+We assign a *positive* or *negative polarity* relative to $A$ to all
 subformulas occurrences $B$ in $A$ as follows:
 
 * The only occurrence of $A$ in $A$ has positive polarity.
@@ -631,12 +631,12 @@ Similarly all occurrences of subformulas in a sequent $Γ ⊃ Δ$ get
 assigned a *polarity* as follows:
 
 * An occurrence of a subformula $B$ in a formula $A$ in $Γ$ has the
-  opposite polarity relativ to the sequent $Γ ⊃ Δ$ as the same
-  occurance $B$ in the formula $A$ has relativ to $A$.
+  opposite polarity relative to the sequent $Γ ⊃ Δ$ as the same
+  occurrence $B$ in the formula $A$ has relative to $A$.
 
 * An occurrence of a subformula $B$ in a formula $A$ in $Δ$ has the
-  same polarity relativ to the sequent $Γ ⊃ Δ$ as the same
-  occurance $B$ in the formula $A$ has relativ to $A$.
+  same polarity relative to the sequent $Γ ⊃ Δ$ as the same
+  occurrence $B$ in the formula $A$ has relative to $A$.
 
 \End{definition}
 
@@ -645,11 +645,11 @@ they would have in the equivalent formula $⋀Γ → ⋁Δ$.^[TODO explain
 used syntax and equivalence or remove]
 
 The rules of S4 respect the polarities of the subformulas, so that all
-corresponding occurrances of subformulas have the same polarity
+corresponding occurrences of subformulas have the same polarity
 throughout the proof. We therefore assign positive polarity to
-families of positive occurrances and negativ polarity to families of
-negative occurrances. Moreover, positive families in a S4 proof which
-have occurances introduced by a $(⊃ □)$ rule are called prinicipal
+families of positive occurrences and negative polarity to families of
+negative occurrences. Moreover, positive families in a S4 proof which
+have occurrences introduced by a $(⊃ □)$ rule are called principal
 positive families or simply principal families. The remaining
 positive families are called non-principal positive families. [^essential]
 
@@ -681,8 +681,8 @@ proof $T$ as follows:
   an_T(A_0)$.
 
 Similarly we define annotated formulas without the context of a proof
-tree by distinguishing all $□$ occurances as seperate families and
-droping the distinction between principal positive and non-principal
+tree by distinguishing all $□$ occurrences as separate families and
+dropping the distinction between principal positive and non-principal
 positive. This leads to the following definition:
 
 Define $an_A(B)$ recursively on all occurrences of subformulas $B$ in a
@@ -700,7 +700,7 @@ formula $A$ as follows:
   an_A(B_0)$ for a new $⊟_i$.
 
 
-So for example the annoteded version of $□((R → □R) → ⊥) → ⊥$ is
+So for example the annotated version of $□((R → □R) → ⊥) → ⊥$ is
 $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 
 
@@ -724,7 +724,7 @@ realization $r$ [@artemov2001, 25].
 \End{definition}
 
 A LP-realization of $A$ is fully determined by a realization function
-$r_A$ and a constant specification of all constants occuring in $r_A$
+$r_A$ and a constant specification of all constants occurring in $r_A$
 with $A^r := r_A(an_A(A))$.
 
 \Begin{definition}[normal]
@@ -732,7 +732,7 @@ A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
 proof variables. A LP-realization is *normal* if the corresponding
 realization function is normal and the $CS$ is injective. ^[TODO
-probably shoud not misuse normal here for non-principal positive families]
+probably should not misuse normal here for non-principal positive families]
 \End{definition}
 
 \Begin{theorem}[Realization] \label{realization}
@@ -745,7 +745,7 @@ Because of $S4 ⊢ A$ and the completeness of G3s, there
 exists a G3s proof $𝒯 = (T, R)$ of $⊃ A$.
 
 For all principal families $⊞_i$ in $an_T(T)$, enumerate the
-$(⊃ □)$ rules principally introducing an occurrance of $⊞_i$ as
+$(⊃ □)$ rules principally introducing an occurrence of $⊞_i$ as
 $R_{i,0}, ... R_{i,n_i}$.  We will use $I_{i,0}, ... I_{i,n_i}$ to
 denote the premises and $O_{i,0}, ... O_{i,n_i}$ to denote the
 conclusions of this rules (so for all $i ≤ n$, $j ≤ n_i$ we have
@@ -762,7 +762,7 @@ u_{i,0} + ... + u_{i,n_i}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lift, so by a trivial induction the proof
 tree $r_T^0(an_T(T))$ is a G3lift preproof. However it is not a G3lift
-proof as none of the (lift) rules fullfill the necessary precondition
+proof as none of the (lift) rules fulfill the necessary precondition
 on the introduced term $t$.
 
 We therefore define inductively the normal realization functions
@@ -816,14 +816,14 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q}
 B_{k_q}) ⊢_{LP(CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
 \end{equation}
 
-Moreover, this precondition remains fullfilled for the $(⊃ :)$ rule
+Moreover, this precondition remains fulfilled for the $(⊃ :)$ rule
 $R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$ again by
 the substitution lemma \ref{subst}.
 
 For the final normal realization function $r_T^N$ and injective
 constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
 correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
-\ref{equiv1} of G3lift we have $LP ⊢ A^r$ for the normal LP-realiziation
+\ref{equiv1} of G3lift we have $LP ⊢ A^r$ for the normal LP-realization
 $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \End{proof}
 
@@ -886,15 +886,15 @@ $s$ iff $h ≺^s i$.
 \End{lemma}
 
 \Begin{proof}
-(⇒): $⊞_h$ occurres in a sequent $s'$ in a pre-history of $p_i$ in the
+(⇒): $⊞_h$ occurs in a sequent $s'$ in a pre-history of $p_i$ in the
 path $s$, so the path $s$ has the form
 $s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j ≤ n_i$. By the subformula
-theorem \ref{sub}, there is an occurrance of $⊞_h$ in $I_{i,j}$ as
-$s'$ is part of $T↾I_{i,j}$. If this occurrance is on the left we have
+theorem \ref{sub}, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
+$s'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
 $h ≺^s_L i$, if it is on right we have $h ≺^s_R i$. In both cases $h
 ≺^s i$ holds.
 
-(⇐): By definition there is a $I_{i,j}$ in $s$, where $⊞_h$ occurres
+(⇐): By definition there is a $I_{i,j}$ in $s$, where $⊞_h$ occurs
 either on the left (for $h ≺^s_L i$) or on the right (for $h ≺^s_R
 i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $s$.
 \End{proof}
@@ -910,7 +910,7 @@ Assume for a contradiction that $i ≺_R i$. It follows from the
 definition of $≺_R$, that there is a rule $R_{i,j}$ with $⊞_iA(⊞_iB)$
 as the principal formula. By the subformula property \ref{sub}
 $⊞_iA(⊞_iB)$ corresponds to a subformula in the root sequent. Also by
-the subformula property there is only one occurrance of $⊞_i$ in the
+the subformula property there is only one occurrence of $⊞_i$ in the
 root sequent.
 \End{proof}
 
@@ -920,15 +920,15 @@ If $k ≺_R j$ and $j ▹ i$, then $k ▹ i$, where $▹$ is any one of $≺$, $
 
 \Begin{proof}
 Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
-principally introduced $⊞_j$. All corresponding occurrances of $⊞_j$
-are part of corresponding occurrances of the subformula $⊞_jA(⊞_kB)$,
-with exactly one occurrance in the root sequent $s_r$ by the
+principally introduced $⊞_j$. All corresponding occurrences of $⊞_j$
+are part of corresponding occurrences of the subformula $⊞_jA(⊞_kB)$,
+with exactly one occurrence in the root sequent $s_r$ by the
 subformula property \ref{sub}. So wherever $⊞_j$ occurs in the proof
 $T$, there is a $⊞_k$ occurring in the scope of it.
 
-For any $▹$, we have $j ▹ i$ because some occurrance of $⊞_j$ in a
+For any $▹$, we have $j ▹ i$ because some occurrence of $⊞_j$ in a
 subformula of the premise of a rule $R_{i,q}$. By the previous
-statement there is also an occurrance of $⊞_k$ in the same scope, and
+statement there is also an occurrence of $⊞_k$ in the same scope, and
 therefore also $k ▹ i$.
 \End{proof}
 
@@ -994,7 +994,7 @@ $p_0, ..., p_{n_p}$. For any path $s$ of the form
 $s_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*s$, we have $i_2 ≺ i_1$ by lemma
 \ref{prehist}. So the order $ε(k_x,j) := Σ_{w = 0}^{x-1}l_{k_w}$
 defined for each family $p_{k_x}$ and $j ≤ l_{k_x}$ by handling the
-families $p_i$ in the given topological order $k_x$ fullfills the
+families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
 \ref{realization} and at the same time the condition given in this
 lemma.
@@ -1011,10 +1011,10 @@ $A^N_{i,j,k}$ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
 \Begin{proof}
 By the construction in the proof of the realization theorem
 \ref{realization}, $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
-1}(an_T(I_{i,j}))$. For any $⊞_h$ occuring in $I_{i,j}$, we have by
+1}(an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h ≤ m_h$. So any provisional variable $u_{h,j_h}$
-occuring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
+occurring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
 - 1}(an_T(I_{i,j}))$, which is therefore provisional variable free. So
 by lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
 variable free and $A^N_{i,j,k} ≡ A_{i,j,k}$ for any
@@ -1067,10 +1067,10 @@ In this chapter we will define prehistoric relations in the system G3s
 
 \End{definition}
 
-It is necessary to expand the definition of correspondance
+It is necessary to expand the definition of correspondence
 (\ref{corr}) to $(Cut)$ rules as follows:
 
-\Begin{definition}[correspondance for $(Cut)$]
+\Begin{definition}[correspondence for $(Cut)$]
 
 * The active formulas (and their symbols) in the premises of a $(Cut)$ rule correspond
 to each other.
@@ -1082,23 +1082,23 @@ definition of prehistoric relation carry over directly to G3s +
 $(Cut)$. The classification and annotations do not carry over as the
 $(Cut)$ rule uses the cut formula in different polarities for the two
 premises.  The prehistoric relations do not carry over as the $(Cut)$
-formula no longer fullfills the subformula property used for proofing
+formula no longer fulfills the subformula property used for proofing
 lemma \ref{prehist}. Because of this we will use the following global
 definition for prehistoric relations between any two $□$ families in a
 G3s + $(Cut)$ proof:
 
 \Begin{definition}[Prehistoric Relation in G3s + $(Cut)$] \label{global}
-A family $□_i$ has a *prehistoric relation* to another familiy $□_j$, in
-notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrance
-of $□_j$ with premise $s$, such that there is an occurrance of $□_i$
+A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
+notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrence
+of $□_j$ with premise $s$, such that there is an occurrence of $□_i$
 in $T↾s$.
 \End{definition}
 
 Notice that there can be prehistoric relations with $□$ families which
-localy have negative polarity, as the family could be part of a cut
+locally have negative polarity, as the family could be part of a cut
 formula and therefore also occur with positive polarity in the other
 branch of the cut. Also there can be prehistoric relations with
-families not occuring in the relevant $(⊃ □)$ rule because the
+families not occurring in the relevant $(⊃ □)$ rule because the
 family in question is part of a cut formula which was already cut.
 Finally, adding prehistoric relations with negative families
 in a cut free G3s proof does not introduce prehistoric loops, as in
@@ -1107,7 +1107,7 @@ therefore has no prehistoric families itself.
 
 We do not have any transitivity results for global prehistoric
 relations, as two prehistoric relations involving the same family can
-emerge from completeley different branches of the proof.
+emerge from completely different branches of the proof.
 
 To handle proof terms $s⋅t$ in the next chapter, we will also need a
 rule for modus ponens under $□$. We therefore introduce here the
@@ -1123,12 +1123,12 @@ new rule $(□Cut)$ as follows:
 
 \End{definition}
 
-Again it is also necessary to expand the definition of correspondance
+Again it is also necessary to expand the definition of correspondence
 (\ref{corr}) for this rule:
 
-\Begin{definition}[correspondance for $(□Cut)$] \label{boxcutcorr}
+\Begin{definition}[correspondence for $(□Cut)$] \label{boxcutcorr}
 
-* The topmost $□$ occurrance in the active formulas and the principal
+* The topmost $□$ occurrence in the active formulas and the principal
   formula correspond to each other.
 
 * The subformulas $A$ in the active formula of the premises correspond
@@ -1136,10 +1136,10 @@ Again it is also necessary to expand the definition of correspondance
 
 \End{definition}
 
-Notice that with this expansion, $□$ occurrances of the same family no
+Notice that with this expansion, $□$ occurrences of the same family no
 longer are always part of the same subformula $□C$. Also similar to
-the $(Cut)$ rule, we add correspondance between negative and positive
-occurrances of $□$ symbols.
+the $(Cut)$ rule, we add correspondence between negative and positive
+occurrences of $□$ symbols.
 
 With the following lemmas and theorems we will establish a
 constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
@@ -1155,7 +1155,7 @@ It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
 by the premise of the lemma but still hold for arbitrary annotations
 $an$. That means there is no implicit assumption that the families
-have only a single occurrance in the sequents of the lemma or theorem
+have only a single occurrence in the sequents of the lemma or theorem
 and the results can also be used in subtrees $T↾s$ together with an
 annotation $an_T$ for the complete tree.
 
@@ -1180,7 +1180,7 @@ weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 For any annotation $an$ the proof for $G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
 constructed in the main proof has the exact same prehistoric relations
 as the original proof for $G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with
-"weakening occurrances are isolated" in @yu2017 [787]]
+"weakening occurrences are isolated" in @yu2017 [787]]
 \End{lcorollary}
 
 \Begin{proof}
@@ -1225,7 +1225,7 @@ new prehistoric relations.
 \End{lcorollary}
 
 \Begin{proof}
-In the 1\. case we only remove occurrances of $□$ so no new
+In the 1\. case we only remove occurrences of $□$ so no new
 prehistoric relations are introduced. In the 2\.\ case no new
 prehistoric relations are introduced by the induction
 hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
@@ -1243,16 +1243,16 @@ not introduce new prehistoric relations.
 \End{lemma}
 
 \Begin{proof}
-By simultanous induction over the proof tree and the build up of $A$:
+By simultaneous induction over the proof tree and the build up of $A$:
 
-1\.\ case: At least one occurance of $A$ is a weakening formula of the
+1\.\ case: At least one occurrence of $A$ is a weakening formula of the
 last rule. Just remove it. Note that this case also covers all axioms.
 
-2\.\ case: Both occurrances of $A$ are side formulas of the last
+2\.\ case: Both occurrences of $A$ are side formulas of the last
 rule. By induction hypothesis the premises of the rule are provable
 with the two $A$ contracted. Append the same rule for the necessary proof.
 
-3\.\ case: One of the occurrances of $A$ is the principal formula of
+3\.\ case: One of the occurrences of $A$ is the principal formula of
 the last rule, the other is a side formula. Use the inversion lemma
 (\ref{invers}) on the side formula $A$ in the premises and the
 induction hypothesis to contract the deconstructed parts of
@@ -1265,28 +1265,28 @@ For any annotation $an$ the constructed proofs do not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
-TODO decide for a proof, adapt main proof for correspondance?
+TODO decide for a proof, adapt main proof for correspondence?
 
 \Begin{proof}
-In the 1\. case we only remove occurrances of $□$ so no new
+In the 1\. case we only remove occurrences of $□$ so no new
 prehistoric relations are introduced. In the 2\.\ case no new
 prehistoric relations are introduced by the induction
 hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
 the prehistory of the new rule also occur in the prehistory of the
 original rule. In the 3\.\ case,  by corollary \ref{inversprehist} no
 new prehistoric relations are introduced for the new proof where both
-occurrances of $A$ are deconstructed. Moreover, in the case of
-appending a $(⊃ □)$ rule, all occurrances in the new proof are also in
+occurrences of $A$ are deconstructed. Moreover, in the case of
+appending a $(⊃ □)$ rule, all occurrences in the new proof are also in
 the old proof and therefore no new prehistoric relations get introduced.
 \End{proof}
 
 \Begin{proof}
-The algorithm implicitely described in the main proof is as follows:
+The algorithm implicitly described in the main proof is as follows:
 
 1. Remove all corresponding subformulas of one of the $A$ in the final
 sequent from the proof.
 
-2. Remove any rule used for the build up of the same final occurrance
+2. Remove any rule used for the build up of the same final occurrence
 of $A$ from the proof (from the first step the active formulas and the
 principal formula of all this rules are already removed).
 
@@ -1326,12 +1326,12 @@ introduce new prehistoric relations by corollary \ref{contrprehist}.
 So the new proof can not introduce any new prehistoric relations.
 \End{proof}
 
-\Begin{theorem}[cut elemination for G3s] \label{cut}
+\Begin{theorem}[cut elimination for G3s] \label{cut}
 If $G3s ⊢ Γ ⊃ Δ, A$ and $G3s ⊢ A, Γ ⊃ Δ$ then $G3s ⊢ Γ ⊃ Δ$.
 \End{theorem}
 
 \Begin{proof}
-By a simultanous induction over the depths of the proof trees $𝒯_L$
+By a simultaneous induction over the depths of the proof trees $𝒯_L$
 for $Γ ⊃ Δ, A$ and $𝒯_R$ for $A, Γ ⊃ Δ$ as well as the rank of $A$
 (i.e we will use the induction hypothesis to cut with the same
 formulas but shorter proof trees as well as to cut proof trees with
@@ -1351,7 +1351,7 @@ rule we get the a proof for $Γ,Γ ⊃ Δ,Δ$. By contraction we get a proof
 for $Γ ⊃ Δ$.
 
 2\.2 case: $A$ is a side formula in the last rule of $𝒯_L$.  This case
-is handled symetrical to the previous one. Notice that the last rule
+is handled symmetrical to the previous one. Notice that the last rule
 can not be a $(⊃ □)$ rule in this case, as that rule does not have any
 side formulas on the right.
 
@@ -1477,7 +1477,7 @@ $Γ ⊃ Δ$.
 \Begin{corollary} \label{cutprehist}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ only
 introduces new prehistoric relations $i ≺ j$ between families $□_i$
-and $□_j$ occurring in $Γ ⊃ Δ$ where there exists a familiy $□_k$ in
+and $□_j$ occurring in $Γ ⊃ Δ$ where there exists a family $□_k$ in
 $A$ such that $i ≺ k ≺ j$ in the original proof.
 \End{corollary}
 
@@ -1497,8 +1497,8 @@ already present from the $(⊃ □)$ rule on the right in the original
 proof. So only prehistoric relations from $T_L$ are new. For all
 families $□_i$ in the prehistory $T_L$ we have $i ≺ k$ for the
 family $□_k$ in the cut formula introduced by the $(⊃ □)$ rule on the
-left. Moreover, we have $k ≺ j$ for the same familiy because of the
-occurance of $□A_0$ on the right.
+left. Moreover, we have $k ≺ j$ for the same family because of the
+occurrence of $□A_0$ on the right.
 \End{proof}
 
 \Begin{corollary} \label{cutloop}
@@ -1577,7 +1577,7 @@ formulas does not change prehistoric relations as the two $□$-symbols
 belong to the same family.
 
 Any prehistoric relation because of the new $(⊃ □)$ in case 3 already
-exists in the original proof, as every $□$ occurrance in the new
+exists in the original proof, as every $□$ occurrence in the new
 prehistory was in one of the two prehistories of $□A$ and $□(A → B)$
 of the original proof.
 
@@ -1605,7 +1605,7 @@ definition (\ref{local}) is also prehistoric-cycle-free by the the
 global definition (\ref{global}) by lemma \ref{prehist} and because in
 a $G3s$-proof a negative family can not have prehistoric relations
 ^[TODO on the left, smaller, what terminology to use?]. So any sequent
-$Γ ⊂ Δ ∈ G3s^⊗$ is trivially also proofable prehistoric-cycle-free in
+$Γ ⊂ Δ ∈ G3s^⊗$ is trivially also provable prehistoric-cycle-free in
 $G3s + (Cut)$ and $G3s + (□Cut)$ and we have $G3s^⊗ ⊆ (G3s +
 (□Cut))^⊗$ and $G3s^⊗ ⊆ (G3s + (Cut))^⊗$. Moreover $(G3s + (Cut))^⊗ ⊆
 G3s^⊗$ by corollary \ref{boxcutloop} and $(G3s + (□Cut))^⊗ ⊆ (G3s +
@@ -1698,7 +1698,7 @@ A, this two rules are equivalent to the two axioms and invertible.
 
 TODO repeat necessary results from @pulver2010
 
-We expand the definition of correspondance \ref{corr} to G3lp proofs
+We expand the definition of correspondence \ref{corr} to G3lp proofs
 in the natural way. That is, we consider all topmost proof terms in
 active formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ as
 corresponding to each other. That leads to two main differences
@@ -1716,14 +1716,14 @@ global definitions of prehistoric relations for all families where the
 role of the $(⊃ □)$ rule is replaced by the $(⊃ :)$ rules as follows:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
-A family $t_i$ has a *prehistoric relation* to another familiy $t_j$, in
-notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrance
-of $t_j$ with premise $s$, such that there is an occurrance of $t_i$
+A family $t_i$ has a *prehistoric relation* to another family $t_j$, in
+notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrence
+of $t_j$ with premise $s$, such that there is an occurrence of $t_i$
 in $T↾s$.^[TODO clearer and better definition and notation for families of terms]
 \End{definition}
 
 \Begin{lemma}
-The forgetful projection of all rules in G3lp ar admissible in G3s +
+The forgetful projection of all rules in G3lp are admissible in G3s +
 $(□Cut)$.
 \End{lemma}
 
@@ -1757,7 +1757,7 @@ This rule is admissible by lemma \ref{drop}.
 
 \Begin{lcorollary}
 The forgetful projection of a G3lp proof has the same prehistoric
-relations as the original G3lp proof. ^[TODO formulate oneway only or
+relations as the original G3lp proof. ^[TODO formulate one-way only or
 actually proof that]
 \End{lcorollary}
 
