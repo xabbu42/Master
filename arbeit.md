@@ -58,16 +58,6 @@ without axiom necessitation.  A constant specification $CS$ is
 injective, if for each proof constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
 
-\Begin{definition}[directly self-referential]
-A constant specification $CS$ is *directly self-referential* if there is a
-constant $c$ such that $c:A(c) ∈ CS$.
-\End{definition}
-
-\Begin{definition}[self-referential]
-A constant specification $CS$ is *self-referential* if there is a
-subset $A ⊆ CS$ such that $A := {c_0:A(c_1), ..., c_{n-1}:A(c_0)}$.
-\End{definition}
-
 \Begin{definition}[forgetful projection] \label{proj}
 The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
 
@@ -932,6 +922,87 @@ and finally a derivation $d^k_{i,j}$ for \ref{precond} which also does
 not introduce new variables.^[TODO possibly clearer by using
 $d^{ε(i,j)}_{i0,j0}$] and substitution lemma]
 \End{proof}
+
+
+Self-referentiality of S4
+=========================
+
+The formulation of LP allows for proof terms $t$ to justify formulas
+$A(t)$ about themself. This leads to the possibility of
+self-referential constant specifications in the following sense:
+
+\Begin{definition}[directly self-referential]
+A constant specification $CS$ is *directly self-referential* if there is a
+constant $c$ such that $c:A(c) ∈ CS$.
+\End{definition}
+
+\Begin{definition}[self-referential]
+A constant specification $CS$ is *self-referential* if there is a
+subset $A ⊆ CS$ such that $A := {c_0:A(c_1), ..., c_{n-1}:A(c_0)}$.
+\End{definition}
+
+The following theorem from @brezhnev2006 [31] shows that
+self-referential constant specifications are necessary to realize S4:
+
+\Begin{theorem}
+The S4 theorem $¬□(P ∧ ¬□P)$ can not be realized without a directly
+self-referential constant specification.
+\End{theorem}
+
+We will not reproduce this general result but use the provided formula
+as an example for an inherently self-referential S4 formula.  If we
+look at the G3s proof for $¬□(P ∧ ¬□P)$ and the realization of that
+proof in figure \ref{proofs}, we can see why a self referential proof
+term like the used term $t$ for the propositional tautology $P ∧
+¬t⋅x{:}P → P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ we have to
+disprove $P ∧ ¬□P$ at some point which means we have to prove
+$□P$. The only way to prove $□P$ is using $□(P ∧ ¬□P)$ as an
+assumption on the left. This leads to the situation that we introduce
+$□$ by a $(⊃ □)$ rule where the same family already occurs on the
+left. As the following chapters will show formally such a situation is
+actually necessary for the self-referentiality of an S4 formula.
+
+\begin{figure} \caption{proof for $¬□(P ∧ ¬□P)$} \label{proofs}
+\begin{longtable}{cc}
+\AXC{$P, ¬□P, □(P∧¬□P) ⊃ P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬□P, □(P∧¬□P) ⊃ P$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$□(P∧¬□P) ⊃ P$}
+\RightLabel{$(⊃ □)$}
+\UIC{$P, □(P∧¬□P) ⊃ □P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬□P, □(P∧¬□P) ⊃$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬□P, □(P∧¬□P) ⊃$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$□(P ∧ ¬□P) ⊃$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$⊃ ¬□(P ∧ ¬□P)$}
+\DP
+
+&
+
+\AXC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P$}
+\RightLabel{$(: ⊃)$}
+\UIC{$x{:}(P ∧ ¬t⋅x{:}P) ⊃ P$}
+\RightLabel{$(lift)$}
+\UIC{$P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ t⋅x{:}P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(: ⊃)$}
+\UIC{$x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$⊃ ¬x{:}(P ∧ ¬t⋅x{:}P)$}
+\DP
+\end{longtable}
+\end{figure}
+
+
 
 Prehistoric Phenomena
 =====================
@@ -1854,6 +1925,113 @@ subformulas. So by corollaries \ref{contrprehist} and
 \ref{dropprehist} as well as definition \ref{boxcutcorr}, no new
 prehistoric relations are introduced in the forgetful projection.
 \End{proof}
+
+We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
+chapter \ref{self}. In figure \ref{g3lpproof} we see a proof of the
+same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp. For simplicity we will
+just assume that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
+proof constant. On the same figure we also included the forgetful
+projection of that proof which is a G3s + $(□Cut)$ proof.
+
+This proofs display the logical dependencies making the formula
+self-referential in quite a different way than the original G3s proof
+in figure \ref{proofs}. We have 3 families of $□$ in the G3s +
+$(□Cut)$ proof. Two are the same families as in the G3s proof, and
+have a consistent polarity throughout the proof. We therefore simply
+use the symbols $⊞$ and $⊟$ for this families. The third one is part
+of the cut formula and therefore does not occur in the final sequent
+and does not have consistent polarity throughout the proof. We use $□$
+for occurrences of this family in the proof.
+
+All left prehistoric relations of the proof are from left branch of
+the cut where we have $⊟ ≺_L ⊞$ and $⊞ ≺_L ⊞$. Other than in the G3s
+proof, the two $⊞$ are used for different formulas $P$ and $P ∧ ¬□P$
+and the connection between the two is established by the $(□Cut)$ with
+$□(P ∧ ¬□P → P)$.
+
+\afterpage{
+\begin{landscape}
+\begin{figure} \caption{G3lp proof} \label{g3lpproof}
+\AXC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P$}
+\AXC{$P, t⋅x{:}P ⊃ P$}
+\RightLabel{$(: ⊃)$}
+\UIC{$t⋅x{:}P ⊃ P$}
+\RightLabel{$(⊃ :)_t$}
+\UIC{$P, t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ t⋅x{:}P$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ t⋅x{:}P, ¬t⋅x{:}P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ ¬t⋅x{:}P$}
+\RightLabel{$(⊃ ∧)$}
+\BIC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P ∧ ¬t⋅x{:}P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P ∧ ¬t⋅x{:}P$}
+\RightLabel{$(: ⊃)$}
+\UIC{$x{:}(P ∧ ¬t⋅x{:}P) ⊃ P ∧ ¬t⋅x{:}P$}
+\RightLabel{$(⊃ :)_t$}
+\UIC{$P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ x{:}(P ∧ ¬t⋅x{:}P), t⋅x{:}P$}
+
+\AXC{$P, ¬t⋅x{:}P ⊃ P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬t⋅x{:}P ⊃ P$}
+\RightLabel{$(⊃ →)$}
+\UIC{$ ⊃ P ∧ ¬t⋅x{:}P → P$}
+\RightLabel{$(⊃ :)_c$}
+\UIC{$P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ t{:}(P ∧ ¬t⋅x{:}P → P), t⋅x{:}P$}
+
+\RightLabel{$(⊃ ⋅)$}
+\BIC{$P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ t⋅x{:}P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(: ⊃)$}
+\UIC{$x{:}(P ∧ ¬t⋅x{:}P) ⊃$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$⊃ ¬x{:}(P ∧ ¬t⋅x{:}P)$}
+\DP
+
+\AXC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ P$}
+\AXC{$P, □P ⊃ P$}
+\RightLabel{$(: ⊃)$}
+\UIC{$□P ⊃ P$}
+\RightLabel{$(⊃ □)$}
+\UIC{$P, □P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P, ¬□P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ ¬□P$}
+\RightLabel{$(⊃ ∧)$}
+\BIC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ P ∧ ¬□P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ P ∧ ¬□P$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$⊟(P ∧ ¬⊞P) ⊃ P ∧ ¬□P$}
+\RightLabel{$(⊃ □)$}
+\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P)$}
+
+\AXC{$P, ¬□P ⊃ P$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬□P ⊃ P$}
+\RightLabel{$(⊃ →)$}
+\UIC{$ ⊃ P ∧ ¬□P → P$}
+\RightLabel{$(⊃ □)$}
+\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P → P)$}
+
+\RightLabel{$(□Cut)$}
+\BIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
+\RightLabel{$(¬ ⊃)$}
+\UIC{$P, ¬⊞P, ⊟_0(P ∧ ¬⊞P) ⊃$}
+\RightLabel{$(∧ ⊃)$}
+\UIC{$P ∧ ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$⊟(P ∧ ¬⊞P) ⊃$}
+\RightLabel{$(⊃ ¬)$}
+\UIC{$⊃ ¬⊟(P ∧ ¬⊞P)$}
+\DP
+\end{figure}
+\end{landscape}
+}
 
 Literature
 ==========
