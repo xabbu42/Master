@@ -1496,7 +1496,8 @@ lower rank formulas):
 proofs. We get the required proof for $Γ ⊃ Δ$ by leaving out $A$ from
 that proof.
 
-2\.\ case: $A$ is a side formula in the last rule of one of the two proofs.
+2\.\ case: $A$ is a side formula in the last rule of one of the two
+proofs. We distinguish the follow ing subcases:
 
 2\.1 case: $A$ is a side formula in the last rule of $𝒯_R$, which is
 not a $(⊂ □)$ rule. By induction hypothesis we can cut the weakened
@@ -1993,7 +1994,7 @@ $□(P ∧ ¬□P → P)$.
 
 \AXC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ P$}
 \AXC{$P, □P ⊃ P$}
-\RightLabel{$(: ⊃)$}
+\RightLabel{$(□ ⊃)$}
 \UIC{$□P ⊃ P$}
 \RightLabel{$(⊃ □)$}
 \UIC{$P, □P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
