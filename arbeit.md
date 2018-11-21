@@ -1232,37 +1232,31 @@ to each other.
 
 \End{definition}
 
-Neither classification and annotations for families of $□$ nor the
-definition of prehistoric relation carry over directly to G3s +
-$(Cut)$. The classification and annotations do not carry over as the
-$(Cut)$ rule uses the cut formula in different polarities for the two
-premises.  The prehistoric relations do not carry over as the $(Cut)$
-formula no longer fulfills the subformula property used for proofing
-lemma \ref{prehist}. Because of this we will use the following global
-definition for prehistoric relations between any two $□$ families in a
-G3s + $(Cut)$ proof:
+The classification and annotations for families of $□$ do not carry
+over to G3s + $(Cut)$, as the $(Cut)$ rule uses the cut formula in
+different polarities for the two premises. We therefore will consider
+*all* $□$ families for prehistoric relations in G3s + $(Cut)$ proofs.
+This leads to the following expanded definition of prehistorc relation:
 
-\Begin{definition}[Prehistoric Relation in G3s + $(Cut)$] \label{global}
+\Begin{definition}[Local Prehistoric Relation in G3s + $(Cut)$] \label{defcut}
 A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrence
 of $□_j$ with premise $s$, such that there is an occurrence of $□_i$
-in $T↾s$.
+in $s$.
 \End{definition}
 
 Notice that there can be prehistoric relations with $□$ families which
 locally have negative polarity, as the family could be part of a cut
 formula and therefore also occur with positive polarity in the other
-branch of the cut. Also there can be prehistoric relations with
-families not occurring in the relevant $(⊃ □)$ rule because the
-family in question is part of a cut formula which was already cut.
-Finally, adding prehistoric relations with negative families
-in a cut free G3s proof does not introduce prehistoric loops, as in
-G3s a negative family is never introduced by a $(⊃ □)$ rule and
-therefore has no prehistoric families itself.
-
-We do not have any transitivity results for global prehistoric
-relations, as two prehistoric relations involving the same family can
-emerge from completely different branches of the proof.
+branch of the cut. On the other hand, adding prehistoric relations
+with negative families in a cut free G3s proof does not introduce
+prehistoric loops, as in G3s a negative family is never introduced by
+a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
+G3s + $(Cut)$ proofs, the subformula property (\ref{TODO}) and
+therefore also lemma \ref{TODO} no longer holds. That means we can
+have an occurrance of a family $□$ as part of a cut formula in the
+*global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
+\label{defcut} is not a (local) prehistoric family.
 
 To handle proof terms $s⋅t$ in the next chapter, we will also need a
 rule for modus ponens under $□$. We therefore introduce here the
@@ -1292,19 +1286,19 @@ Again it is also necessary to expand the definition of correspondence
 \End{definition}
 
 Notice that with this expansion, $□$ occurrences of the same family no
-longer are always part of the same subformula $□C$. Also similar to
-the $(Cut)$ rule, we add correspondence between negative and positive
-occurrences of $□$ symbols.
+longer are always part of the same subformula $□C$ and therefor lemma
+\ref{prehist} no longer holds. Also similar to the $(Cut)$ rule, we add
+correspondence between negative and positive occurrences of $□$
+symbols.
 
 With the following lemmas and theorems we will establish a
 constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
 G3s ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
-constructions do not introduce prehistoric loops in the global sense
-given above. By lemma \ref{prehist} the global definition \ref{global}
-and the original local definition \ref{local} are equivalent in G3s
-and therefore the G3s proof for $Γ ⊃ Δ$ will be prehistoric loop
-free by the original definition if the proof in G3s + $(□Cut)$ was
-prehistoric loop free.
+constructions do not introduce prehistoric loops by the new definition
+\ref{defcut}. As all prehistoric relations by the first defintion
+\ref{prehist} are included in the new definition, the final proof in
+G3s will be prehistoric loop free by any definition if the original
+proof G3s + $(□Cut)$ was prehistoric loop free by the new definition.
 
 It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
@@ -1340,9 +1334,9 @@ as the original proof for $G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with
 
 \Begin{proof}
 $(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
-use the exact same proof for the premise and only in the history add
-the new weakening formulas. So all prehistoric branches are unchanged and
-all prehistoric relations remain the same.
+use the exact same premise and only in the history add the new
+weakening formulas. So all prehistoric branches are unchanged and all
+prehistoric relations remain the same.
 \End{proof}
 
 
@@ -1380,13 +1374,10 @@ new prehistoric relations.
 \End{lcorollary}
 
 \Begin{proof}
-In the 1\. case we only remove occurrences of $□$ so no new
-prehistoric relations are introduced. In the 2\.\ case no new
-prehistoric relations are introduced by the induction
-hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
-the prehistory of the new rule also occur in the prehistory of the
-original rule. In the 3\.\ case, a rule is removed, which again can
-not introduce new prehistoric relations.
+In the 1.\ case and 2.\ case we only remove occurrences of $□$ so no
+new prehistoric relations are introduced. In the 3\.\ case, a rule is
+removed entirely, which again can not introduce new prehistoric
+relations.
 \End{proof}
 
 \Begin{lemma}[contraction for G3s] \label{contr}
@@ -1423,16 +1414,13 @@ new prehistoric relations.
 TODO decide for a proof, adapt main proof for correspondence?
 
 \Begin{proof}
-In the 1\. case we only remove occurrences of $□$ so no new
-prehistoric relations are introduced. In the 2\.\ case no new
-prehistoric relations are introduced by the induction
-hypothesis. Moreover in the case of a $(⊃ □)$ rule, all occurrences in
-the prehistory of the new rule also occur in the prehistory of the
-original rule. In the 3\.\ case,  by corollary \ref{inversprehist} no
-new prehistoric relations are introduced for the new proof where both
-occurrences of $A$ are deconstructed. Moreover, in the case of
-appending a $(⊃ □)$ rule, all occurrences in the new proof are also in
-the old proof and therefore no new prehistoric relations get introduced.
+In the 1\. case and 2\. case we only remove occurrences of $□$ so no
+new prehistoric relations are introduced. In the 3\.\ case, by
+corollary \ref{inversprehist} no new prehistoric relations are
+introduced for the new proof where both occurrences of $A$ are
+deconstructed. Moreover, in the case of appending a $(⊃ □)$ rule, all
+occurrences in the new premise are also in the old premise and therefore
+no new prehistoric relations get introduced.
 \End{proof}
 
 \Begin{proof}
@@ -1648,13 +1636,13 @@ relations by corollary \ref{dropprehist} and leaving out the $(⊃ □)$
 rule also can not introduce any new prehistoric relations.
 
 So the only place where new prehistoric relations get introduced is by
-the new $(⊃ □)$ in case 2.3. All prehistoric relations from $T_R$ are
+the new $(⊃ □)$ in case 2.3. All prehistoric relations from $□Γ_R$ are
 already present from the $(⊃ □)$ rule on the right in the original
-proof. So only prehistoric relations from $T_L$ are new. For all
-families $□_i$ in the prehistory $T_L$ we have $i ≺ k$ for the
-family $□_k$ in the cut formula introduced by the $(⊃ □)$ rule on the
-left. Moreover, we have $k ≺ j$ for the same family because of the
-occurrence of $□A_0$ on the right.
+proof. So only prehistoric relations from $□Γ_L$ are new. For all
+families $□_i$ in $□Γ_L$ we have $i ≺ k$ for the family $□_k$ in the
+cut formula introduced by the $(⊃ □)$ rule on the left. Moreover, we
+have $k ≺ j$ for the same family because of the occurrence of $□A_0$
+on the right.
 \End{proof}
 
 \Begin{corollary} \label{cutloop}
