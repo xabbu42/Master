@@ -1,7 +1,6 @@
 
 
-TODOS
-=====
+TODO:
 
 * replace loop with cycle, add explanation and ref to @yu2017
 * fix typesetting of cut rules (same as lift)
@@ -194,15 +193,16 @@ $$□Γ := \{□x ∣ x ∈ Γ\}$$
 $$Γ,A := Γ ∪ \{A\}$$
 $$Γ,Δ := Γ ∪ Δ$$
 
-Throughout this text, we will work with the G3s calculus from
-@troelstra2000 [p287], which also used by in @yu2010. It is important to
-use a system with the axioms restricted to atomic formulas for the
-definition of prehistoric loops as the build-up of a sequent $□A, Γ ⊃
-Δ, □A$ can introduce prehistoric relations which would otherwise be
-missed ^[TODO find an actual example for that]. This is a
-Gentzen-style calculus with the following rules:
+Throughout this text, we will use the G3s calculus from @troelstra2000
+[p287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
+are only concerned with classical logic (see figure \ref{G3sfull}).
+For proofs on the other hand we will use a minimal subset of that
+system using the standard derived definitions for $¬$, $∨$, $∧$ and $◇$ as
+given by \ref{G3smin}. All the missing rules from the full system are
+admissible in the minimal system using this definitions.
 
 \renewcommand{\arraystretch}{3}
+\begin{figure} \caption{Full G3s} \label{G3sfull}
 \begin{longtable}{cc}
 
 \AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
@@ -211,6 +211,20 @@ Gentzen-style calculus with the following rules:
 &
 
 \AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
+\DP
+
+\\
+
+\RightLabel{$(¬ ⊃)$}
+\AXC{$Γ ⊃ Δ, A$}
+\UIC{$¬A, Γ ⊃ Δ$}
+\DP
+
+&
+
+\RightLabel{$(⊃ ¬)$}
+\AXC{$A, Γ ⊃ Δ$}
+\UIC{$Γ ⊃ Δ, ¬A$}
 \DP
 
 \\
@@ -287,11 +301,9 @@ Gentzen-style calculus with the following rules:
 \DP
 
 \end{longtable}
+\end{figure}
 
-Again by using the standard definitions for $∨$, $∧$ and $◇$, we can
-reduce and simplify the rules to the following minimal but equivalent
-system:
-
+\begin{figure} \caption{Minimal G3s} \label{G3smin}
 \begin{longtable}{cc}
 
 \AXC{$P,Γ ⊃ Δ,P$ $(Ax)$ ($P$ atomic)}
@@ -332,24 +344,26 @@ system:
 \DP
 
 \end{longtable}
+\end{figure}
 
 In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
 the logic of proofs LP using explicit contraction and weakening rules,
-i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will follow
-@pulver2010 instead and use G3lp with the structural rules absorbed,
-but with the classical rules reduced to the same minimal subset as above.
+i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will
+follow @pulver2010 instead and use G3lp with the structural rules
+absorbed, but with the classical rules reduced to the same minimal
+subset as in figure \ref{G3smin}.
 
-For now the following system closely resembling the only hinted at
-"$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is actually the
-most practical for our purpose. The reason for this is that it exactly
-mirrors the rules of G3s. Other than $LPG_0$ from @yu2010 and
-the original Gentzen style systems from @artemov2001 [p.14], it does
-not actually deconstruct proof terms but falls back on the Hilbert
-style definition of $LP$ to introduce proof terms already fully
-constructed. We will call this system G3lift to differentiate it from
-the later used system G3lp.
+For now the system from figure \ref{G3lift} closely resembling the
+only hinted at "$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is
+actually the most practical for our purpose. The reason for this is
+that it exactly mirrors the rules of G3s. Other than $LPG_0$ from
+@yu2010 and the original Gentzen style systems from @artemov2001
+[p.14], it does not actually deconstruct proof terms but falls back on
+the Hilbert style definition of $LP$ to introduce proof terms already
+fully constructed. We will call this system G3lift to differentiate it
+from the later used system G3lp.
 
-\renewcommand{\arraystretch}{3}
+\begin{figure} \caption{G3lift} \label{G3lift}
 \begin{longtable}{cc}
 
 \AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
@@ -395,6 +409,7 @@ the later used system G3lp.
 
 where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
 \end{longtable}
+\end{figure}
 
 In all this rules, arbitrary formulas which occur in the premises and
 the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
@@ -706,7 +721,11 @@ assigned a *polarity* as follows:
 \End{definition}
 
 This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
-they would have in the equivalent formula $⋀Γ → ⋁Δ$.^[TODO explain
+they would have in the equivalent formula $⋀Γ → ⋁Δ$. Also notice that
+for the derived operaters all subformulas have the same polarity,
+except for $¬$ which switches the polarity for its subformula.
+
+^[TODO explain
 used syntax and equivalence or remove]
 
 The rules of S4 respect the polarities of the subformulas, so that all
