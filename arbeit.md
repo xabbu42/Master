@@ -712,7 +712,7 @@ assigned a *polarity* as follows:
 
 This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
 they would have in the equivalent formula $⋀Γ → ⋁Δ$. Also notice that
-for the derived operaters all subformulas have the same polarity,
+for the derived operators all subformulas have the same polarity,
 except for $¬$ which switches the polarity for its subformula.
 
 ^[TODO explain
@@ -929,7 +929,7 @@ Self-referentiality of S4
 \label{self}
 
 The formulation of LP allows for proof terms $t$ to justify formulas
-$A(t)$ about themself. This leads to the possibility of
+$A(t)$ about themselves. This leads to the possibility of
 self-referential constant specifications in the following sense:
 
 \Begin{definition}[directly self-referential]
@@ -1237,7 +1237,7 @@ The classification and annotations for families of $□$ do not carry
 over to G3s + $(Cut)$, as the $(Cut)$ rule uses the cut formula in
 different polarities for the two premises. We therefore will consider
 *all* $□$ families for prehistoric relations in G3s + $(Cut)$ proofs.
-This leads to the following expanded definition of prehistorc relation:
+This leads to the following expanded definition of prehistoric relation:
 
 \Begin{definition}[Local Prehistoric Relation in G3s + $(Cut)$] \label{local2}
 A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
@@ -1255,7 +1255,7 @@ prehistoric loops, as in G3s a negative family is never introduced by
 a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
 G3s + $(Cut)$ proofs, the subformula property (\ref{sub}) and
 therefore also lemma \ref{global} no longer holds. That means we can
-have an occurrance of a family $□$ as part of a cut formula in the
+have an occurrence of a family $□$ as part of a cut formula in the
 *global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
 \label{defcut} is not a local prehistoric family.
 
@@ -1296,7 +1296,7 @@ With the following lemmas and theorems we will establish a
 constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
 G3s ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
 constructions do not introduce prehistoric loops by the new definition
-\ref{local2}. As all prehistoric relations by the first defintion
+\ref{local2}. As all prehistoric relations by the first definition
 \ref{local1} are included in the new definition, the final proof in
 G3s will be prehistoric loop free by any definition if the original
 proof G3s + $(□Cut)$ was prehistoric loop free by the new definition.
@@ -1723,9 +1723,9 @@ belong to the same family.
 
 Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
 already exists in the original proof, as every $□$ occurrence in
-$□Γ_L$ or $□Γ_R$ also occures in one of the two $(⊃ □)$ rules in the
+$□Γ_L$ or $□Γ_R$ also occurs in one of the two $(⊃ □)$ rules in the
 original proof, with both introduce a $□$ of the same family as $□B$
-by the definition of correspondance for $(□Cut)$ (\ref{boxcutcorr}).
+by the definition of correspondence for $(□Cut)$ (\ref{boxcutcorr}).
 
 So the new proof with $(□Cut)$ rules replaced by $(Cut)$ rules does
 not introduce new prehistoric relations and therefore also no new
