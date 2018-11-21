@@ -926,6 +926,7 @@ $d^{ε(i,j)}_{i0,j0}$] and substitution lemma]
 
 Self-referentiality of S4
 =========================
+\label{self}
 
 The formulation of LP allows for proof terms $t$ to justify formulas
 $A(t)$ about themself. This leads to the possibility of
@@ -1014,7 +1015,7 @@ in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
 *pre-history* of $p_i$ in branch $s$. ^[see @yu2010, 389]
 \End{definition}
 
-\Begin{definition}[Prehistoric Relation] \label{local}
+\Begin{definition}[Prehistoric Relation] \label{local1}
 For any principal positive families $p_i$ and $p_h$ and any branch $s$ of
 the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a S4 proof $𝒯 = (T, R)$:
 
@@ -1035,7 +1036,7 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 
 The following lemma provides the connection between these two definitions:
 
-\Begin{lemma} \label{prehist}
+\Begin{lemma} \label{global}
 There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the branch
 $s$ iff $h ≺^s i$.
 \End{lemma}
@@ -1147,7 +1148,7 @@ acyclic graph. Therefore there exists a topological order
 $p_{k_0},...,p_{k_{n_p}}$ of the $n_p + 1$ principal positive families
 $p_0, ..., p_{n_p}$. For any path $s$ of the form
 $s_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*s$, we have $i_2 ≺ i_1$ by lemma
-\ref{prehist}. So the order $ε(k_x,j) := Σ_{w = 0}^{x-1}l_{k_w}$
+\ref{global}. So the order $ε(k_x,j) := Σ_{w = 0}^{x-1}l_{k_w}$
 defined for each family $p_{k_x}$ and $j ≤ l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
@@ -1238,7 +1239,7 @@ different polarities for the two premises. We therefore will consider
 *all* $□$ families for prehistoric relations in G3s + $(Cut)$ proofs.
 This leads to the following expanded definition of prehistorc relation:
 
-\Begin{definition}[Local Prehistoric Relation in G3s + $(Cut)$] \label{defcut}
+\Begin{definition}[Local Prehistoric Relation in G3s + $(Cut)$] \label{local2}
 A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrence
 of $□_j$ with premise $s$, such that there is an occurrence of $□_i$
@@ -1252,11 +1253,11 @@ branch of the cut. On the other hand, adding prehistoric relations
 with negative families in a cut free G3s proof does not introduce
 prehistoric loops, as in G3s a negative family is never introduced by
 a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
-G3s + $(Cut)$ proofs, the subformula property (\ref{TODO}) and
-therefore also lemma \ref{TODO} no longer holds. That means we can
+G3s + $(Cut)$ proofs, the subformula property (\ref{sub}) and
+therefore also lemma \ref{global} no longer holds. That means we can
 have an occurrance of a family $□$ as part of a cut formula in the
 *global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
-\label{defcut} is not a (local) prehistoric family.
+\label{defcut} is not a local prehistoric family.
 
 To handle proof terms $s⋅t$ in the next chapter, we will also need a
 rule for modus ponens under $□$. We therefore introduce here the
@@ -1287,16 +1288,16 @@ Again it is also necessary to expand the definition of correspondence
 
 Notice that with this expansion, $□$ occurrences of the same family no
 longer are always part of the same subformula $□C$ and therefor lemma
-\ref{prehist} no longer holds. Also similar to the $(Cut)$ rule, we add
-correspondence between negative and positive occurrences of $□$
-symbols.
+\ref{trans} no longer holds.^[TODO make sure] Also similar to the
+$(Cut)$ rule, we add correspondence between negative and positive
+occurrences of $□$ symbols.
 
 With the following lemmas and theorems we will establish a
 constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
 G3s ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
 constructions do not introduce prehistoric loops by the new definition
-\ref{defcut}. As all prehistoric relations by the first defintion
-\ref{prehist} are included in the new definition, the final proof in
+\ref{local2}. As all prehistoric relations by the first defintion
+\ref{local1} are included in the new definition, the final proof in
 G3s will be prehistoric loop free by any definition if the original
 proof G3s + $(□Cut)$ was prehistoric loop free by the new definition.
 
@@ -1717,13 +1718,14 @@ introduce prehistoric loops.
 
 \Begin{proof}
 Replacing $□(A→B)$ or $□A$ with $□B$ in weakening formulas or side
-formulas does not change prehistoric relations as the two $□$-symbols
+formulas does not change prehistoric relations as the $□$ symbols
 belong to the same family.
 
-Any prehistoric relation because of the new $(⊃ □)$ in case 3 already
-exists in the original proof, as every $□$ occurrence in the new
-prehistory was in one of the two prehistories of $□A$ and $□(A → B)$
-of the original proof.
+Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
+already exists in the original proof, as every $□$ occurrence in
+$□Γ_L$ or $□Γ_R$ also occures in one of the two $(⊃ □)$ rules in the
+original proof, with both introduce a $□$ of the same family as $□B$
+by the definition of correspondance for $(□Cut)$ (\ref{boxcutcorr}).
 
 So the new proof with $(□Cut)$ rules replaced by $(Cut)$ rules does
 not introduce new prehistoric relations and therefore also no new
@@ -1744,16 +1746,15 @@ identical.
 
 \Begin{proof}
 
-A prehistoric-cycle-free proof in $G3s$ by the original local
-definition (\ref{local}) is also prehistoric-cycle-free by the the
-global definition (\ref{global}) by lemma \ref{prehist} and because in
-a $G3s$-proof a negative family can not have prehistoric relations
-^[TODO on the left, smaller, what terminology to use?]. So any sequent
-$Γ ⊂ Δ ∈ G3s^⊗$ is trivially also provable prehistoric-cycle-free in
-$G3s + (Cut)$ and $G3s + (□Cut)$ and we have $G3s^⊗ ⊆ (G3s +
-(□Cut))^⊗$ and $G3s^⊗ ⊆ (G3s + (Cut))^⊗$. Moreover $(G3s + (Cut))^⊗ ⊆
-G3s^⊗$ by corollary \ref{boxcutloop} and $(G3s + (□Cut))^⊗ ⊆ (G3s +
-(Cut))^⊗ ⊆ G3s^⊗$ by corollary \ref{cutloop}. All together we get:
+A prehistoric-cycle-free proof in $G3s$ by the original definition
+(\ref{local1}) is also prehistoric-cycle-free by the the new
+definition (\ref{local2}) as in a $G3s$-proof a negative family can
+not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
+G3s^⊗$ is trivially also provable prehistoric-cycle-free in $G3s +
+(Cut)$ and $G3s + (□Cut)$ and we have $G3s^⊗ ⊆ (G3s + (□Cut))^⊗$ and
+$G3s^⊗ ⊆ (G3s + (Cut))^⊗$. Moreover $(G3s + (Cut))^⊗ ⊆ G3s^⊗$ by
+corollary \ref{boxcutloop} and $(G3s + (□Cut))^⊗ ⊆ (G3s + (Cut))^⊗ ⊆
+G3s^⊗$ by corollary \ref{cutloop}. All together we get:
 
 $G3s^⊗ = (G3s + (Cut))^⊗ = (G3s + (□Cut))^⊗$
 \End{proof}
@@ -1849,21 +1850,21 @@ corresponding to each other. That leads to two main differences
 between annotations for G3lp proofs and G3s proofs:
 
 1. Families of proof terms in G3lp consist not of occurrences of a
-single term $t$ but of occurrences of the set of subterms $s$ of a
-term $t$ in the root sequent.
+single term $t$ but of occurrences of subterms $s$ of a term $t$ in
+the root sequent.
 
 2. Similar to the cut rules in G3s, $(⊃ ⋅)$ relates subformulas and
 symbols of different polarities.
 
-So we will use the same approach as in the last chapter and use the
-global definitions of prehistoric relations for all families where the
-role of the $(⊃ □)$ rule is replaced by the $(⊃ :)$ rules as follows:
+The second point naturally leads to the same approach as in the last
+chapter to define prehistoric relations of proof term families for any
+polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
 A family $t_i$ has a *prehistoric relation* to another family $t_j$, in
 notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrence
 of $t_j$ with premise $s$, such that there is an occurrence of $t_i$
-in $T↾s$.^[TODO clearer and better definition and notation for families of terms]
+in $s$.^[TODO clearer and better definition and notation for families of terms]
 \End{definition}
 
 \Begin{lemma}
@@ -1907,7 +1908,7 @@ actually proof that]
 
 \Begin{proof}
 As we replace $(⊃ :)$ rules directly with $(⊃ □)$ rules, the two
-global definitions of prehistoric relations match. Moreover, all
+definitions of prehistoric relations match. Moreover , all
 contractions are on already related subformulas and $□$ symbols.  The
 newly introduced $(□Cut)$ is also used on related $□$ symbols and
 subformulas. So by corollaries \ref{contrprehist} and
