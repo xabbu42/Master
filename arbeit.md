@@ -453,7 +453,7 @@ other as follows:
 \End{definition}
 
 As by definition correspondence is reflexive and transitive, we get
-the following defintion for the equivalence classes of correspondence:
+the following definition for the equivalence classes of correspondence:
 
 \Begin{definition}[family]
 A family is an equivalence class of symbol occurrences which respect
@@ -479,7 +479,7 @@ directly to exactly one subformula occurrence in the conclusion.
 So for any occurrence in the proof tree we get a unique path of
 corresponding occurrences up to the root sequent of that tree, which
 proofs the first part of the theorem. For the second part, notice that
-two occurrences correspond indirectly if and only if their pathes to
+two occurrences correspond indirectly if and only if their paths to
 the root sequent merge at some point in the proof tree. So occurrences
 in the root sequent itself can not correspond to each other.
 \End{proof}
@@ -692,13 +692,13 @@ get the required proof for $Γ ⊃ A$.
 Annotated S4 Formulas and Proofs
 ================================
 
-As we have already seen, all symbol occurrances in a Gentzen style
+As we have already seen, all symbol occurrences in a Gentzen style
 proof can be divided in disjoint equivalence classes of corresponding
-symbol occurrances which are called families. In this text we will be
+symbol occurrences which are called families. In this text we will be
 mainly concerned with the families of $□$ occurrences and their
 polarities as defined below. We will therefore define annotated
 formulas, sequents and proof trees in this chapter which make the
-families and polarities of $□$ explicit in the notation and useable in
+families and polarities of $□$ explicit in the notation and usable in
 definitions.
 
 \Begin{definition}[polarity]
@@ -802,8 +802,8 @@ Realization of S4 in LP
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
 which proof details removed or forgotten. We will establish this close
-relationship in this chapter more formaly by two main theorems
-translating valid LP forumlas into valid S4 formulas and vice
+relationship in this chapter more formally by two main theorems
+translating valid LP formulas into valid S4 formulas and vice
 versa. The former is called forgetful projection, the latter is more
 complex and called realization.
 
@@ -1062,7 +1062,7 @@ Prehistoric Phenomena
 In his paper "Prehistoric Phenomena and Self-referentiality"
 [@yu2010], Yu gave a formal definition for the situation described in
 the last chapter, which he calls a prehistoric loop. We will reproduce
-in this chapter his defintions of prehistoric relation, prehistoric
+in this chapter his definitions of prehistoric relation, prehistoric
 loop as well as some basic lemmas about this new notions.
 
 \Begin{definition}[History]
@@ -1553,7 +1553,7 @@ proofs. We get the required proof for $Γ ⊃ Δ$ by leaving out $A$ from
 that proof.
 
 2\.\ case: $A$ is a side formula in the last rule of one of the two
-proofs. We distinguish the follow ing subcases:
+proofs. We distinguish the following subcases:
 
 2\.1 case: $A$ is a side formula in the last rule of $𝒯_R$, which is
 not a $(⊂ □)$ rule. By induction hypothesis we can cut the weakened
