@@ -355,6 +355,12 @@ the Hilbert style definition of $LP$ to introduce proof terms already
 fully constructed. We will call this system G3lift to differentiate it
 from the later used system G3lp.
 
+\Begin{definition}[G3lift preproof]
+A *G3lift preproof* is a proof tree using the rules of G3lift, but where
+the (lift) rule may be used without fulfilling the necessary
+precondition on the introduced term $t$.
+\End{definition}
+
 \begin{figure} \caption{G3lift} \label{G3lift}
 \begin{longtable}{cc}
 
@@ -448,23 +454,19 @@ other as follows:
 * Every subformula (symbol) occurrence in an active formula of a
   premise directly corresponds to the same occurrence of that
   subformula (symbol) in the corresponding subformula in the principal
-  formula of the rule.^[TODO add indirect correspondence transitive closure]
+  formula of the rule.
 
-* Two subformulas (symbols) correspond to each other by the transitive closure of direct correspondence. 
+* Two subformulas (symbols) correspond to each other by the transitive
+  reflexive closure of direct correspondence.
 
 \End{definition}
 
-Every subformula (symbol) occurrence in a premise corresponds to
-exactly one subformula (symbol) occurrence in the
-conclusion. Therefore all subformula (symbol) occurrences in a proof
-can be divided in disjoint corresponding families of symbol
-occurrences. For every such family there is exactly one occurrence in
-the root sequent of the proof.
+As by definition correspondence is reflexive and transitive, we get
+the following defintion for the equivalence classes of correspondence:
 
-\Begin{definition}[G3lift preproof]
-A *G3lift preproof* is a proof tree using the rules of G3lift, but where
-the (lift) rule may be used without fulfilling the necessary
-precondition on the introduced term $t$.
+\Begin{definition}[family]
+A family is an equivalence class of symbol occurrences which respect
+to correspondence.
 \End{definition}
 
 \Begin{theorem}[subformula property] \label{sub}
@@ -478,7 +480,17 @@ one subformula (symbol) occurrence in the root sequent $s_r$ of $T$.
 \End{theorem}
 
 \Begin{proof}
-TODO
+As defined, occurrences of subformulas only correspond directly via a
+rule of the proof tree. Checking the rules of G3lift and G3s, we see
+that each subformula occurrence in a premise always corresponds
+directly to exactly one subformula occurrence in the conclusion.
+
+So for any occurrence in the proof tree we get a path of corresponding
+occurrences up to the root sequent of that tree, which proofs the
+first part of the theorem. For the second part, notice that two
+occurrences correspond indirectly if and only if their pathes to the
+root sequent merge at some point in the proof tree. So occurrences in
+the root sequent itself can not correspond to each other.
 \End{proof}
 
 G3lift is sound and complete
