@@ -5,6 +5,7 @@ TODO:
 * replace loop with cycle, add explanation and ref to @yu2017
 * fix typesetting of cut rules (same as lift)
 * consistent numbering and handling of lists (is it worth the noise?)
+* replace correspondence with related?
 
 Introduction
 ============
@@ -152,7 +153,7 @@ t{:}B$.
 \Begin{proof}
 The proof is exactly the same as for the main theorem, except in the
 4. case. In that case we just have to reuse a constant $c ∈ CS$ for
-the exact same axiom, if it already exists or else we add the new
+the exact same axiom, if it already exists or else add the new
 constant $c ∉ CS$ to the new constant specification $CS'$.
 \End{proof}
 
@@ -187,9 +188,10 @@ Throughout this text, we will use the G3s calculus from @troelstra2000
 [p287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
 are only concerned with classical logic (see figure \ref{G3sfull}).
 For proofs on the other hand we will use a minimal subset of that
-system using the standard derived definitions for $¬$, $∨$, $∧$ and $◇$ as
-given by \ref{G3smin}. All the missing rules from the full system are
-admissible in the minimal system using this definitions.
+system using the standard derived definitions for $¬$, $∨$, $∧$ and
+$◇$ as given by \ref{G3smin}. All the missing rules from the full
+system are admissible in the minimal system using this definitions and
+the theorems therefore carry over to the full G3s system.
 
 \renewcommand{\arraystretch}{3}
 \begin{figure} \caption{Full G3s} \label{G3sfull}
@@ -432,20 +434,23 @@ $s$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
 
 \Begin{definition}[correspondence] \label{corr}
-We relate the subformula (symbol) occurrences in a proof as follows:
+The subformula (symbol) occurrences in a proof correspond to each
+other as follows:
 
 * Every subformula (symbol) occurrence in a side formula of a premise
-  corresponds to the same occurrence of that subformula (symbol) in
-  the same side formula in the conclusion.
+  directly corresponds to the same occurrence of that subformula
+  (symbol) in the same side formula in the conclusion.
 
-* Every active formula of a premise correspond to the topmost
+* Every active formula of a premise directly correspond to the topmost
   subformula occurrence of the same formula in the principal formula
   of the conclusion.
 
 * Every subformula (symbol) occurrence in an active formula of a
-  premise corresponds to the same occurrence of that subformula
-  (symbol) in the corresponding subformula in the principal formula of
-  the rule.
+  premise directly corresponds to the same occurrence of that
+  subformula (symbol) in the corresponding subformula in the principal
+  formula of the rule.^[TODO add indirect correspondence transitive closure]
+
+* Two subformulas (symbols) correspond to each other by the transitive closure of direct correspondence. 
 
 \End{definition}
 
@@ -951,17 +956,17 @@ self-referential constant specification.
 \End{theorem}
 
 We will not reproduce this general result but use the provided formula
-as an example for an inherently self-referential S4 formula.  If we
-look at the G3s proof for $¬□(P ∧ ¬□P)$ and the realization of that
-proof in figure \ref{proofs}, we can see why a self referential proof
-term like the used term $t$ for the propositional tautology $P ∧
-¬t⋅x{:}P → P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ we have to
-disprove $P ∧ ¬□P$ at some point which means we have to prove
-$□P$. The only way to prove $□P$ is using $□(P ∧ ¬□P)$ as an
-assumption on the left. This leads to the situation that we introduce
-$□$ by a $(⊃ □)$ rule where the same family already occurs on the
-left. As the following chapters will show formally such a situation is
-actually necessary for the self-referentiality of an S4 formula.
+as an example for an inherently self-referential S4 formula. Looking
+at the G3s proof for $¬□(P ∧ ¬□P)$ and the realization of that proof
+in figure \ref{proofs}, we can see why a self referential proof term
+like the used term $t$ for the propositional tautology $P ∧ ¬t⋅x{:}P →
+P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ one needs to disprove
+$P ∧ ¬□P$ at some point which means one has to prove $□P$. The only
+way to prove $□P$ is using $□(P ∧ ¬□P)$ as an assumption on the
+left. This leads to the situation that the proof introduces $□$ by a
+$(⊃ □)$ rule where the same family already occurs on the left. As the
+following chapters will show formally such a situation is actually
+necessary for the self-referentiality of an S4 formula.
 
 \begin{figure} \caption{proof for $¬□(P ∧ ¬□P)$} \label{proofs}
 \begin{longtable}{cc}
@@ -1259,9 +1264,9 @@ have an occurrence of a family $□$ as part of a cut formula in the
 *global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
 \label{defcut} is not a local prehistoric family.
 
-To handle proof terms $s⋅t$ in the next chapter, we will also need a
-rule for modus ponens under $□$. We therefore introduce here the
-new rule $(□Cut)$ as follows:
+To handle proof terms $s⋅t$ in the next chapter an additional rule for
+modus ponens under $□$ is necessary. We therefore introduce here the new rule
+$(□Cut)$ as follows:
 
 \Begin{definition}[$(□Cut)$ rule]
 
@@ -1289,7 +1294,7 @@ Again it is also necessary to expand the definition of correspondence
 Notice that with this expansion, $□$ occurrences of the same family no
 longer are always part of the same subformula $□C$ and therefor lemma
 \ref{trans} no longer holds.^[TODO make sure] Also similar to the
-$(Cut)$ rule, we add correspondence between negative and positive
+$(Cut)$ rule, correspondence is expanded to relate negative and positive
 occurrences of $□$ symbols.
 
 With the following lemmas and theorems we will establish a
@@ -1641,9 +1646,9 @@ the new $(⊃ □)$ in case 2.3. All prehistoric relations from $□Γ_R$ are
 already present from the $(⊃ □)$ rule on the right in the original
 proof. So only prehistoric relations from $□Γ_L$ are new. For all
 families $□_i$ in $□Γ_L$ we have $i ≺ k$ for the family $□_k$ in the
-cut formula introduced by the $(⊃ □)$ rule on the left. Moreover, we
-have $k ≺ j$ for the same family because of the occurrence of $□A_0$
-on the right.
+cut formula introduced by the $(⊃ □)$ rule on the left. Moreover $k ≺
+j$ for the same family because of the occurrence of $□A_0$ on the
+right.
 \End{proof}
 
 \Begin{corollary} \label{cutloop}
@@ -1844,9 +1849,9 @@ A, this two rules are equivalent to the two axioms and invertible.
 TODO repeat necessary results from @pulver2010
 
 We expand the definition of correspondence \ref{corr} to G3lp proofs
-in the natural way. That is, we consider all topmost proof terms in
-active formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ as
-corresponding to each other. That leads to two main differences
+in the natural way. That is, all topmost proof terms in
+active formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$
+correspond to each other. That leads to two main differences
 between annotations for G3lp proofs and G3s proofs:
 
 1. Families of proof terms in G3lp consist not of occurrences of a
@@ -1917,27 +1922,28 @@ prehistoric relations are introduced in the forgetful projection.
 \End{proof}
 
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
-chapter \ref{self}. In figure \ref{g3lpproof} we see a proof of the
-same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp. For simplicity we will
-just assume that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
-proof constant. On the same figure we also included the forgetful
-projection of that proof which is a G3s + $(□Cut)$ proof.
+chapter \ref{self}. Figure \ref{g3lpproof} contains a proof of the
+same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp as well as the
+forgetful projection of that proof in G3s + $(□Cut)$. For simplicity
+we assumed that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
+proof constant.
 
 This proofs display the logical dependencies making the formula
 self-referential in quite a different way than the original G3s proof
-in figure \ref{proofs}. We have 3 families of $□$ in the G3s +
-$(□Cut)$ proof. Two are the same families as in the G3s proof, and
-have a consistent polarity throughout the proof. We therefore simply
-use the symbols $⊞$ and $⊟$ for this families. The third one is part
-of the cut formula and therefore does not occur in the final sequent
-and does not have consistent polarity throughout the proof. We use $□$
-for occurrences of this family in the proof.
+in figure \ref{proofs}. There are 3 families of $□$ in the G3s +
+$(□Cut)$ proof. Two are the same families as in the G3s proof, occur
+in the root sequent and have a consistent polarity throughout the
+proof. We therefore simply use the symbols $⊞$ and $⊟$ for this
+families. The third one is part of the cut formula and therefore does
+not occur in the final sequent and does not have consistent polarity
+throughout the proof. We use $□$ for occurrences of this family in the
+proof.
 
 All left prehistoric relations of the proof are from left branch of
-the cut where we have $⊟ ≺_L ⊞$ and $⊞ ≺_L ⊞$. Other than in the G3s
-proof, the two $⊞$ are used for different formulas $P$ and $P ∧ ¬□P$
-and the connection between the two is established by the $(□Cut)$ with
-$□(P ∧ ¬□P → P)$.
+the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than in
+the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
+∧ ¬□P$ and the connection between the two is established by the
+$(□Cut)$ with $□(P ∧ ¬□P → P)$.
 
 \afterpage{
 \begin{landscape}
