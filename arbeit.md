@@ -744,9 +744,9 @@ have occurrences introduced by a $(⊃ □)$ rule are called principal
 positive families or simply principal families. The remaining
 positive families are called non-principal positive families. [^essential]
 
-[^essential]: This is the same terminology as used in @yu2010. In many texts
-principal families are also called essential families [for example
-@artemov2001].
+[^essential]: This is the same terminology as used in @yu2010. In many
+texts principal families are called essential families following the
+original text [@artemov2001]. TODO is that the original?
 
 Given a S4 proof $T$ we annotate the formulas $A$ in the proof in the
 following way:
@@ -837,10 +837,10 @@ exists a G3s proof $𝒯 = (T, R)$ of $⊃ A$.
 
 For all principal families $⊞_i$ in $an_T(T)$, enumerate the
 $(⊃ □)$ rules principally introducing an occurrence of $⊞_i$ as
-$R_{i,0}, ... R_{i,n_i}$.  We will use $I_{i,0}, ... I_{i,n_i}$ to
-denote the premises and $O_{i,0}, ... O_{i,n_i}$ to denote the
-conclusions of this rules (so for all $i ≤ n$, $j ≤ n_i$ we have
-$I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}n_i$ $(⊃
+$R_{i,0}, ... R_{i,l_i-1}$.  We will use $I_{i,0}, ... I_{i,l_i-1}$ to
+denote the premises and $O_{i,0}, ... O_{i,l_i-1}$ to denote the
+conclusions of this rules (so for all $i ≤ n_p$, $j < l_i$ we have
+$I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}l_i$ $(⊃
 □)$ rules in the proof $T$.
 
 We choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
@@ -849,7 +849,7 @@ $O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $s_r$ are
 later in this order).
 
 We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
-u_{i,0} + ... + u_{i,n_i}$ and the injective constant specification
+u_{i,0} + ... + u_{i,l_i-1}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lift, so by a trivial induction the proof
 tree $r_T^0(an_T(T))$ is a G3lift preproof. However it is not a G3lift
@@ -876,7 +876,8 @@ a correct G3lift proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
 is also a correct G3lift proof. By theorem \ref{equiv1} we therefore
-have a derivation for:
+have a $LP(CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
+1}(an_T(I_{i,j}))$, which has the following form:
 
 \begin{equation} \label{start}
 r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS^{ε(i,j) - 1})} r_T^{ε(i,j) - 1}(A)
@@ -885,7 +886,7 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) 
 By the corollary \ref{liftcs} of the lifting lemma, we get a new proof
 term $t_{i,j}(x_{k_0}, ..., x_{k_q})$ and a new injective
 $CS'^{ε(i,j)} = CS^{ε(i,j) - 1} ∪ \{c_{i,j,0}{:}A_{i,j,0}, ...,
-c_{i,j,m_{i,j}}:A_{i,j,m_{i,j}}\}$ such that:
+c_{i,j,m_{i,j}}{:}A_{i,j,m_{i,j}}\}$ such that:
 
 \begin{equation} \label{lifted}
 r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS'^{ε(i,j)})} t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
@@ -893,13 +894,13 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) 
 
 Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
 $t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. By the substitution
-lemma \ref{subst}, \ref{lifted} still holds for $r_T^{ε(i,j)}$ and
-$CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the form $(s_0 + ···
-+s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{n_i}){:}A$. Therefore $LP_0 ⊢
-t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows from repeated use of $A4$
-Together with the substituted \ref{lifted} we get the precondition
-required for the final $(⊃ :)$ rule in $r_T^{ε(i,j)}(an_T(T ↾
-O_{i,j}))$:
+lemma \ref{subst}, the assertion \ref{lifted} still holds for
+$r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the
+form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· +
+s_{l_i-1}){:}A$. Therefore $LP_0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows
+from repeated use of $A4$. Together with the substituted \ref{lifted}
+we get the precondition required for the final $(⊃ :)$ rule in
+$r_T^{ε(i,j)}(an_T(T ↾ O_{i,j}))$:
 
 
 \begin{equation} \label{precond}
@@ -921,23 +922,22 @@ $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \Begin{corollary} \label{realvar}
 There exist derivations $d^k_{i,j}$ for the precondition
 \ref{precond} of all rules $R_{i,j}$ in $r_T^k(an_T(T))$ and for any
-$k ≥ ε(i,j)$, which do not introduce new variables.
+$k ≥ ε(i,j)$ which do not introduce new variables.
 \End{corollary}
 
 \Begin{proof}
 Proof by complete induction over the order $ε(i,j)$.
 
-Given a rule $R_{i,j}$, there exist derivations $d^k_{i0,j0}$
-which do not introduce new variables for the precondition of any rule
-$R_{i_0,j_0}$ in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0)
-< ε(i,j) ≤ k$ for all this rules. Using the exact same steps as in the
-main proof but using the realization function $r_T^k$, we get a
-derivation $d$ for \ref{start} which does not introduce new variables
-by the corollary \ref{equiv1var}, a derivation $d'$ for \ref{lifted}
-which does not introduce new variables by the corollary \ref{liftvar}
-and finally a derivation $d^k_{i,j}$ for \ref{precond} which also does
-not introduce new variables.^[TODO possibly clearer by using
-$d^{ε(i,j)}_{i0,j0}$] and substitution lemma]
+Given a rule $R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do
+not introduce new variables for the precondition of any rule
+$R_{i_0,j_0}$ in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤
+k$ for all this rules. Using the exact same steps as in the main proof
+but using the realization function $r_T^k$, we get a derivation $d$
+for \ref{start} which does not introduce new variables by the
+corollary \ref{equiv1var}, a derivation $d'$ for \ref{lifted} which
+does not introduce new variables by the corollary \ref{liftvar} and
+finally a derivation $d^k_{i,j}$ for \ref{precond} which also does not
+introduce new variables.
 \End{proof}
 
 
@@ -951,12 +951,12 @@ self-referential constant specifications in the following sense:
 
 \Begin{definition}[directly self-referential]
 A constant specification $CS$ is *directly self-referential* if there is a
-constant $c$ such that $c:A(c) ∈ CS$.
+constant $c$ such that $c{:}A(c) ∈ CS$.
 \End{definition}
 
 \Begin{definition}[self-referential]
 A constant specification $CS$ is *self-referential* if there is a
-subset $A ⊆ CS$ such that $A := {c_0:A(c_1), ..., c_{n-1}:A(c_0)}$.
+subset $A ⊆ CS$ such that $A := {c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)}$.
 \End{definition}
 
 The following theorem from @brezhnev2006 [31] shows that
@@ -1061,7 +1061,7 @@ $s$ iff $h ≺^s i$.
 \Begin{proof}
 (⇒): $⊞_h$ occurs in a sequent $s'$ in a pre-history of $p_i$ in the
 path $s$, so the path $s$ has the form
-$s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j ≤ n_i$. By the subformula
+$s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j < l_i$. By the subformula
 theorem \ref{sub}, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
 $s'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
 $h ≺^s_L i$, if it is on right we have $h ≺^s_R i$. In both cases $h
@@ -1139,24 +1139,23 @@ Main Proof
 
 \Begin{lemma} \label{variablefree}
 Any provisional variable $u_{x,y}$, which does not occur in
-$I^{ε(i,j)−1}_{i,j}$, does not occur in $CS^{ε(i,j)}$.
+$r^{ε(i,j) - 1}(an_T(I_{i,j}))$, does not occur in $CS^{ε(i,j)}$.
 \End{lemma}
 
 \Begin{proof}
-By the subformula property \ref{sub} for G3lift proofs, $u_{x,y}$ does
+By the subformula property (\ref{sub}) for G3lift proofs, $u_{x,y}$ does
 not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
 \ref{equiv1var} using corollary \ref{realvar} for case 6, the
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
-theorem \ref{lift}, $CS'_{i,j}$ and $t_{i,j}$ do not contain
-$u_{x,y}$. So also $CS_{i,j}$ does not contain $u_{x,y}$. ^[TODO check
-and better formulation]
+theorem, $CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
+$CS_{i,j}$ does not contain $u_{x,y}$.
 \End{proof}
 
 \Begin{lemma} \label{epsilon}
 If a G3s−proof $T$ is prehistoric-loop-free, then we can realize it in
 such a way that: If $h_2 ≺ h_1$, then $ε(h_2,j_2) < ε(h_1,j_1)$ for any
-$j_1 ≤ l_{h_1}$ and $j_2 ≤ m_{h_2}$.
+$j_1 < l_{h_1}$ and $j_2 < l_{h_2}$.
 \End{lemma}
 
 \Begin{proof}
@@ -1165,8 +1164,8 @@ acyclic graph. Therefore there exists a topological order
 $p_{k_0},...,p_{k_{n_p}}$ of the $n_p + 1$ principal positive families
 $p_0, ..., p_{n_p}$. For any path $s$ of the form
 $s_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*s$, we have $i_2 ≺ i_1$ by lemma
-\ref{global}. So the order $ε(k_x,j) := Σ_{w = 0}^{x-1}l_{k_w}$
-defined for each family $p_{k_x}$ and $j ≤ l_{k_x}$ by handling the
+\ref{global}. So the order $ε(k_x,j) := j + Σ_{w = 0}^{x-1}l_{k_w}$
+defined for each family $p_{k_x}$ and each $j < l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
 \ref{realization} and at the same time the condition given in this
@@ -1186,7 +1185,7 @@ By the construction in the proof of the realization theorem
 \ref{realization}, $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
 1}(an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
-ε(i,j)$ for all $j_h ≤ m_h$. So any provisional variable $u_{h,j_h}$
+ε(i,j)$ for all $j_h < l_h$. So any provisional variable $u_{h,j_h}$
 occurring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
 - 1}(an_T(I_{i,j}))$, which is therefore provisional variable free. So
 by lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
@@ -1219,15 +1218,15 @@ the next constant $c_{i_{x'},j_{x'},k_{x'}}$ with $x' := x + 1 \mod
 n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 ε(i_x,j_x)$ for all $x ≤ n$. So $ε(i_n,j_n) < ... < ε(i_1,j_1) <
 ε(i_0,j_0) < ε(i_n,j_n)$, which is impossible. Therefore the generated
-$CS^N$ is not self-referential and we have $⊢_{LP(CS^⊛)} B$.
+$CS^N$ is not self-referential and we have $LP(CS^⊛) ⊢ B$.
 \End{proof}
 
 
 Prehistoric relations in G3s with cut rules
 ===========================================
 
-In this chapter we will define prehistoric relations in the system G3s
-+ (Cut). The (context sharing) cut rule has the following definition
+In this chapter we will define prehistoric relations in the systems G3s
++ (Cut) and G3s + $(□Cut)$. The (context sharing) cut rule has the following definition
 [@troelstra2000 67]:
 
 \Begin{definition}[$(Cut)$ rule]
@@ -1779,7 +1778,7 @@ $G3s^⊗ = (G3s + (Cut))^⊗ = (G3s + (□Cut))^⊗$
 Prehistoric relations and G3lp
 ==============================
 
-The following is minimal subset of the Gentzen style system G3lp
+The following system is minimal subset of the Gentzen style system G3lp
 without structural rules as introduced by @pulver2010 [62]. We do
 replace the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$
 to keep to the prehistoric relations of the proof intact. As there is
