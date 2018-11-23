@@ -34,7 +34,7 @@
 \newtheorem{definition}{Definition}
 \renewcommand\qedsymbol{$\blacksquare$}
 
-\newunicodechar{□}{\Box}
+\newunicodechar{□}{\ensuremath{\Box}}
 \newunicodechar{◇}{\Diamond}
 \newunicodechar{↾}{\mathord{\upharpoonright}}
 \newunicodechar{⇐}{\ensuremath{\Leftarrow}}
@@ -42,6 +42,10 @@
 \newunicodechar{▹}{\vartriangleright}
 \newunicodechar{˚}{^\circ}
 %\newunicodechar{⊀}{\nprec}
+\DeclareMathOperator{\Glift}{G3lift}
+\DeclareMathOperator{\Glp}{G3lp}
+\DeclareMathOperator{\Gs}{G3s}
+\DeclareMathOperator{\Cut}{Cut}
 
 %for markdown inside of definitions and theorems
 \newcommand{\hideFromPandoc}[1]{#1}

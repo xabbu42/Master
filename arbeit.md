@@ -3,7 +3,6 @@
 TODO:
 
 * replace loop with cycle, add explanation and ref to @yu2017
-* fix typesetting of cut rules (same as lift)
 * consistent numbering and handling of lists (is it worth the noise?)
 * replace correspondence with related?
 
@@ -492,7 +491,7 @@ equivalent to the Hilbert system LP from @artemov2001 as introduced in
 chapter \ref{syntax}.
 
 \Begin{theorem} \label{sound}
-$G3lift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
+$\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 \End{theorem}
 
 \Begin{proof}
@@ -534,7 +533,7 @@ derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
 
 \Begin{corollary} \label{soundvar}
 The deduction $d$ for $Γ ⊢_{LP} ⋁Δ$ only uses variables $x$ which also
-occur in the proof tree $𝒯 = (T, R)$ for $G3lift ⊢ Γ ⊃ Δ$ or any
+occur in the proof tree $𝒯 = (T, R)$ for $\Glift ⊢ Γ ⊃ Δ$ or any
 deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ used in
 case 6.
 \End{corollary}
@@ -557,43 +556,43 @@ G3s. The only trivial difference is that the precondition of the
 gets introduced. Because of this and also because the following result
 is just included for completeness and not actually used for the main
 theorems of this text, we will omit the proofs here and refer the
-reader to the proofs for $G3s$ in @pulver2010 [40ff.] as well as later
+reader to the proofs for G3s in @pulver2010 [40ff.] as well as later
 in this text.
 
 \Begin{lemma}[weakening for G3lift] \label{liftweak}
-$G3lift ⊢ Γ ⊃ Δ ⇒ G3lift ⊢ Γ, Γ' ⊃ Δ, Δ'$
+$\Glift ⊢ Γ ⊃ Δ ⇒ \Glift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
 \Begin{lemma}[inversion for G3lift] \label{liftinverse}
 
-* $G3lift ⊢ Γ ⊃ Δ, A → B ⇒ G3lift ⊢ A, Γ ⊃ Δ, B$
+* $\Glift ⊢ Γ ⊃ Δ, A → B ⇒ \Glift ⊢ A, Γ ⊃ Δ, B$
 
-* $G3lift ⊢ A → B, Γ ⊃ Δ ⇒ G3lift ⊢ Γ ⊃ Δ, A \text{ and } G3lift ⊢ B, Γ ⊃ Δ$
+* $\Glift ⊢ A → B, Γ ⊃ Δ ⇒ \Glift ⊢ Γ ⊃ Δ, A \text{ and } \Glift ⊢ B, Γ ⊃ Δ$
 
-* $G3lift ⊢ t:A, Γ ⊃ Δ ⇒ G3lift ⊢ A, t:A, Γ ⊃ Δ$
+* $\Glift ⊢ t:A, Γ ⊃ Δ ⇒ \Glift ⊢ A, t:A, Γ ⊃ Δ$
 
-* $G3lift ⊢ Γ ⊃ Δ, t:A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
+* $\Glift ⊢ Γ ⊃ Δ, t:A ⇒ \Glift ⊢ Γ ⊃ Δ, A$
 
 \End{lemma}
 
 \Begin{lemma}[contraction for G3lift] \label{liftcontr}
 
-* $G3lift ⊢ A, A, Γ ⊃ Δ ⇒ G3lift ⊢ A, Γ ⊃ Δ$
+* $\Glift ⊢ A, A, Γ ⊃ Δ ⇒ \Glift ⊢ A, Γ ⊃ Δ$
 
-* $G3lift ⊢ Γ ⊃ Δ, A, A ⇒ G3lift ⊢ Γ ⊃ Δ, A$
+* $\Glift ⊢ Γ ⊃ Δ, A, A ⇒ \Glift ⊢ Γ ⊃ Δ, A$
 
 \End{lemma}
 
 \Begin{lemma}[cut elimination for G3lift] \label{liftcut}
-If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
+If $\Glift ⊢ A, Γ ⊃ Δ$ and $\Glift ⊢ Γ' ⊃ Δ', A$ then $\Glift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
 \End{lemma}
 
 \Begin{lemma} \label{liftgenax}
-$G3lift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
+$\Glift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
 \Begin{theorem} \label{complete}
-$Γ ⊢_{LP} A ⇒ G3lift ⊢ Γ ⊃ A$
+$Γ ⊢_{LP} A ⇒ \Glift ⊢ Γ ⊃ A$
 \End{theorem}
 
 \Begin{proof}
@@ -823,7 +822,7 @@ If $LP ⊢ A$ then $S4 ⊢ A˚$.
 \End{theorem}
 
 \Begin{proof}
-If $LP ⊢ A$ then $G3lift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
+If $LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
 completeness of G3lift (\ref{complete}). The forgetful projection of the
 sequents of any G3lift rule map directly to the sequents of an
 equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by 
@@ -1277,36 +1276,36 @@ Prehistoric relations in G3s with cut rules
 ===========================================
 
 In this chapter we will define prehistoric relations in the systems
-G3s + (Cut) and G3s + $(□Cut)$. The (context sharing) cut rule has the
+G3s + (Cut) and G3s + (□Cut). The (context sharing) cut rule has the
 following definition [@troelstra2000 67]:
 
-\Begin{definition}[$(Cut)$ rule]
+\Begin{definition}[(Cut) rule]
 
-\AXC{$G3s ⊢ Γ ⊃ Δ, A$}
-\AXC{$G3s ⊢ A, Γ ⊃ Δ$}
-\RightLabel{$(Cut)$}
-\BIC{$G3s ⊢ Γ ⊃ Δ$}
+\AXC{$Γ ⊃ Δ, A$}
+\AXC{$A, Γ ⊃ Δ$}
+\RightLabel{(Cut)}
+\BIC{$Γ ⊃ Δ$}
 \DP
 
 \End{definition}
 
 It is necessary to expand the definition of correspondence
-(\ref{corr}) to $(Cut)$ rules as follows:
+(\ref{corr}) to (Cut) rules as follows:
 
-\Begin{definition}[correspondence for $(Cut)$]
+\Begin{definition}[correspondence for (Cut)]
 
-* The active formulas (and their symbols) in the premises of a $(Cut)$ rule correspond
+* The active formulas (and their symbols) in the premises of a (Cut) rule correspond
 to each other.
 
 \End{definition}
 
 The classification and annotations for families of $□$ do not carry
-over to G3s + $(Cut)$, as the $(Cut)$ rule uses the cut formula in
+over to G3s + (Cut), as the (Cut) rule uses the cut formula in
 different polarities for the two premises. We therefore will consider
-*all* $□$ families for prehistoric relations in G3s + $(Cut)$ proofs.
+*all* $□$ families for prehistoric relations in G3s + (Cut) proofs.
 This leads to the following expanded definition of prehistoric relation:
 
-\Begin{definition}[Local Prehistoric Relation in G3s + $(Cut)$] \label{local2}
+\Begin{definition}[Local Prehistoric Relation in G3s + (Cut)] \label{local2}
 A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrence
 of $□_j$ with premise $s$, such that there is an occurrence of $□_i$
@@ -1320,7 +1319,7 @@ branch of the cut. On the other hand, adding prehistoric relations
 with negative families in a cut free G3s proof does not introduce
 prehistoric loops, as in G3s a negative family is never introduced by
 a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
-G3s + $(Cut)$ proofs, the subformula property (\ref{sub}) and
+G3s + (Cut) proofs, the subformula property (\ref{sub}) and
 therefore also lemma \ref{global} no longer holds. That means we can
 have an occurrence of a family $□$ as part of a cut formula in the
 *global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
@@ -1328,14 +1327,14 @@ have an occurrence of a family $□$ as part of a cut formula in the
 
 To handle proof terms $s⋅t$ in the next chapter an additional rule for
 modus ponens under $□$ is necessary. We therefore introduce here the new rule
-$(□Cut)$ as follows:
+(□Cut) as follows:
 
-\Begin{definition}[$(□Cut)$ rule]
+\Begin{definition}[(□Cut) rule]
 
-\AXC{$G3s ⊢ Γ ⊃ Δ, □A$}
-\AXC{$G3s ⊢ Γ ⊃ Δ, □(A → B)$}
-\RightLabel{$(□Cut)$}
-\BIC{$G3s ⊢ Γ ⊃ Δ, □B$}
+\AXC{$Γ ⊃ Δ, □A$}
+\AXC{$Γ ⊃ Δ, □(A → B)$}
+\RightLabel{(□Cut)}
+\BIC{$Γ ⊃ Δ, □B$}
 \DP
 
 \End{definition}
@@ -1343,7 +1342,7 @@ $(□Cut)$ as follows:
 Again it is also necessary to expand the definition of correspondence
 (\ref{corr}) for this rule:
 
-\Begin{definition}[correspondence for $(□Cut)$] \label{boxcutcorr}
+\Begin{definition}[correspondence for (□Cut)] \label{boxcutcorr}
 
 * The topmost $□$ occurrence in the active formulas and the principal
   formula correspond to each other.
@@ -1356,17 +1355,17 @@ Again it is also necessary to expand the definition of correspondence
 Notice that with this expansion, $□$ occurrences of the same family no
 longer are always part of the same subformula $□C$ and therefor lemma
 \ref{trans} no longer holds.^[TODO make sure] Also similar to the
-$(Cut)$ rule, correspondence is expanded to relate negative and positive
+(Cut) rule, correspondence is expanded to relate negative and positive
 occurrences of $□$ symbols.
 
 With the following lemmas and theorems we will establish a
-constructive proof for $G3s + (□Cut) ⊢ Γ ⊃ Δ ⇒ G3s + (Cut) ⊢ Γ ⊃ Δ ⇒
-G3s ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
+constructive proof for $\Gs + (□\Cut) ⊢ Γ ⊃ Δ ⇒ \Gs + (\Cut) ⊢ Γ ⊃ Δ ⇒
+\Gs ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
 constructions do not introduce prehistoric loops by the new definition
 \ref{local2}. As all prehistoric relations by the first definition
 \ref{local1} are included in the new definition, the final proof in
 G3s will be prehistoric loop free by any definition if the original
-proof G3s + $(□Cut)$ was prehistoric loop free by the new definition.
+proof G3s + (□Cut) was prehistoric loop free by the new definition.
 
 It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
@@ -1377,7 +1376,7 @@ and the results can also be used in subtrees $T↾s$ together with an
 annotation $an_T$ for the complete tree.
 
 \Begin{lemma}[weakening for G3s] \label{weak}
-$G3s ⊢ Γ ⊃ Δ ⇒ G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$
+$\Gs ⊢ Γ ⊃ Δ ⇒ \Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
 \Begin{proof}
@@ -1394,9 +1393,9 @@ weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 \End{proof}
 
 \Begin{lcorollary} \label{weakprehist}
-For any annotation $an$ the proof for $G3s ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
+For any annotation $an$ the proof for $\Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
 constructed in the main proof has the exact same prehistoric relations
-as the original proof for $G3s ⊢ Γ ⊃ Δ$. ^[TODO compare with
+as the original proof for $\Gs ⊢ Γ ⊃ Δ$. ^[TODO compare with
 "weakening occurrences are isolated" in @yu2017 [787]]
 \End{lcorollary}
 
@@ -1410,13 +1409,13 @@ prehistoric relations remain the same.
 
 \Begin{lemma}[inversion for G3s] \label{invers}
 
-* $G3s ⊢ Γ ⊃ Δ, A → B ⇒ G3s ⊢ A, Γ ⊃ Δ, B$
+* $\Gs ⊢ Γ ⊃ Δ, A → B ⇒ \Gs ⊢ A, Γ ⊃ Δ, B$
 
-* $G3s ⊢ A → B, Γ ⊃ Δ ⇒ G3s ⊢ Γ ⊃ Δ, A \text{ and } G3s ⊢ B, Γ ⊃ Δ$
+* $\Gs ⊢ A → B, Γ ⊃ Δ ⇒ \Gs ⊢ Γ ⊃ Δ, A \text{ and } \Gs ⊢ B, Γ ⊃ Δ$
 
-* $G3s ⊢ □A, Γ ⊃ Δ ⇒ G3s ⊢ A, □A, Γ ⊃ Δ$
+* $\Gs ⊢ □A, Γ ⊃ Δ ⇒ \Gs ⊢ A, □A, Γ ⊃ Δ$
 
-* $G3s ⊢ Γ ⊃ Δ, □A ⇒ G3s ⊢ Γ ⊃ Δ, A$
+* $\Gs ⊢ Γ ⊃ Δ, □A ⇒ \Gs ⊢ Γ ⊃ Δ, A$
 
 \End{lemma}
 
@@ -1450,9 +1449,9 @@ relations.
 
 \Begin{lemma}[contraction for G3s] \label{contr}
 
-* $G3s ⊢ A, A, Γ ⊃ Δ ⇒ G3s ⊢ A, Γ ⊃ Δ$
+* $\Gs ⊢ A, A, Γ ⊃ Δ ⇒ \Gs ⊢ A, Γ ⊃ Δ$
 
-* $G3s ⊢ Γ ⊃ Δ, A, A ⇒ G3s ⊢ Γ ⊃ Δ, A$
+* $\Gs ⊢ Γ ⊃ Δ, A, A ⇒ \Gs ⊢ Γ ⊃ Δ, A$
 
 \End{lemma}
 
@@ -1506,7 +1505,7 @@ prehistoric relations can be introduced.
 \End{proof}
 
 \Begin{lemma} \label{drop}
-$G3s ⊢ B, □B, Γ ⊃ Δ ⇔ G3s ⊢ B, Γ ⊃ Δ$
+$\Gs ⊢ B, □B, Γ ⊃ Δ ⇔ \Gs ⊢ B, Γ ⊃ Δ$
 \End{lemma}
 
 \Begin{proof}
@@ -1538,7 +1537,7 @@ So the new proof can not introduce any new prehistoric relations.
 \End{proof}
 
 \Begin{theorem}[cut elimination for G3s] \label{cut}
-If $G3s ⊢ Γ ⊃ Δ, A$ and $G3s ⊢ A, Γ ⊃ Δ$ then $G3s ⊢ Γ ⊃ Δ$.
+If $\Gs ⊢ Γ ⊃ Δ, A$ and $\Gs ⊢ A, Γ ⊃ Δ$ then $\Gs ⊢ Γ ⊃ Δ$.
 \End{theorem}
 
 \Begin{proof}
@@ -1583,7 +1582,7 @@ has the following form:
 \RightLabel{$(⊃ □)$}
 \UIC{$Γ'_R, □A_0, □Γ_R ⊃ Δ', □B$}
 
-\RightLabel{$(cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ', □B$}
 \DP
 where $Δ = Δ', □B$ and $Γ = Γ'_L, □Γ_L = Γ'_R, □Γ_R$.
@@ -1598,7 +1597,7 @@ We can move the cut up on the right using weakening as follows:
 \AXC{$𝒯'_R$} \noLine
 \UIC{$□A_0, □Γ_R, □Γ_L ⊃ B$}
 
-\RightLabel{$(cut)$}
+\RightLabel{(Cut)}
 \BIC{$□Γ_R, □Γ_L ⊃ B$}
 
 \RightLabel{$(⊃ □)$}
@@ -1629,7 +1628,7 @@ right. Therefore also $Γ ⊃ Δ$ is an axiom.
 \RightLabel{$(→ ⊃)$}
 \BIC{$A_0 → A_1, Γ ⊃ Δ$}
 
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ$}
 \DP
 
@@ -1640,11 +1639,11 @@ transform that into:
 \UIC{$Γ ⊃ Δ, A_1, A_0$}
 \AXC{$𝒯_L$} \noLine
 \UIC{$A_0, Γ ⊃ Δ, A_1$}
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ, A_1$}
 \AXC{$𝒯_{R2}$} \noLine
 \UIC{$A_1, Γ ⊃ Δ$}
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ$}
 \DP
 
@@ -1664,7 +1663,7 @@ $Γ ⊃ Δ$.
 \RightLabel{$(□ ⊃)$}
 \UIC{$□A_0, Γ ⊃ Δ$}
 
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ$}
 \DP
 
@@ -1677,7 +1676,7 @@ proof:
 \UIC{$Γ ⊃ Δ, A_0$}
 \AXC{$𝒯'_R$} \noLine
 \UIC{$A_0, Γ ⊃ Δ$}
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$Γ ⊃ Δ$}
 \DP
 
@@ -1727,8 +1726,8 @@ cut formula such that $i_k ≺ i'_k ≺ i_{k+1 \mod n}$. Therefore we also
 have a prehistoric loop in the original proof.
 \End{proof}
 
-\Begin{theorem}[$(□Cut)$ elimination] \label{boxcut}
-If $G3s ⊢ Γ ⊃ Δ, □A$ and $G3s ⊢ Γ ⊃ Δ, □(A → B)$ then $G3s ⊢ Γ ⊃ Δ, □B$
+\Begin{theorem}[(□Cut) elimination] \label{boxcut}
+If $\Gs ⊢ Γ ⊃ Δ, □A$ and $\Gs ⊢ Γ ⊃ Δ, □(A → B)$ then $\Gs ⊢ Γ ⊃ Δ, □B$
 \End{theorem}
 
 \Begin{proof}
@@ -1755,7 +1754,7 @@ rule. Then the last rules have the following form:
 \RightLabel{$(⊃ □)$}
 \UIC{$Γ'_R, □Γ_R  ⊃ Δ, □(A → B)$}
 
-\RightLabel{$(□cut)$}
+\RightLabel{(□Cut)}
 \BIC{$Γ ⊃ Δ, □B$}
 \DP
 where $Δ = Δ', □B$ and $Γ = Γ'_L, □Γ_L = Γ'_R, □Γ_R$.
@@ -1768,7 +1767,7 @@ the formula $A$ we get the following proof:
 \UIC{$□Γ_L, □Γ_R ⊃ A$}
 \AXC{$𝒯''_R$} \noLine
 \UIC{$A, □Γ_L, □Γ_R  ⊃ B$}
-\RightLabel{$(Cut)$}
+\RightLabel{(Cut)}
 \BIC{$□Γ_L, □Γ_R ⊃ B$}
 \RightLabel{$(⊃ □)$}
 \UIC{$Γ, □Γ_L, □Γ_R ⊃ Δ, □B$}
@@ -1791,10 +1790,10 @@ belong to the same family.
 Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
 already exists in the original proof, as every $□$ occurrence in
 $□Γ_L$ or $□Γ_R$ also occurs in one of the two $(⊃ □)$ rules in the
-original proof, with both introduce a $□$ of the same family as $□B$
-by the definition of correspondence for $(□Cut)$ (\ref{boxcutcorr}).
+original proof, with both introduce a □ of the same family as $□B$
+by the definition of correspondence for (□Cut) (\ref{boxcutcorr}).
 
-So the new proof with $(□Cut)$ rules replaced by $(Cut)$ rules does
+So the new proof with (□Cut) rules replaced by (Cut) rules does
 not introduce new prehistoric relations and therefore also no new
 prehistoric loops. By corollary \ref{cutloop}, the cut elimination to
 get a G3s proof does not introduce prehistoric loops.
@@ -1807,23 +1806,23 @@ $Y$-proof [@yu2017 787].
 \End{definition}
 
 \Begin{theorem}
-The cycle-free fragments of $G3s + (□Cut)$, $G3s + (Cut)$ and $G3s$ are
+The cycle-free fragments of G3s + (□Cut), G3s + (Cut) and G3s are
 identical.
 \End{theorem}
 
 \Begin{proof}
 
-A prehistoric-cycle-free proof in $G3s$ by the original definition
+A prehistoric-cycle-free proof in G3s by the original definition
 (\ref{local1}) is also prehistoric-cycle-free by the the new
-definition (\ref{local2}) as in a $G3s$-proof a negative family can
+definition (\ref{local2}) as in a G3s-proof a negative family can
 not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
-G3s^⊗$ is trivially also provable prehistoric-cycle-free in $G3s +
-(Cut)$ and $G3s + (□Cut)$ and we have $G3s^⊗ ⊆ (G3s + (□Cut))^⊗$ and
-$G3s^⊗ ⊆ (G3s + (Cut))^⊗$. Moreover $(G3s + (Cut))^⊗ ⊆ G3s^⊗$ by
-corollary \ref{boxcutloop} and $(G3s + (□Cut))^⊗ ⊆ (G3s + (Cut))^⊗ ⊆
-G3s^⊗$ by corollary \ref{cutloop}. All together we get:
+G3s^⊗$ is trivially also provable prehistoric-cycle-free in G3s +
+(Cut) and G3s + (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and
+$\Gs^⊗ ⊆ (\Gs + (\Cut))^⊗$. Moreover $(\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by
+corollary \ref{boxcutloop} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
+\Gs^⊗$ by corollary \ref{cutloop}. All together we get:
 
-$G3s^⊗ = (G3s + (Cut))^⊗ = (G3s + (□Cut))^⊗$
+$\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
 
 Prehistoric relations and G3lp
@@ -1936,7 +1935,7 @@ in $s$.^[TODO clearer and better definition and notation for families of terms]
 
 \Begin{lemma}
 The forgetful projection of all rules in G3lp are admissible in G3s +
-$(□Cut)$.
+(□Cut).
 \End{lemma}
 
 \Begin{proof}
@@ -1948,11 +1947,11 @@ the rules $(⊃ :)_t$ and $(⊃ :)_c$ are $(⊃ □)$ rules in G3s.
 We are left with the following two rules:
 
 $(⊃ ⋅)$: The forgetful projection of a $(⊃ ⋅)$ rule is admissible by the
-following derivation using a $(□Cut)$ and contraction:
+following derivation using a (□Cut) and contraction:
 
 \AXC{$Γ ⊃ Δ, □(A→B), □B$}
 \AXC{$Γ ⊃ Δ, □(A), □B$}
-\RightLabel{$(□Cut)$}
+\RightLabel{(□Cut)}
 \BIC{$Γ ⊃ Δ, □B, □B$}
 \DP
 
@@ -1977,7 +1976,7 @@ actually proof that]
 As we replace $(⊃ :)$ rules directly with $(⊃ □)$ rules, the two
 definitions of prehistoric relations match. Moreover , all
 contractions are on already related subformulas and $□$ symbols.  The
-newly introduced $(□Cut)$ is also used on related $□$ symbols and
+newly introduced (□Cut) is also used on related $□$ symbols and
 subformulas. So by corollaries \ref{contrprehist} and
 \ref{dropprehist} as well as definition \ref{boxcutcorr}, no new
 prehistoric relations are introduced in the forgetful projection.
@@ -1986,14 +1985,14 @@ prehistoric relations are introduced in the forgetful projection.
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
 chapter \ref{self}. Figure \ref{g3lpproof} contains a proof of the
 same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp as well as the
-forgetful projection of that proof in G3s + $(□Cut)$. For simplicity
+forgetful projection of that proof in G3s + (□Cut). For simplicity
 we assumed that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
 proof constant.
 
 This proofs display the logical dependencies making the formula
 self-referential in quite a different way than the original G3s proof
 in figure \ref{proofs}. There are 3 families of $□$ in the G3s +
-$(□Cut)$ proof. Two are the same families as in the G3s proof, occur
+(□Cut) proof. Two are the same families as in the G3s proof, occur
 in the root sequent and have a consistent polarity throughout the
 proof. We therefore simply use the symbols $⊞$ and $⊟$ for this
 families. The third one is part of the cut formula and therefore does
@@ -2005,7 +2004,7 @@ All left prehistoric relations of the proof are from left branch of
 the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than in
 the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 ∧ ¬□P$ and the connection between the two is established by the
-$(□Cut)$ with $□(P ∧ ¬□P → P)$.
+(□Cut) with $□(P ∧ ¬□P → P)$.
 
 \afterpage{
 \begin{landscape}
@@ -2076,7 +2075,7 @@ $(□Cut)$ with $□(P ∧ ¬□P → P)$.
 \RightLabel{$(⊃ □)$}
 \UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P → P)$}
 
-\RightLabel{$(□Cut)$}
+\RightLabel{(□Cut)}
 \BIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
 \RightLabel{$(¬ ⊃)$}
 \UIC{$P, ¬⊞P, ⊟_0(P ∧ ¬⊞P) ⊃$}
