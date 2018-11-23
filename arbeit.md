@@ -59,16 +59,6 @@ without axiom necessitation.  A constant specification $CS$ is
 injective, if for each proof constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
 
-\Begin{definition}[forgetful projection] \label{proj}
-The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
-
-* if $A$ is atomic or $⊥$, then $A˚ := A$.
-* if $A$ is the formula $A_0 → A_1$ then $A˚ := A_0˚ → A_1˚$
-* if $A$ is the formula $t{:}A_0$ then $A˚ := □A_0$
-
-The definition is expanded to sets, multisets and sequents of LP
-formulas in the natural way.
-\End{definition}
 
 \Begin{lemma}[substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
@@ -188,10 +178,11 @@ Throughout this text, we will use the G3s calculus from @troelstra2000
 [p287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
 are only concerned with classical logic (see figure \ref{G3sfull}).
 For proofs on the other hand we will use a minimal subset of that
-system using the standard derived definitions for $¬$, $∨$, $∧$ and
-$◇$ as given by \ref{G3smin}. All the missing rules from the full
-system are admissible in the minimal system using this definitions and
-the theorems therefore carry over to the full G3s system.
+system given by figure \ref{G3smin} using the standard derived
+definitions for $¬$, $∨$, $∧$ and $◇$. All the missing rules from the
+full system are admissible in the minimal system using this
+definitions and the theorems therefore carry over to the full G3s
+system.
 
 \renewcommand{\arraystretch}{3}
 \begin{figure} \caption{Full G3s} \label{G3sfull}
@@ -355,12 +346,6 @@ the Hilbert style definition of $LP$ to introduce proof terms already
 fully constructed. We will call this system G3lift to differentiate it
 from the later used system G3lp.
 
-\Begin{definition}[G3lift preproof]
-A *G3lift preproof* is a proof tree using the rules of G3lift, but where
-the (lift) rule may be used without fulfilling the necessary
-precondition on the introduced term $t$.
-\End{definition}
-
 \begin{figure} \caption{G3lift} \label{G3lift}
 \begin{longtable}{cc}
 
@@ -408,6 +393,12 @@ precondition on the introduced term $t$.
 where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
 \end{longtable}
 \end{figure}
+
+\Begin{definition}[G3lift preproof]
+A *G3lift preproof* is a proof tree using the rules of G3lift, but where
+the (lift) rule may be used without fulfilling the necessary
+precondition on the introduced term $t$.
+\End{definition}
 
 In all this rules, arbitrary formulas which occur in the premises and
 the conclusion (denoted by repeated multisets $Γ$, $□Γ$, $Δ$ and $◇Δ$)
@@ -485,21 +476,22 @@ rule of the proof tree. Checking the rules of G3lift and G3s, we see
 that each subformula occurrence in a premise always corresponds
 directly to exactly one subformula occurrence in the conclusion.
 
-So for any occurrence in the proof tree we get a path of corresponding
-occurrences up to the root sequent of that tree, which proofs the
-first part of the theorem. For the second part, notice that two
-occurrences correspond indirectly if and only if their pathes to the
-root sequent merge at some point in the proof tree. So occurrences in
-the root sequent itself can not correspond to each other.
+So for any occurrence in the proof tree we get a unique path of
+corresponding occurrences up to the root sequent of that tree, which
+proofs the first part of the theorem. For the second part, notice that
+two occurrences correspond indirectly if and only if their pathes to
+the root sequent merge at some point in the proof tree. So occurrences
+in the root sequent itself can not correspond to each other.
 \End{proof}
 
 G3lift is sound and complete
 ============================
 
-We will show in this section that G3lift is adequate by showing it is equivalent to the
-Hilbert system LP from @artemov2001 as introduced in section \ref{syntax}.
+We will show in this chapter that G3lift is adequate by showing it is
+equivalent to the Hilbert system LP from @artemov2001 as introduced in
+chapter \ref{syntax}.
 
-\Begin{theorem} \label{equiv1}
+\Begin{theorem} \label{sound}
 $G3lift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 \End{theorem}
 
@@ -540,7 +532,7 @@ by a (lift) rule. By the precondition on $t$ there exists a
 derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
 \End{proof}
 
-\Begin{corollary} \label{equiv1var}
+\Begin{corollary} \label{soundvar}
 The deduction $d$ for $Γ ⊢_{LP} ⋁Δ$ only uses variables $x$ which also
 occur in the proof tree $𝒯 = (T, R)$ for $G3lift ⊢ Γ ⊃ Δ$ or any
 deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ used in
@@ -559,12 +551,12 @@ corollary and therefore trivially does not introduce new variables.
 \End{proof}
 
 The proofs for the following standard lemmas for G3lift exactly mirror
-the proofs for the same lemmas for G3s, as G3lift exactly
-mirrors G3s. The only trivial difference is that the precondition of
-the (lift) rule has to be checked whenever a different/new (lift)
-rule gets introduced. Because of this and also because the following
-result is just included for completeness and not actually used in the
-remaining of the text, we will omit the proofs here and refer the
+the proofs for the same lemmas for G3s, as G3lift exactly mirrors
+G3s. The only trivial difference is that the precondition of the
+(lift) rule has to be checked whenever a different/new (lift) rule
+gets introduced. Because of this and also because the following result
+is just included for completeness and not actually used for the main
+theorems of this text, we will omit the proofs here and refer the
 reader to the proofs for $G3s$ in @pulver2010 [40ff.] as well as later
 in this text.
 
@@ -600,7 +592,7 @@ If $G3lift ⊢ A, Γ ⊃ Δ$ and $G3lift ⊢ Γ' ⊃ Δ', A$ then $G3lift ⊢ Γ
 $G3lift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
-\Begin{theorem} \label{equiv2}
+\Begin{theorem} \label{complete}
 $Γ ⊢_{LP} A ⇒ G3lift ⊢ Γ ⊃ A$
 \End{theorem}
 
@@ -700,6 +692,15 @@ get the required proof for $Γ ⊃ A$.
 Annotated S4 Formulas and Proofs
 ================================
 
+As we have already seen, all symbol occurrances in a Gentzen style
+proof can be divided in disjoint equivalence classes of corresponding
+symbol occurrances which are called families. In this text we will be
+mainly concerned with the families of $□$ occurrences and their
+polarities as defined below. We will therefore define annotated
+formulas, sequents and proof trees in this chapter which make the
+families and polarities of $□$ explicit in the notation and useable in
+definitions.
+
 \Begin{definition}[polarity]
 We assign a *positive* or *negative polarity* relative to $A$ to all
 subformulas occurrences $B$ in $A$ as follows:
@@ -798,6 +799,39 @@ $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 Realization of S4 in LP
 =======================
 
+LP and S4 are closely related and LP can be understood as an explicit
+version of S4. The other way around, S4 can be seen as a version of LP
+which proof details removed or forgotten. We will establish this close
+relationship in this chapter more formaly by two main theorems
+translating valid LP forumlas into valid S4 formulas and vice
+versa. The former is called forgetful projection, the latter is more
+complex and called realization.
+
+\Begin{definition}[forgetful projection] \label{proj}
+The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
+
+* if $A$ is atomic or $⊥$, then $A˚ := A$.
+* if $A$ is the formula $A_0 → A_1$ then $A˚ := A_0˚ → A_1˚$
+* if $A$ is the formula $t{:}A_0$ then $A˚ := □A_0$
+
+The definition is expanded to sets, multisets and sequents of LP
+formulas in the natural way.
+\End{definition}
+
+\Begin{theorem}
+If $LP ⊢ A$ then $S4 ⊢ A˚$.
+\End{theorem}
+
+\Begin{proof}
+If $LP ⊢ A$ then $G3lift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
+completeness of G3lift (\ref{complete}). The forgetful projection of the
+sequents of any G3lift rule map directly to the sequents of an
+equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by 
+replacing all sequents with the forgetful projection of that sequence
+is a valid G3s proof with root sequent $⊃ A˚$. By the soundness of G3s
+we have $S4 ⊢ A˚$.
+\End{proof}
+
 \Begin{definition}[realization function]
 A *realization function* $r_A$ for a formula $A$ is a mapping from the
 set of different $□$ symbols used in $an_A(A)$ to arbitrary LP terms.
@@ -815,8 +849,9 @@ realization $r$ [@artemov2001, 25].
 \End{definition}
 
 A LP-realization of $A$ is fully determined by a realization function
-$r_A$ and a constant specification of all constants occurring in $r_A$
-with $A^r := r_A(an_A(A))$.
+$r_A$ (resp. $r_T$ relative to a proof tree for $⊃ A$) and a constant
+specification of all constants occurring in $r_A$ or $r_T$ with $A^r
+:= r_A(an_A(A))$ respective $A^r := r_T(an_T(A))$.
 
 \Begin{definition}[normal]
 A realization function is *normal* if all symbols for negative families
@@ -875,7 +910,7 @@ $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
 a correct G3lift proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
-is also a correct G3lift proof. By theorem \ref{equiv1} we therefore
+is also a correct G3lift proof. By theorem \ref{sound} we therefore
 have a $LP(CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
 1}(an_T(I_{i,j}))$, which has the following form:
 
@@ -915,7 +950,7 @@ the substitution lemma \ref{subst}.
 For the final normal realization function $r_T^N$ and injective
 constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
 correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
-\ref{equiv1} of G3lift we have $LP ⊢ A^r$ for the normal LP-realization
+\ref{sound} of G3lift we have $LP ⊢ A^r$ for the normal LP-realization
 $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \End{proof}
 
@@ -934,7 +969,7 @@ $R_{i_0,j_0}$ in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤
 k$ for all this rules. Using the exact same steps as in the main proof
 but using the realization function $r_T^k$, we get a derivation $d$
 for \ref{start} which does not introduce new variables by the
-corollary \ref{equiv1var}, a derivation $d'$ for \ref{lifted} which
+corollary \ref{soundvar}, a derivation $d'$ for \ref{lifted} which
 does not introduce new variables by the corollary \ref{liftvar} and
 finally a derivation $d^k_{i,j}$ for \ref{precond} which also does not
 introduce new variables.
@@ -1021,9 +1056,14 @@ necessary for the self-referentiality of an S4 formula.
 \end{figure}
 
 
-
 Prehistoric Phenomena
 =====================
+
+In his paper "Prehistoric Phenomena and Self-referentiality"
+[@yu2010], Yu gave a formal definition for the situation described in
+the last chapter, which he calls a prehistoric loop. We will reproduce
+in this chapter his defintions of prehistoric relation, prehistoric
+loop as well as some basic lemmas about this new notions.
 
 \Begin{definition}[History]
 In branch $s$ of the form $s_rR^*O_{i,j}RI_{i,j}R^*s$ in a
@@ -1112,9 +1152,9 @@ prehistoric loop* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
 i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
 \End{definition}
 
-\Begin{theorem}
+\Begin{lemma}
 $T$ has a prehistoric loop iff $T$ has a left prehistoric loop.
-\End{theorem}
+\End{lemma}
 
 \Begin{proof}
 The (⇐) direction is trivial. The (⇒) direction is proven by complete
@@ -1137,19 +1177,30 @@ prehistoric loop.
 Main Proof
 ==========
 
+Yu's proof for the main theorem of his paper, builds upon the idea to
+carefully choose the order $ε(i,j)$ used in the realization theorem
+(\ref{realization}), such hat the generated constant specifications
+$CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
+such an order, formulas $c{:}A_{i,j,k}$ introduced during the
+realization procedure never change after their introduction, and we
+get a strong limitation of the proof constants which can occur in such
+a formula. This limitation finally will show that the generated CS using
+that order can not be self-referential.
+
 \Begin{lemma} \label{variablefree}
 Any provisional variable $u_{x,y}$, which does not occur in
 $r^{ε(i,j) - 1}(an_T(I_{i,j}))$, does not occur in $CS^{ε(i,j)}$.
 \End{lemma}
 
 \Begin{proof}
-By the subformula property (\ref{sub}) for G3lift proofs, $u_{x,y}$ does
-not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
-\ref{equiv1var} using corollary \ref{realvar} for case 6, the
+By the subformula property (\ref{sub}) for G3lift proofs, $u_{x,y}$
+does not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
+\ref{soundvar} using corollary \ref{realvar} for case 6, the
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
 theorem, $CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
-$CS_{i,j}$ does not contain $u_{x,y}$.
+$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ by $t_{i,j}s
+does not contain $u_{x,y}$.
 \End{proof}
 
 \Begin{lemma} \label{epsilon}
@@ -1225,9 +1276,9 @@ $CS^N$ is not self-referential and we have $LP(CS^⊛) ⊢ B$.
 Prehistoric relations in G3s with cut rules
 ===========================================
 
-In this chapter we will define prehistoric relations in the systems G3s
-+ (Cut) and G3s + $(□Cut)$. The (context sharing) cut rule has the following definition
-[@troelstra2000 67]:
+In this chapter we will define prehistoric relations in the systems
+G3s + (Cut) and G3s + $(□Cut)$. The (context sharing) cut rule has the
+following definition [@troelstra2000 67]:
 
 \Begin{definition}[$(Cut)$ rule]
 
@@ -1321,7 +1372,7 @@ It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
 by the premise of the lemma but still hold for arbitrary annotations
 $an$. That means there is no implicit assumption that the families
-have only a single occurrence in the sequents of the lemma or theorem
+have only a single occurrence in the root sequents used in the lemma or theorem
 and the results can also be used in subtrees $T↾s$ together with an
 annotation $an_T$ for the complete tree.
 
