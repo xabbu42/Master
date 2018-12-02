@@ -3,8 +3,11 @@
 TODO:
 
 * replace loop with cycle, add explanation and ref to @yu2017
+* use consistent and correct graph theoretic terms to talk about trees
+  (branches paths etc)
 * consistent numbering and handling of lists (is it worth the noise?)
 * replace correspondence with related?
+* use capital letters for sequents throughout the text (free up s for terms)
 
 Introduction
 ============
@@ -406,7 +409,9 @@ conclusion (denoted by new multisets $Γ$, $Δ$, $Γ'$, $Δ'$) are called
 weakening formulas.[^weak] The remaining single new formula in the conclusion
 is called the principal formula of the rule. The remaining formulas in
 the premises are called active formulas. Active formulas are always
-used as subformulas of the principal formula.
+used as subformulas of the principal formula. Active formulas which
+are also strict subformulas of other active formulas of the same rule
+as used in $(: ⊃)$ and $(□ ⊃)$ are contraction formulas. 
 
 [^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
 □)$, $(◇ ⊃)$ and (lift), which are also the only rules which restrict the
@@ -1819,8 +1824,8 @@ not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
 G3s^⊗$ is trivially also provable prehistoric-cycle-free in G3s +
 (Cut) and G3s + (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and
 $\Gs^⊗ ⊆ (\Gs + (\Cut))^⊗$. Moreover $(\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by
-corollary \ref{boxcutloop} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
-\Gs^⊗$ by corollary \ref{cutloop}. All together we get:
+corollary \ref{cutloop} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
+\Gs^⊗$ by corollary \ref{boxcutloop}. All together we get:
 
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
@@ -1828,26 +1833,24 @@ $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 Prehistoric relations and G3lp
 ==============================
 
-The following system is minimal subset of the Gentzen style system G3lp
-without structural rules as introduced by @pulver2010 [62]. We do
-replace the axioms (Axc) and (Axt) with rules $(⊃ :)_c$ and $(⊃ :)_t$
-to keep to the prehistoric relations of the proof intact. As there is
-a proof for $⊃ A$ for any axiom A and also for $A ⊃ A$ for any formula
-A, this two rules are equivalent to the two axioms and invertible.
-^[TODO more formal, relate to @pulver2010 65]
+@pulver2010 [62] introduces the system G3lp by expanding G3c with
+rules for the build up of proof terms with build in contraction as
+well as the new axioms (Axc) and (Axt). We will in our variant of G3lp
+use the same rules to build up proof terms, but replace the axioms
+with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the prehistoric relations
+of the proof intact. As there is a proof for $⊃ A$ for any axiom A and
+also for $A ⊃ A$ for any formula A, this two rules are equivalent to
+the two axioms and invertible.
+
+As we already did with G3s, we will use the full system with all
+classical operators for examples, but only the minimal subset with $→$
+and $⊥$ for proofs. So this two systems use the classical rules from
+G3s in figure \ref{G3sfull} and \ref{G3smin} as well as the new LP
+rules in figure \ref{G3lprules}.
 
 \renewcommand{\arraystretch}{3}
+\begin{figure} \caption{G3lp} \label{G3lprules}
 \begin{longtable}{cc}
-
-\AXC{$P, Γ ⊃ Δ, P$ $(Ax)$ ($P$ atomic)}
-\DP
-
-&
-
-\AXC{$⊥, Γ ⊃ Δ$ $(⊥⊃)$}
-\DP
-
-\\
 
 \AXC{$⊃ A$}
 \RightLabel{$(⊃ :)_c$ ($A$ an axiom of LP)}
@@ -1859,21 +1862,6 @@ A, this two rules are equivalent to the two axioms and invertible.
 \AXC{$t{:}A ⊃ A$}
 \RightLabel{$(⊃ :)_t$}
 \UIC{$t{:}A, Γ ⊃ Δ, t{:}A$}
-\DP
-
-\\
-
-\RightLabel{$(→ ⊃)$}
-\AXC{$Γ ⊃ Δ, A$}
-\AXC{$B, Γ ⊃ Δ$}
-\BIC{$A → B, Γ ⊃ Δ$}
-\DP
-
-&
-
-\RightLabel{$(⊃ →)$}
-\AXC{$A, Γ ⊃ Δ, B$}
-\UIC{$Γ ⊃ Δ, A → B$}
 \DP
 
 \\
@@ -1906,31 +1894,69 @@ A, this two rules are equivalent to the two axioms and invertible.
 \DP
 
 \end{longtable}
+\end{figure}
 
 TODO repeat necessary results from @pulver2010
 
+\Begin{definition}[subterm]
+The set of subterms $sub(t)$ of a LP proof term $t$ is inductively defined as
+follows:
+
+1. $sub(x) = \{x\}$ for any proof variable $x$
+2. $sub(c) = \{c\}$ for any proof constant $c$
+3. $sub(!t) = sub(t) ∪ \{!t\}$
+4. $sub(s+t) sub(s) ∪ sub(t) ∪ \{s + t\}$
+5. $sub(s⋅t) sub(s) ∪ sub(t) ∪ \{s⋅t\}$
+
+\End{definition}
+
+\Begin{definition}[subformula]
+The set of subformulas $sub(A)$ of an LP formula $A$ is inductively defined as follows:
+
+1. $sub(P) = \{P\}$ for any atomic formula $P$
+2. $sub(⊥) = \{⊥\}$
+3. $sub(A_0 → A_1) = sub(A_0) ∪ sub(A_1) ∪ \{A_0 → A_1\}$
+4. $sub(s+t{:}A_0) = sub(A_0) ∪ \{s{:}A_0, t{:}A_0, s+t{:}A_0\}$
+5. $sub(t{:}A_0) = sub(A_0) ∪ \{t{:}A_0\}$
+
+\End{definition}
+
+Notice that by this definition $s{:}A$ is a subformula of $s+t{:}A$.
+
 We expand the definition of correspondence \ref{corr} to G3lp proofs
-in the natural way. That is, all topmost proof terms in
-active formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$
-correspond to each other. That leads to two main differences
-between annotations for G3lp proofs and G3s proofs:
+in the natural way. That is, all topmost proof terms in active
+formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ and $({:} ⊃)$ correspond to
+each other. For the $(⊃ !)$ rule, the proof term $t$ of the active
+formula $t{:}A$ corresponds to the proof term $t$ in the subformula
+$t{:}A$ of $!t{:}t{:}A$ and the topmost proof term $!t$ in the active
+formula $!t{:}t{:}A$ corresponds to the same topmost proof term in the
+same principal formula. That means that families of proof terms in
+G3lp consist not of occurrences of a single term $t$ but of
+occurrences of subterms $s$ of a top level term $t$.
 
-1. Families of proof terms in G3lp consist not of occurrences of a
-single term $t$ but of occurrences of subterms $s$ of a term $t$ in
-the root sequent.
+We will use $\bar{t}$ for the family of occurrences corresponding to
+the *top level* term $t$, i.e. seen as a set of terms instead of term
+occurrences we have $\bar{t} ⊆ sub(t)$. So for any term occurrence
+$s$, $\bar{s}$ is not necessarily the full family of $s$ in the
+complete proof tree as $s$ could be a subterm of the top level term $t$
+of the family. For any occurrence $s$ in a sequent $S$ of the proof
+tree though, $\bar{s}$ is the family of $s$ relative to the subtree
+$T↾S$ as all related proof terms in the premises of G3lp rules are
+subterms of the related proof term in the conclusion.
 
-2. Similar to the cut rules in G3s, $(⊃ ⋅)$ relates subformulas and
-symbols of different polarities.
-
-The second point naturally leads to the same approach as in the last
-chapter to define prehistoric relations of proof term families for any
-polarity:
+We also see that most rules of G3lp only relate proof terms to each
+other used for the same subformula $A$. The one exception is the $(⊃
+⋅)$ rule. Similar to the cut rules from the previous chapter, $(⊃ ⋅)$
+relates subformulas and symbols of different polarities as well as
+terms used for different formulas. So we will use the same approach as
+in the last chapter to define prehistoric relations of proof term
+families for any polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
-A family $t_i$ has a *prehistoric relation* to another family $t_j$, in
+A family $\bar{t_i}$ has a *prehistoric relation* to another family $\bar{t_j}$, in
 notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrence
-of $t_j$ with premise $s$, such that there is an occurrence of $t_i$
-in $s$.^[TODO clearer and better definition and notation for families of terms]
+of $\bar{t_j}$ with premise $S$, such that there is an occurrence of $\bar{t_i}$
+in $S$.
 \End{definition}
 
 \Begin{lemma}
@@ -1963,7 +1989,7 @@ form:
 \UIC{$Γ ⊃ Δ, □□A$}
 \DP
 
-This rule is admissible by lemma \ref{drop}.
+TODO
 \End{proof}
 
 \Begin{lcorollary}
@@ -2004,7 +2030,8 @@ All left prehistoric relations of the proof are from left branch of
 the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than in
 the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 ∧ ¬□P$ and the connection between the two is established by the
-(□Cut) with $□(P ∧ ¬□P → P)$.
+(□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is again necessary
+for a prehistoric loop in a G3lp as we will show formally.
 
 \afterpage{
 \begin{landscape}
@@ -2078,7 +2105,7 @@ the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 \RightLabel{(□Cut)}
 \BIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
 \RightLabel{$(¬ ⊃)$}
-\UIC{$P, ¬⊞P, ⊟_0(P ∧ ¬⊞P) ⊃$}
+\UIC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃$}
 \RightLabel{$(∧ ⊃)$}
 \UIC{$P ∧ ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃$}
 \RightLabel{$(□ ⊃)$}
@@ -2089,6 +2116,233 @@ the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 \end{figure}
 \end{landscape}
 }
+
+\Begin{lemma} \label{genax1}
+$\Glp ⊢ A ⊃ A$ for any LP formula $A$ with only the rules from G3c, 
+$(⊃ :)_t$ and $(: ⊃)$.
+\End{lemma}
+
+\Begin{proof}
+The proof is by structural induction over the build up of $A$:
+
+1\.\ case: $A ≡ P$ or $A ≡ ⊥$, then $A ⊃ A$ is an axiom.
+
+2\.\ case: $A ≡ A_0 → A_1$. By the induction hypothesis we have $\Glp
+⊢ A_0 ⊃ A_0$ and $\Glp ⊢ A_1 ⊃ A_1$, so using the following derivation
+we get $\Glp ⊢ A_0 → A_1 ⊃ A_0 → A_1$:
+
+\AXC{$A_0 ⊃ A_0$}
+\AXC{$A_1 ⊃ A_1$}
+\RightLabel{$(→ ⊃)$}
+\BIC{$A_0 → A_1, A_0 ⊃ A_1$}
+\RightLabel{$(⊃ →)$}
+\UIC{$A_0 → A_1 ⊃ A_0 → A_1$}
+\DP
+
+3\.\ case: $A ≡ t{:}A_0$ for some proof term $t$. By the induction
+hypothesis we have $\Glp ⊢ A_0 ⊃ A_0$. By weakening we get $\Glp ⊢
+A_0, t{:}A_0 ⊃ A_0$ and with the following derivation we get $\Glp ⊢
+t{:}A_0 ⊃ t{:}A_0$:
+
+\AXC{$A_0, t{:}A_0 ⊃ A_0$}
+\RightLabel{$(: ⊃)$}
+\UIC{$t{:}A_0 ⊃ A_0$}
+\RightLabel{$(⊃ :)$}
+\UIC{$t{:}A_0 ⊃ t{:}A_0$}
+\DP
+\End{proof}
+
+
+\Begin{lemma} \label{genax2}
+$\Glp ⊢ ⊃ A$ for any LP axiom $A$.
+\End{lemma}
+
+\Begin{proof}
+Using lemma \ref{genax1} and weakening for the base cases, we can
+derive any A1-A4 axiom by the appropriate rule from G3lp ($(: ⊃)$ for
+A1, $(⊃ ⋅)$ for A2, $(⊃ !)$ for A3 and $(⊃ +)$ for A4) and one or two
+$(⊃ →)$ rules. Also using lemma \ref{genax1} for the base cases there
+are derivations for all A0 axioms as the subset G3c of G3lp is
+complete for propositional logic. Choose any one for each axiom as the
+canonical derivation.
+\End{proof}
+
+\Begin{definition}[normal]
+A G3lp proof is *normal* if all premises of $(⊃ :)_t$ or $(⊃ :)_c$
+rules are derived in the canonical way given by lemmas \ref{genax1} and
+\ref{genax2} and at least one contraction formula in each premise $S$
+of a rule with contraction formulas is introduced principally in at
+least one branch of the proof $T↾S$ (only the the rule $(⊃ +)$ has two
+contraction formulas in the same premise, so almost all contraction
+formulas are introduced principally).
+\End{definition}
+
+\Begin{lemma}
+$\Glp ⊢ Γ ⊃ Δ$ iff there is a normal G3lp proof for $Γ ⊃ Δ$.
+\End{lemma}
+
+\Begin{proof}
+The (⇐) direction is trivial. For the (⇒) direction, given any G3lp
+proof $𝒯 = (T, R)$ for $Γ ⊃ Δ$, construct a normal G3lp proof as
+follows:
+
+1. Replace all proofs of premises of $(⊃ :)_t$ and $(⊃ :)_c$ rules by
+the canonical proofs.
+
+2. For any contraction formula of a rule $R$ in a sequent $S$
+introduced by weakening in all branches of $T↾S$, remove all
+occurrences corresponding to the contraction formula to get a direct
+proof $T'$ for the conclusion of that rule $R$.
+
+\End{proof}
+
+\Begin{lemma}
+All occurrences belonging to a proof term family $\bar{t}$ in a
+premise $S$ of any $(⊃ :)$ rule are occurrences of the top level term
+$t$ itself.
+\End{lemma}
+
+\Begin{proof}
+All G3lp rules only relate different proof terms if they are top level
+proof terms on the right. All occurrences of $s ∈ \bar{t}$ in a
+premise $S$ of a $(⊃ :)$ rule correspond either as part of a strict
+subformula on the right or as part of a subformula on the left of the
+conclusion. A formula on the left can only correspond to a subformula
+on the right as a strict subformula. Therefore all corresponding
+occurrences of $s$ on the right in the remaining branch up to the root
+are part of a strict subformula and
+are occurrences of the same proof term $s$. As $t$ itself is a
+corresponding occurrences of $s$ in that path, we get $t = s$.
+\End{proof}
+
+\Begin{lcorollary} \label{corollary}
+If $i ≺ j$ for two term families $\bar{t_i}$ and $\bar{t_j}$ of a G3lp
+proof then there is $(⊃ :)$ rule introducing an occurrence $s ∈
+\bar{t_j}$ in a formula $s{:}A$ such that there is an occurrence of
+$t_i$ in $s{:}A$ (as a term, not as a family, i.e. the occurrence of
+$t_i$ is not necessary in $\bar{t_i}$).
+\End{lcorollary}
+
+\Begin{definition}[Inputs]
+The *inputs* $IN$ of a G3lp proof are all LP formulas which are the
+principal formula of a $(⊃ :)_t$ or $(⊃ :)_c$ rule.
+\End{definition}
+
+Notice that the used constant specifications $CS$ is a subset of the
+inputs $IN$. We can now expand the definition of self-referentiality to
+input sets in the natural way:
+
+\Begin{definition}[directly self-referential]
+The inputs $IN$ of a G3lp proof are *directly self-referential* if there is a
+proof term $t$ such that $t{:}A(t) ∈ IN$.
+\End{definition}
+
+\Begin{definition}[self-referential]
+The inputs $IN$ of a G3lp proof are *self-referential* if there is a
+subset $A ⊆ IN$ such that $A := {t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)}$.
+\End{definition}
+
+\Begin{theorem}
+If the input set $IN$ of a G3lp proof is non self-referential then the
+proof is prehistoric loop free.
+\End{theorem}
+
+\Begin{proof}
+We show the contraposition. Assume there is a prehistoric loop $i_0 ≺
+i_1 ≺ ... ≺ i_{n-1} ≺ i_0$. By the corollary \ref{corollary} there
+exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ sub(A_k)$
+and $s_k ∈ sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
+and $t_{i_{k' }} ∈ sub(A_{k'})$ follows $s_k ∈ sub(A_{k' })$. So
+$\{s_k{:}A_k\} ⊆ IN$ is a self-referential subset of $IN$.
+\End{proof}
+
+\Begin{corollary}
+The forgetful projection $A˚$ of a LP formula provable with a non
+self-referential input set $IN$ is provable prehistoric loop free in G3s.
+\End{corollary}
+
+
+Counterexample
+==============
+
+\Begin{lemma}
+The S4 formula $A ≡ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has a realization in $LPG_0$.
+\End{lemma}
+
+\Begin{proof}
+Set $A^r ≡ y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$. We have
+$y{:}(P ∧ ¬y⋅x{:}P → P) ⊢_{LPG_0} ¬x{:}(P ∧ ¬y⋅x{:}P)$ by the same
+derivation as for $LP ⊢ ¬x{:}(P ∧ ¬t⋅x{:}P)$ replacing the
+introduction of $t:(P ∧ ¬t⋅x{:}P → P)$ by the assumption $y{:}(P ∧
+¬y⋅x{:}P → P)$ and $t$ by $y$. So by the deduction theorem $LPG_0 ⊢
+y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$.
+\End{proof}
+
+\Begin{lemma}
+The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no left-prehistoric-loop-free proof.
+\End{lemma}
+
+\Begin{proof}
+By invertibility for G3s in one direction and an easy deduction in the other, we have
+$G3s ⊢ ⊃ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P) ⇔ G3s ⊢  □(P ∧ ¬□P → P), □(P ∧
+¬□P) ⊃$. In both directions the proofs remain prehistoric loop free if
+the other proof was prehistoric loop free. For a proof of $□(P ∧ ¬□P →
+P), □(P ∧¬□P) ⊃$ we have two possibilities for the last rule:
+
+1\.\ case: The last rule is a $(□ ⊃)$ rule with $□(P ∧ ¬□P → P)$ as
+the principal formula. Then the following proof tree shows that we
+need a proof for the sequent $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃$ which is
+just the original sequent weakened by $P$ on the left:
+
+\noindent\makebox[\textwidth]{
+\AXC{$P ∧¬□P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃ P ∧¬□P$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$□(P ∧ ¬□P → P), □(P ∧¬□P) ⊃ P ∧¬□P$}
+\AXC{$P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃$}
+\RightLabel{$(→⊃)$}
+\BIC{$P ∧ ¬□P → P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃$}
+\RightLabel{$(□ ⊃)$}
+\UIC{$□(P ∧ ¬□P → P), □(P ∧¬□P) ⊃$}
+\DP
+}
+
+So for the remaining of the proof we will have to check if weakening
+$P$ on the left helps to construct a prehistoric loop free proof.
+
+2\.\ case: The last rule is a $(□ ⊃)$ rule with $□(P ∧ ¬□P)$ as the
+principal formula. We get as premise the sequent $P ∧¬□P, □(P ∧ ¬□P →
+P), □(P ∧¬□P) ⊃$ which again by invertibility and an easy deduction is
+provable prehistoric loop free iff $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃
+□P$ is provable prehistoric loop free. It is clear that using $(□ ⊃)$
+rules on this sequent just adds additional copies of the existing
+formulas.^[TODO more formally?] So by contraction if there is a
+prehistoric loop free proof for this sequent, then there is also one
+ending in a $(⊃ □)$ rule. The premise of this rule has to have the
+form $□(P ∧ ¬□P → P) ⊃ P$ to avoid a prehistoric loop. But the
+following Kripke model shows that $□(P ∧ ¬□P → P) → P$ is not a
+theorem of S4 and therefore not provable at all: $w = \{¬P\}, R =
+\{(w, w)\}$.  We have $w \Vdash P ∧ ¬□P → P$ because $w \Vdash ¬P$ and
+therefore also $w \Vdash ¬(P ∧ ¬□P)$. As $w$ is the only world we get
+$w \Vdash □(P ∧ ¬□P → P)$ which leads to the final $w \Vdash ¬(□(P ∧
+¬□P → P) → P)$ again because $w \Vdash ¬P$
+
+As all possibilities for a prehistoric loop free proof of $□(P ∧ ¬□P →
+P), □(P ∧¬□P) ⊃$ are exhausted, there is no such proof and therefore
+also no prehistoric loop free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P ∧¬□P)$
+\End{proof}
+
+\Begin{theorem}
+There exists a S4−theorem $A$ and a LP-formula $B$ such that $A$ has
+no left-prehistoric-loop-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)}
+B$
+\End{theorem}
+
+\Begin{proof}
+$A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as ¬□(P ∧ ¬□P)
+already is a theorem of S4. By the previous lemma, there is no
+left-prehistoric-loop-free proof for $A$ and by the first lemma $B :=
+y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$.
+\End{proof}
 
 Literature
 ==========
