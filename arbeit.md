@@ -1959,6 +1959,9 @@ of $\bar{t_j}$ with premise $S$, such that there is an occurrence of $\bar{t_i}$
 in $S$.
 \End{definition}
 
+TODO there are hidden introductions of $□$ in the $(⊃ !)$ rule. decide
+how to handle them!
+
 \Begin{lemma}
 The forgetful projection of all rules in G3lp are admissible in G3s +
 (□Cut).
@@ -1989,7 +1992,8 @@ form:
 \UIC{$Γ ⊃ Δ, □□A$}
 \DP
 
-TODO
+TODO decide how to handle that rule (see definition of prehistoric relations) and add proof
+
 \End{proof}
 
 \Begin{lcorollary}
@@ -2265,17 +2269,29 @@ self-referential input set $IN$ is provable prehistoric loop free in G3s.
 Counterexample
 ==============
 
+The main result of the last chapter does not exactly match Yu's
+result. We have shown that prehistoric loops in G3s are sufficent for
+self-referentiality but only for the expanded definition of
+self-referentiality considering the set of all inputs $IN$. The
+question arises if this expansion is actually necessary. The following
+counterexample shows that indeed, prehistoric loops in G3s are not
+sufficent for needing a self-referential $CS$.
+
 \Begin{lemma}
-The S4 formula $A ≡ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has a realization in $LPG_0$.
+The S4 formula $A ≡ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has a realization in
+$LPG_0$.
 \End{lemma}
 
 \Begin{proof}
 Set $A^r ≡ y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$. We have
 $y{:}(P ∧ ¬y⋅x{:}P → P) ⊢_{LPG_0} ¬x{:}(P ∧ ¬y⋅x{:}P)$ by the same
 derivation as for $LP ⊢ ¬x{:}(P ∧ ¬t⋅x{:}P)$ replacing the
-introduction of $t:(P ∧ ¬t⋅x{:}P → P)$ by the assumption $y{:}(P ∧
+introduction of $t{:}(P ∧ ¬t⋅x{:}P → P)$ by the assumption $y{:}(P ∧
 ¬y⋅x{:}P → P)$ and $t$ by $y$. So by the deduction theorem $LPG_0 ⊢
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$.
+^[If we assume that $P ∧ ¬y⋅x{:}P → P$ is an axiom A0,
+this matches the more general result in corollary 7.2 in @artemov2001
+[14]: $LP(CS) ⊢ F$ if and only if $LPG_0 ⊢ CS ⊃ F$.]
 \End{proof}
 
 \Begin{lemma}
