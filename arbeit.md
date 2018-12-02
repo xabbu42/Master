@@ -7,7 +7,6 @@ TODO:
   (branches paths etc)
 * consistent numbering and handling of lists (is it worth the noise?)
 * replace correspondence with related?
-* use capital letters for sequents throughout the text (free up s for terms)
 
 Introduction
 ============
@@ -33,7 +32,7 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $A4$: $s{:}F → (s+t){:}F$, $t{:}F → (s+t){:}F$ (Sum)
 
 * $R1$: $F → G, F ⊢ G$ (Modus Ponens)
-* $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
+* $R2$: $A ⊢ c{:}A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
         (Axiom Necessitation)
 
 A Hilbert style derivation $d$ from a set of assumptions $Γ$ is a
@@ -421,20 +420,20 @@ as used in $(: ⊃)$ and $(□ ⊃)$ are contraction formulas.
 possible side formulas.
 
 Formally, a Gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
-:= {s_0, ..., s_n}$ is the set of occurrences of sequents, and $R :=
-\{(s_i,s_j) ∈ T × T ∣ \text{$s_i$ is the conclusion of a rule which
-has $s_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
-$s_r$. A leaf sequent $s$ is a sequent without any premises, i.e $s
-\slashed{R} s'$ for all $s' ∈ T$. The relation $R$ is the inverse of
-the the parent function $P := \{(s_j, s_i) ∈ T × T ∣ s_i R s_j\}$
-defined on $T ∖ \{s_r\}$.
+:= \{S_0, ..., S_n\}$ is the set of occurrences of sequents, and $R :=
+\{(S_i,S_j) ∈ T × T ∣ \text{$S_i$ is the conclusion of a rule which
+has $S_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
+$S_r$. A leaf sequent $S$ is a sequent without any premises, i.e $S
+\slashed{R} S'$ for all $S' ∈ T$. The relation $R$ is the inverse of
+the the parent function $P := \{(S_j, S_i) ∈ T × T ∣ S_i R S_j\}$
+defined on $T ∖ \{S_r\}$.
 
-A path in the proof is a list of related sequents $s_r R s_n R ... R
-s_0$ starting from the root sequent $s_r$ and ending in a leaf sequent
-$s_0$. The path is fully defined by the leaf sequent $s_0$. So we
-will use path $s_0$ to mean the full and unique path $s_r R s_n R ... R s_0$ from
-the root $s_r$ to the leaf $s_0$. $T↾s$ denotes the subtree of $T$ with root
-$s$. The transitive closure of $R$ is denoted by $R^+$ and the
+A path in the proof is a list of related sequents $S_r R S_n R ... R
+S_0$ starting from the root sequent $S_r$ and ending in a leaf sequent
+$S_0$. The path is fully defined by the leaf sequent $S_0$. So we
+will use path $S_0$ to mean the full and unique path $S_r R S_n R ... R S_0$ from
+the root $S_r$ to the leaf $S_0$. $T↾S$ denotes the subtree of $T$ with root
+$S$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
 
 Consistent with the notation for the Hilbert style system LP, the
@@ -473,12 +472,12 @@ to correspondence.
 
 \Begin{theorem}[subformula property] \label{sub}
 Any subformula (symbol) occurrence in a partial Gentzen style
-(pre-)proof $T↾s$ in the systems G3lift and G3s corresponds to *at least
-one* subformula (symbol) occurrence of the root sequent $s$ of $T↾s$.
+(pre-)proof $T↾S$ in the systems G3lift and G3s corresponds to *at least
+one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
 
 Any subformula (symbol) occurrence in a complete Gentzen style
 (pre-)proof $T$ in the systems G3lift and G3s corresponds to *exactly*
-one subformula (symbol) occurrence in the root sequent $s_r$ of $T$.
+one subformula (symbol) occurrence in the root sequent $S_r$ of $T$.
 \End{theorem}
 
 \Begin{proof}
@@ -1077,27 +1076,27 @@ in this chapter his definitions of prehistoric relation, prehistoric
 loop as well as some basic lemmas about this new notions.
 
 \Begin{definition}[History]
-In branch $s$ of the form $s_rR^*O_{i,j}RI_{i,j}R^*s$ in a
-G3s−proof $T$, the path $s_rR^*O_{i,j}$ is called a *history* of $p_i$
-in branch $s$. The remaining sequents $I_{i,j}R^*s$ is called a
-*pre-history* of $p_i$ in branch $s$. ^[see @yu2010, 389]
+In a branch $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
+G3s−proof $T$, the path $S_rR^*O_{i,j}$ is called a *history* of $p_i$
+in branch $S$. The remaining sequents $I_{i,j}R^*S$ is called a
+*pre-history* of $p_i$ in branch $S$. ^[see @yu2010, 389]
 \End{definition}
 
 \Begin{definition}[Prehistoric Relation] \label{local1}
-For any principal positive families $p_i$ and $p_h$ and any branch $s$ of
-the form $s_rR^*O_{i,j}RI_{i,j}R∗s$ in a S4 proof $𝒯 = (T, R)$:
+For any principal positive families $p_i$ and $p_h$ and any branch $S$ of
+the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 
 (1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
 ⊟_{k}B_{k_q}(⊞_h:C)), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
-prehistoric family* of $p_i$ in $s$ with notation $h ≺^s_L i$.
+prehistoric family* of $p_i$ in $S$ with notation $h ≺^S_L i$.
 
 (2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0} ∧ ... ∧
 ⊟_{k_q}B_{k_q} ⊃ A(⊞_h:C)$ then $p_h$ is a *right prehistoric family*
-of $p_i$ in $s$ with notation $h ≺^s_R i$.
+of $p_i$ in $S$ with notation $h ≺^S_R i$.
 
-(3) The relation of *prehistoric family* in $s$ is defined by: $≺^s := ≺^s_L ∪ ≺^s_R$.
+(3) The relation of *prehistoric family* in $S$ is defined by: $≺^S := ≺^S_L ∪ ≺^S_R$.
 The relation of *(left, right) prehistoric family* in $T$ is defined by:
-$≺_L := ⋃\{≺^s_L |\text{$s$ is a leaf}\}$, $≺_R := ⋃\{≺^s_R |\text{$s$
+$≺_L := ⋃\{≺^S_L |\text{$S$ is a leaf}\}$, $≺_R := ⋃\{≺^S_R |\text{$S$
 is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 
 \End{definition}
@@ -1106,21 +1105,21 @@ The following lemma provides the connection between these two definitions:
 
 \Begin{lemma} \label{global}
 There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the branch
-$s$ iff $h ≺^s i$.
+$S$ iff $h ≺^S i$.
 \End{lemma}
 
 \Begin{proof}
-(⇒): $⊞_h$ occurs in a sequent $s'$ in a pre-history of $p_i$ in the
-path $s$, so the path $s$ has the form
-$s_rR^*O_{i,j}RI_{i,j}R^*s'R^*s$ for some $j < l_i$. By the subformula
+(⇒): $⊞_h$ occurs in a sequent $S'$ in a pre-history of $p_i$ in the
+path $S$, so the path $S$ has the form
+$S_rR^*O_{i,j}RI_{i,j}R^*S'R^*S$ for some $j < l_i$. By the subformula
 theorem \ref{sub}, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
-$s'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
-$h ≺^s_L i$, if it is on right we have $h ≺^s_R i$. In both cases $h
-≺^s i$ holds.
+$S'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
+$h ≺^S_L i$, if it is on right we have $h ≺^S_R i$. In both cases $h
+≺^S i$ holds.
 
-(⇐): By definition there is a $I_{i,j}$ in $s$, where $⊞_h$ occurs
-either on the left (for $h ≺^s_L i$) or on the right (for $h ≺^s_R
-i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $s$.
+(⇐): By definition there is a $I_{i,j}$ in $S$, where $⊞_h$ occurs
+either on the left (for $h ≺^S_L i$) or on the right (for $h ≺^S_R
+i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $S$.
 \End{proof}
 
 TODO: paraphrase some of the remarks from @yu2010.
@@ -1146,7 +1145,7 @@ If $k ≺_R j$ and $j ▹ i$, then $k ▹ i$, where $▹$ is any one of $≺$, $
 Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
 principally introduced $⊞_j$. All corresponding occurrences of $⊞_j$
 are part of corresponding occurrences of the subformula $⊞_jA(⊞_kB)$,
-with exactly one occurrence in the root sequent $s_r$ by the
+with exactly one occurrence in the root sequent $S_r$ by the
 subformula property \ref{sub}. So wherever $⊞_j$ occurs in the proof
 $T$, there is a $⊞_k$ occurring in the scope of it.
 
