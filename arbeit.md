@@ -36,17 +36,21 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $R2$: $A ⊢ c:A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
         (Axiom Necessitation)
 
-A Hilbert style derivation $d$ is sequence of formulas $A_0, ... A_n$
-such that any formula is either an axiom A0-A4 or derived from earlier
-formulas by a rule R1 or R2. When formulating such derivations, we
-will introduce propositional tautologies without derivation and use
-the term propositional reasoning for any use of modus ponens together
-with a propositional tautology. This is of course correct as axioms A0
-together with the modus ponens rule R1 are a complete Hilbert style
-system for classical propositional logic. Its easy to see by a simple
-complete induction on the proof length that this derivations do
-not introduce any new terms not already occurring in the final
-propositional tautology.
+A Hilbert style derivation $d$ from a set of assumptions $Γ$ is a
+sequence of formulas $A_0, ... A_n$ such that any formula is either an
+axiom A0-A4, a formula $A ∈ Γ$ or derived from earlier formulas by a
+rule R1 or R2. The notation $Γ ⊢_{LP} A$ means that a LP derivation
+from assumptions $Γ$ ending in $A$ exists. We also write $⊢_{LP} A$ or
+$LP ⊢ A$ if a derivation for $A$ without any assumptions exists.
+
+When formulating such derivations, we will introduce propositional
+tautologies without derivation and use the term propositional
+reasoning for any use of modus ponens together with a propositional
+tautology. This is of course correct as axioms A0 together with the
+modus ponens rule R1 are a complete Hilbert style system for classical
+propositional logic. Its easy to see by a simple complete induction on
+the proof length that this derivations do not introduce any new terms
+not already occurring in the final propositional tautology.
 
 \Begin{definition}[Constant Specification]
 A *constant specification* $CS$ is a set of of formulas of the form
@@ -60,7 +64,6 @@ necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
 without axiom necessitation.  A constant specification $CS$ is
 injective, if for each proof constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
-
 
 \Begin{lemma}[substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
@@ -433,6 +436,10 @@ will use path $s_0$ to mean the full and unique path $s_r R s_n R ... R s_0$ fro
 the root $s_r$ to the leaf $s_0$. $T↾s$ denotes the subtree of $T$ with root
 $s$. The transitive closure of $R$ is denoted by $R^+$ and the
 reflexive-transitive closure is denoted by $R^*$.
+
+Consistent with the notation for the Hilbert style system LP, the
+notation $G ⊢ Γ ⊂ Δ$ is used if there exists a Gentzen style proof
+tree with the sequent $Γ ⊂ Δ$ as root in the system $G$.
 
 \Begin{definition}[correspondence] \label{corr}
 The subformula (symbol) occurrences in a proof correspond to each
