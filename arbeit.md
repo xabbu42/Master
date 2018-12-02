@@ -2,7 +2,6 @@
 
 TODO:
 
-* replace loop with cycle, add explanation and ref to @yu2017
 * use consistent and correct graph theoretic terms to talk about trees
   (branches paths etc)
 * consistent numbering and handling of lists (is it worth the noise?)
@@ -1071,9 +1070,11 @@ Prehistoric Phenomena
 
 In his paper "Prehistoric Phenomena and Self-referentiality"
 [@yu2010], Yu gave a formal definition for the situation described in
-the last chapter, which he calls a prehistoric loop. We will reproduce
-in this chapter his definitions of prehistoric relation, prehistoric
-loop as well as some basic lemmas about this new notions.
+the last chapter, which he calls a prehistoric loop. In the later
+paper @yu2017 he adopted the proper graph theoretic term cycle as we
+do in this paper. Beside that change we will reproduce in this chapter
+his definitions of prehistoric relation, prehistoric cycle as well as
+some basic lemmas about this new notions.
 
 \Begin{definition}[History]
 In a branch $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
@@ -1155,32 +1156,32 @@ statement there is also an occurrence of $⊞_k$ in the same scope, and
 therefore also $k ▹ i$.
 \End{proof}
 
-\Begin{definition}[Prehistoric Loop]
+\Begin{definition}[Prehistoric Cycle]
 In a G3s−proof $T$, the ordered list of principal positive families
-$p_{i_0},..., p_{i_{n-1}}$ with length $n$ is called a *prehistoric loop* or *left
-prehistoric loop* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
+$p_{i_0},..., p_{i_{n-1}}$ with length $n$ is called a *prehistoric cycle* or *left
+prehistoric cycle* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
 i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
 \End{definition}
 
 \Begin{lemma}
-$T$ has a prehistoric loop iff $T$ has a left prehistoric loop.
+$T$ has a prehistoric cycle iff $T$ has a left prehistoric cycle.
 \End{lemma}
 
 \Begin{proof}
 The (⇐) direction is trivial. The (⇒) direction is proven by complete
-induction on the length of the loop as follow:
+induction on the length of the cycle as follow:
 
 $n = 1$: $i_0 ≺ i_0$ so either $i_0 ≺_R i_0$ or $i_0 ≺_L i_0$. As $i_0
 ≺_R i_0$ is impossible by lemma \ref{noref}, we have $i_0 ≺_L i_0$ and the
-loop already is a left prehistoric loop.
+cycle already is a left prehistoric cycle.
 
 $n - 1 ⇒ n$: If $i_k ≺_L i_{k+1 \mod n}$ for all $k < n$, then the
-loop already is a left prehistoric loop and we are finished. Otherwise
+cycle already is a left prehistoric cycle and we are finished. Otherwise
 there is a $k < n$ such that $i_k ≺_R i_{k+1 \mod n} ≺ i_{k+2 \mod
 n}$. By lemma \ref{trans} we also have $i_k ≺ i_{k+2 \mod n}$ and
 therefore the sublist of length $n - 1$ without $i_{k+1 \mod n}$ is
-also a prehistoric loop. By the induction hypothesis, $T$ has a left
-prehistoric loop.
+also a prehistoric cycle. By the induction hypothesis, $T$ has a left
+prehistoric cycle.
 \End{proof}
 
 
@@ -1214,13 +1215,13 @@ does not contain $u_{x,y}$.
 \End{proof}
 
 \Begin{lemma} \label{epsilon}
-If a G3s−proof $T$ is prehistoric-loop-free, then we can realize it in
+If a G3s−proof $T$ is prehistoric-cycle-free, then we can realize it in
 such a way that: If $h_2 ≺ h_1$, then $ε(h_2,j_2) < ε(h_1,j_1)$ for any
 $j_1 < l_{h_1}$ and $j_2 < l_{h_2}$.
 \End{lemma}
 
 \Begin{proof}
-For a prehistoric-loop-free proof $T$, $≺$ describes a directed
+For a prehistoric-cycle-free proof $T$, $≺$ describes a directed
 acyclic graph. Therefore there exists a topological order
 $p_{k_0},...,p_{k_{n_p}}$ of the $n_p + 1$ principal positive families
 $p_0, ..., p_{n_p}$. For any path $s$ of the form
@@ -1234,7 +1235,7 @@ lemma.
 \End{proof}
 
 \Begin{lemma} \label{constants}
-Assume the proof tree is prehistoric-loop-free. Taken the $ε$ as
+Assume the proof tree is prehistoric-cycle-free. Taken the $ε$ as
 defined in lemma \ref{epsilon}, we have: If $ε(i_0,j_0) ≥ ε(i,j)$,
 then for any $k_0 ≤ m_{i_0,j_0}$ and any $k ≤ m_{i,j}$,
 $c_{i_0,j_0,k_0}$ does not occur in $A^N_{i,j,k}$ for the single
@@ -1260,13 +1261,13 @@ and therefor also not in $A^N_{i,j,k} ≡ A_{i,j,k}$
 With this three lemmas we can finally proof the main result of @yu2010
 [394]:
 
-\Begin{theorem}[Necessity of Left Prehistoric Loop for Self-referentiality]
-If a S4−theorem $A$ has a left-prehistoric-loop-free G3s−proof, then
+\Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality]
+If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
 there is a LP−formula $B$ s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
 \End{theorem}
 
 \Begin{proof}
-Given a left-prehistoric-loop-free G3s−proof $T$ for $A$, use lemma
+Given a left-prehistoric-cycle-free G3s−proof $T$ for $A$, use lemma
 \ref{epsilon} and the realization theorem \ref{realization} to
 construct a realization function $r_T^N$ and a constant specification
 $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization of $A$.
@@ -1328,7 +1329,7 @@ locally have negative polarity, as the family could be part of a cut
 formula and therefore also occur with positive polarity in the other
 branch of the cut. On the other hand, adding prehistoric relations
 with negative families in a cut free G3s proof does not introduce
-prehistoric loops, as in G3s a negative family is never introduced by
+prehistoric cycles, as in G3s a negative family is never introduced by
 a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
 G3s + (Cut) proofs, the subformula property (\ref{sub}) and
 therefore also lemma \ref{global} no longer holds. That means we can
@@ -1372,11 +1373,11 @@ occurrences of $□$ symbols.
 With the following lemmas and theorems we will establish a
 constructive proof for $\Gs + (□\Cut) ⊢ Γ ⊃ Δ ⇒ \Gs + (\Cut) ⊢ Γ ⊃ Δ ⇒
 \Gs ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
-constructions do not introduce prehistoric loops by the new definition
+constructions do not introduce prehistoric cycles by the new definition
 \ref{local2}. As all prehistoric relations by the first definition
 \ref{local1} are included in the new definition, the final proof in
-G3s will be prehistoric loop free by any definition if the original
-proof G3s + (□Cut) was prehistoric loop free by the new definition.
+G3s will be prehistoric-cycle-free by any definition if the original
+proof G3s + (□Cut) was prehistoric-cycle-free by the new definition.
 
 It is important to note, that all the following corollaries are not
 restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
@@ -1723,18 +1724,18 @@ j$ for the same family because of the occurrence of $□A_0$ on the
 right.
 \End{proof}
 
-\Begin{corollary} \label{cutloop}
+\Begin{corollary} \label{cutcycle}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
-introduce prehistoric loops.
+introduce prehistoric cycles.
 \End{corollary}
 
 \Begin{proof}
-Assume for contradiction that there exists a prehistoric loop $i_0 ≺
+Assume for contradiction that there exists a prehistoric cycle $i_0 ≺
 ... ≺ i_{n-1} ≺ i_0$ in the new proof. By the previous lemma for any
-prehistoric relation $i_k ≺ i_{k+1 \mod n}$ in the loop either $i_k ≺
+prehistoric relation $i_k ≺ i_{k+1 \mod n}$ in the cycle either $i_k ≺
 i_{k+1 \mod n}$ in the old proof or there is a family $i'_k$ in the
 cut formula such that $i_k ≺ i'_k ≺ i_{k+1 \mod n}$. Therefore we also
-have a prehistoric loop in the original proof.
+have a prehistoric cycle in the original proof.
 \End{proof}
 
 \Begin{theorem}[(□Cut) elimination] \label{boxcut}
@@ -1788,9 +1789,9 @@ By contraction and a cut elimination we get the required G3s proof for
 $Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 \End{proof}
 
-\Begin{corollary} \label{boxcutloop}
+\Begin{corollary} \label{boxcutcycle}
 For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
-introduce prehistoric loops.
+introduce prehistoric cycles.
 \End{corollary}
 
 \Begin{proof}
@@ -1806,8 +1807,8 @@ by the definition of correspondence for (□Cut) (\ref{boxcutcorr}).
 
 So the new proof with (□Cut) rules replaced by (Cut) rules does
 not introduce new prehistoric relations and therefore also no new
-prehistoric loops. By corollary \ref{cutloop}, the cut elimination to
-get a G3s proof does not introduce prehistoric loops.
+prehistoric cycles. By corollary \ref{cutcycle}, the cut elimination to
+get a G3s proof does not introduce prehistoric cycles.
 \End{proof}
 
 \Begin{definition}
@@ -1830,8 +1831,8 @@ not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
 G3s^⊗$ is trivially also provable prehistoric-cycle-free in G3s +
 (Cut) and G3s + (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and
 $\Gs^⊗ ⊆ (\Gs + (\Cut))^⊗$. Moreover $(\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by
-corollary \ref{cutloop} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
-\Gs^⊗$ by corollary \ref{boxcutloop}. All together we get:
+corollary \ref{cutcycle} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
+\Gs^⊗$ by corollary \ref{boxcutcycle}. All together we get:
 
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
@@ -2041,7 +2042,7 @@ the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than 
 the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 ∧ ¬□P$ and the connection between the two is established by the
 (□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is again necessary
-for a prehistoric loop in a G3lp as we will show formally.
+for a prehistoric cycle in a G3lp as we will show formally.
 
 \afterpage{
 \begin{landscape}
@@ -2254,11 +2255,11 @@ subset $A ⊆ IN$ such that $A := {t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)}$.
 
 \Begin{theorem}
 If the input set $IN$ of a G3lp proof is non self-referential then the
-proof is prehistoric loop free.
+proof is prehistoric-cycle-free.
 \End{theorem}
 
 \Begin{proof}
-We show the contraposition. Assume there is a prehistoric loop $i_0 ≺
+We show the contraposition. Assume there is a prehistoric cycle $i_0 ≺
 i_1 ≺ ... ≺ i_{n-1} ≺ i_0$. By the corollary \ref{corollary} there
 exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ sub(A_k)$
 and $s_k ∈ sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
@@ -2268,7 +2269,7 @@ $\{s_k{:}A_k\} ⊆ IN$ is a self-referential subset of $IN$.
 
 \Begin{corollary}
 The forgetful projection $A˚$ of a LP formula provable with a non
-self-referential input set $IN$ is provable prehistoric loop free in G3s.
+self-referential input set $IN$ is provable prehistoric-cycle-free in G3s.
 \End{corollary}
 
 
@@ -2276,11 +2277,11 @@ Counterexample
 ==============
 
 The main result of the last chapter does not exactly match Yu's
-result. We have shown that prehistoric loops in G3s are sufficent for
+result. We have shown that prehistoric cycles in G3s are sufficent for
 self-referentiality but only for the expanded definition of
 self-referentiality considering the set of all inputs $IN$. The
 question arises if this expansion is actually necessary. The following
-counterexample shows that indeed, prehistoric loops in G3s are not
+counterexample shows that indeed, prehistoric cycles in G3s are not
 sufficent for needing a self-referential $CS$.
 
 \Begin{lemma}
@@ -2301,14 +2302,14 @@ this matches the more general result in corollary 7.2 in @artemov2001
 \End{proof}
 
 \Begin{lemma}
-The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no left-prehistoric-loop-free proof.
+The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no left-prehistoric-cycle-free proof.
 \End{lemma}
 
 \Begin{proof}
 By invertibility for G3s in one direction and an easy deduction in the other, we have
 $G3s ⊢ ⊃ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P) ⇔ G3s ⊢  □(P ∧ ¬□P → P), □(P ∧
-¬□P) ⊃$. In both directions the proofs remain prehistoric loop free if
-the other proof was prehistoric loop free. For a proof of $□(P ∧ ¬□P →
+¬□P) ⊃$. In both directions the proofs remain prehistoric-cycle-free if
+the other proof was prehistoric-cycle-free. For a proof of $□(P ∧ ¬□P →
 P), □(P ∧¬□P) ⊃$ we have two possibilities for the last rule:
 
 1\.\ case: The last rule is a $(□ ⊃)$ rule with $□(P ∧ ¬□P → P)$ as
@@ -2329,18 +2330,18 @@ just the original sequent weakened by $P$ on the left:
 }
 
 So for the remaining of the proof we will have to check if weakening
-$P$ on the left helps to construct a prehistoric loop free proof.
+$P$ on the left helps to construct a prehistoric-cycle-free proof.
 
 2\.\ case: The last rule is a $(□ ⊃)$ rule with $□(P ∧ ¬□P)$ as the
 principal formula. We get as premise the sequent $P ∧¬□P, □(P ∧ ¬□P →
 P), □(P ∧¬□P) ⊃$ which again by invertibility and an easy deduction is
-provable prehistoric loop free iff $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃
-□P$ is provable prehistoric loop free. It is clear that using $(□ ⊃)$
+provable prehistoric-cycle-free iff $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃
+□P$ is provable prehistoric-cycle-free. It is clear that using $(□ ⊃)$
 rules on this sequent just adds additional copies of the existing
 formulas.^[TODO more formally?] So by contraction if there is a
-prehistoric loop free proof for this sequent, then there is also one
+prehistoric-cycle-free proof for this sequent, then there is also one
 ending in a $(⊃ □)$ rule. The premise of this rule has to have the
-form $□(P ∧ ¬□P → P) ⊃ P$ to avoid a prehistoric loop. But the
+form $□(P ∧ ¬□P → P) ⊃ P$ to avoid a prehistoric cycle. But the
 following Kripke model shows that $□(P ∧ ¬□P → P) → P$ is not a
 theorem of S4 and therefore not provable at all: $w = \{¬P\}, R =
 \{(w, w)\}$.  We have $w \Vdash P ∧ ¬□P → P$ because $w \Vdash ¬P$ and
@@ -2348,21 +2349,21 @@ therefore also $w \Vdash ¬(P ∧ ¬□P)$. As $w$ is the only world we get
 $w \Vdash □(P ∧ ¬□P → P)$ which leads to the final $w \Vdash ¬(□(P ∧
 ¬□P → P) → P)$ again because $w \Vdash ¬P$
 
-As all possibilities for a prehistoric loop free proof of $□(P ∧ ¬□P →
+As all possibilities for a prehistoric-cycle-free proof of $□(P ∧ ¬□P →
 P), □(P ∧¬□P) ⊃$ are exhausted, there is no such proof and therefore
-also no prehistoric loop free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P ∧¬□P)$
+also no prehistoric-cycle-free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P ∧¬□P)$
 \End{proof}
 
 \Begin{theorem}
 There exists a S4−theorem $A$ and a LP-formula $B$ such that $A$ has
-no left-prehistoric-loop-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)}
+no left-prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)}
 B$
 \End{theorem}
 
 \Begin{proof}
 $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as ¬□(P ∧ ¬□P)
 already is a theorem of S4. By the previous lemma, there is no
-left-prehistoric-loop-free proof for $A$ and by the first lemma $B :=
+left-prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$.
 \End{proof}
 
