@@ -1837,6 +1837,9 @@ corollary \ref{cutcycle} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
 
+TODO relate to non normal results in @yu2017, i.e. we give
+additional conditions for prehistoric-loop-free modus ponens.
+
 Prehistoric relations and G3lp
 ==============================
 
@@ -1912,8 +1915,8 @@ follows:
 1. $sub(x) = \{x\}$ for any proof variable $x$
 2. $sub(c) = \{c\}$ for any proof constant $c$
 3. $sub(!t) = sub(t) ∪ \{!t\}$
-4. $sub(s+t) sub(s) ∪ sub(t) ∪ \{s + t\}$
-5. $sub(s⋅t) sub(s) ∪ sub(t) ∪ \{s⋅t\}$
+4. $sub(s+t) = sub(s) ∪ sub(t) ∪ \{s + t\}$
+5. $sub(s⋅t) = sub(s) ∪ sub(t) ∪ \{s⋅t\}$
 
 \End{definition}
 
@@ -1929,27 +1932,30 @@ The set of subformulas $sub(A)$ of an LP formula $A$ is inductively defined as f
 \End{definition}
 
 Notice that by this definition $s{:}A$ is a subformula of $s+t{:}A$.
+TODO mention/define usage of sub(A) for subterms of a formula.
 
-We expand the definition of correspondence \ref{corr} to G3lp proofs
-in the natural way. That is, all topmost proof terms in active
-formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ and $({:} ⊃)$ correspond to
-each other. For the $(⊃ !)$ rule, the proof term $t$ of the active
-formula $t{:}A$ corresponds to the proof term $t$ in the subformula
-$t{:}A$ of $!t{:}t{:}A$ and the topmost proof term $!t$ in the active
-formula $!t{:}t{:}A$ corresponds to the same topmost proof term in the
-same principal formula. That means that families of proof terms in
-G3lp consist not of occurrences of a single term $t$ but of
-occurrences of subterms $s$ of a top level term $t$.
+We expand the definition of correspondence (\ref{corr}) to G3lp proofs
+in the natural way. That is, all topmost proof terms in active or
+principal formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$
+correspond to each other. Notice that in the $(⊃ !)$ rule, the the
+topmost proof term $t$ in the contraction formula therefore
+corresponds to the topmost proof term $!t$ in the principal
+formula. The proof term $t$ of the other active formula $!t:t:A$ on
+the other hand corresponds to the same proof therm $t$ in the
+principal formula.
 
-We will use $\bar{t}$ for the family of occurrences corresponding to
-the *top level* term $t$, i.e. seen as a set of terms instead of term
-occurrences we have $\bar{t} ⊆ sub(t)$. So for any term occurrence
-$s$, $\bar{s}$ is not necessarily the full family of $s$ in the
-complete proof tree as $s$ could be a subterm of the top level term $t$
-of the family. For any occurrence $s$ in a sequent $S$ of the proof
-tree though, $\bar{s}$ is the family of $s$ relative to the subtree
-$T↾S$ as all related proof terms in the premises of G3lp rules are
-subterms of the related proof term in the conclusion.
+By this definition, families of proof terms in G3lp consist not of
+occurrences of a single term $t$ but of occurrences of subterms $s$ of
+a top level term $t$.  We will use $\bar{t}$ for the family of
+occurrences corresponding to the *top level* term $t$, i.e. seen as a
+set of terms instead of term occurrences we have $\bar{t} ⊆
+sub(t)$. So for any term occurrence $s$, $\bar{s}$ is not necessarily
+the full family of $s$ in the complete proof tree as $s$ could be a
+subterm of the top level term $t$ of the family. For any occurrence
+$s$ in a sequent $S$ of the proof tree though, $\bar{s}$ is the family
+of $s$ relative to the subtree $T↾S$ as all related proof terms in the
+premises of G3lp rules are subterms of the related proof term in the
+conclusion.
 
 We also see that most rules of G3lp only relate proof terms to each
 other used for the same subformula $A$. The one exception is the $(⊃
@@ -1965,9 +1971,6 @@ notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrence
 of $\bar{t_j}$ with premise $S$, such that there is an occurrence of $\bar{t_i}$
 in $S$.
 \End{definition}
-
-TODO there are hidden introductions of $□$ in the $(⊃ !)$ rule. decide
-how to handle them!
 
 \Begin{lemma}
 The forgetful projection of all rules in G3lp are admissible in G3s +
@@ -1999,7 +2002,32 @@ form:
 \UIC{$Γ ⊃ Δ, □□A$}
 \DP
 
-TODO decide how to handle that rule (see definition of prehistoric relations) and add proof
+We show that $\Glp ⊢ Γ ⊃ Δ, □□A$ follows from $\Glp ⊢ Γ ⊃ Δ, □A$ by
+structural induction on the proof tree for $Γ ⊃ Δ, □A$. The above rule
+then is sound by that lemma and a contraction.
+
+1\.\ case: $□A$ is a weakening formula of the last rule. Just weaken
+in $□□A$.
+
+2\.\ case: $□A$ is a side formula of the last rule. Use the induction
+hypothesis on the premises and append the same last rule.
+
+3\.\ case: $□A$ is the principal formula of the last rule. Then the
+last rule is a $(⊃ □)$ rule and has the following form:
+
+\AXC{$□Γ ⊃ A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$Γ', □Γ ⊃ Δ, □A$}
+\DP
+
+Use an additional $(⊃ □)$ rule to get the necessary proof as follows:
+
+\AXC{$□Γ ⊃ A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$□Γ ⊃ □A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$Γ', □Γ ⊃ Δ, □□A$}
+\DP
 
 \End{proof}
 
@@ -2010,13 +2038,19 @@ actually proof that]
 \End{lcorollary}
 
 \Begin{proof}
+TODO this needs to be a lot better
+
 As we replace $(⊃ :)$ rules directly with $(⊃ □)$ rules, the two
 definitions of prehistoric relations match. Moreover , all
 contractions are on already related subformulas and $□$ symbols.  The
 newly introduced (□Cut) is also used on related $□$ symbols and
-subformulas. So by corollaries \ref{contrprehist} and
-\ref{dropprehist} as well as definition \ref{boxcutcorr}, no new
-prehistoric relations are introduced in the forgetful projection.
+subformulas. Finally the additional $(⊃ □)$ rule in the handling of
+$(⊃ !)$ has the same prehistoric families as the $□$ in the formula
+$□A$ of the premise, which is the same family in the G3lp proof.
+
+So using the corollaries \ref{contrprehist} and \ref{dropprehist} as
+well as definition \ref{boxcutcorr}, no new prehistoric relations are
+introduced in the forgetful projection.
 \End{proof}
 
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
@@ -2041,8 +2075,8 @@ All left prehistoric relations of the proof are from left branch of
 the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than in
 the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 ∧ ¬□P$ and the connection between the two is established by the
-(□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is again necessary
-for a prehistoric cycle in a G3lp as we will show formally.
+(□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is necessary
+for any prehistoric cycle in a G3lp as we will show formally.
 
 \afterpage{
 \begin{landscape}
@@ -2264,7 +2298,7 @@ i_1 ≺ ... ≺ i_{n-1} ≺ i_0$. By the corollary \ref{corollary} there
 exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ sub(A_k)$
 and $s_k ∈ sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
 and $t_{i_{k' }} ∈ sub(A_{k'})$ follows $s_k ∈ sub(A_{k' })$. So
-$\{s_k{:}A_k\} ⊆ IN$ is a self-referential subset of $IN$.
+$\{s_k{:}A_k\ | 0 ≤ k < n\} ⊆ IN$ is a self-referential subset of $IN$.
 \End{proof}
 
 \Begin{corollary}
@@ -2364,7 +2398,8 @@ B$
 $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as ¬□(P ∧ ¬□P)
 already is a theorem of S4. By the previous lemma, there is no
 left-prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
-y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$.
+y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
+provable in LP0 and therefor also in $LP(CS^⊛)$.
 \End{proof}
 
 Literature
