@@ -1848,8 +1848,8 @@ rules for the build up of proof terms with build in contraction as
 well as the new axioms (Axc) and (Axt). We will in our variant of G3lp
 use the same rules to build up proof terms, but replace the axioms
 with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the prehistoric relations
-of the proof intact. As there is a proof for $⊃ A$ for any axiom A and
-also for $A ⊃ A$ for any formula A, this two rules are equivalent to
+of the proof intact. As there is a proof for $⊃ A$ for any axiom $A$ and
+also for $A ⊃ A$ for any formula $A$, this two rules are equivalent to
 the two axioms and invertible.
 
 As we already did with G3s, we will use the full system with all
@@ -1909,47 +1909,52 @@ rules in figure \ref{G3lprules}.
 TODO repeat necessary results from @pulver2010
 
 \Begin{definition}[subterm]
-The set of subterms $sub(t)$ of a LP proof term $t$ is inductively defined as
+The set of subterms $\sub(t)$ of a LP proof term $t$ is inductively defined as
 follows:
 
-1. $sub(x) = \{x\}$ for any proof variable $x$
-2. $sub(c) = \{c\}$ for any proof constant $c$
-3. $sub(!t) = sub(t) ∪ \{!t\}$
-4. $sub(s+t) = sub(s) ∪ sub(t) ∪ \{s + t\}$
-5. $sub(s⋅t) = sub(s) ∪ sub(t) ∪ \{s⋅t\}$
+1. $\sub(x) = \{x\}$ for any proof variable $x$
+2. $\sub(c) = \{c\}$ for any proof constant $c$
+3. $\sub(!t) = \sub(t) ∪ \{!t\}$
+4. $\sub(s+t) = \sub(s) ∪ \sub(t) ∪ \{s + t\}$
+5. $\sub(s⋅t) = \sub(s) ∪ \sub(t) ∪ \{s⋅t\}$
 
 \End{definition}
 
 \Begin{definition}[subformula]
-The set of subformulas $sub(A)$ of an LP formula $A$ is inductively defined as follows:
+The set of subformulas $\sub(A)$ of a LP formula $A$ is inductively defined as follows:
 
-1. $sub(P) = \{P\}$ for any atomic formula $P$
-2. $sub(⊥) = \{⊥\}$
-3. $sub(A_0 → A_1) = sub(A_0) ∪ sub(A_1) ∪ \{A_0 → A_1\}$
-4. $sub(s+t{:}A_0) = sub(A_0) ∪ \{s{:}A_0, t{:}A_0, s+t{:}A_0\}$
-5. $sub(t{:}A_0) = sub(A_0) ∪ \{t{:}A_0\}$
+1. $\sub(P) = \{P\}$ for any atomic formula $P$
+2. $\sub(⊥) = \{⊥\}$
+3. $\sub(A_0 → A_1) = \sub(A_0) ∪ \sub(A_1) ∪ \{A_0 → A_1\}$
+4. $\sub(s+t{:}A_0) = \sub(A_0) ∪ \{s{:}A_0, t{:}A_0, s+t{:}A_0\}$
+5. $\sub(t{:}A_0) = \sub(A_0) ∪ \{t{:}A_0\}$
 
 \End{definition}
 
-Notice that by this definition $s{:}A$ is a subformula of $s+t{:}A$.
-TODO mention/define usage of sub(A) for subterms of a formula.
+\Begin{definition}[subterms of a formula]
+The set of subterms $\sub(A)$ of a LP formula $A$ is the union of all
+sets of subterms of any term occurring in $A$.
+\End{definition}
 
-We expand the definition of correspondence (\ref{corr}) to G3lp proofs
-in the natural way. That is, all topmost proof terms in active or
-principal formulas in the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$
-correspond to each other. Notice that in the $(⊃ !)$ rule, the the
-topmost proof term $t$ in the contraction formula therefore
-corresponds to the topmost proof term $!t$ in the principal
-formula. The proof term $t$ of the other active formula $!t:t:A$ on
-the other hand corresponds to the same proof therm $t$ in the
-principal formula.
+We use $\sub$ for all three definitions, as it will be clear from
+context which of the three definitions is meant.  Notice that by this
+definition $s{:}A$ is a subformula of $s+t{:}A$.
+
+We adapt the definition of correspondence (\ref{corr}) to G3lp proofs
+as follows: all topmost proof terms in active or principal formulas in
+the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ correspond to each
+other. Notice that in the $(⊃ !)$ rule, the the topmost proof term $t$
+in the contraction formula therefore corresponds to the topmost proof
+term $!t$ in the principal formula. The proof term $t$ of the other
+active formula $!t:t:A$ on the other hand corresponds to the same
+proof therm $t$ in the principal formula.
 
 By this definition, families of proof terms in G3lp consist not of
 occurrences of a single term $t$ but of occurrences of subterms $s$ of
 a top level term $t$.  We will use $\bar{t}$ for the family of
 occurrences corresponding to the *top level* term $t$, i.e. seen as a
 set of terms instead of term occurrences we have $\bar{t} ⊆
-sub(t)$. So for any term occurrence $s$, $\bar{s}$ is not necessarily
+\sub(t)$. So for any term occurrence $s$, $\bar{s}$ is not necessarily
 the full family of $s$ in the complete proof tree as $s$ could be a
 subterm of the top level term $t$ of the family. For any occurrence
 $s$ in a sequent $S$ of the proof tree though, $\bar{s}$ is the family
@@ -2295,9 +2300,9 @@ proof is prehistoric-cycle-free.
 \Begin{proof}
 We show the contraposition. Assume there is a prehistoric cycle $i_0 ≺
 i_1 ≺ ... ≺ i_{n-1} ≺ i_0$. By the corollary \ref{corollary} there
-exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ sub(A_k)$
-and $s_k ∈ sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
-and $t_{i_{k' }} ∈ sub(A_{k'})$ follows $s_k ∈ sub(A_{k' })$. So
+exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ \sub(A_k)$
+and $s_k ∈ \sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
+and $t_{i_{k' }} ∈ \sub(A_{k'})$ follows $s_k ∈ \sub(A_{k' })$. So
 $\{s_k{:}A_k\ | 0 ≤ k < n\} ⊆ IN$ is a self-referential subset of $IN$.
 \End{proof}
 
