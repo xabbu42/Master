@@ -1,9 +1,6 @@
 
 
 TODO:
-
-* use consistent and correct graph theoretic terms to talk about trees
-  (branches paths etc)
 * consistent numbering and handling of lists (is it worth the noise?)
 * replace correspondence with related?
 
@@ -414,26 +411,30 @@ used as subformulas of the principal formula. Active formulas which
 are also strict subformulas of other active formulas of the same rule
 as used in $(: ⊃)$ and $(□ ⊃)$ are contraction formulas. 
 
-[^weak]: Notice that weakening formulas only occur in axioms and the rules $(⊃
-□)$, $(◇ ⊃)$ and (lift), which are also the only rules which restrict the
-possible side formulas.
+[^weak]: Notice that weakening formulas only occur in axioms and the
+rules $(⊃ □)$, $(◇ ⊃)$ and (lift), which are also the only rules which
+restrict the possible side formulas.
 
 Formally, a Gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
 := \{S_0, ..., S_n\}$ is the set of occurrences of sequents, and $R :=
 \{(S_i,S_j) ∈ T × T ∣ \text{$S_i$ is the conclusion of a rule which
 has $S_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
 $S_r$. A leaf sequent $S$ is a sequent without any premises, i.e $S
-\slashed{R} S'$ for all $S' ∈ T$. The relation $R$ is the inverse of
-the the parent function $P := \{(S_j, S_i) ∈ T × T ∣ S_i R S_j\}$
-defined on $T ∖ \{S_r\}$.
+\slashed{R} S'$ for all $S' ∈ T$. 
 
-A path in the proof is a list of related sequents $S_r R S_n R ... R
-S_0$ starting from the root sequent $S_r$ and ending in a leaf sequent
-$S_0$. The path is fully defined by the leaf sequent $S_0$. So we
-will use path $S_0$ to mean the full and unique path $S_r R S_n R ... R S_0$ from
-the root $S_r$ to the leaf $S_0$. $T↾S$ denotes the subtree of $T$ with root
-$S$. The transitive closure of $R$ is denoted by $R^+$ and the
-reflexive-transitive closure is denoted by $R^*$.
+A path in a proof tree is a list of related sequent occurrences $S_0 R ... R
+S_n$. A root path is a path starting at the root sequent
+$S_r$. A root-leaf path is a root path ending in a leaf
+sequent.[^treeterms] A root path is fully defined by the last sequent
+$S$. So we will use root path $S$ to mean the unique path $S_r
+R S_0 R ... R S$ from the root $S_r$ to the sequent $S$.
+$T↾S$ denotes the subtree of $T$ with root $S$. The transitive closure
+of $R$ is denoted by $R^+$ and the reflexive-transitive closure is
+denoted by $R^*$.
+
+[^treeterms]: Yu uses the term path for a root path and branch for a
+root-leaf path. As this terminology is ambigious we adopted the
+slightly different terminology given here.
 
 Consistent with the notation for the Hilbert style system LP, the
 notation $G ⊢ Γ ⊂ Δ$ is used if there exists a Gentzen style proof
@@ -1077,14 +1078,14 @@ his definitions of prehistoric relation, prehistoric cycle as well as
 some basic lemmas about this new notions.
 
 \Begin{definition}[History]
-In a branch $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
+In a root-leaf path $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
 G3s−proof $T$, the path $S_rR^*O_{i,j}$ is called a *history* of $p_i$
-in branch $S$. The remaining sequents $I_{i,j}R^*S$ is called a
-*pre-history* of $p_i$ in branch $S$. ^[see @yu2010, 389]
+in the root-leaf path $S$. The path $I_{i,j}R^*S$ is called a
+*pre-history* of $p_i$ in the root-leaf path $S$. ^[see @yu2010, 389]
 \End{definition}
 
 \Begin{definition}[Prehistoric Relation] \label{local1}
-For any principal positive families $p_i$ and $p_h$ and any branch $S$ of
+For any principal positive families $p_i$ and $p_h$ and any root-leaf path $S$ of
 the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 
 (1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
@@ -1105,13 +1106,13 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 The following lemma provides the connection between these two definitions:
 
 \Begin{lemma} \label{global}
-There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the branch
+There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the root-leaf path 
 $S$ iff $h ≺^S i$.
 \End{lemma}
 
 \Begin{proof}
 (⇒): $⊞_h$ occurs in a sequent $S'$ in a pre-history of $p_i$ in the
-path $S$, so the path $S$ has the form
+root-leaf path $S$, so $S$ has the form
 $S_rR^*O_{i,j}RI_{i,j}R^*S'R^*S$ for some $j < l_i$. By the subformula
 theorem \ref{sub}, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
 $S'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
@@ -1210,7 +1211,7 @@ does not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
 theorem, $CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
-$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ by $t_{i,j}s
+$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ by $t_{i,j}$
 does not contain $u_{x,y}$.
 \End{proof}
 
@@ -1224,8 +1225,8 @@ $j_1 < l_{h_1}$ and $j_2 < l_{h_2}$.
 For a prehistoric-cycle-free proof $T$, $≺$ describes a directed
 acyclic graph. Therefore there exists a topological order
 $p_{k_0},...,p_{k_{n_p}}$ of the $n_p + 1$ principal positive families
-$p_0, ..., p_{n_p}$. For any path $s$ of the form
-$s_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*s$, we have $i_2 ≺ i_1$ by lemma
+$p_0, ..., p_{n_p}$. For any root-leaf path $S$ of the form
+$S_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*S$, we have $i_2 ≺ i_1$ by lemma
 \ref{global}. So the order $ε(k_x,j) := j + Σ_{w = 0}^{x-1}l_{k_w}$
 defined for each family $p_{k_x}$ and each $j < l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
@@ -1414,7 +1415,7 @@ as the original proof for $\Gs ⊢ Γ ⊃ Δ$. ^[TODO compare with
 \Begin{proof}
 $(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
 use the exact same premise and only in the history add the new
-weakening formulas. So all prehistoric branches are unchanged and all
+weakening formulas. So all prehistoric pathes are unchanged and all
 prehistoric relations remain the same.
 \End{proof}
 
@@ -2009,7 +2010,7 @@ form:
 
 We show that $\Glp ⊢ Γ ⊃ Δ, □□A$ follows from $\Glp ⊢ Γ ⊃ Δ, □A$ by
 structural induction on the proof tree for $Γ ⊃ Δ, □A$. The above rule
-then is sound by that lemma and a contraction.
+then is admissible by that lemma and a contraction.
 
 1\.\ case: $□A$ is a weakening formula of the last rule. Just weaken
 in $□□A$.
@@ -2033,7 +2034,6 @@ Use an additional $(⊃ □)$ rule to get the necessary proof as follows:
 \RightLabel{$(⊃ □)$}
 \UIC{$Γ', □Γ ⊃ Δ, □□A$}
 \DP
-
 \End{proof}
 
 \Begin{lcorollary}
@@ -2222,7 +2222,7 @@ A G3lp proof is *normal* if all premises of $(⊃ :)_t$ or $(⊃ :)_c$
 rules are derived in the canonical way given by lemmas \ref{genax1} and
 \ref{genax2} and at least one contraction formula in each premise $S$
 of a rule with contraction formulas is introduced principally in at
-least one branch of the proof $T↾S$ (only the the rule $(⊃ +)$ has two
+least one path of the proof $T↾S$ (only the the rule $(⊃ +)$ has two
 contraction formulas in the same premise, so almost all contraction
 formulas are introduced principally).
 \End{definition}
@@ -2240,7 +2240,7 @@ follows:
 the canonical proofs.
 
 2. For any contraction formula of a rule $R$ in a sequent $S$
-introduced by weakening in all branches of $T↾S$, remove all
+introduced by weakening in all pathes of $T↾S$, remove all
 occurrences corresponding to the contraction formula to get a direct
 proof $T'$ for the conclusion of that rule $R$.
 
@@ -2259,7 +2259,7 @@ premise $S$ of a $(⊃ :)$ rule correspond either as part of a strict
 subformula on the right or as part of a subformula on the left of the
 conclusion. A formula on the left can only correspond to a subformula
 on the right as a strict subformula. Therefore all corresponding
-occurrences of $s$ on the right in the remaining branch up to the root
+occurrences of $s$ on the right in the remaining path up to the root
 are part of a strict subformula and
 are occurrences of the same proof term $s$. As $t$ itself is a
 corresponding occurrences of $s$ in that path, we get $t = s$.
