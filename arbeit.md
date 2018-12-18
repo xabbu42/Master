@@ -33,10 +33,11 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 
 A Hilbert style derivation $d$ from a set of assumptions $Γ$ is a
 sequence of formulas $A_0, ... A_n$ such that any formula is either an
-axiom A0-A4, a formula $A ∈ Γ$ or derived from earlier formulas by a
-rule R1 or R2. The notation $Γ ⊢_{LP} A$ means that a LP derivation
-from assumptions $Γ$ ending in $A$ exists. We also write $⊢_{LP} A$ or
-$LP ⊢ A$ if a derivation for $A$ without any assumptions exists.
+instance of an axiom A0-A4, a formula $A ∈ Γ$ or derived from earlier
+formulas by a rule R1 or R2. The notation $Γ ⊢_{LP} A$ means that a LP
+derivation from assumptions $Γ$ ending in $A$ exists. We also write
+$⊢_{LP} A$ or $LP ⊢ A$ if a LP derivation for $A$ without any assumptions
+exists.
 
 When formulating such derivations, we will introduce propositional
 tautologies without derivation and use the term propositional
@@ -44,7 +45,7 @@ reasoning for any use of modus ponens together with a propositional
 tautology. This is of course correct as axioms A0 together with the
 modus ponens rule R1 are a complete Hilbert style system for classical
 propositional logic. Its easy to see by a simple complete induction on
-the proof length that this derivations do not introduce any new terms
+the proof length that this derivations do not use any new proof terms
 not already occurring in the final propositional tautology.
 
 \Begin{definition}[Constant Specification]
@@ -333,8 +334,7 @@ In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
 the logic of proofs LP using explicit contraction and weakening rules,
 i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will
 follow @pulver2010 instead and use G3lp with the structural rules
-absorbed, but with the classical rules reduced to the same minimal
-subset as in figure \ref{G3smin}.
+absorbed.
 
 For now the system from figure \ref{G3lift} closely resembling the
 only hinted at "$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is
@@ -1321,8 +1321,8 @@ This leads to the following expanded definition of prehistoric relation:
 \Begin{definition}[Local Prehistoric Relation in G3s + (Cut)] \label{local2}
 A family $□_i$ has a *prehistoric relation* to another family $□_j$, in
 notation $i ≺ j$, if there is a $(⊃ □)$ rule introducing an occurrence
-of $□_j$ with premise $s$, such that there is an occurrence of $□_i$
-in $s$.
+of $□_j$ with premise $S$, such that there is an occurrence of $□_i$
+in $S$.
 \End{definition}
 
 Notice that there can be prehistoric relations with $□$ families which
@@ -1385,7 +1385,7 @@ restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
 by the premise of the lemma but still hold for arbitrary annotations
 $an$. That means there is no implicit assumption that the families
 have only a single occurrence in the root sequents used in the lemma or theorem
-and the results can also be used in subtrees $T↾s$ together with an
+and the results can also be used in subtrees $T↾S$ together with an
 annotation $an_T$ for the complete tree.
 
 \Begin{lemma}[weakening for G3s] \label{weak}
@@ -1491,8 +1491,6 @@ For any annotation $an$ the constructed proofs do not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
-TODO decide for a proof, adapt main proof for correspondence?
-
 \Begin{proof}
 In the 1\. case and 2\. case we only remove occurrences of $□$ so no
 new prehistoric relations are introduced. In the 3\.\ case, by
@@ -1501,20 +1499,6 @@ introduced for the new proof where both occurrences of $A$ are
 deconstructed. Moreover, in the case of appending a $(⊃ □)$ rule, all
 occurrences in the new premise are also in the old premise and therefore
 no new prehistoric relations get introduced.
-\End{proof}
-
-\Begin{proof}
-The algorithm implicitly described in the main proof is as follows:
-
-1. Remove all corresponding subformulas of one of the $A$ in the final
-sequent from the proof.
-
-2. Remove any rule used for the build up of the same final occurrence
-of $A$ from the proof (from the first step the active formulas and the
-principal formula of all this rules are already removed).
-
-As the new proof is in a way a strict subset of the old proof, no new
-prehistoric relations can be introduced.
 \End{proof}
 
 \Begin{lemma} \label{drop}
@@ -1803,7 +1787,7 @@ belong to the same family.
 Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
 already exists in the original proof, as every $□$ occurrence in
 $□Γ_L$ or $□Γ_R$ also occurs in one of the two $(⊃ □)$ rules in the
-original proof, with both introduce a □ of the same family as $□B$
+original proof, which both introduce a □ of the same family as $□B$
 by the definition of correspondence for (□Cut) (\ref{boxcutcorr}).
 
 So the new proof with (□Cut) rules replaced by (Cut) rules does
@@ -2081,7 +2065,7 @@ the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than 
 the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 ∧ ¬□P$ and the connection between the two is established by the
 (□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is necessary
-for any prehistoric cycle in a G3lp as we will show formally.
+for any prehistoric cycle in a G3lp proof as we will show formally.
 
 \afterpage{
 \begin{landscape}
@@ -2260,12 +2244,13 @@ subformula on the right or as part of a subformula on the left of the
 conclusion. A formula on the left can only correspond to a subformula
 on the right as a strict subformula. Therefore all corresponding
 occurrences of $s$ on the right in the remaining path up to the root
-are part of a strict subformula and
-are occurrences of the same proof term $s$. As $t$ itself is a
-corresponding occurrences of $s$ in that path, we get $t = s$.
+are part of a strict subformula and so all corresponding occurrences
+of $s$, left or right, in the remaining path are occurrences of the
+same proof term $s$. As $t$ itself is a corresponding occurrences of
+$s$ in that path, we get $t = s$.
 \End{proof}
 
-\Begin{lcorollary} \label{corollary}
+\Begin{lcorollary}[TODO] \label{corollary}
 If $i ≺ j$ for two term families $\bar{t_i}$ and $\bar{t_j}$ of a G3lp
 proof then there is $(⊃ :)$ rule introducing an occurrence $s ∈
 \bar{t_j}$ in a formula $s{:}A$ such that there is an occurrence of
@@ -2341,11 +2326,11 @@ this matches the more general result in corollary 7.2 in @artemov2001
 \End{proof}
 
 \Begin{lemma}
-The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no left-prehistoric-cycle-free proof.
+The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no prehistoric-cycle-free proof.
 \End{lemma}
 
 \Begin{proof}
-By invertibility for G3s in one direction and an easy deduction in the other, we have
+By inversion for G3s in one direction and an easy deduction in the other, we have
 $G3s ⊢ ⊃ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P) ⇔ G3s ⊢  □(P ∧ ¬□P → P), □(P ∧
 ¬□P) ⊃$. In both directions the proofs remain prehistoric-cycle-free if
 the other proof was prehistoric-cycle-free. For a proof of $□(P ∧ ¬□P →
@@ -2373,7 +2358,7 @@ $P$ on the left helps to construct a prehistoric-cycle-free proof.
 
 2\.\ case: The last rule is a $(□ ⊃)$ rule with $□(P ∧ ¬□P)$ as the
 principal formula. We get as premise the sequent $P ∧¬□P, □(P ∧ ¬□P →
-P), □(P ∧¬□P) ⊃$ which again by invertibility and an easy deduction is
+P), □(P ∧¬□P) ⊃$ which again by inversion and an easy deduction is
 provable prehistoric-cycle-free iff $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃
 □P$ is provable prehistoric-cycle-free. It is clear that using $(□ ⊃)$
 rules on this sequent just adds additional copies of the existing
@@ -2395,17 +2380,17 @@ also no prehistoric-cycle-free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P
 
 \Begin{theorem}
 There exists a S4−theorem $A$ and a LP-formula $B$ such that $A$ has
-no left-prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)}
-B$
+no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
 \End{theorem}
 
 \Begin{proof}
 $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as ¬□(P ∧ ¬□P)
 already is a theorem of S4. By the previous lemma, there is no
-left-prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
+prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
 provable in LP0 and therefor also in $LP(CS^⊛)$.
 \End{proof}
+
 
 Literature
 ==========
