@@ -1344,8 +1344,8 @@ modus ponens under $□$ is necessary. We therefore introduce here the new rule
 
 \Begin{definition}[(□Cut) rule]
 
-\AXC{$Γ ⊃ Δ, □A$}
-\AXC{$Γ ⊃ Δ, □(A → B)$}
+\AXC{$Γ ⊃ Δ, □A, □B$}
+\AXC{$Γ ⊃ Δ, □(A → B), □B$}
 \RightLabel{(□Cut)}
 \BIC{$Γ ⊃ Δ, □B$}
 \DP
@@ -1727,7 +1727,7 @@ original proof.
 \End{proof}
 
 \Begin{theorem}[(□Cut) elimination] \label{boxcut}
-If $\Gs ⊢ Γ ⊃ Δ, □A$ and $\Gs ⊢ Γ ⊃ Δ, □(A → B)$ then $\Gs ⊢ Γ ⊃ Δ, □B$
+If $\Gs ⊢ Γ ⊃ Δ, □A, □B$ and $\Gs ⊢ Γ ⊃ Δ, □(A → B), □B$ then $\Gs ⊢ Γ ⊃ Δ, □B$
 \End{theorem}
 
 \Begin{proof}
@@ -1735,11 +1735,15 @@ By a structural induction over the proof trees $𝒯_L$ for
 $Γ ⊃ Δ, □A$ and $𝒯_R$ for $Γ ⊃ Δ, □(A → B)$.
 
 1\.\ case: $□(A → B)$ or $□A$ is a weakening formula of the last
-rule. Just weaken in $□B$ instead in that proof.
+rule. Then removing them from that proof gives the required
+proof. This includes the case when $□B$ is the principal formula of
+the last rule of either proof, as then the last rule is $(⊃ □)$ which
+has no side formulas on the right.
 
-2\.\ case: $□(A → B)$ or $□A$ is a side formula of the last rule.
-Use the induction hypothesis on the premises of that rule with the
-other proof and append the same rule.
+2\.\ case: $□(A → B)$ or $□A$ is a side formula of the last rule. Then
+also $□B$ is a side formula of that rule.  Use the induction
+hypothesis on the premises of that rule with the other proof and
+append the same rule.
 
 3\.\ case: $□(A → B)$ and $□A$ are the principal formula of the last
 rule. Then the last rules have the following form:
@@ -1747,12 +1751,12 @@ rule. Then the last rules have the following form:
 \AXC{$𝒯_L$} \noLine
 \UIC{$□Γ_L ⊃ A$}
 \RightLabel{$(⊃ □)$}
-\UIC{$Γ_L', □Γ_L  ⊃ Δ, □A$}
+\UIC{$Γ_L', □Γ_L  ⊃ Δ, □A, □B$}
 
 \AXC{$𝒯_R$} \noLine
 \UIC{$□Γ_R ⊃ A → B$}
 \RightLabel{$(⊃ □)$}
-\UIC{$Γ'_R, □Γ_R  ⊃ Δ, □(A → B)$}
+\UIC{$Γ'_R, □Γ_R  ⊃ Δ, □(A → B), □B$}
 
 \RightLabel{(□Cut)}
 \BIC{$Γ ⊃ Δ, □B$}
@@ -1778,14 +1782,13 @@ $Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 \End{proof}
 
 \Begin{corollary} \label{boxcutcycle}
-For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
+For any annotation $an$ the constructed proof for $Γ ⊃ Δ, □B$ does not
 introduce prehistoric cycles.
 \End{corollary}
 
 \Begin{proof}
-Replacing $□(A→B)$ or $□A$ with $□B$ in weakening formulas or side
-formulas does not change prehistoric relations as the $□$ symbols
-belong to the same family.
+Removing weakening or side formulas $□(A→B)$ or $□A$ as in case 1 and
+2 does not introduce new prehistoric relations.
 
 Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
 already exists in the original proof, as every $□$ occurrence in
