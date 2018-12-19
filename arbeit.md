@@ -1360,8 +1360,10 @@ Again it is also necessary to expand the definition of correspondence
 * The topmost $□$ occurrence in the active formulas and the principal
   formula correspond to each other.
 
-* The subformulas $A$ in the active formula of the premises correspond
+* The subformulas $A$ in the active formulas of the premises correspond
   to each other.
+
+* The subformulas $B$ correspond to each other.
 
 \End{definition}
 
@@ -1718,9 +1720,10 @@ introduce prehistoric cycles.
 Assume for contradiction that there exists a prehistoric cycle $i_0 ≺
 ... ≺ i_{n-1} ≺ i_0$ in the new proof. By the previous lemma for any
 prehistoric relation $i_k ≺ i_{k+1 \mod n}$ in the cycle either $i_k ≺
-i_{k+1 \mod n}$ in the old proof or there is a family $i'_k$ in the
-cut formula such that $i_k ≺ i'_k ≺ i_{k+1 \mod n}$. Therefore we also
-have a prehistoric cycle in the original proof.
+i_{k+1 \mod n}$ in the original proof or there is a family $i'_k$ in
+the cut formula such that $i_k ≺ i'_k ≺ i_{k+1 \mod n}$ in the
+original proof. Therefore we also have a prehistoric cycle in the
+original proof.
 \End{proof}
 
 \Begin{theorem}[(□Cut) elimination] \label{boxcut}
@@ -1810,7 +1813,7 @@ identical.
 \Begin{proof}
 
 A prehistoric-cycle-free proof in G3s by the original definition
-(\ref{local1}) is also prehistoric-cycle-free by the the new
+(\ref{local1}) is also prehistoric-cycle-free by the new
 definition (\ref{local2}) as in a G3s-proof a negative family can
 not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
 G3s^⊗$ is trivially also provable prehistoric-cycle-free in G3s +
@@ -1928,7 +1931,7 @@ definition $s{:}A$ is a subformula of $s+t{:}A$.
 We adapt the definition of correspondence (\ref{corr}) to G3lp proofs
 as follows: all topmost proof terms in active or principal formulas in
 the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ correspond to each
-other. Notice that in the $(⊃ !)$ rule, the the topmost proof term $t$
+other. Notice that in the $(⊃ !)$ rule, the topmost proof term $t$
 in the contraction formula therefore corresponds to the topmost proof
 term $!t$ in the principal formula. The proof term $t$ of the other
 active formula $!t:t:A$ on the other hand corresponds to the same
@@ -1948,12 +1951,12 @@ premises of G3lp rules are subterms of the related proof term in the
 conclusion.
 
 We also see that most rules of G3lp only relate proof terms to each
-other used for the same subformula $A$. The one exception is the $(⊃
-⋅)$ rule. Similar to the cut rules from the previous chapter, $(⊃ ⋅)$
-relates subformulas and symbols of different polarities as well as
-terms used for different formulas. So we will use the same approach as
-in the last chapter to define prehistoric relations of proof term
-families for any polarity:
+other used for the same subformula $A$. The two exceptions are the $(⊃
+⋅)$ rule and the $(⊃ !)$ rule. Similar to the cut rules from the
+previous chapter, $(⊃ ⋅)$ relates subformulas and symbols of different
+polarities as well as terms used for different formulas. So we will
+use the same approach as in the last chapter to define prehistoric
+relations of proof term families for any polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
 A family $\bar{t_i}$ has a *prehistoric relation* to another family $\bar{t_j}$, in
