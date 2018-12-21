@@ -409,7 +409,7 @@ is called the principal formula of the rule. The remaining formulas in
 the premises are called active formulas. Active formulas are always
 used as subformulas of the principal formula. Active formulas which
 are also strict subformulas of other active formulas of the same rule
-as used in $(: ⊃)$ and $(□ ⊃)$ are contraction formulas. 
+as used in $(: ⊃)$ and $(□ ⊃)$ are contraction formulas.
 
 [^weak]: Notice that weakening formulas only occur in axioms and the
 rules $(⊃ □)$, $(◇ ⊃)$ and (lift), which are also the only rules which
@@ -420,7 +420,7 @@ Formally, a Gentzen style proof is denoted by $𝒯 = (T, R)$, where $T
 \{(S_i,S_j) ∈ T × T ∣ \text{$S_i$ is the conclusion of a rule which
 has $S_j$ as a premise}\}$. The only root sequent of $𝒯$ is denoted by
 $S_r$. A leaf sequent $S$ is a sequent without any premises, i.e $S
-\slashed{R} S'$ for all $S' ∈ T$. 
+\slashed{R} S'$ for all $S' ∈ T$.
 
 A path in a proof tree is a list of related sequent occurrences $S_0 R ... R
 S_n$. A root path is a path starting at the root sequent
@@ -433,7 +433,7 @@ of $R$ is denoted by $R^+$ and the reflexive-transitive closure is
 denoted by $R^*$.
 
 [^treeterms]: Yu uses the term path for a root path and branch for a
-root-leaf path. As this terminology is ambigious we adopted the
+root-leaf path. As this terminology is ambiguous we adopted the
 slightly different terminology given here.
 
 Consistent with the notation for the Hilbert style system LP, the
@@ -836,7 +836,7 @@ If $LP ⊢ A$ then $S4 ⊢ A˚$.
 If $LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
 completeness of G3lift (\ref{complete}). The forgetful projection of the
 sequents of any G3lift rule map directly to the sequents of an
-equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by 
+equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by
 replacing all sequents with the forgetful projection of that sequence
 is a valid G3s proof with root sequent $⊃ A˚$. By the soundness of G3s
 we have $S4 ⊢ A˚$.
@@ -1106,7 +1106,7 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 The following lemma provides the connection between these two definitions:
 
 \Begin{lemma} \label{global}
-There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the root-leaf path 
+There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the root-leaf path
 $S$ iff $h ≺^S i$.
 \End{lemma}
 
@@ -1417,7 +1417,7 @@ as the original proof for $\Gs ⊢ Γ ⊃ Δ$. ^[TODO compare with
 \Begin{proof}
 $(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
 use the exact same premise and only in the history add the new
-weakening formulas. So all prehistoric pathes are unchanged and all
+weakening formulas. So all prehistoric paths are unchanged and all
 prehistoric relations remain the same.
 \End{proof}
 
@@ -2379,17 +2379,16 @@ The forgetful projection $A˚$ of a LP formula provable with a non
 self-referential input set $IN$ is provable prehistoric-cycle-free in G3s.
 \End{corollary}
 
-
 Counterexample
 ==============
 
 The main result of the last chapter does not exactly match Yu's
-result. We have shown that prehistoric cycles in G3s are sufficent for
+result. We have shown that prehistoric cycles in G3s are sufficient for
 self-referentiality but only for the expanded definition of
 self-referentiality considering the set of all inputs $IN$. The
 question arises if this expansion is actually necessary. The following
 counterexample shows that indeed, prehistoric cycles in G3s are not
-sufficent for needing a self-referential $CS$.
+sufficient for needing a self-referential $CS$.
 
 \Begin{lemma}
 The S4 formula $A ≡ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has a realization in
