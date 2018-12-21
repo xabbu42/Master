@@ -2287,7 +2287,7 @@ for any prehistoric cycle in a G3lp proof as we will show formally.
 \RightLabel{$(□ ⊃)$}
 \UIC{$⊟(P ∧ ¬⊞P) ⊃ P ∧ ¬□P$}
 \RightLabel{$(⊃ □)$}
-\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P)$}
+\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P), ⊞P$}
 
 \AXC{$P, ¬□P ⊃ P$}
 \RightLabel{$(∧ ⊃)$}
@@ -2295,7 +2295,7 @@ for any prehistoric cycle in a G3lp proof as we will show formally.
 \RightLabel{$(⊃ →)$}
 \UIC{$ ⊃ P ∧ ¬□P → P$}
 \RightLabel{$(⊃ □)$}
-\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P → P)$}
+\UIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞(P ∧ ¬□P → P), ⊞P$}
 
 \RightLabel{(□Cut)}
 \BIC{$P, ⊟(P ∧ ¬⊞P) ⊃ ⊞P$}
