@@ -1968,39 +1968,25 @@ of $\bar{t_j}$ with premise $S$, such that there is an occurrence of $\bar{t_i}$
 in $S$.
 \End{definition}
 
-\Begin{lemma}
-The forgetful projection of all rules in G3lp are admissible in G3s +
-(□Cut).
+Given that we now have defined families of terms and prehistoric
+relations between them in G3lp, it is interesting to see what happens
+with this relations if we look at the forgetful projection of a G3lp
+proof. That is, what happens on the G3s side if we construct a proof
+tree with the forgetful projections of the original sequents. Of
+course we do not get a pure G3s proof as most of the G3lp rules have
+no direct equivalent in G3s.  We will therefore introduce new rules,
+which are the forgetful projection of a G3lp rule denoted for example
+by $(⊃ !)˚$ for the forgetful projection of a $(⊃ !)$ rule. The
+following two lemmas show that all new rules are admissible in G3s +
+$(□\Cut)$.
+
+\Begin{lemma} \label{boxbox}
+$\Glp ⊢ Γ ⊃ Δ, □A$ iff $\Glp ⊢ Γ ⊃ Δ, □□A$.
 \End{lemma}
 
 \Begin{proof}
-The subset G3c is shared by G3lp and G3s and is therefore trivially
-admissible. The forgetful projection of the rule $(⊃ +)$ is just a
-contraction and therefore also admissible. The forgetful projection of
-the rules $(⊃ :)_t$ and $(⊃ :)_c$ are $(⊃ □)$ rules in G3s.
-
-We are left with the following two rules:
-
-$(⊃ ⋅)$: The forgetful projection of a $(⊃ ⋅)$ rule is admissible by the
-following derivation using a (□Cut) and contraction:
-
-\AXC{$Γ ⊃ Δ, □(A→B), □B$}
-\AXC{$Γ ⊃ Δ, □(A), □B$}
-\RightLabel{(□Cut)}
-\BIC{$Γ ⊃ Δ, □B, □B$}
-\DP
-
-$(⊃ !)$: The forgetful projection of a $(⊃ !)$ rule has the following
-form:
-
-\AXC{$Γ ⊃ Δ, □A, □□A$}
-\RightLabel{$(⊃ !)˚$}
-\UIC{$Γ ⊃ Δ, □□A$}
-\DP
-
-We show that $\Glp ⊢ Γ ⊃ Δ, □□A$ follows from $\Glp ⊢ Γ ⊃ Δ, □A$ by
-structural induction on the proof tree for $Γ ⊃ Δ, □A$. The above rule
-then is admissible by that lemma and a contraction.
+The (⇐) direction is just inversion for $(⊃ □)$. The (⇒) direction
+is proven by the following structural induction:
 
 1\.\ case: $□A$ is a weakening formula of the last rule. Just weaken
 in $□□A$.
@@ -2026,26 +2012,195 @@ Use an additional $(⊃ □)$ rule to get the necessary proof as follows:
 \DP
 \End{proof}
 
+\Begin{lemma}
+The forgetful projection of all rules in G3lp are admissible in G3s +
+(□Cut).
+\End{lemma}
+
+\Begin{proof}
+The subset G3c is shared by G3lp and G3s and is therefore trivially
+admissible. The forgetful projection of the rule $(⊃ +)$ is just a
+contraction and therefore also admissible. The forgetful projection of
+the rules $(⊃ :)_t$ and $(⊃ :)_c$ are $(⊃ □)$ rules in G3s. The
+forgetful projection of $(⊃ ⋅)$ is a $(□\Cut)$. Finally the forgetful
+projection of a $(⊃ !)$ rule has the following form:
+
+\AXC{$Γ ⊃ Δ, □A, □□A$}
+\RightLabel{$(⊃ !)˚$}
+\UIC{$Γ ⊃ Δ, □□A$}
+\DP
+
+That rule is admissible by lemma \ref{boxbox} and a contraction.
+\End{proof}
+
+Instead of working with a G3s system with all this extra rules
+included, we will define a forgetful projection from a G3lp proof to a
+G3s + $(□\Cut)$ proof by eliminating all the contractions using the
+algorithm implicitly defined in the proof of the contraction lemma
+(\ref{contr}) and eliminating the $(⊃ !)˚$ rules by the algorithm
+implicitly described in the proof for lemma \ref{boxbox}.
+
+For the following lemmas and proofs we fix an arbitrary G3lp proof $𝒯 =
+(T, R)$ and its forgetful projection $𝒯˚ = (T', R')$ as defined
+below.
+
+\Begin{definition}[forgetful projection of a G3lp proof]
+The forgetful projection of a G3lp proof $𝒯 = (T, R)$ for a LP sequent
+$Γ ⊃ Δ$ is the G3s + $(□\Cut)$ proof $𝒯˚ = (T', R')$ for $Γ˚ ⊃ Δ˚$
+inductively defined as follows:
+
+1\. case: The last rule of $𝒯$ is an axiom. Then $𝒯˚$ is just $Γ˚ ⊃ Δ˚$
+which is an axiom of G3s.
+
+2\. case: The last rule of $𝒯$ is a $(⊃ →)$ or a $(→ ⊃)$ rule with
+premises $S_i$. Then $𝒯˚$ has the same last rule with
+$(𝒯↾S_i)˚$ as proofs for the premises $S_i˚$.
+
+3\. case: The last rule of $𝒯$ is a $(⊃ :)_t$ or $(⊃ :)_t$ rule with
+premise $S$. Then $𝒯˚$ has a $(⊃ □)$ as last rule with $(𝒯↾S)˚$ as
+proof for the premise $S˚$.
+
+4\. case: The last rule of $𝒯$ is a $(⊃ +)$ rule with premise
+$S$. Then $𝒯˚$ is $(𝒯↾S)˚$ with the necessary contraction applied.
+
+5\. case: The last rule of $𝒯$ is a $(⊃ ⋅)$ rule with premises $S_0$
+and $S_1$. Then $𝒯˚$ has a $(□\Cut)$ as last rule with $(𝒯↾S_i)˚$ as
+proofs for the premises $S_i˚$.
+
+6\. case: The last rule of $𝒯$ is a $(⊃ !)$ rule with premise
+$S$. Then we get a G3s + $(□\Cut)$ proof for $Γ˚ ⊃ Δ˚, □□A$ from the
+proof $(𝒯↾S)˚$ by lemma \ref{boxbox}. $𝒯˚$ is that proof with the
+additional $□□A$ removed by contraction as $□□A ∈ Δ˚$.
+
+\End{definition}
+
+To reason about the relations between a G3lp proof $𝒯$ and its
+forgetful projection $𝒯˚$, the following algorithm to construct $𝒯˚$
+is useful:
+
+1. Replace all sequents by their forgetful projection.
+
+2. Add the additional $(⊃ □)$ rules and prepend additional $□$ where
+necessary, so that the forgetful projections of $(⊃ !)$ reduce to
+simple contractions.
+
+3. Eliminate all contractions to get a G3s + $(□\Cut)$
+proof.
+
+It is not immediately clear that contracting formulas only removes
+occurrences as the proof uses inversion which in turn also adds
+weakening formulas. But all the deconstructed parts weakened in this
+way get contracted again in the next step of the contraction. In the
+end the contracted proof tree is always a subset of the original proof
+tree. ^[TODO more formal?, subset wrong word]
+
+That means that also $𝒯˚$ is a subset of the tree constructed in step
+two. From this we see that all $□$ occurrences in $𝒯˚$ have a term
+occurrence in $𝒯$ mapped to them if we consider the extra $□$
+occurrences introduced in step 2 of the algorithm (resp. in case
+6 of the definition) as replacements of the same term as the $□$
+occurrences they are contracted with and also consider the extra
+sequents $□Γ ⊃ □A$ introduced in step 2 as copies of the same formulas
+in the original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the existing first
+$(⊃ □)$ rule.
+
+\Begin{lemma}
+For any family $f_i$ of $□$ symbols in $𝒯˚$ there is a unique proof
+term family $\bar{t}_{i'}$ in $𝒯$ such that $s ∈ \bar{t}_{i'}$ for all proof
+term occurrences $s$ mapped to $□$ occurrences in $f_i$.
+\End{lemma}
+
+\Begin{proof}
+For any two directly corresponding $□$ occurrences we show that the
+two mapped term occurrences correspond directly or by reflexive closure:
+
+1\.\ case: The two $□$ occurrences are added in step 2 . Then the
+mapped term occurrences are the same occurrence and correspond by
+reflexive closure.
+
+2\.\ case: The two $□$ occurrence correspond directly by a rule which
+is the forgetful projection of a rule in $𝒯$.  Then the mapped term
+occurrences also correspond as all G3lp rules with a direct equivalent
+in G3s have the same correspondences. Notice that lemma \ref{boxbox}
+only removes weakening formulas from existing $(⊃ □)$ rules. So this
+still holds for $(⊃ □)$ rules and their corresponding $(⊃ :)$ rules
+even after applying lemma \ref{boxbox}.
+
+3\.\ case: The two $□$ occurrences correspond directly by a $(⊃ □)$
+rule added in step 2. Then the rule together with the previous rule
+has the following form:
+
+\AXC{$□Γ ⊃ A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$□Γ ⊃ □A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$Γ', □Γ ⊃ Δ, □□A$}
+\DP
+
+As the formulas in $□Γ ⊃ □A$ are considered copies of the original
+sequent $Γ', □Γ ⊃ Δ, □A$, and the sequent $Γ', □Γ ⊃ Δ, □□A$ is
+considered the same sequent with an $□$ added, the mapped term
+occurrences are actually the same and therefore correspond by reflexive
+closure.
+
+As direct correspondence in the G3s proof is a subset of
+correspondence in the G3lp proof, so is its transitive and reflexive
+closure. So for any two corresponding $□$ occurrences of a family
+$f_i$ the mapped term occurrences also correspond and therefor belong
+to the same family $\bar{t}_{i'}$.
+\End{proof}
+
+\Begin{lemma}
+If $i ≺ j$ in $𝒯˚$ then either $i' = j'$ or $i' ≺ j'$ in $𝒯$ for the proof term
+families $\bar{t}_{i'}$ and $\bar{t}_{j'}$ from the previous lemma.
+\End{lemma}
+
+\Begin{proof}
+
+$i ≺ j$ in $𝒯˚$, so there is a $(⊃ □)$ rule in $𝒯˚$ introducing an
+occurrence $□_j$ of $f_j$ with an occurrence $□_i$ of $f_i$ in the
+premise. For the mapped proof term occurrences $s_i$ and $s_j$ in $𝒯$
+we have $s_i ∈ \bar{t}_{i'}$ and $s_j ∈ \bar{t}_{j'}$ by the previous
+lemma. From this it follows that $i' ≺ j'$ or $i' = j'$ by an induction on
+the proof height:
+
+1\.\ case: The $(⊃ □)$ rule is the forgetful projection of a $(⊃ :)$
+rule. Then we have $i' ≺ j'$ directly by the definition of
+prehistoric relations for G3lp proofs using the occurrences $s_i$ in
+the premise of the rule $(⊃ :)$ introducing the occurrence $s_j$.
+
+3\.\ case: The $(⊃ □)$ rule is added in step 2. Then the rule together
+with the previous rule has the following form:
+
+\AXC{$□Γ ⊃ A$}
+\RightLabel{$(⊃ □)$}
+\UIC{$□Γ ⊃ □_kA$}
+\RightLabel{$(⊃ □)$}
+\UIC{$Γ', □Γ ⊃ Δ, □_j□_kA$}
+\DP
+
+For the term occurrence $s_k$ mapped to the occurrence $□_k$ we have
+$s_j = !s_k$ and $s_k ∈ \bar{t}_{j'}$ as $s_j$ is the top level term of the
+principal formula of a $(⊃ !)$ rule. If the occurrence $□_i$ is the
+occurrence $□_k$ then $i' = j'$ and we are finished. If the occurrence
+$□_i$ is not the occurrence $□_k$ then there is a corresponding
+occurrence $□'_i$ with a corresponding mapped term $s'_i$ in the
+sequent $□Γ ⊃ A$ and we have $i ≺ k$ from the previous $(⊃ □)$. As
+$\bar{t}_{j'}$ is also the term family of $s_k$ we get $i' ≺ j'$ or
+$i' = j'$ by induction hypothesis on the shorter proof up to the that
+$(⊃ □)$ rule with the occurrences $□'_i$, $s'_i$, $□_k$ and $s_k$.
+\End{proof}
+
 \Begin{lcorollary}
-The forgetful projection of a G3lp proof has the same prehistoric
-relations as the original G3lp proof. ^[TODO formulate one-way only or
-actually proof that]
+If $𝒯$ is prehistoric-cycle-free then also $𝒯˚$ is
+prehistoric-cycle-free.
 \End{lcorollary}
 
 \Begin{proof}
-TODO this needs to be a lot better
-
-As we replace $(⊃ :)$ rules directly with $(⊃ □)$ rules, the two
-definitions of prehistoric relations match. Moreover , all
-contractions are on already related subformulas and $□$ symbols.  The
-newly introduced (□Cut) is also used on related $□$ symbols and
-subformulas. Finally the additional $(⊃ □)$ rule in the handling of
-$(⊃ !)$ has the same prehistoric families as the $□$ in the formula
-$□A$ of the premise, which is the same family in the G3lp proof.
-
-So using the corollaries \ref{contrprehist} and \ref{dropprehist} as
-well as definition \ref{boxcutcorr}, no new prehistoric relations are
-introduced in the forgetful projection.
+The contraposition follows directly from the lemma as for any cycle
+$i_0 ≺ ... ≺ i_n ≺ i_0$ in $𝒯˚$ we get a cycle in $𝒯$ by removing
+duplicates in the list $i'_0, ..., i'_n$ of mapped term families
+$\bar{t}_{i'_0}, ... \bar{t}_{i'_n}$.
 \End{proof}
 
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
