@@ -116,8 +116,9 @@ we inductively construct a term $t$ and a proof
 $d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t(x_1,···,x_n){:}B$
 as follows:
 
-1\.\ case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and
-$d'$ is the derivation $x_i{:}A_i$, $x_i{:}A_i → !x_i{:}x_i{:}A_i$.
+1\.\ case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and $d'$
+is the derivation $x_i{:}A_i$, $x_i{:}A_i → !x_i{:}x_i{:}A_i$,
+$!x_i{:}x_i{:}A_i$.
 
 2\.\ case: $B$ is an axiom A0-A4. Then $t := c$ for a new constant
 $c$ and $d'$ is the derivation $B$, $c{:}B$.
@@ -1075,7 +1076,7 @@ the last chapter, which he calls a prehistoric loop. In the later
 paper @yu2017 he adopted the proper graph theoretic term cycle as we
 do in this paper. Beside that change we will reproduce in this chapter
 his definitions of prehistoric relation, prehistoric cycle as well as
-some basic lemmas about this new notions.
+some basic lemmas about this new notions as in the original paper.
 
 \Begin{definition}[History]
 In a root-leaf path $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
@@ -1211,7 +1212,7 @@ does not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
 theorem, $CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
-$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ by $t_{i,j}$
+$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ with $t_{i,j}$
 does not contain $u_{x,y}$.
 \End{proof}
 
@@ -1264,7 +1265,7 @@ With this three lemmas we can finally proof the main result of @yu2010
 
 \Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality]
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
-there is a LP−formula $B$ s.t. $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
+there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(CS^⊛) ⊢ B$
 \End{theorem}
 
 \Begin{proof}
@@ -1732,7 +1733,7 @@ If $\Gs ⊢ Γ ⊃ Δ, □A, □B$ and $\Gs ⊢ Γ ⊃ Δ, □(A → B), □B$ t
 
 \Begin{proof}
 By a structural induction over the proof trees $𝒯_L$ for
-$Γ ⊃ Δ, □A$ and $𝒯_R$ for $Γ ⊃ Δ, □(A → B)$.
+$Γ ⊃ Δ, □A, □B$ and $𝒯_R$ for $Γ ⊃ Δ, □(A → B), □B$.
 
 1\.\ case: $□(A → B)$ or $□A$ is a weakening formula of the last
 rule. Then removing them from that proof gives the required
@@ -1816,14 +1817,14 @@ identical.
 \Begin{proof}
 
 A prehistoric-cycle-free proof in G3s by the original definition
-(\ref{local1}) is also prehistoric-cycle-free by the new
-definition (\ref{local2}) as in a G3s-proof a negative family can
-not have any prehistoric families itself. So any sequent $Γ ⊂ Δ ∈
-G3s^⊗$ is trivially also provable prehistoric-cycle-free in G3s +
-(Cut) and G3s + (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and
-$\Gs^⊗ ⊆ (\Gs + (\Cut))^⊗$. Moreover $(\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by
-corollary \ref{cutcycle} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆
-\Gs^⊗$ by corollary \ref{boxcutcycle}. All together we get:
+(\ref{local1}) is also prehistoric-cycle-free by the new definition
+(\ref{local2}) as a negative family can not have any prehistoric
+families itself in a G3s-proof . So any sequent $Γ ⊂ Δ ∈ G3s^⊗$ is
+trivially also provable prehistoric-cycle-free in G3s + (Cut) and G3s
++ (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and $\Gs^⊗ ⊆ (\Gs +
+(\Cut))^⊗$. Moreover $(\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by corollary
+\ref{cutcycle} and $(\Gs + (□\Cut))^⊗ ⊆ (\Gs + (\Cut))^⊗ ⊆ \Gs^⊗$ by
+corollary \ref{boxcutcycle}. All together we get:
 
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
@@ -2466,7 +2467,7 @@ no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
 \End{theorem}
 
 \Begin{proof}
-$A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as ¬□(P ∧ ¬□P)
+$A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as $¬□(P ∧ ¬□P)$
 already is a theorem of S4. By the previous lemma, there is no
 prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$

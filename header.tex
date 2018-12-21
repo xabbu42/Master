@@ -26,6 +26,9 @@
    }
 \endgroup
 
+\let\oldproof\proof
+\def\proof{\oldproof\unskip}
+
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{corollary}{Corollary}[theorem]
