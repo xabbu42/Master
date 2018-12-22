@@ -1,8 +1,8 @@
-
-
-TODO:
-* consistent numbering and handling of lists (is it worth the noise?)
-* replace correspondence with related?
+---
+title: Self-referentiality in Justification Logic
+author: [Nathan Sebastian Gass]
+date: "2019-01-01"
+...
 
 Introduction
 ============
