@@ -2230,8 +2230,10 @@ the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
 for any prehistoric cycle in a G3lp proof as we will show formally.
 
 \afterpage{
+\thispagestyle{plain}
 \begin{landscape}
 \begin{figure} \caption{G3lp proof} \label{g3lpproof}
+\vspace{2mm}
 \AXC{$P, ¬t⋅x{:}P, x{:}(P ∧ ¬t⋅x{:}P) ⊃ P$}
 \AXC{$P, t⋅x{:}P ⊃ P$}
 \RightLabel{$(: ⊃)$}
@@ -2270,6 +2272,8 @@ for any prehistoric cycle in a G3lp proof as we will show formally.
 \RightLabel{$(⊃ ¬)$}
 \UIC{$⊃ ¬x{:}(P ∧ ¬t⋅x{:}P)$}
 \DP
+
+\vspace{2mm}
 
 \AXC{$P, ¬⊞P, ⊟(P ∧ ¬⊞P) ⊃ P$}
 \AXC{$P, □P ⊃ P$}
