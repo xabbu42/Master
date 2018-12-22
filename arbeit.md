@@ -4,6 +4,28 @@ author: [Nathan Sebastian Gass]
 date: "2019-01-01"
 ...
 
+\begin{titlepage}
+\begin{center}
+\vspace*{1cm}
+
+\Huge
+\textbf{Self-referentiality in Justification Logic}
+
+\vspace{0.5cm}
+\LARGE
+\textbf{Masterarbeit von\\Nathan Sebastian Gass\\}
+\vspace*{0.5cm}
+\Large
+01. 01. 2019
+\vfill
+Foobar
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
 Introduction
 ============
 

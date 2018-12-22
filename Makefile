@@ -1,5 +1,5 @@
 
-PANDOC=--standalone --table-of-contents --number-sections --bibliography bibliography.json --from markdown+raw_tex --pdf-engine=xelatex --variable papersize=a4
+PANDOC=--standalone --number-sections --bibliography bibliography.json --from markdown+raw_tex --pdf-engine=xelatex --variable papersize=a4
 
 all: arbeit.pdf #notizen.pdf essay.pdf 
 
