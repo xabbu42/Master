@@ -98,8 +98,11 @@ condition. Second, with an expansion on the definition of
 self-referential theorems, prehistoric cycles actually are
 sufficient for self-referential theorems.
 
+LP and S4
+=========
+
 Syntax
-======
+------
 
 The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣ A_0 → A_1 ∣
 □A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
@@ -256,7 +259,7 @@ no new variables are introduced in $d'$ or $CS'$.
 
 
 Gentzen System for S4
-=====================
+---------------------
 
 In the following text capital greek letters $Γ$, $Δ$ are used for
 multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
@@ -587,7 +590,7 @@ in the root sequent itself can not correspond to each other.
 \End{proof}
 
 G3lift is sound and complete
-============================
+----------------------------
 
 We will show in this chapter that G3lift is adequate by showing it is
 equivalent to the Hilbert system LP from @artemov2001 as introduced in
@@ -792,7 +795,7 @@ get the required proof for $Γ ⊃ A$.
 
 
 Annotated S4 Formulas and Proofs
-================================
+--------------------------------
 
 As we have already seen, all symbol occurrences in a Gentzen style
 proof can be divided in disjoint equivalence classes of corresponding
@@ -833,10 +836,8 @@ assigned a *polarity* as follows:
 This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
 they would have in the equivalent formula $⋀Γ → ⋁Δ$. Also notice that
 for the derived operators all subformulas have the same polarity,
-except for $¬$ which switches the polarity for its subformula.
-
-^[TODO explain
-used syntax and equivalence or remove]
+except for $¬$ which switches the polarity for its subformula.  ^[TODO
+explain used syntax and equivalence or remove]
 
 The rules of S4 respect the polarities of the subformulas, so that all
 corresponding occurrences of subformulas have the same polarity
@@ -899,7 +900,7 @@ $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 
 
 Realization of S4 in LP
-=======================
+-----------------------
 
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
@@ -1077,9 +1078,11 @@ finally a derivation $d^k_{i,j}$ for \ref{precond} which also does not
 introduce new variables.
 \End{proof}
 
+Prehistoric Relations in S4
+===========================
 
-Self-referentiality of S4
-=========================
+Self-referentiality
+-------------------
 \label{self}
 
 The formulation of LP allows for proof terms $t$ to justify formulas
@@ -1158,8 +1161,8 @@ necessary for the self-referentiality of an S4 formula.
 \end{figure}
 
 
-Prehistoric Phenomena
-=====================
+Prehistoric Relations
+---------------------
 
 In his paper "Prehistoric Phenomena and Self-referentiality"
 [@yu2010], Yu gave a formal definition for the situation described in
@@ -1279,7 +1282,7 @@ prehistoric cycle.
 
 
 Main Proof
-==========
+----------
 
 Yu's proof for the main theorem of his paper, builds upon the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
@@ -1376,9 +1379,11 @@ n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 $CS^N$ is not self-referential and we have $LP(CS^⊛) ⊢ B$.
 \End{proof}
 
+Prehistoric Relations in LP
+===========================
 
 Prehistoric relations in G3s with cut rules
-===========================================
+-------------------------------------------
 
 In this chapter we will define prehistoric relations in the systems
 G3s + (Cut) and G3s + (□Cut). The (context sharing) cut rule has the
@@ -1924,7 +1929,7 @@ TODO relate to non normal results in @yu2017, i.e. we give
 additional conditions for prehistoric-loop-free modus ponens.
 
 Prehistoric relations and G3lp
-==============================
+------------------------------
 
 @pulver2010 [62] introduces the system G3lp by expanding G3c with
 rules for the build up of proof terms with build in contraction as
@@ -2476,7 +2481,7 @@ self-referential input set $IN$ is provable prehistoric-cycle-free in G3s.
 \End{corollary}
 
 Counterexample
-==============
+--------------
 
 The main result of the last chapter does not exactly match Yu's
 result. We have shown that prehistoric cycles in G3s are sufficient for
@@ -2568,6 +2573,9 @@ prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
 provable in LP0 and therefor also in $LP(CS^⊛)$.
 \End{proof}
+
+Conclusion
+==========
 
 
 Literature
