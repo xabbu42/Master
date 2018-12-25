@@ -29,6 +29,75 @@ Foobar
 Introduction
 ============
 
+Sergei Artemov introduced the Logic of Proofs $LP$ in @artemov2001,
+where he introduced proof terms as explicit and constructive
+replacements of the $□$ modality in S4. So in $LP$ we write $t{:}A$
+for the statement $t$ is a proof of $A$ instead of $□A$ in the modal
+logic S4 for the statement $A$ is provable. This was the first
+systematically developed justification logic. Later more applications
+of this explicit notations were discovered for formal epistemology. So
+in @artemov2009, Artemov introduced the more general notion of
+Justification Logics, where justification terms take over the role of
+the proof terms in $LP$. So in any justification logic $t{:}A$ is read
+as $t$ is a justification of $A$, leaving open what exactly a
+justification entails. Consequently, Artemov describes justification
+logic counterparts to the different modal systems used in epistemic
+logic (K, T, K4, S4, K45, KD45, S5, etc.).
+
+In all justification logics, the base for justification terms consists
+of justification constants justifying axioms and justification
+variables for presupposing the existence of justifications. It has
+then various operators on justification terms to build up different
+justifications out of that base. A complex justification term
+using justification variables can be seen as a function from an input
+justification $x$ to the different justification $c⋅x$. TODO
+
+Justification logics leaves open the possibility of a formula $t:A(t)$
+of a justification term being a justification for a formula $A(t)$
+containing $t$ itself. Prima facie this seems suspicious from a
+philosophical standpoint as well for more formal mathematical
+reasons. Such a self-referential sentence is for example impossible
+with an arithmetic proof predicate using standard Gödel numbers as the
+Gödel number of a proof is always greater than any number referenced
+in it as discussed in @kuznets2010. In the same paper, the author
+argues that there is nothing inherently wrong with self-referential
+justifications if we understand the justifications as valid reasoning
+templates or schemes which of course then can be used on
+themselves. Formally this view is probably best TODO by the notion of
+axiomatically appropriate constant specifications, where justification
+constants are not used to justify singular specific axiomatic
+formulas, but all substitution variants of an axiom scheme. Such a
+constant specification has to be self-referential as we can always
+substitute formulas containing the constant $c$ itself in the axiom
+scheme.
+
+Kuznets studied the topic of self-referentiality at the
+logic-level. He discovered theorems of S4, D4, T and K4 which need a
+self-referential constant specification to be realized in their
+justification logic counterparts. Yu on the other hand studied
+self-referentiality at the theorem level. He discovered prehistoric
+cycles as a necessary condition for self-referential S4 theorems and
+later expanded that results to the modal logics T and K4 in
+@yu2014. He also conjectured that the condition is actually sufficient
+for self-referential S4 theorems. In this paper I will concentrate on
+that topic, that is prehistoric cycles as necessary and sufficient
+condition for self-referential theorems in S4.
+
+This paper is divided in three parts. In the first part I introduce
+the modal logic S4 and its justification counterpart LP as well as two
+Gentzen systems for S4 and LP used in the later parts. In the second
+part I reproduce Yu's main theorem from @yu2010, that is, that
+prehistoric cycles are a necessary condition for self-referential
+theorems in S4. In the third part I go beyond Yu's original
+paper by adapting the notion of prehistoric cycles to Gentzen systems
+with cut rules and finally to a Gentzen system for LP. This allows to
+study prehistoric cycles directly in LP which leads to the two main
+results of this paper. Firstly, with the standard definition of
+self-referential theorems, prehistoric cycles are not a sufficient
+condition. Second, with an expansion on the definition of
+self-referential theorems, prehistoric cycles actually are
+sufficient for self-referential theorems.
+
 Syntax
 ======
 
