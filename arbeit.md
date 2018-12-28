@@ -604,37 +604,39 @@ $\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 We construct a LP derivation $d$ of $⋁Δ$ by structural induction over
 the proof tree $𝒯 = (T, R)$ for $Γ ⊃ Δ$.
 
-1\.\ case: $Γ ⊃ Δ ≡ P, Γ' ⊃ Δ', P$ is an axiom $(Ax)$. Then $P$, $P
-→ ⋁Δ' ∨ P$, $⋁Δ' ∨ P ≡ ⋁Δ$ is the required LP derivation.
-^[TODO usage of $≡$ for sequents here and following cases is confusing]
+1\.\ case: $Γ ⊃ Δ$ is an axiom $(Ax)$ with atomic formula $P$. Then it
+has the form $P, Γ' ⊃ Δ', P$ and $P$, $P → ⋁Δ' ∨ P$, $⋁Δ' ∨ P$ is the
+required LP derivation.
 
-2\.\ case: $Γ ⊃ Δ ≡ ⊥, Γ' ⊃ Δ$ is an axiom $(⊥ ⊃)$. Then $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is
-the required LP derivation.
+2\.\ case: $Γ ⊃ Δ$ is an axiom $(⊥ ⊃)$. Then it has the form $⊥, Γ' ⊃
+Δ$ and $⊥$, $⊥ → ⋁Δ$, $⋁Δ$ is the required LP derivation.
 
-3\.\ case: $Γ ⊃ Δ ≡ A → B, Γ' ⊃ Δ$ is derived by a $(→ ⊃)$ rule. So the
-premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃ Δ$. By the induction hypothesis
-there exists LP derivations $d_L$ and $d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and
-$B, Γ' ⊢_{LP} ⋁Δ$. By the deduction theorem \ref{ded} there exists a LP
-derivation $d_R'$ for $Γ' ⊢_{LP} B → ⋁Δ$. Using $d_R'$, the assumption $A → B$
-and propositional reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.
-By appending $d_L$ and propositional reasoning we get the final $(A →
-B), Γ' ⊢_{LP} ⋁Δ$
+3\.\ case: $Γ ⊃ Δ$ is derived by a $(→ ⊃)$ rule. Then it has the form
+$A → B, Γ' ⊃ Δ$ and the the premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃
+Δ$. By the induction hypothesis there exists LP derivations $d_L$ and
+$d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{LP} ⋁Δ$. By the deduction
+theorem \ref{ded} there exists a LP derivation $d_R'$ for $Γ' ⊢_{LP} B
+→ ⋁Δ$. Using $d_R'$, the assumption $A → B$ and propositional
+reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.  By appending $d_L$ and
+propositional reasoning we get the final $(A → B), Γ' ⊢_{LP} ⋁Δ$
 
-4\.\ case: $Γ ⊃ Δ ≡ Γ ⊃ Δ', A → B$ is derived by a $(⊃ →)$ rule. So the
-premise is $A, Γ ⊃ Δ', B$. By the induction hypothesis there exists a
-LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨ B$. From the deduction
-theorem \ref{ded} we get $Γ ⊢_{LP} A → (⋁Δ' ∨ B)$. By propositional reasoning we
-get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A → B) ≡ Γ ⊢_{LP} ⋁Δ$.
+4\.\ case: $Γ ⊃ Δ$ is derived by a $(⊃ →)$ rule. Then it has the form
+$Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
+hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨
+B$. From the deduction theorem \ref{ded} we get $Γ ⊢_{LP} A → (⋁Δ' ∨
+B)$. By propositional reasoning we get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A →
+B) ≡ Γ ⊢_{LP} ⋁Δ$.
 
-5\.\ case: $Γ ⊃ Δ ≡ t{:}A, Γ' ⊃ Δ$ is derived by a $(: ⊃)$ rule. So the
-premise is $A, t{:}A, Γ' ⊃ Δ$. By the induction hypothesis there
-exists a LP derivation $d$ for $A, t{:}A, Γ' ⊢_{LP} ⋁Δ$. By adding
-$t{:}A, t{:}A → A, A$ to the beginning of $d$ we get the necessary
-derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
+5\.\ case: $Γ ⊃ Δ$ is derived by a $(: ⊃)$ rule. Then it has the form
+$t{:}A, Γ' ⊃ Δ$ and the premise is $A, t{:}A, Γ' ⊃ Δ$. By the
+induction hypothesis there exists a LP derivation $d$ for $A, t{:}A,
+Γ' ⊢_{LP} ⋁Δ$. By adding $t{:}A, t{:}A → A, A$ to the beginning of $d$
+we get the necessary derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
 
-6\.\ case: $Γ ⊃ Δ ≡ t_1{:}A_1, ..., t_n{:}A_n, Γ' ⊃ Δ', t{:}A$ is derived
-by a (lift) rule. By the precondition on $t$ there exists a
-derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$.
+6\.\ case: $Γ ⊃ Δ$ is is derived by a (lift) rule. Then it has the
+form $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ and by the precondition
+on $t$ there exists a derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP}
+t{:}A$.
 \End{proof}
 
 \Begin{corollary} \label{soundvar}
