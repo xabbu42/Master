@@ -853,7 +853,7 @@ positive families are called non-principal positive families. [^essential]
 
 [^essential]: This is the same terminology as used in @yu2010. In many
 texts principal families are called essential families following the
-original text [@artemov2001]. TODO is that the original?
+original text [@artemov2001].
 
 Given a S4 proof $T$ we annotate the formulas $A$ in the proof in the
 following way:
@@ -1526,9 +1526,21 @@ weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 \Begin{lcorollary} \label{weakprehist}
 For any annotation $an$ the proof for $\Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
 constructed in the main proof has the exact same prehistoric relations
-as the original proof for $\Gs ⊢ Γ ⊃ Δ$. ^[TODO compare with
-"weakening occurrences are isolated" in @yu2017 [787]]
+as the original proof for $\Gs ⊢ Γ ⊃ Δ$.
 \End{lcorollary}
+
+The last corollary also follows from the fact 2.8 in @yu2017 [787]. In
+that paper Yu looks at prehistoric relations localy, i.e. taking only
+correspondence up to the current sequent in consideration. That means
+the graph of prehistoric relations has to be updated going up the
+proof tree as new rules add new correspondences and therefore unify
+vertices in the prehistoric relations graph which were still seperate
+in the premise. To work with such changing graphs, Yu introduces the
+notion of isolated families. He shows that all $□$ occurrences
+introduced by weakening are isolated. That means they have no
+prehistoric relations themself, which globaly means that they can not
+add any prehistoric relations from adding correspondences later in the
+proof. This is exactly what the last corollary asserts.
 
 \Begin{proof}
 $(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
@@ -1536,7 +1548,6 @@ use the exact same premise and only in the history add the new
 weakening formulas. So all prehistoric paths are unchanged and all
 prehistoric relations remain the same.
 \End{proof}
-
 
 \Begin{lemma}[inversion for G3s] \label{invers}
 
@@ -1944,8 +1955,22 @@ corollary \ref{boxcutcycle}. All together we get:
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
 
-TODO relate to non normal results in @yu2017, i.e. we give
-additional conditions for prehistoric-loop-free modus ponens.
+In the theorem 2.21 [@yu2017 793], Yu shows that
+non-self-referentiality is not normal in T, K4 and S4. The results in
+this chapter hint at an explanation for this fact for S4 and at the
+possibility to still use modus ponens with further restrictions in the
+non-self-referential subset of S4. Namely, to consider the global
+aspects of self-referentiality coming from correspondence of
+occurrences, it is necessary when combining two proofs to get a new
+proof, that the two proofs combined with the correct correspondences
+added are prehistoric-cycle-free. So we can only use modus ponens on
+two non-self-referential S4 theorems $A$ and $A → B$ if there are
+proofs of $A$ and $A → B$ such that the prehistoric relations of these
+proofs combined together with identifing the occurrences of $A$ in
+both proofs are prehistoric-cycle-free. In that case we get a
+prehistoric-cycle-free G3s proof for $B$ using cut elimination and
+corollary \ref{cutprehist}, which shows that $B$ is
+non-self-referential.
 
 Prehistoric relations and G3lp
 ------------------------------
