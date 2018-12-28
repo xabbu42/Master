@@ -40,9 +40,9 @@ in @artemov2009, Artemov introduced the more general notion of
 Justification Logics, where justification terms take over the role of
 the proof terms in $LP$. So in any justification logic $t{:}A$ is read
 as $t$ is a justification of $A$, leaving open what exactly a
-justification entails. Consequently, Artemov describes justification
-logic counterparts to the different modal systems used in epistemic
-logic (K, T, K4, S4, K45, KD45, S5, etc.).
+justification entails. Consequently, in @artemov2008, Artemov
+describes justification logic counterparts to the different modal
+systems used in epistemic logic (K, T, K4, S4, K45, KD45, S5, etc.).
 
 In all justification logics, the base for justification terms consists
 of justification constants justifying axioms and justification
@@ -705,7 +705,8 @@ $Γ ⊢_{LP} A ⇒ \Glift ⊢ Γ ⊃ A$
 By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
 
 1\.\ case $A$ is an axiom A0. By the completeness of G3c included in
-G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset G3c.
+G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset
+G3c and lemma \ref{liftgenax} for the base cases.
 
 2\.\ case $A$ is an axiom $A1-A4$. As the derivations in figure
 \ref{axiomproofs} show, $⊃ A$ can be derived for each axiom using
@@ -803,8 +804,8 @@ symbol occurrences which are called families. In this text we will be
 mainly concerned with the families of $□$ occurrences and their
 polarities as defined below. We will therefore define annotated
 formulas, sequents and proof trees in this chapter which make the
-families and polarities of $□$ explicit in the notation and usable in
-definitions.
+families and polarities of $□$ occurrences explicit in the notation
+and usable in definitions.
 
 \Begin{definition}[polarity]
 We assign a *positive* or *negative polarity* relative to $A$ to all
@@ -867,13 +868,14 @@ proof $T$ as follows:
 
 * If $A = A_0 → A_1$, then $an_T(A) := an_T(A_0) → an_T(A_1)$
 
-* If $A = □A_0$ and the $□$ belongs to a principal positive family $p_i$, then $an_T(A) := ⊞_i an_T(A_0)$.
+* If $A = □A_0$ and the $□$ belongs to a principal positive family
+  $p_i$, then $an_T(A) := ⊞_i an_T(A_0)$.
 
 * If $A = □A_0$ and the $□$ belongs to a non-principal positive family
   $o_i$, then $an_T(A) := ⊡_i an_T(A_0)$.
 
-* If $A = □A_0$ and the $□$ belongs to a negative family $n_i$, then $an_T(A) := ⊟_i
-  an_T(A_0)$.
+* If $A = □A_0$ and the $□$ belongs to a negative family $n_i$, then
+  $an_T(A) := ⊟_i an_T(A_0)$.
 
 Similarly we define annotated formulas without the context of a proof
 tree by distinguishing all $□$ occurrences as separate families and
@@ -905,7 +907,7 @@ Realization of S4 in LP
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
 which proof details removed or forgotten. We will establish this close
-relationship in this chapter more formally by two main theorems
+relationship in this chapter formally by two main theorems
 translating valid LP formulas into valid S4 formulas and vice
 versa. The former is called forgetful projection, the latter is more
 complex and called realization.
@@ -1099,26 +1101,40 @@ A constant specification $CS$ is *self-referential* if there is a
 subset $A ⊆ CS$ such that $A := {c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)}$.
 \End{definition}
 
-The following theorem from @brezhnev2006 [31] shows that
-self-referential constant specifications are necessary to realize S4:
+The following theorem from @brezhnev2006 [31] and @kuznets2010 [650]
+shows that self-referential constant specifications are necessary to
+realize S4:
 
 \Begin{theorem}
-The S4 theorem $¬□(P ∧ ¬□P)$ can not be realized without a directly
+The S4 theorem $¬□¬(S → □S)$ can not be realized without a directly
 self-referential constant specification.
 \End{theorem}
 
-We will not reproduce this general result but use the provided formula
-as an example for an inherently self-referential S4 formula. Looking
-at the G3s proof for $¬□(P ∧ ¬□P)$ and the realization of that proof
-in figure \ref{proofs}, we can see why a self referential proof term
-like the used term $t$ for the propositional tautology $P ∧ ¬t⋅x{:}P →
-P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ one needs to disprove
-$P ∧ ¬□P$ at some point which means one has to prove $□P$. The only
-way to prove $□P$ is using $□(P ∧ ¬□P)$ as an assumption on the
-left. This leads to the situation that the proof introduces $□$ by a
-$(⊃ □)$ rule where the same family already occurs on the left. As the
-following chapters will show formally such a situation is actually
-necessary for the self-referentiality of an S4 formula.
+We will not reproduce this general result but use the logicaly
+equivalent formula $¬□(P ∧ ¬□P)$ as an example for an inherently
+self-referential S4 formula. Notice that it does not directly follow
+from the above theorem that $¬□(P ∧ ¬□P)$ can only be realized with a
+self-referential constant specification, as justification terms do not
+necessary apply to logicaly equivalent formulas. Still it should be
+fairly straightforward to show that $¬□(P ∧ ¬□P)$ is inherently
+self-referential by translating a justification term for the outer $□$
+occurrance in $¬□(P ∧ ¬□P)$ to a justification term for the outer $□$
+in $¬□¬(S → □S)$ using the logical equivalence of $P ∧ ¬□P$ and $¬(S →
+□S)$.
+
+TODO Moore Sentence
+
+Looking at the G3s proof for $¬□(P ∧ ¬□P)$ and the
+realization of that proof in figure \ref{proofs}, we can see why a
+self referential proof term like the used term $t$ for the
+propositional tautology $P ∧ ¬t⋅x{:}P → P$ is necessary. In order to
+prove $¬□(P ∧ ¬□P)$ one needs to disprove $P ∧ ¬□P$ at some point
+which means one has to prove $□P$. The only way to prove $□P$ is using
+$□(P ∧ ¬□P)$ as an assumption on the left. This leads to the situation
+that the proof introduces $□$ by a $(⊃ □)$ rule where the same family
+already occurs on the left. As the following chapters will show
+formally such a situation is actually necessary for the
+self-referentiality of an S4 formula.
 
 \begin{figure} \caption{proof for $¬□(P ∧ ¬□P)$} \label{proofs}
 \begin{longtable}{cc}
@@ -1170,7 +1186,8 @@ the last chapter, which he calls a prehistoric loop. In the later
 paper @yu2017 he adopted the proper graph theoretic term cycle as we
 do in this paper. Beside that change we will reproduce in this chapter
 his definitions of prehistoric relation, prehistoric cycle as well as
-some basic lemmas about this new notions as in the original paper.
+some basic lemmas about this new notions exactly as they were presented
+in the original paper.
 
 \Begin{definition}[History]
 In a root-leaf path $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
@@ -1931,7 +1948,7 @@ additional conditions for prehistoric-loop-free modus ponens.
 Prehistoric relations and G3lp
 ------------------------------
 
-@pulver2010 [62] introduces the system G3lp by expanding G3c with
+@pulver2010 [62] introduces the system LPG3 by expanding G3c with
 rules for the build up of proof terms with build in contraction as
 well as the new axioms (Axc) and (Axt). We will in our variant of G3lp
 use the same rules to build up proof terms, but replace the axioms
@@ -2198,7 +2215,7 @@ occurrences introduced in step 2 of the algorithm (resp. in case
 6 of the definition) as replacements of the same term as the $□$
 occurrences they are contracted with and also consider the extra
 sequents $□Γ ⊃ □A$ introduced in step 2 as copies of the same formulas
-in the original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the existing first
+in the original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the original
 $(⊃ □)$ rule.
 
 \Begin{lemma}
@@ -2442,6 +2459,13 @@ $t_i$ in $s{:}A$ (as a term, not as a family, i.e. the occurrence of
 $t_i$ is not necessary in $\bar{t_i}$).
 \End{lcorollary}
 
+The last corollary gives us a close relationship between prehistoric
+relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
+does not differentate between the two variants $(⊃ :)_c$ and $(⊃ :)_t$
+used for introducing elements from $CS$ and input formulas $t:A$ in
+the proven sequent itself. It is therefore necessary to expand the
+definition of self-referentiality as follows:
+
 \Begin{definition}[Inputs]
 The *inputs* $IN$ of a G3lp proof are all LP formulas which are the
 principal formula of a $(⊃ :)_t$ or $(⊃ :)_c$ rule.
@@ -2514,7 +2538,7 @@ The S4 formula $□(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has no prehisto
 
 \Begin{proof}
 By inversion for G3s in one direction and an easy deduction in the other, we have
-$G3s ⊢ ⊃ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P) ⇔ G3s ⊢  □(P ∧ ¬□P → P), □(P ∧
+$G3s ⊢ ⊃ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ iff $G3s ⊢  □(P ∧ ¬□P → P), □(P ∧
 ¬□P) ⊃$. In both directions the proofs remain prehistoric-cycle-free if
 the other proof was prehistoric-cycle-free. For a proof of $□(P ∧ ¬□P →
 P), □(P ∧¬□P) ⊃$ we have two possibilities for the last rule:
