@@ -1017,8 +1017,8 @@ $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
 a correct G3lift proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
-is also a correct G3lift proof. By theorem \ref{sound} we therefore
-have a $LP(CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
+is also a correct G3lift proof. By soundness of G3lift (\ref{sound})
+we therefore have a $LP(CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
 1}(an_T(I_{i,j}))$, which has the following form:
 
 \begin{equation} \label{start}
@@ -1036,7 +1036,7 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) 
 
 Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
 $t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. By the substitution
-lemma \ref{subst}, the assertion \ref{lifted} still holds for
+lemma (\ref{subst}), the assertion \ref{lifted} still holds for
 $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the
 form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· +
 s_{l_i-1}){:}A$. Therefore $LP_0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows
@@ -1052,12 +1052,12 @@ B_{k_q}) ⊢_{LP(CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
 
 Moreover, this precondition remains fulfilled for the $(⊃ :)$ rule
 $R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$ again by
-the substitution lemma \ref{subst}.
+the substitution lemma (\ref{subst}).
 
 For the final normal realization function $r_T^N$ and injective
 constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
-correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by theorem
-\ref{sound} of G3lift we have $LP ⊢ A^r$ for the normal LP-realization
+correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by soundness of
+G3lift (\ref{sound}) we have $LP ⊢ A^r$ for the normal LP-realization
 $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \End{proof}
 
@@ -1068,18 +1068,17 @@ $k ≥ ε(i,j)$ which do not introduce new variables.
 \End{corollary}
 
 \Begin{proof}
-Proof by complete induction over the order $ε(i,j)$.
-
-Given a rule $R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do
-not introduce new variables for the precondition of any rule
-$R_{i_0,j_0}$ in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤
-k$ for all this rules. Using the exact same steps as in the main proof
-but using the realization function $r_T^k$, we get a derivation $d$
-for \ref{start} which does not introduce new variables by the
-corollary \ref{soundvar}, a derivation $d'$ for \ref{lifted} which
-does not introduce new variables by the corollary \ref{liftvar} and
-finally a derivation $d^k_{i,j}$ for \ref{precond} which also does not
-introduce new variables.
+Proof by complete induction over the order $ε(i,j)$.  Given a rule
+$R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do not
+introduce new variables for the precondition of any rule $R_{i_0,j_0}$
+in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all
+this rules. Using the exact same steps as in the main proof but using
+the realization function $r_T^k$, we get a derivation $d$ for
+\ref{start} which does not introduce new variables by the corollary
+\ref{soundvar}, a derivation $d'$ for \ref{lifted} which does not
+introduce new variables by the corollary \ref{liftvar} and finally a
+derivation $d^k_{i,j}$ for \ref{precond} which also does not introduce
+new variables.
 \End{proof}
 
 Prehistoric Relations in S4
