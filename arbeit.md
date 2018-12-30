@@ -1076,52 +1076,84 @@ Self-referentiality
 -------------------
 \label{self}
 
-The formulation of LP allows for proof terms $t$ to justify formulas
-$A(t)$ about themselves. This leads to the possibility of
-self-referential constant specifications in the following sense:
+As already mentioned in the introduction, the formulation of LP allows
+for proof terms $t$ to justify formulas $A(t)$ about themselves. As we
+will see such self-referential justification terms are unavoidable for
+realizing S4 even at the basic level of justification constants. That
+is to realize all S4 theorems in LP, we need self-referential constant
+specifications defined as follows:
 
-\Begin{definition}[directly self-referential]
-A constant specification $CS$ is *directly self-referential* if there is a
-constant $c$ such that $c{:}A(c) ∈ CS$.
+\Begin{definition}[self-referential constant specification]
+
+* A constant specification $CS$ is *directly self-referential* if there is a
+  constant $c$ such that $c{:}A(c) ∈ CS$.
+
+* A constant specification $CS$ is *self-referential* if there is a
+  subset $A ⊆ CS$ such that $A := \{c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)\}$.
+
 \End{definition}
 
-\Begin{definition}[self-referential]
-A constant specification $CS$ is *self-referential* if there is a
-subset $A ⊆ CS$ such that $A := {c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)}$.
+A constant specification which is not directly self-referential is
+denoted by $CS^*$. Similarly a constant specification which is not
+self-referential at all is denoted by $CS^⊛$. So $CS^*$ and $CS^⊛$
+stand for a class of constant specifications and not a single specific
+one. Following @yu2010, we will use the notation $LP(CS^⊛) ⊢ A$
+if there exists any non-self-referential constant specification $CS$
+such that $LP(CS) ⊢ B$. There does exist a single maximal constant
+specification $CS_{nds}$ which is not directly self-referential and
+for any theorem $A$ we have $LP(CS^*) ⊢ A$ iff $LP(CS_{nds}) ⊢ A$.
+
+Given that any S4 theorem is realizable in LP with some constant
+specification, we can carry over the definition of self-referentiality
+to S4 with the following definition:
+
+\Begin{definition}[self-referential theorem]
+A S4 theorem $A$ is (directly) self-referential iff for any
+LP-realization $A^r$ we have $LP(CS^⊛) \slashed{⊢} A^r$ (respective
+$LP(CS^*) \slashed{⊢} A^r$).
 \End{definition}
 
-The following theorem from @brezhnev2006 [31] and @kuznets2010 [650]
-shows that self-referential constant specifications are necessary to
-realize S4:
+Expanding on a first result for S4 in @brezhnev2006 [31], @kuznets2010
+[650] explores the topic of self-referentialiy on the level of
+individual modal logics and their justicication counterparts. He gives
+theorems for the modal logics S4, D4, T, and K4 which can only be
+realized in their justification logic counterpart using directly
+self-referential constant specifications, i.e. directly
+self-referential theorems by the above definition. The example
+directly self-referential theorem for S4 is $¬□¬(S → □S)$.
 
-\Begin{theorem}
-The S4 theorem $¬□¬(S → □S)$ can not be realized without a directly
-self-referential constant specification.
-\End{theorem}
-
-We will not reproduce this general result but use the logicaly
-equivalent formula $¬□(P ∧ ¬□P)$ as an example for an inherently
-self-referential S4 formula. Notice that it does not directly follow
-from the above theorem that $¬□(P ∧ ¬□P)$ can only be realized with a
+We will not reproduce this result but use the logicaly equivalent
+formula $¬□(P ∧ ¬□P)$ as an example for a self-referential S4
+theorem. Notice that it does not directly follow from the above
+theorem that $¬□(P ∧ ¬□P)$ can only be realized with a
 self-referential constant specification, as justification terms do not
-necessary apply to logicaly equivalent formulas. Still it should be
-fairly straightforward to show that $¬□(P ∧ ¬□P)$ is inherently
-self-referential by translating a justification term for the outer $□$
-occurrance in $¬□(P ∧ ¬□P)$ to a justification term for the outer $□$
-in $¬□¬(S → □S)$ using the logical equivalence of $P ∧ ¬□P$ and $¬(S →
-□S)$.
+necessary apply to logicaly equivalent formulas [@artemov2016 ch
+1.3]. Still it should be fairly straightforward to show that $¬□(P ∧
+¬□P)$ is self-referential by translating justification terms for the
+outer $□$ occurrances in $¬□(P ∧ ¬□P)$ and $¬□¬(S → □S)$ using the
+logical equivalence of $P ∧ ¬□P$ and $¬(S → □S)$.
 
-TODO Moore Sentence
+The subformula $P ∧ ¬□P$ in our example asserts for an atomic sentence
+$P$, for example "it will rain", to be true and unknown. This sentence
+"It will rain and I do not know that it will rain" is inspired by
+Moore's paradox and its formalization $P ∧ ¬□P$ is called a Moore
+sentence. The sentence is easily satisfiable, for example if the
+weather forecast wrongly predicts no rain, but it is impossible to now
+that sentence, as is stated by our example theorem $¬□(P ∧
+¬□P)$. Because if one knows the Moore sentence, one also knows the
+first part of the conjunction, i.e.  $P$. This knowledge then
+contradicts the second part of the conjunction,
+$¬□P$. [cf. @artemov2016 ch 7]
 
-Looking at the G3s proof for $¬□(P ∧ ¬□P)$ and the
-realization of that proof in figure \ref{proofs}, we can see why a
-self referential proof term like the used term $t$ for the
-propositional tautology $P ∧ ¬t⋅x{:}P → P$ is necessary. In order to
-prove $¬□(P ∧ ¬□P)$ one needs to disprove $P ∧ ¬□P$ at some point
-which means one has to prove $□P$. The only way to prove $□P$ is using
-$□(P ∧ ¬□P)$ as an assumption on the left. This leads to the situation
-that the proof introduces $□$ by a $(⊃ □)$ rule where the same family
-already occurs on the left. As the following chapters will show
+Looking at the G3s proof for $¬□(P ∧ ¬□P)$ and a realization of that
+proof in figure \ref{proofs}, we can see why a self referential proof
+term like the used term $t$ for the propositional tautology $P ∧
+¬t⋅x{:}P → P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ one needs
+to disprove $P ∧ ¬□P$ at some point which means one has to prove
+$□P$. The only way to prove $□P$ is using $□(P ∧ ¬□P)$ as an
+assumption on the left. This leads to the situation that the proof
+introduces $□$ by a $(⊃ □)$ rule where the same family already occurs
+on the left. As the following sections of this chapter will show
 formally such a situation is actually necessary for the
 self-referentiality of an S4 formula.
 
