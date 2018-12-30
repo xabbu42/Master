@@ -584,7 +584,7 @@ We will show in this chapter that G3lift is adequate by showing it is
 equivalent to the Hilbert system LP from @artemov2001 as introduced in
 chapter \ref{syntax}.
 
-\Begin{theorem} \label{sound}
+\Begin{theorem}[Soundness of G3lift] \label{sound}
 $\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
 \End{theorem}
 
@@ -603,7 +603,7 @@ required LP derivation.
 $A → B, Γ' ⊃ Δ$ and the the premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃
 Δ$. By the induction hypothesis there exists LP derivations $d_L$ and
 $d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{LP} ⋁Δ$. By the deduction
-theorem \ref{ded} there exists a LP derivation $d_R'$ for $Γ' ⊢_{LP} B
+theorem (\ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{LP} B
 → ⋁Δ$. Using $d_R'$, the assumption $A → B$ and propositional
 reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.  By appending $d_L$ and
 propositional reasoning we get the final $(A → B), Γ' ⊢_{LP} ⋁Δ$
@@ -611,7 +611,7 @@ propositional reasoning we get the final $(A → B), Γ' ⊢_{LP} ⋁Δ$
 4\.\ case: $Γ ⊃ Δ$ is derived by a $(⊃ →)$ rule. Then it has the form
 $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
 hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨
-B$. From the deduction theorem \ref{ded} we get $Γ ⊢_{LP} A → (⋁Δ' ∨
+B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{LP} A → (⋁Δ' ∨
 B)$. By propositional reasoning we get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A →
 B) ≡ Γ ⊢_{LP} ⋁Δ$.
 
@@ -687,7 +687,7 @@ If $\Glift ⊢ A, Γ ⊃ Δ$ and $\Glift ⊢ Γ' ⊃ Δ', A$ then $\Glift ⊢ Γ
 $\Glift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
-\Begin{theorem} \label{complete}
+\Begin{theorem}[Completeness of G3lift] \label{complete}
 $Γ ⊢_{LP} A ⇒ \Glift ⊢ Γ ⊃ A$
 \End{theorem}
 
@@ -944,9 +944,10 @@ realization $r$ [@artemov2001, 25].
 \End{definition}
 
 A LP-realization of $A$ is fully determined by a realization function
-$r_A$ (resp. $r_T$ relative to a proof tree for $⊃ A$) and a constant
-specification of all constants occurring in $r_A$ or $r_T$ with $A^r
-:= r_A(an_A(A))$ respective $A^r := r_T(an_T(A))$.
+$r_A$ (respective a realization function $r_T$ relative to a proof
+tree for $⊃ A$) and a constant specification of all constants
+occurring in $r_A$ or $r_T$ with $A^r := r_A(an_A(A))$ respective $A^r
+:= r_T(an_T(A))$.
 
 \Begin{definition}[normal]
 A realization function is *normal* if all symbols for negative families
@@ -1222,11 +1223,11 @@ For any principal positive families $p_i$ and $p_h$ and any root-leaf path $S$ o
 the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 
 (1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
-⊟_{k}B_{k_q}(⊞_h:C)), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
+⊟_{k}B_{k_q}(⊞_h C), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
 prehistoric family* of $p_i$ in $S$ with notation $h ≺^S_L i$.
 
 (2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0} ∧ ... ∧
-⊟_{k_q}B_{k_q} ⊃ A(⊞_h:C)$ then $p_h$ is a *right prehistoric family*
+⊟_{k_q}B_{k_q} ⊃ A(⊞_h C)$ then $p_h$ is a *right prehistoric family*
 of $p_i$ in $S$ with notation $h ≺^S_R i$.
 
 (3) The relation of *prehistoric family* in $S$ is defined by: $≺^S := ≺^S_L ∪ ≺^S_R$.
@@ -1273,7 +1274,8 @@ root sequent.
 \End{proof}
 
 \Begin{lemma} \label{trans}
-If $k ≺_R j$ and $j ▹ i$, then $k ▹ i$, where $▹$ is any one of $≺$, $≺_L$, $≺_R$, $≺^s$ , $≺^s_L$ or $≺^s_R$.
+If $k ≺_R j$ and $j ▹ i$, then $k ▹ i$, where $▹$ is any one of $≺$,
+$≺_L$, $≺_R$, $≺^s$ , $≺^s_L$ or $≺^s_R$.
 \End{lemma}
 
 \Begin{proof}
@@ -2633,7 +2635,7 @@ also no prehistoric-cycle-free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P
 
 \Begin{theorem}
 There exists a S4−theorem $A$ and a LP-formula $B$ such that $A$ has
-no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $⊢_{LP(CS^⊛)} B$
+no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $LP(CS^⊛) ⊢ B$
 \End{theorem}
 
 \Begin{proof}
