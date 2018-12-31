@@ -1078,11 +1078,12 @@ Self-referentiality
 \label{self}
 
 As already mentioned in the introduction, the formulation of LP allows
-for proof terms $t$ to justify formulas $A(t)$ about themselves. As we
-will see such self-referential justification terms are unavoidable for
-realizing S4 even at the basic level of justification constants. That
-is to realize all S4 theorems in LP, we need self-referential constant
-specifications defined as follows:
+for proof terms $t$ to justify formulas $A(t)$ about themselves. We
+will see that such self-referential justification terms are not only
+possible, but actually unavoidable for realizing S4 even at the basic
+level of justification constants. That is to realize all S4 theorems
+in LP, we need self-referential constant specifications defined as
+follows:
 
 \Begin{definition}[self-referential constant specification]
 
@@ -1206,17 +1207,46 @@ In his paper "Prehistoric Phenomena and Self-referentiality"
 [@yu2010], Yu gave a formal definition for the situation described in
 the last chapter, which he calls a prehistoric loop. In the later
 paper @yu2017 he adopted the proper graph theoretic term cycle as we
-do in this paper. Beside that change we will reproduce in this chapter
-his definitions of prehistoric relation, prehistoric cycle as well as
-some basic lemmas about this new notions exactly as they were presented
-in the original paper.
+do here. Beside that change we will reproduce his definitions of
+prehistoric relation, prehistoric cycle as well as some basic lemmas
+about this new notions exactly as they were presented in the original
+paper.
+
+To work with the $(⊃ □)$ rules introducing occurrences of principal
+families in a G3s proof, we will use the same notation already
+introduced in the proof of the realization theorem (\ref{realization}).
+That is, we enumerate all $(⊃ □)$ rules introducing an occurrence of
+the principal family $p_i$ as $R_{i,0}, ... R_{i,l_i-1}$ and use
+$I_{i,0}, ... I_{i,l_i-1}$ to denote the premises of that rules and
+$O_{i,0}, ... O_{i,l_i-1}$ to denote the conclusions of that rules.
 
 \Begin{definition}[History]
 In a root-leaf path $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
-G3s−proof $T$, the path $S_rR^*O_{i,j}$ is called a *history* of $p_i$
-in the root-leaf path $S$. The path $I_{i,j}R^*S$ is called a
-*pre-history* of $p_i$ in the root-leaf path $S$. ^[see @yu2010, 389]
+G3s−proof $T$, the path $S_rR^*O_{i,j}$ is called a *history* of the
+family $p_i$ in the root-leaf path $S$. The path $I_{i,j}R^*S$ is
+called a *pre-history* of $p_i$ in the root-leaf path $S$. ^[see
+@yu2010, 389]
 \End{definition}
+
+So intuitively every $(⊃ □)$ rule divides a root-leaf path of the
+proof tree into two parts. The first part from the root of the tree to
+the conclusion of the $(⊃ □)$ rule of sequents having a copy of that
+$□$ symbol, i.e. the history of that $□$ symbol from its formation up
+to the root sequent. And the second part which predates the formation
+of that $□$ symbol, i.e. all sequents from the leaf up to the premise
+of that $(⊃ □)$ rule, which do not have a copy of that symbol. The
+informal notion of "having a copy of that symbol" is not the same as
+correspondence, as it is not transitively closed. It is possible to
+have corresponding $⊞_i$ occurrences of a family $p_i$ in a prehistory
+of that same family. It is even possible for $⊞_i$ occurrences of the
+same family $p_i$ to be introduced multiple time in the same root-leaf
+path and therefore having multiple different prehistoric periods in
+the same root-leaf path. The proof in \ref{proofs} of our example
+formula exhibits both these cases.
+
+As we are especially interested in these cases, that is occurrences
+of principal families in prehistoric periods, the following definition
+and lemma give that concept a precise meaning and notation:
 
 \Begin{definition}[Prehistoric Relation] \label{local1}
 For any principal positive families $p_i$ and $p_h$ and any root-leaf path $S$ of
@@ -1237,7 +1267,10 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 
 \End{definition}
 
-The following lemma provides the connection between these two definitions:
+Even though both definitions so far use the notion of a prehistory,
+they do not directly refer to each other. But the following lemma
+provides the missing connection between these two definitions and
+explains the common terminology:
 
 \Begin{lemma} \label{global}
 There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the root-leaf path
@@ -1258,7 +1291,23 @@ either on the left (for $h ≺^S_L i$) or on the right (for $h ≺^S_R
 i$). $I_{i,j}$ is part of the pre-history of $R_{i,j}$ in $S$.
 \End{proof}
 
-TODO: paraphrase some of the remarks from @yu2010.
+Having introduced the concepts of prehistoric periods and prehistoric
+relations, we are now ready to define the concept of prehistoric
+cycles used in Yu's theorem:
+
+\Begin{definition}[Prehistoric Cycle]
+In a G3s−proof $T$, the ordered list of principal positive families
+$p_{i_0},..., p_{i_{n-1}}$ with length $n$ is called a *prehistoric cycle* or *left
+prehistoric cycle* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
+i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
+\End{definition}
+
+In our example formula, we have a prehistoric cycle consisting of a
+single principal family which has a left prehistoric relation to
+itself. The following lemmas will show that any prehistoric cycle
+necessarly contains left prehistoric relations and that we can get rid
+of any right prehistoric relations. That is, if a proof has a
+prehistoric cycle it also has a left prehistoric cycle.
 
 \Begin{lemma} \label{noref}
 For any principal positive family $p_i$, $i \nprec_R i$.
@@ -1286,18 +1335,11 @@ with exactly one occurrence in the root sequent $S_r$ by the
 subformula property \ref{sub}. So wherever $⊞_j$ occurs in the proof
 $T$, there is a $⊞_k$ occurring in the scope of it.
 
-For any $▹$, we have $j ▹ i$ because some occurrence of $⊞_j$ in a
+For any $▹$, we have $j ▹ i$ because of some occurrence of $⊞_j$ in a
 subformula of the premise of a rule $R_{i,q}$. By the previous
 statement there is also an occurrence of $⊞_k$ in the same scope, and
 therefore also $k ▹ i$.
 \End{proof}
-
-\Begin{definition}[Prehistoric Cycle]
-In a G3s−proof $T$, the ordered list of principal positive families
-$p_{i_0},..., p_{i_{n-1}}$ with length $n$ is called a *prehistoric cycle* or *left
-prehistoric cycle* respectively, if we have: $i_0 ≺ i_2 ≺ ... ≺ i_{n-1} ≺
-i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
-\End{definition}
 
 \Begin{lemma}
 $T$ has a prehistoric cycle iff $T$ has a left prehistoric cycle.
@@ -1550,6 +1592,13 @@ constructed in the main proof has the exact same prehistoric relations
 as the original proof for $\Gs ⊢ Γ ⊃ Δ$.
 \End{lcorollary}
 
+\Begin{proof}
+$(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
+use the exact same premise and only in the history add the new
+weakening formulas. So all prehistoric paths are unchanged and all
+prehistoric relations remain the same.
+\End{proof}
+
 The last corollary also follows from the fact 2.8 in @yu2017 [787]. In
 that paper Yu looks at prehistoric relations localy, i.e. taking only
 correspondence up to the current sequent in consideration. That means
@@ -1562,13 +1611,6 @@ introduced by weakening are isolated. That means they have no
 prehistoric relations themself, which globaly means that they can not
 add any prehistoric relations from adding correspondences later in the
 proof. This is exactly what the last corollary asserts.
-
-\Begin{proof}
-$(⊃ □)$ rules are handled by the 3\.\ case by new $(⊃ □)$ rules that
-use the exact same premise and only in the history add the new
-weakening formulas. So all prehistoric paths are unchanged and all
-prehistoric relations remain the same.
-\End{proof}
 
 \Begin{lemma}[inversion for G3s] \label{invers}
 
