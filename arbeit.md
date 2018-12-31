@@ -46,7 +46,7 @@ logic (K, T, K4, S4, K45, KD45, S5, etc.).
 presentation of the logic of proofs, this paper will mostly reference
 and use the notations of the presentation in @artemov2001.
 
-In justification logics it is possible for a proof term $t$ to be a
+In justification logics it is possible for a term $t$ to be a
 justification for a formula $A(t)$ containing $t$ itself, i.e. for the
 assertion $t{:}A(t)$ to hold. Prima facie this seems suspicious from a
 philosophical standpoint as well for more formal mathematical
@@ -110,7 +110,7 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $A4$: $s{:}F → (s+t){:}F$, $t{:}F → (s+t){:}F$ (Sum)
 
 * $R1$: $F → G, F ⊢ G$ (Modus Ponens)
-* $R2$: $A ⊢ c{:}A$, if $A$ is an axiom $A0-A4$ and $c$ a proof constant
+* $R2$: $A ⊢ c{:}A$, if $A$ is an axiom $A0-A4$ and $c$ a constant
         (Axiom Necessitation)
 
 A Hilbert style derivation $d$ from a set of assumptions $Γ$ is a
@@ -127,12 +127,12 @@ reasoning for any use of modus ponens together with a propositional
 tautology. This is of course correct as axioms A0 together with the
 modus ponens rule R1 are a complete Hilbert style system for classical
 propositional logic. Its easy to see by a simple complete induction on
-the proof length that this derivations do not use any new proof terms
+the proof length that this derivations do not use any new terms
 not already occurring in the final propositional tautology.
 
 \Begin{definition}[Constant Specification]
 A *constant specification* $CS$ is a set of of formulas of the form
-$c:A$ with $c$ a proof constant and $A$ an axiom A0-A4.
+$c:A$ with $c$ a constant and $A$ an axiom A0-A4.
 \End{definition}
 
 Every LP derivation naturally generates a finite constant
@@ -140,13 +140,13 @@ specification of all formulas derived by axiom necessitation (R2). For
 a given constant specification $CS$, $LP(CS)$ is the logic with axiom
 necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
 without axiom necessitation.  A constant specification $CS$ is
-injective, if for each proof constant $c$, there is at most one
+injective, if for each constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
 
 \Begin{lemma}[substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
 with a derivation $d'$ acquired by replacing all occurrences of a
-proof variable $x$ by a proof term $t$ in $Γ$, $CS$ and $d$.
+variable $x$ by a term $t$ in $Γ$, $CS$ and $d$.
 \End{lemma}
 
 \Begin{proof}
@@ -424,8 +424,8 @@ only hinted at "$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is
 actually the most practical for our purpose. The reason for this is
 that it exactly mirrors the rules of G3s. Other than $LPG_0$ from
 @yu2010 and the original Gentzen style systems from @artemov2001
-[p.14], it does not actually deconstruct proof terms but falls back on
-the Hilbert style definition of $LP$ to introduce proof terms already
+[p.14], it does not actually deconstruct justification terms but falls back on
+the Hilbert style definition of $LP$ to introduce terms already
 fully constructed. We will call this system G3lift to differentiate it
 from the later used system G3lp.
 
@@ -952,7 +952,7 @@ occurring in $r_A$ or $r_T$ with $A^r := r_A(an_A(A))$ respective $A^r
 \Begin{definition}[normal]
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
-proof variables. A LP-realization is *normal* if the corresponding
+variables. A LP-realization is *normal* if the corresponding
 realization function is normal and the $CS$ is injective. ^[TODO
 probably should not misuse normal here for non-principal positive families]
 \End{definition}
@@ -1078,7 +1078,7 @@ Self-referentiality
 \label{self}
 
 As already mentioned in the introduction, the formulation of LP allows
-for proof terms $t$ to justify formulas $A(t)$ about themselves. We
+for terms $t$ to justify formulas $A(t)$ about themselves. We
 will see that such self-referential justification terms are not only
 possible, but actually unavoidable for realizing S4 even at the basic
 level of justification constants. That is to realize all S4 theorems
@@ -1242,7 +1242,7 @@ of that same family. It is even possible for $⊞_i$ occurrences of the
 same family $p_i$ to be introduced multiple time in the same root-leaf
 path and therefore having multiple different prehistoric periods in
 the same root-leaf path. The proof in \ref{proofs} of our example
-formula exhibits both these cases.
+theorem exhibits both these cases.
 
 As we are especially interested in these cases, that is occurrences
 of principal families in prehistoric periods, the following definition
@@ -1372,7 +1372,7 @@ carefully choose the order $ε(i,j)$ used in the realization theorem
 $CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
 such an order, formulas $c{:}A_{i,j,k}$ introduced during the
 realization procedure never change after their introduction, and we
-get a strong limitation of the proof constants which can occur in such
+get a strong limitation of the constants which can occur in such
 a formula. This limitation finally will show that the generated CS using
 that order can not be self-referential.
 
@@ -1517,7 +1517,7 @@ have an occurrence of a family $□$ as part of a cut formula in the
 *global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
 \label{defcut} is not a local prehistoric family.
 
-To handle proof terms $s⋅t$ in the next chapter an additional rule for
+To handle terms $s⋅t$ in the next chapter an additional rule for
 modus ponens under $□$ is necessary. We therefore introduce here the new rule
 (□Cut) as follows:
 
@@ -2039,9 +2039,9 @@ Prehistoric relations and G3lp
 ------------------------------
 
 @pulver2010 [62] introduces the system LPG3 by expanding G3c with
-rules for the build up of proof terms with build in contraction as
+rules for the build up of justification terms with build in contraction as
 well as the new axioms (Axc) and (Axt). We will in our variant of G3lp
-use the same rules to build up proof terms, but replace the axioms
+use the same rules to build up terms, but replace the axioms
 with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the prehistoric relations
 of the proof intact. As there is a proof for $⊃ A$ for any axiom $A$ and
 also for $A ⊃ A$ for any formula $A$, this two rules are equivalent to
@@ -2104,11 +2104,11 @@ rules in figure \ref{G3lprules}.
 TODO repeat necessary results from @pulver2010
 
 \Begin{definition}[subterm]
-The set of subterms $\sub(t)$ of a LP proof term $t$ is inductively defined as
+The set of subterms $\sub(t)$ of a LP justification term $t$ is inductively defined as
 follows:
 
-1. $\sub(x) = \{x\}$ for any proof variable $x$
-2. $\sub(c) = \{c\}$ for any proof constant $c$
+1. $\sub(x) = \{x\}$ for any variable $x$
+2. $\sub(c) = \{c\}$ for any constant $c$
 3. $\sub(!t) = \sub(t) ∪ \{!t\}$
 4. $\sub(s+t) = \sub(s) ∪ \sub(t) ∪ \{s + t\}$
 5. $\sub(s⋅t) = \sub(s) ∪ \sub(t) ∪ \{s⋅t\}$
@@ -2136,15 +2136,15 @@ context which of the three definitions is meant.  Notice that by this
 definition $s{:}A$ is a subformula of $s+t{:}A$.
 
 We adapt the definition of correspondence (\ref{corr}) to G3lp proofs
-as follows: all topmost proof terms in active or principal formulas in
+as follows: all topmost terms in active or principal formulas in
 the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ correspond to each
-other. Notice that in the $(⊃ !)$ rule, the topmost proof term $t$
+other. Notice that in the $(⊃ !)$ rule, the topmost term $t$
 in the contraction formula therefore corresponds to the topmost proof
-term $!t$ in the principal formula. The proof term $t$ of the other
+term $!t$ in the principal formula. The term $t$ of the other
 active formula $!t:t:A$ on the other hand corresponds to the same
-proof therm $t$ in the principal formula.
+term $t$ in the principal formula.
 
-By this definition, families of proof terms in G3lp consist not of
+By this definition, families of terms in G3lp consist not of
 occurrences of a single term $t$ but of occurrences of subterms $s$ of
 a top level term $t$.  We will use $\bar{t}$ for the family of
 occurrences corresponding to the *top level* term $t$, i.e. seen as a
@@ -2153,17 +2153,17 @@ set of terms instead of term occurrences we have $\bar{t} ⊆
 the full family of $s$ in the complete proof tree as $s$ could be a
 subterm of the top level term $t$ of the family. For any occurrence
 $s$ in a sequent $S$ of the proof tree though, $\bar{s}$ is the family
-of $s$ relative to the subtree $T↾S$ as all related proof terms in the
-premises of G3lp rules are subterms of the related proof term in the
+of $s$ relative to the subtree $T↾S$ as all related terms in the
+premises of G3lp rules are subterms of the related term in the
 conclusion.
 
-We also see that most rules of G3lp only relate proof terms to each
+We also see that most rules of G3lp only relate terms to each
 other used for the same subformula $A$. The two exceptions are the $(⊃
 ⋅)$ rule and the $(⊃ !)$ rule. Similar to the cut rules from the
 previous chapter, $(⊃ ⋅)$ relates subformulas and symbols of different
 polarities as well as terms used for different formulas. So we will
 use the same approach as in the last chapter to define prehistoric
-relations of proof term families for any polarity:
+relations of term families for any polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
 A family $\bar{t_i}$ has a *prehistoric relation* to another family $\bar{t_j}$, in
@@ -2355,7 +2355,7 @@ to the same family $\bar{t}_{i'}$.
 \End{proof}
 
 \Begin{lemma}
-If $i ≺ j$ in $𝒯˚$ then either $i' = j'$ or $i' ≺ j'$ in $𝒯$ for the proof term
+If $i ≺ j$ in $𝒯˚$ then either $i' = j'$ or $i' ≺ j'$ in $𝒯$ for the term
 families $\bar{t}_{i'}$ and $\bar{t}_{j'}$ from the previous lemma.
 \End{lemma}
 
@@ -2363,7 +2363,7 @@ families $\bar{t}_{i'}$ and $\bar{t}_{j'}$ from the previous lemma.
 
 $i ≺ j$ in $𝒯˚$, so there is a $(⊃ □)$ rule in $𝒯˚$ introducing an
 occurrence $□_j$ of $f_j$ with an occurrence $□_i$ of $f_i$ in the
-premise. For the mapped proof term occurrences $s_i$ and $s_j$ in $𝒯$
+premise. For the mapped term occurrences $s_i$ and $s_j$ in $𝒯$
 we have $s_i ∈ \bar{t}_{i'}$ and $s_j ∈ \bar{t}_{j'}$ by the previous
 lemma. From this it follows that $i' ≺ j'$ or $i' = j'$ by an induction on
 the proof height:
@@ -2412,7 +2412,7 @@ chapter \ref{self}. Figure \ref{g3lpproof} contains a proof of the
 same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp as well as the
 forgetful projection of that proof in G3s + (□Cut). For simplicity
 we assumed that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
-proof constant.
+constant.
 
 This proofs display the logical dependencies making the formula
 self-referential in quite a different way than the original G3s proof
@@ -2522,14 +2522,14 @@ for any prehistoric cycle in a G3lp proof as we will show formally.
 
 
 \Begin{lemma}
-All occurrences belonging to a proof term family $\bar{t}$ in a
+All occurrences belonging to a term family $\bar{t}$ in a
 premise $S$ of any $(⊃ :)$ rule are occurrences of the top level term
 $t$ itself.
 \End{lemma}
 
 \Begin{proof}
-All G3lp rules only relate different proof terms if they are top level
-proof terms on the right. All occurrences of $s ∈ \bar{t}$ in a
+All G3lp rules only relate different terms if they are top level
+terms on the right. All occurrences of $s ∈ \bar{t}$ in a
 premise $S$ of a $(⊃ :)$ rule correspond either as part of a strict
 subformula on the right or as part of a subformula on the left of the
 conclusion. A formula on the left can only correspond to a subformula
@@ -2537,7 +2537,7 @@ on the right as a strict subformula. Therefore all corresponding
 occurrences of $s$ on the right in the remaining path up to the root
 are part of a strict subformula and so all corresponding occurrences
 of $s$, left or right, in the remaining path are occurrences of the
-same proof term $s$. As $t$ itself is a corresponding occurrences of
+same term $s$. As $t$ itself is a corresponding occurrences of
 $s$ in that path, we get $t = s$.
 \End{proof}
 
@@ -2567,7 +2567,7 @@ input sets in the natural way:
 
 \Begin{definition}[directly self-referential]
 The inputs $IN$ of a G3lp proof are *directly self-referential* if there is a
-proof term $t$ such that $t{:}A(t) ∈ IN$.
+term $t$ such that $t{:}A(t) ∈ IN$.
 \End{definition}
 
 \Begin{definition}[self-referential]
