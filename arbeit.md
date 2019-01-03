@@ -2702,7 +2702,78 @@ $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as $�
 already is a theorem of S4. By the previous lemma, there is no
 prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
-provable in LP0 and therefor also in $LP(CS^⊛)$.
+provable in LP_0 and therefor also in $LP(CS^⊛)$.
+\End{proof}
+
+Finally the question arises, if prehistoric cycles are also a
+necessary precondition on self-referential S4 theorems under the
+expanded definition. For this it is necessary to clarify the term
+inputs for Hilbert style proofs used in the original definition of LP
+and in the realization theorem (\ref{realization}) as there is no
+direct equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus
+as there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for
+G3lp, $(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing
+axioms of LP. In the other direction, a $(⊃ :)_t$ rule is translated
+first to the trivial proof for $t{:}A ⊢_{LP} t{:}A$, but the usage of
+deduction theorem could change that to a more complex proof for
+example for $⊢_{LP} t{:}A → t{:}A$. It is therefore simplest to
+consider all subformulas of the form $t{:}A$ with negative polarity
+anywhere in the proof as well as all assumptions $t{:}A$ as
+inputs. Given this clarification, we need to show that the realization
+as constructed in chapter \ref{main} not only provides us with a
+non-self-referential constant specification $CS$, but also with a
+still non-self-referential set of inputs $IN$.
+
+Checking the constructions of Hilbert style LP proofs from G3lift
+proofs (\ref{sound} and \ref{deduction}), all subformulas occurrences with
+negative polarity in the constructed Hilbert style proof also occure
+with negativ polarity in the G3lift proof and are therefore the
+realization of a subformula occurrence with negative polarity in the
+original G3s proof of the realization procedure. That is all inputs
+are either part of the constant specification $CS$ or have the form
+$x{:}A$ for a unique variable $x$. It also follows that such a input
+variable $x$ can only occure in other formulas as part of the
+realization of an $□$ occurrence with positive polarity.
+
+\Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality 2]
+If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
+there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(IN^⊛) ⊢ B$.
+\End{theorem}
+
+\Begin{proof}
+Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
+use lemma \ref{epsilon} and the realization theorem \ref{realization}
+to construct a realization function $r_T^N$ and a constant
+specification $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization
+of $A$ and $LP(IN^⊛) ⊢ B$ by the constructed deduction $d$.
+
+Assume for contradiction, that the set of inputs $IN$ containing the
+generated $CS^N$ is self-referential. That is there is a subset
+$\{t_0{:}A_0(t_1), ..., t_{n-1}{:}A_{n-1}(t_0)\}$ of $IN$. The
+occurrences of $t_{k+1 \mod n}$ in $t_k{:}A_i$ have to be part of
+realization term for a principal family $i_k$. For every consecutive
+pair of principal families $i_k$ and $i_{k'}$ there is a constant or a
+variable $t_{k'}$ such that $t_{k'}$ occurs in the realization term
+for $i_k$. We distinguish the following cases:
+
+1\.\ case: $t_{k'}$ is a variable $x_j$. Then the formula $t_{k'}{:}A_{k'}$
+is the realization of an annotated S4 formula $⊟_jA(⊞_{i_{k'}})$. That
+formula occures on the left of a $(⊃ □)$ rule introducing an
+occurrence of $⊞_k$ as $x_j$ is in the realization term of
+$⊞_k$. Therefore we have $i_{k'} ≺ i_k$.
+
+2\.\ case: $t_{k'}$ is a constant $c_{j,l,m}$. Then the formula
+$t_{k'}{:}A_{k'}$ is added to the $CS$ when handling a $(⊃ □)$ rule
+$R_{j,l}$ introducing an occurrence of $⊞_j$. $c_{j,l,m}$ is in the
+realization term of $⊞_k$ so $R_{j,l}$ lies in a prehistory of
+$⊞_k$. At the same time, $⊞_{k'}$ occures in the formula
+$c_{j,l,m}{:}A_{k'}$ introduced when realizing $R_{j,l}$ and so
+there is an occurrence of $⊞_{k'}$ in the prehistory of
+$R_{j,l}$. Together we get that $⊞_{k'}$ occurres in a prehistory of
+$⊞_k$ and therefore $i_{k'} ≺ i_k$.
+
+So for all $k < n$ we get $i_{k'} ≺ i_k$ and the list of principal
+families $i_0, ..., i_{n-1}$ is therefore a prehistoric cycle.
 \End{proof}
 
 Conclusion
