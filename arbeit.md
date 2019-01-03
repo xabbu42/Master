@@ -2779,7 +2779,26 @@ families $i_0, ..., i_{n-1}$ is therefore a prehistoric cycle.
 Conclusion
 ==========
 
+In this paper, I reproduced the main result of Yu's paper "Prehistoric
+Phenomena and Self-referentiality" and then expanded on it
+defining prehistoric relations for Gentzen systems with cut rules and
+finally for Gentzen systems for the logic of proofs LP. This allowed to
+study prehistoric relations directly in LP and lead to a negative
+answer on Yu's conjecture that prehistoric cycles are sufficent
+for self-referential S4 theorems. It also lead to an expanded
+definition of self-referentiality considering all inputs used to
+construct justification terms in LP. With that expanded definition of
+self-referentiality, prehistoric cycles are *necessary and sufficent*
+for self-referential theorems in S4, which is the main result of this paper.
 
-Literature
-==========
+Yu later expanded his result to modal logics T and K4 and their
+justification counterparts in @yu2014. It remains an open question if
+the same generalization can be done with the results of this
+paper. That is if there are Gentzen style systems without structural
+rules for T and K4 together with a consistent definition of term
+correspondence and prehistoric relations and a translation to some
+variant of G3s.
+
+Bibliography
+============
 
