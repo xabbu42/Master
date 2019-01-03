@@ -2104,19 +2104,17 @@ rules in figure \ref{G3lprules}.
 \end{longtable}
 \end{figure}
 
-TODO repeat necessary results from @pulver2010
+This system is adequate for the logic of proofs $LP$ as shown in
+corollary 4.37 in @pulver2010 [73]. It also allows for weakening,
+contraction and inversion [@pulver2010, 65ff]. By corollary 4.36 in
+the same paper, G3lp without the $(⊃ :)_c$ rule is equivalent to
+LP_0. Neither @pulver2010 nor @artemov2001 contain Gentzen systems for
+a restricted logic of proofs $LP(CS)$. Perhaps because it seems
+obvious that restricting whatever rule is used for introducing proof
+constants to $CS$ gives a Gentzen system for $LP(CS)$.
 
-\Begin{definition}[subterm]
-The set of subterms $\sub(t)$ of a LP justification term $t$ is inductively defined as
-follows:
-
-1. $\sub(x) = \{x\}$ for any variable $x$
-2. $\sub(c) = \{c\}$ for any constant $c$
-3. $\sub(!t) = \sub(t) ∪ \{!t\}$
-4. $\sub(s+t) = \sub(s) ∪ \sub(t) ∪ \{s + t\}$
-5. $\sub(s⋅t) = \sub(s) ∪ \sub(t) ∪ \{s⋅t\}$
-
-\End{definition}
+To work with prehistoric relations in G3lp proofs we need the
+following new or adapted definitions:
 
 \Begin{definition}[subformula]
 The set of subformulas $\sub(A)$ of a LP formula $A$ is inductively defined as follows:
@@ -2129,9 +2127,18 @@ The set of subformulas $\sub(A)$ of a LP formula $A$ is inductively defined as f
 
 \End{definition}
 
-\Begin{definition}[subterms of a formula]
+\Begin{definition}[subterm]
+The set of subterms $\sub(t)$ of a LP justification term $t$ is inductively defined as
+follows:
+
+1. $\sub(x) = \{x\}$ for any variable $x$
+2. $\sub(c) = \{c\}$ for any constant $c$
+3. $\sub(!t) = \sub(t) ∪ \{!t\}$
+4. $\sub(s+t) = \sub(s) ∪ \sub(t) ∪ \{s + t\}$
+5. $\sub(s⋅t) = \sub(s) ∪ \sub(t) ∪ \{s⋅t\}$
+
 The set of subterms $\sub(A)$ of a LP formula $A$ is the union of all
-sets of subterms of any term occurring in $A$.
+sets of subterms for all terms occurring in $A$.
 \End{definition}
 
 We use the symbol $\sub$ for all definitions of subterms and
