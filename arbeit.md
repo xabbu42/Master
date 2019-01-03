@@ -613,7 +613,7 @@ $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
 hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨
 B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{LP} A → (⋁Δ' ∨
 B)$. By propositional reasoning we get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A →
-B).
+B)$.
 
 5\.\ case: $Γ ⊃ Δ$ is derived by a $(: ⊃)$ rule. Then it has the form
 $t{:}A, Γ' ⊃ Δ$ and the premise is $A, t{:}A, Γ' ⊃ Δ$. By the
@@ -1116,24 +1116,24 @@ $LP(CS^*) \slashed{⊢} A^r$).
 \End{definition}
 
 Expanding on a first result for S4 in @brezhnev2006 [31], @kuznets2010
-[650] explores the topic of self-referentialiy on the level of
-individual modal logics and their justicication counterparts. He gives
+[650] explores the topic of self-referentiality on the level of
+individual modal logics and their justification counterparts. He gives
 theorems for the modal logics S4, D4, T, and K4 which can only be
 realized in their justification logic counterpart using directly
 self-referential constant specifications, i.e. directly
 self-referential theorems by the above definition. So for S4 in
-particula, Kuznets gives the theorem $¬□¬(S → □S)$ and shows that it
+particular, Kuznets gives the theorem $¬□¬(S → □S)$ and shows that it
 is directly self-referential.
 
-We will not reproduce this result but use the logicaly equivalent
+We will not reproduce this result but use the logically equivalent
 formula $¬□(P ∧ ¬□P)$ as an example for a self-referential S4
 theorem. Notice that it does not directly follow from the above
 theorem that $¬□(P ∧ ¬□P)$ can only be realized with a
 self-referential constant specification, as justification terms do not
-necessary apply to logicaly equivalent formulas [@artemov2016 ch
+necessary apply to logically equivalent formulas [@artemov2016 ch
 1.3]. Still it should be fairly straightforward to show that $¬□(P ∧
 ¬□P)$ is self-referential by translating justification terms for the
-outer $□$ occurrances in $¬□(P ∧ ¬□P)$ and $¬□¬(S → □S)$ using the
+outer $□$ occurrences in $¬□(P ∧ ¬□P)$ and $¬□¬(S → □S)$ using the
 logical equivalence of $P ∧ ¬□P$ and $¬(S → □S)$.
 
 The subformula $P ∧ ¬□P$ in our example asserts for an atomic sentence
@@ -1305,7 +1305,7 @@ i_0$ or $i_0 ≺_L i_2 ≺_L ... ≺_L i_{n-1} ≺_L i_0$.
 In our example formula, we have a prehistoric cycle consisting of a
 single principal family which has a left prehistoric relation to
 itself. The following lemmas will show that any prehistoric cycle
-necessarly contains left prehistoric relations and that we can get rid
+necessarily contains left prehistoric relations and that we can get rid
 of any right prehistoric relations. That is, if a proof has a
 prehistoric cycle it also has a left prehistoric cycle.
 
@@ -1600,15 +1600,15 @@ prehistoric relations remain the same.
 \End{proof}
 
 The last corollary also follows from the fact 2.8 in @yu2017 [787]. In
-that paper Yu looks at prehistoric relations localy, i.e. taking only
+that paper Yu looks at prehistoric relations locally, i.e. taking only
 correspondence up to the current sequent in consideration. That means
 the graph of prehistoric relations has to be updated going up the
 proof tree as new rules add new correspondences and therefore unify
-vertices in the prehistoric relations graph which were still seperate
+vertices in the prehistoric relations graph which were still separate
 in the premise. To work with such changing graphs, Yu introduces the
 notion of isolated families. He shows that all $□$ occurrences
 introduced by weakening are isolated. That means they have no
-prehistoric relations themself, which globaly means that they can not
+prehistoric relations themselves, which globally means that they can not
 add any prehistoric relations from adding correspondences later in the
 proof. This is exactly what the last corollary asserts.
 
@@ -2029,7 +2029,7 @@ proofs together with the correct correspondences added are
 prehistoric-cycle-free. So we can only use modus ponens on two
 non-self-referential S4 theorems $A$ and $A → B$ if there are proofs
 of $A$ and $A → B$ such that the prehistoric relations of these proofs
-combined, together with identifing the occurrences of $A$ in both
+combined, together with identifying the occurrences of $A$ in both
 proofs, are prehistoric-cycle-free. In that case we get a
 prehistoric-cycle-free G3s proof for $B$ using cut elimination and
 corollary \ref{cutprehist}, which shows that $B$ is also
@@ -2568,7 +2568,7 @@ $t_i$ is not necessary in $\bar{t_i}$).
 
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
-does not differentate between the two variants $(⊃ :)_c$ and $(⊃ :)_t$
+does not differentiate between the two variants $(⊃ :)_c$ and $(⊃ :)_t$
 used for introducing elements from $CS$ and input formulas $t:A$ . It
 is therefore necessary to expand the definition of self-referentiality
 as follows:
@@ -2726,13 +2726,13 @@ still non-self-referential set of inputs $IN$.
 
 Checking the constructions of Hilbert style LP proofs from G3lift
 proofs (\ref{sound} and \ref{deduction}), all subformulas occurrences with
-negative polarity in the constructed Hilbert style proof also occure
-with negativ polarity in the G3lift proof and are therefore the
+negative polarity in the constructed Hilbert style proof also occurs
+with negative polarity in the G3lift proof and are therefore the
 realization of a subformula occurrence with negative polarity in the
 original G3s proof of the realization procedure. That is all inputs
 are either part of the constant specification $CS$ or have the form
 $x{:}A$ for a unique variable $x$. It also follows that such a input
-variable $x$ can only occure in other formulas as part of the
+variable $x$ can only occur in other formulas as part of the
 realization of an $□$ occurrence with positive polarity.
 
 \Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality 2]
@@ -2758,7 +2758,7 @@ for $i_k$. We distinguish the following cases:
 
 1\.\ case: $t_{k'}$ is a variable $x_j$. Then the formula $t_{k'}{:}A_{k'}$
 is the realization of an annotated S4 formula $⊟_jA(⊞_{i_{k'}})$. That
-formula occures on the left of a $(⊃ □)$ rule introducing an
+formula occurs on the left of a $(⊃ □)$ rule introducing an
 occurrence of $⊞_k$ as $x_j$ is in the realization term of
 $⊞_k$. Therefore we have $i_{k'} ≺ i_k$.
 
@@ -2766,10 +2766,10 @@ $⊞_k$. Therefore we have $i_{k'} ≺ i_k$.
 $t_{k'}{:}A_{k'}$ is added to the $CS$ when handling a $(⊃ □)$ rule
 $R_{j,l}$ introducing an occurrence of $⊞_j$. $c_{j,l,m}$ is in the
 realization term of $⊞_k$ so $R_{j,l}$ lies in a prehistory of
-$⊞_k$. At the same time, $⊞_{k'}$ occures in the formula
+$⊞_k$. At the same time, $⊞_{k'}$ occurs in the formula
 $c_{j,l,m}{:}A_{k'}$ introduced when realizing $R_{j,l}$ and so
 there is an occurrence of $⊞_{k'}$ in the prehistory of
-$R_{j,l}$. Together we get that $⊞_{k'}$ occurres in a prehistory of
+$R_{j,l}$. Together we get that $⊞_{k'}$ occurs in a prehistory of
 $⊞_k$ and therefore $i_{k'} ≺ i_k$.
 
 So for all $k < n$ we get $i_{k'} ≺ i_k$ and the list of principal
@@ -2784,11 +2784,11 @@ Phenomena and Self-referentiality" and then expanded on it
 defining prehistoric relations for Gentzen systems with cut rules and
 finally for Gentzen systems for the logic of proofs LP. This allowed to
 study prehistoric relations directly in LP and lead to a negative
-answer on Yu's conjecture that prehistoric cycles are sufficent
+answer on Yu's conjecture that prehistoric cycles are sufficient
 for self-referential S4 theorems. It also lead to an expanded
 definition of self-referentiality considering all inputs used to
 construct justification terms in LP. With that expanded definition of
-self-referentiality, prehistoric cycles are *necessary and sufficent*
+self-referentiality, prehistoric cycles are *necessary and sufficient*
 for self-referential theorems in S4, which is the main result of this paper.
 
 Yu later expanded his result to modal logics T and K4 and their
