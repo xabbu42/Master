@@ -613,7 +613,7 @@ $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
 hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨
 B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{LP} A → (⋁Δ' ∨
 B)$. By propositional reasoning we get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A →
-B) ≡ Γ ⊢_{LP} ⋁Δ$.
+B).
 
 5\.\ case: $Γ ⊃ Δ$ is derived by a $(: ⊃)$ rule. Then it has the form
 $t{:}A, Γ' ⊃ Δ$ and the premise is $A, t{:}A, Γ' ⊃ Δ$. By the
@@ -1121,8 +1121,9 @@ individual modal logics and their justicication counterparts. He gives
 theorems for the modal logics S4, D4, T, and K4 which can only be
 realized in their justification logic counterpart using directly
 self-referential constant specifications, i.e. directly
-self-referential theorems by the above definition. The example
-directly self-referential theorem for S4 is $¬□¬(S → □S)$.
+self-referential theorems by the above definition. So for S4 in
+particula, Kuznets gives the theorem $¬□¬(S → □S)$ and shows that it
+is directly self-referential.
 
 We will not reproduce this result but use the logicaly equivalent
 formula $¬□(P ∧ ¬□P)$ as an example for a self-referential S4
@@ -1148,16 +1149,15 @@ contradicts the second part of the conjunction,
 $¬□P$. [cf. @artemov2016 ch 7]
 
 Looking at the G3s proof for $¬□(P ∧ ¬□P)$ and a realization of that
-proof in figure \ref{proofs}, we can see why a self referential proof
-term like the used term $t$ for the propositional tautology $P ∧
-¬t⋅x{:}P → P$ is necessary. In order to prove $¬□(P ∧ ¬□P)$ one needs
-to disprove $P ∧ ¬□P$ at some point which means one has to prove
-$□P$. The only way to prove $□P$ is using $□(P ∧ ¬□P)$ as an
-assumption on the left. This leads to the situation that the proof
-introduces $□$ by a $(⊃ □)$ rule where the same family already occurs
-on the left. As the following sections of this chapter will show
-formally such a situation is actually necessary for the
-self-referentiality of an S4 formula.
+proof in figure \ref{proofs}, we can see why a self referential term
+like $t$ for the propositional tautology $P ∧ ¬t⋅x{:}P → P$ is
+necessary. In order to prove $¬□(P ∧ ¬□P)$ one needs to disprove $P ∧
+¬□P$ at some point which means one has to prove $□P$. The only way to
+prove $□P$ is using $□(P ∧ ¬□P)$ as an assumption on the left. This
+leads to the situation that the proof introduces $□$ by a $(⊃ □)$ rule
+where the same family already occurs on the left. As the following
+sections of this chapter will show formally such a situation is
+actually necessary for the self-referentiality of any S4 formula.
 
 \begin{figure} \caption{proof for $¬□(P ∧ ¬□P)$} \label{proofs}
 \begin{longtable}{cc}
@@ -1416,8 +1416,8 @@ lemma.
 Assume the proof tree is prehistoric-cycle-free. Taken the $ε$ as
 defined in lemma \ref{epsilon}, we have: If $ε(i_0,j_0) ≥ ε(i,j)$,
 then for any $k_0 ≤ m_{i_0,j_0}$ and any $k ≤ m_{i,j}$,
-$c_{i_0,j_0,k_0}$ does not occur in $A^N_{i,j,k}$ for the single
-$A^N_{i,j,k}$ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
+$c_{i_0,j_0,k_0}$ does not occur in the unique $A^N_{i,j,k}$
+such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
 \End{lemma}
 
 \Begin{proof}
@@ -2024,28 +2024,31 @@ this chapter hint at an explanation for this fact for S4 and at the
 possibility to still use modus ponens with further restrictions in the
 non-self-referential subset of S4. Namely, to consider the global
 aspects of self-referentiality coming from correspondence of
-occurrences, it is necessary when combining two proofs to get a new
-proof, that the two proofs combined with the correct correspondences
-added are prehistoric-cycle-free. So we can only use modus ponens on
-two non-self-referential S4 theorems $A$ and $A → B$ if there are
-proofs of $A$ and $A → B$ such that the prehistoric relations of these
-proofs combined together with identifing the occurrences of $A$ in
-both proofs are prehistoric-cycle-free. In that case we get a
+occurrences, it is necessary when combining two proofs, that the two
+proofs together with the correct correspondences added are
+prehistoric-cycle-free. So we can only use modus ponens on two
+non-self-referential S4 theorems $A$ and $A → B$ if there are proofs
+of $A$ and $A → B$ such that the prehistoric relations of these proofs
+combined, together with identifing the occurrences of $A$ in both
+proofs, are prehistoric-cycle-free. In that case we get a
 prehistoric-cycle-free G3s proof for $B$ using cut elimination and
-corollary \ref{cutprehist}, which shows that $B$ is
+corollary \ref{cutprehist}, which shows that $B$ is also
 non-self-referential.
 
 Prehistoric relations and G3lp
 ------------------------------
 
 @pulver2010 [62] introduces the system LPG3 by expanding G3c with
-rules for the build up of justification terms with build in contraction as
-well as the new axioms (Axc) and (Axt). We will in our variant of G3lp
-use the same rules to build up terms, but replace the axioms
-with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the prehistoric relations
-of the proof intact. As there is a proof for $⊃ A$ for any axiom $A$ and
-also for $A ⊃ A$ for any formula $A$, this two rules are equivalent to
-the two axioms and invertible.
+rules for the build up of justification terms as well as the new
+axioms (Axc) and (Axt). To ensure that the contraction lemma
+holds, all rules have to be invertible [@pulver2010 61] which is the
+reason that for LPG3 contracting variants of all the
+justification rules are used. Our variant G3lp will use the same
+rules to build up terms, but replace the axioms with rules $(⊃ :)_c$
+and $(⊃ :)_t$ to keep the prehistoric relations of the proof
+intact. As there is a proof for $⊃ A$ for any axiom $A$ and also for
+$A ⊃ A$ for any formula $A$, this two rules are equivalent to the two
+axioms and invertible.
 
 As we already did with G3s, we will use the full system with all
 classical operators for examples, but only the minimal subset with $→$
@@ -2131,18 +2134,25 @@ The set of subterms $\sub(A)$ of a LP formula $A$ is the union of all
 sets of subterms of any term occurring in $A$.
 \End{definition}
 
-We use $\sub$ for all three definitions, as it will be clear from
-context which of the three definitions is meant.  Notice that by this
-definition $s{:}A$ is a subformula of $s+t{:}A$.
+We use the symbol $\sub$ for all definitions of subterms and
+subformulas, as it will be clear from context which of the definitions
+is meant.  Notice that by this definition $s{:}A$ is a subformula of
+$s+t{:}A$.
 
-We adapt the definition of correspondence (\ref{corr}) to G3lp proofs
-as follows: all topmost terms in active or principal formulas in
+We expand the definition of correspondence (\ref{corr}) to G3lp proofs
+as follows:
+
+\Begin{definition}[correspondence in G3lp]
+All topmost terms in active or principal formulas in
 the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ correspond to each
-other. Notice that in the $(⊃ !)$ rule, the topmost term $t$
-in the contraction formula therefore corresponds to the topmost proof
-term $!t$ in the principal formula. The term $t$ of the other
-active formula $!t:t:A$ on the other hand corresponds to the same
-term $t$ in the principal formula.
+other.
+\End{definition}
+
+Notice that in the $(⊃ !)$ rule, the topmost term $t$ in the
+contraction formula therefore corresponds to the topmost proof term
+$!t$ in the principal formula. The term $t$ of the other active
+formula $!t{:}t{:}A$ on the other hand corresponds to the same term $t$ in
+the principal formula.
 
 By this definition, families of terms in G3lp consist not of
 occurrences of a single term $t$ but of occurrences of subterms $s$ of
@@ -2296,17 +2306,17 @@ occurrences as the proof uses inversion which in turn also adds
 weakening formulas. But all the deconstructed parts weakened in this
 way get contracted again in the next step of the contraction. In the
 end the contracted proof tree is always a subset of the original proof
-tree. ^[TODO more formal?, subset wrong word]
+tree.
 
 That means that also $𝒯˚$ is a subset of the tree constructed in step
-two. From this we see that all $□$ occurrences in $𝒯˚$ have a term
-occurrence in $𝒯$ mapped to them if we consider the extra $□$
-occurrences introduced in step 2 of the algorithm (resp. in case
-6 of the definition) as replacements of the same term as the $□$
-occurrences they are contracted with and also consider the extra
-sequents $□Γ ⊃ □A$ introduced in step 2 as copies of the same formulas
-in the original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the original
-$(⊃ □)$ rule.
+2 of the algorithm. From this we see that all $□$ occurrences in $𝒯˚$
+have a term occurrence in $𝒯$ mapped to them if we consider the extra
+$□$ occurrences introduced in step 2 (resp. in case 6 of the
+definition) as replacements of the same term as the $□$ occurrences
+they are contracted with and also consider the extra sequents $□Γ ⊃
+□A$ introduced in step 2 as copies of the same formulas in the
+original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the original $(⊃ □)$
+rule.
 
 \Begin{lemma}
 For any family $f_i$ of $□$ symbols in $𝒯˚$ there is a unique proof
@@ -2318,9 +2328,9 @@ term occurrences $s$ mapped to $□$ occurrences in $f_i$.
 For any two directly corresponding $□$ occurrences we show that the
 two mapped term occurrences correspond directly or by reflexive closure:
 
-1\.\ case: The two $□$ occurrences are added in step 2 . Then the
-mapped term occurrences are the same occurrence and correspond by
-reflexive closure.
+1\.\ case: The two $□$ occurrences are added in step 2 of the
+algorithm. Then the mapped term occurrences are the same occurrence
+and correspond by reflexive closure.
 
 2\.\ case: The two $□$ occurrence correspond directly by a rule which
 is the forgetful projection of a rule in $𝒯$.  Then the mapped term
@@ -2331,8 +2341,8 @@ still holds for $(⊃ □)$ rules and their corresponding $(⊃ :)$ rules
 even after applying lemma \ref{boxbox}.
 
 3\.\ case: The two $□$ occurrences correspond directly by a $(⊃ □)$
-rule added in step 2. Then the rule together with the previous rule
-has the following form:
+rule added in step 2 of the algorithm. Then the rule together with the
+previous rule has the following form:
 
 \AXC{$□Γ ⊃ A$}
 \RightLabel{$(⊃ □)$}
@@ -2343,7 +2353,7 @@ has the following form:
 
 As the formulas in $□Γ ⊃ □A$ are considered copies of the original
 sequent $Γ', □Γ ⊃ Δ, □A$, and the sequent $Γ', □Γ ⊃ Δ, □□A$ is
-considered the same sequent with an $□$ added, the mapped term
+considered the same sequent with an additional $□$ symbol, the mapped term
 occurrences are actually the same and therefore correspond by reflexive
 closure.
 
@@ -2373,8 +2383,8 @@ rule. Then we have $i' ≺ j'$ directly by the definition of
 prehistoric relations for G3lp proofs using the occurrences $s_i$ in
 the premise of the rule $(⊃ :)$ introducing the occurrence $s_j$.
 
-3\.\ case: The $(⊃ □)$ rule is added in step 2. Then the rule together
-with the previous rule has the following form:
+2\.\ case: The $(⊃ □)$ rule is added in step 2 of the algorithm. Then
+the rule together with the previous rule has the following form:
 
 \AXC{$□Γ ⊃ A$}
 \RightLabel{$(⊃ □)$}
@@ -2552,9 +2562,9 @@ $t_i$ is not necessary in $\bar{t_i}$).
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
 does not differentate between the two variants $(⊃ :)_c$ and $(⊃ :)_t$
-used for introducing elements from $CS$ and input formulas $t:A$ in
-the proven sequent itself. It is therefore necessary to expand the
-definition of self-referentiality as follows:
+used for introducing elements from $CS$ and input formulas $t:A$ . It
+is therefore necessary to expand the definition of self-referentiality
+as follows:
 
 \Begin{definition}[Inputs]
 The *inputs* $IN$ of a G3lp proof are all LP formulas which are the
