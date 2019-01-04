@@ -246,8 +246,8 @@ no new variables are introduced in $d'$ or $CS'$.
 \End{proof}
 
 
-Gentzen System for S4
----------------------
+Gentzen Systems
+---------------
 
 In the following text capital greek letters $Γ$, $Δ$ are used for
 multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
@@ -577,8 +577,8 @@ the root sequent merge at some point in the proof tree. So occurrences
 in the root sequent itself can not correspond to each other.
 \End{proof}
 
-G3lift is sound and complete
-----------------------------
+Adequacy of G3lift
+------------------
 
 We will show in this chapter that G3lift is adequate by showing it is
 equivalent to the Hilbert system LP from @artemov2001 as introduced in
@@ -785,8 +785,8 @@ get the required proof for $Γ ⊃ A$.
 \End{proof}
 
 
-Annotated S4 Formulas and Proofs
---------------------------------
+Annotated S4
+------------
 
 As we have already seen, all symbol occurrences in a Gentzen style
 proof can be divided in disjoint equivalence classes of corresponding
@@ -891,8 +891,8 @@ So for example the annotated version of $□((R → □R) → ⊥) → ⊥$ is
 $⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
 
 
-Realization of S4 in LP
------------------------
+Realization
+-----------
 
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
@@ -1070,8 +1070,9 @@ derivation $d^k_{i,j}$ for \ref{precond} which also does not introduce
 new variables.
 \End{proof}
 
-Prehistoric Relations in S4
-===========================
+Prehistoric Relations in G3s
+============================
+\chaptermark{Prehist. Rel. in G3s}
 
 Self-referentiality
 -------------------
@@ -1363,8 +1364,8 @@ prehistoric cycle.
 \End{proof}
 
 
-Main Proof
-----------
+Yu's Theorem
+------------
 
 Yu's proof for the main theorem of his paper, builds upon the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
@@ -1461,11 +1462,12 @@ n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 $CS^N$ is not self-referential and we have $LP(CS^⊛) ⊢ B$.
 \End{proof}
 
-Prehistoric Relations in LP
-===========================
+Prehistoric Relations in G3lp
+=============================
+\chaptermark{Prehist. Rel. in G3lp}
 
-Prehistoric relations in G3s with cut rules
--------------------------------------------
+Cut Rules
+---------
 
 In this chapter we will define prehistoric relations in the systems
 G3s + (Cut) and G3s + (□Cut). The (context sharing) cut rule has the
@@ -2035,8 +2037,8 @@ prehistoric-cycle-free G3s proof for $B$ using cut elimination and
 corollary \ref{cutprehist}, which shows that $B$ is also
 non-self-referential.
 
-Prehistoric relations and G3lp
-------------------------------
+G3lp
+----
 
 @pulver2010 [62] introduces the system LPG3 by expanding G3c with
 rules for the build up of justification terms as well as the new
