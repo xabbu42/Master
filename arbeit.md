@@ -2417,7 +2417,7 @@ $i' = j'$ by induction hypothesis on the shorter proof up to the that
 $(⊃ □)$ rule with the occurrences $□'_i$, $s'_i$, $□_k$ and $s_k$.
 \End{proof}
 
-\Begin{lcorollary}
+\Begin{lcorollary} \ref{forgetful}
 If $𝒯$ is prehistoric-cycle-free then also $𝒯˚$ is
 prehistoric-cycle-free.
 \End{lcorollary}
@@ -2573,10 +2573,11 @@ $t_i$ is not necessary in $\bar{t_i}$).
 
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
-does not differentiate between the two variants $(⊃ :)_c$ and $(⊃ :)_t$
-used for introducing elements from $CS$ and input formulas $t:A$ . It
-is therefore necessary to expand the definition of self-referentiality
-as follows:
+does not differentiate between the two variants $(⊃ :)_c$ and $(⊃
+:)_t$ used for introducing elements from $CS$ and input formulas $t:A$
+. It is therefore necessary to expand the definition of
+self-referentiality by considering all basic justifications and not
+only the justification constants:
 
 \Begin{definition}[Inputs]
 The *inputs* $IN$ of a G3lp proof are all LP formulas which are the
@@ -2584,10 +2585,8 @@ principal formula of a $(⊃ :)_t$ or $(⊃ :)_c$ rule.
 \End{definition}
 
 Notice that the used constant specifications $CS$ is a subset of the
-inputs $IN$. We can now expand the definition of self-referentiality to
-input sets in the natural way:
-
-
+inputs $IN$. Based on this definition, we can expand the definition of
+self-referentiality to input sets:
 
 \Begin{definition}[directly self-referential]
 
@@ -2599,8 +2598,10 @@ input sets in the natural way:
 
 \End{definition}
 
+With this definitions we finally arrive at a counterpart to Yu's theorem:
+
 \Begin{theorem}
-If the input set $IN$ of a G3lp proof is non self-referential then the
+If the input set $IN$ of a G3lp proof is non-self-referential then the
 proof is prehistoric-cycle-free.
 \End{theorem}
 
@@ -2614,9 +2615,19 @@ $\{s_k{:}A_k\ | 0 ≤ k < n\} ⊆ IN$ is a self-referential subset of $IN$.
 \End{proof}
 
 \Begin{corollary}
-The forgetful projection $A˚$ of a LP formula provable with a non
-self-referential input set $IN$ is provable prehistoric-cycle-free in G3s.
+The forgetful projection $A˚$ of a LP formula provable with a
+non-self-referential input set $IN$ is provable prehistoric-cycle-free
+in G3s.
 \End{corollary}
+
+\Begin{proof}
+If $𝒯$ is a proof of $A$ from non-self-referential inputs $IN$, then
+$𝒯$ is prehistoric-cycle-free as proven above. So by corollary
+\ref{forgetful} $𝒯˚$ is a prehistoric-cycle-free proof of $A˚$ in $\Gs +
+(□\Cut)$. Finally there is a prehistoric-cycle-free proof of $A˚$ in
+G3s by corollary \ref{boxcutcycle}.
+\End{proof}
+
 
 Counterexample
 --------------
