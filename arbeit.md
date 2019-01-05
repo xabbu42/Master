@@ -2724,36 +2724,45 @@ provable in LP_0 and therefor also in $LP(CS^⊛)$.
 \End{proof}
 
 Finally the question arises, if prehistoric cycles are also a
-necessary precondition on self-referential S4 theorems under the
-expanded definition. For this it is necessary to clarify the term
-inputs for Hilbert style proofs used in the original definition of LP
-and in the realization theorem (\ref{realization}) as there is no
-direct equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus
-as there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for
-G3lp, $(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing
-axioms of LP. In the other direction, a $(⊃ :)_t$ rule is translated
-first to the trivial proof for $t{:}A ⊢_{LP} t{:}A$, but the usage of
-deduction theorem could change that to a more complex proof for
-example for $⊢_{LP} t{:}A → t{:}A$. It is therefore simplest to
-consider all subformulas of the form $t{:}A$ with negative polarity
-anywhere in the proof as well as all assumptions $t{:}A$ as
-inputs. Given this clarification, we need to show that the realization
-as constructed in chapter \ref{main} not only provides us with a
-non-self-referential constant specification $CS$, but also with a
-still non-self-referential set of inputs $IN$.
+necessary condition on self-referential S4 theorems under the expanded
+definition. For this it is necessary to clarify the term inputs for
+Hilbert style proofs used in the original definition of LP and in the
+realization theorem (\ref{realization}) as there is no direct
+equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus as
+there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for G3lp,
+$(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing axioms
+of LP. In the other direction, a $(⊃ :)_t$ rule is translated first to
+the trivial proof for $t{:}A ⊢_{LP} t{:}A$, but the usage of deduction
+theorem could change that to a different proof for example for
+$⊢_{LP} t{:}A → t{:}A$.
 
-Checking the constructions of Hilbert style LP proofs from G3lift
-proofs (\ref{sound} and \ref{deduction}), all subformulas occurrences with
-negative polarity in the constructed Hilbert style proof also occurs
-with negative polarity in the G3lift proof and are therefore the
-realization of a subformula occurrence with negative polarity in the
-original G3s proof of the realization procedure. That is all inputs
-are either part of the constant specification $CS$ or have the form
-$x{:}A$ for a unique variable $x$. It also follows that such a input
-variable $x$ can only occur in other formulas as part of the
-realization of an $□$ occurrence with positive polarity.
+So far the situation seems pretty clear cut, and we have inputs as
+assumptions or in negative position of formulas proven by the
+deduction theorem. Unfortunately the deductions as constructed in the
+deduction theorem sometimes use existing formulas with swapped
+polarities. That is, in a deduction constructed by the deduction
+theorem, subformulas can occur with negative polarity which only
+occured with positive polarity in the original deduction.  Moreover
+formulas can be necessary to derive the final formula without occuring
+in that formula. So there is no guarantee that all necessary inputs
+actually occur in the final formula or that a formula occuring in
+negative position somewhere in the proof is an input.
 
-\Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality 2]
+So we have no clear definition of inputs in the original definition of
+LP matching the definition of inputs in G3lp, and therefore also
+currently no way to expand Yu's result to all inputs.  But we can
+stipulate that the inputs of derivation $d$ as constructed by the
+realization theorem (\ref{realization}) are exactly the realizations
+of formulas $⊟_iA$ with negative polarity in the original G3s
+proof. As G3s enjoys the subformula property, that means all inputs
+used in the proof thus constructed are actually also inputs in the
+final formula of the proof. We have to assume without proof that this
+definitions of inputs somehow matches the exact definition given in
+the context of G3lp proofs. Given this stipulations and assumptions,
+the following sketch of a proof tries to argue for the necessity of
+prehistoric cycles for the expanded definition of self-referentiality:
+
+\Begin{theorem}
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
 there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(IN^⊛) ⊢ B$.
 \End{theorem}
@@ -2763,16 +2772,23 @@ Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
 use lemma \ref{epsilon} and the realization theorem \ref{realization}
 to construct a realization function $r_T^N$ and a constant
 specification $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization
-of $A$ and $LP(IN^⊛) ⊢ B$ by the constructed deduction $d$.
+of $A$ and $LP ⊢ B$ by the constructed deduction $d$. To simplify the
+following, we do not enforce a injective constant specification here
+and allow multiple proof constants for the same formula. From this it
+follows that any constant $c_{i,j,k}$ is exlusively used when handling
+the $(⊃ □)$ rule $R_{i,j}$.
 
-Assume for contradiction, that the set of inputs $IN$ containing the
-generated $CS^N$ is self-referential. That is there is a subset
-$\{t_0{:}A_0(t_1), ..., t_{n-1}{:}A_{n-1}(t_0)\}$ of $IN$. The
-occurrences of $t_{k+1 \mod n}$ in $t_k{:}A_i$ have to be part of
-realization term for a principal family $i_k$. For every consecutive
-pair of principal families $i_k$ and $i_{k'}$ there is a constant or a
-variable $t_{k'}$ such that $t_{k'}$ occurs in the realization term
-for $i_k$. We distinguish the following cases:
+Assume for contradiction, that the set of inputs $IN$ used for $d$ is
+self-referential. That is there is a subset $\{t_0{:}A_0(t_1), ...,
+t_{n-1}{:}A_{n-1}(t_0)\}$ of $IN$. The occurrences of $t_{k+1 \mod n}$
+in $t_k{:}A_i$ have to be a subterm of realization term for a
+principal family $i_k$ as the construction of such realization terms
+are the only place where the constants and variables of $IN$ can get
+reused. For every consecutive pair of principal families $i_k$ and
+$i_{k'}$ thus given, there is a constant or variable $t_{k'}$ such
+that $t_{k'}$ occurs in the realization term for $i_k$ and there is a
+subterm of the realization term for $i_{k'}$ occuring in
+$t_{k'}{:}A_{k'} ∈ IN$. We distinguish the following cases:
 
 1\.\ case: $t_{k'}$ is a variable $x_j$. Then the formula $t_{k'}{:}A_{k'}$
 is the realization of an annotated S4 formula $⊟_jA(⊞_{i_{k'}})$. That
@@ -2784,9 +2800,11 @@ $⊞_k$. Therefore we have $i_{k'} ≺ i_k$.
 $t_{k'}{:}A_{k'}$ is added to the $CS$ when handling a $(⊃ □)$ rule
 $R_{j,l}$ introducing an occurrence of $⊞_j$. $c_{j,l,m}$ is in the
 realization term of $⊞_k$ so $R_{j,l}$ lies in a prehistory of
-$⊞_k$. At the same time, $⊞_{k'}$ occurs in the formula
-$c_{j,l,m}{:}A_{k'}$ introduced when realizing $R_{j,l}$ and so
-there is an occurrence of $⊞_{k'}$ in the prehistory of
+$⊞_k$. At the same time, the term $t_{k'}$ occurs in the formula
+$c_{j,l,m}{:}A_{k'}$ as part of a term $t$ used in the construction of
+the realization of $⊞_{k'}$. As $c_{j,l,m}{:}A_{k'}$ is introduced
+when realizing $R_{j,l}$, $A_{k'}$ occurs in the proof of the premise
+and there has to be an occurrence of $⊞_{k'}$ in the prehistory of
 $R_{j,l}$. Together we get that $⊞_{k'}$ occurs in a prehistory of
 $⊞_k$ and therefore $i_{k'} ≺ i_k$.
 
