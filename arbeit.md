@@ -430,7 +430,7 @@ that it exactly mirrors the rules of G3s. Other than $LPG_0$ from
 @yu2010 and the original Gentzen style systems from @artemov2001
 [p.14], it does not actually deconstruct justification terms but falls back on
 the Hilbert style definition of $LP$ to introduce terms already
-fully constructed. We will call this system G3lift to differentiate it
+fully constructed. I will call this system G3lift to differentiate it
 from the later used system G3lp.
 
 \begin{figure} \caption{G3lift} \label{G3lift}
@@ -796,13 +796,13 @@ As we have already seen, all symbol occurrences in a Gentzen style
 proof can be divided in disjoint equivalence classes of corresponding
 symbol occurrences which are called families. In this text we will be
 mainly concerned with the families of $□$ occurrences and their
-polarities as defined below. We will therefore define annotated
+polarities as defined below. I will therefore define annotated
 formulas, sequents and proof trees in this chapter which make the
 families and polarities of $□$ occurrences explicit in the notation
 and usable in definitions.
 
 \Begin{definition}[polarity]
-We assign a *positive* or *negative polarity* relative to $A$ to all
+Assign *positive* or *negative polarity* relative to $A$ to all
 subformulas occurrences $B$ in $A$ as follows:
 
 * The only occurrence of $A$ in $A$ has positive polarity.
@@ -977,12 +977,12 @@ conclusions of this rules (so for all $i ≤ n_p$, $j < l_i$ we have
 $I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}l_i$ $(⊃
 □)$ rules in the proof $T$.
 
-We choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
+Choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
 □)$ rules such that $ε(i_2,j_2) < ε(i_1,j_1)$ whenever
 $O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $s_r$ are
 later in this order).
 
-We define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
+Define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
 u_{i,0} + ... + u_{i,l_i-1}$ and the injective constant specification
 $CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lift, so by a trivial induction the proof
@@ -1523,7 +1523,7 @@ have an occurrence of a family $□$ as part of a cut formula in the
 \label{defcut} is not a local prehistoric family.
 
 To handle terms $s⋅t$ in the next chapter an additional rule for
-modus ponens under $□$ is necessary. We therefore introduce here the new rule
+modus ponens under $□$ is necessary. I therefore introduce here the new rule
 (□Cut) as follows:
 
 \Begin{definition}[(□Cut) rule]
@@ -1781,7 +1781,7 @@ has the following form:
 \DP
 where $Δ = Δ', □B$ and $Γ = Γ'_L, □Γ_L = Γ'_R, □Γ_R$.
 
-We can move the cut up on the right using weakening as follows:
+The cut can be moved up on the right using weakening as follows:
 
 \AXC{$𝒯_L$} \noLine
 \UIC{$□Γ_L ⊃ A_0$}
@@ -2441,10 +2441,10 @@ self-referential in quite a different way than the original G3s proof
 in figure \ref{proofs}. There are 3 families of $□$ in the G3s +
 (□Cut) proof. Two are the same families as in the G3s proof, occur
 in the root sequent and have a consistent polarity throughout the
-proof. We therefore simply use the symbols $⊞$ and $⊟$ for this
+proof. I therefore simply use the symbols $⊞$ and $⊟$ for this
 families. The third one is part of the cut formula and therefore does
 not occur in the final sequent and does not have consistent polarity
-throughout the proof. We use $□$ for occurrences of this family in the
+throughout the proof. I use $□$ for occurrences of this family in the
 proof.
 
 All left prehistoric relations of the proof are from left branch of
