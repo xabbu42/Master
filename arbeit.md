@@ -2758,14 +2758,16 @@ proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
 final formula of the proof. We have to assume without proof that this
 definitions of inputs somehow matches the exact definition given in
-the context of G3lp proofs. Given this stipulations and assumptions,
+the context of G3lp proofs. That is, there exists a G3lp proof for a
+G3s proof where only realizations of formulas with negative polarity
+are introduced by $(⊃ :)_t$. Given this stipulations and assumptions,
 the following sketch of a proof tries to argue for the necessity of
 prehistoric cycles for the expanded definition of self-referentiality:
 
-\Begin{theorem}
+\Begin{conjecture}
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
 there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(IN^⊛) ⊢ B$.
-\End{theorem}
+\End{conjecture}
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
@@ -2816,19 +2818,27 @@ Conclusion
 ==========
 
 In this paper, I reproduced the main result of Yu's paper "Prehistoric
-Phenomena and Self-referentiality" and then expanded on it
-defining prehistoric relations for Gentzen systems with cut rules and
-finally for Gentzen systems for the logic of proofs LP. This allowed to
+Phenomena and Self-referentiality" and then expanded on it defining
+prehistoric relations for Gentzen systems with cut rules and finally
+for a Gentzen system G3lp for the logic of proofs LP. This allowed to
 study prehistoric relations directly in LP and lead to a negative
-answer on Yu's conjecture that prehistoric cycles are sufficient
-for self-referential S4 theorems. It also lead to an expanded
-definition of self-referentiality considering all inputs used to
-construct justification terms in LP. With that expanded definition of
-self-referentiality, prehistoric cycles are *necessary and sufficient*
-for self-referential theorems in S4, which is the main result of this paper.
+answer on Yu's conjecture that prehistoric cycles are sufficient for
+self-referential S4 theorems. It also lead to an expanded definition
+of self-referentiality considering all inputs used to construct
+justification terms. With that expanded definition of
+self-referentiality, prehistoric cycles are *sufficient* for
+self-referential theorems in S4, which is the main result of this
+paper.
+
+Given this expansion, the question goes back to the other
+direction. That is, are prehistoric cycles also necessary for the
+expanded definition of self-referentiality? Unfortunately that
+question is not easy to answer, as already transfering the definitions
+of inputs to the original Hilbert style calculus poses problems. So
+it remains open.
 
 Yu later expanded his result to modal logics T and K4 and their
-justification counterparts in @yu2014. It remains an open question if
+justification counterparts in @yu2014. Another open question is, if
 the same generalization can be done with the results of this
 paper. That is if there are Gentzen style systems without structural
 rules for T and K4 together with a consistent definition of term
