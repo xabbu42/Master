@@ -92,13 +92,17 @@ LP and S4
 Syntax
 ------
 
+\Begin{definition}[Syntax of S4]
 The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣ A_0 → A_1 ∣
 □A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
 formulas using the remaining syntax, we can reduce that to the minimal
 language $A := ⊥ ∣ p ∣ A_0 → A_1 ∣ □A$.
+\End{definition}
 
+\Begin{definition}[Syntax of LP]
 The language of LP consists of terms given by $t := c ∣ x ∣ t_0 ⋅ t_1 ∣ t_0
 + t_0 ∣\: !t$ and formulas given by $A := ⊥ ∣ P ∣ A_0 → A_1 ∣ t{:}A$.
+\End{definition}
 
 A Hilbert style system for LP is given by the following Axioms and the
 rules modus ponens and axiom necessitation. [@artemov2001 p.8]
@@ -804,12 +808,11 @@ subformulas occurrences $B$ in $A$ as follows:
 * The only occurrence of $A$ in $A$ has positive polarity.
 
 * If an occurrence $B → C$ in $A$ already has a polarity, then the
-  corresponding occurrence of $C$ in $B → C$ has the same polarity and
-  the corresponding occurrence of $B$ in $B → C$ has the opposite
-  polarity.
+  occurrence of $C$ in $B → C$ has the same polarity and the
+  occurrence of $B$ in $B → C$ has the opposite polarity.
 
-* If an occurrence $□B$  already has a polarity, then the corresponding
-  occurrence of $B$ in $□B$ has the same polarity.
+* If an occurrence $□B$ already has a polarity, then the occurrence of
+  $B$ in $□B$ has the same polarity.
 
 Similarly all occurrences of subformulas in a sequent $Γ ⊃ Δ$ get
 assigned a *polarity* as follows:
@@ -2446,10 +2449,10 @@ proof.
 
 All left prehistoric relations of the proof are from left branch of
 the cut where we have $⊟ ≺_L ⊞$ and the cycle $⊞ ≺_L ⊞$. Other than in
-the G3s proof, the two $⊞$ are used for different formulas $P$ and $P
-∧ ¬□P$ and the connection between the two is established by the
-(□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is necessary
-for any prehistoric cycle in a G3lp proof as we will show formally.
+the G3s proof, the two $⊞$ occurrences are used for different formulas
+$P$ and $P ∧ ¬□P$ and the connection between the two is established by
+the (□Cut) with $□(P ∧ ¬□P → P)$. A similar situation is necessary for
+any prehistoric cycle in a G3lp proof as we will show formally.
 
 \afterpage{
 \thispagestyle{plain}
@@ -2584,14 +2587,16 @@ Notice that the used constant specifications $CS$ is a subset of the
 inputs $IN$. We can now expand the definition of self-referentiality to
 input sets in the natural way:
 
-\Begin{definition}[directly self-referential]
-The inputs $IN$ of a G3lp proof are *directly self-referential* if there is a
-term $t$ such that $t{:}A(t) ∈ IN$.
-\End{definition}
 
-\Begin{definition}[self-referential]
-The inputs $IN$ of a G3lp proof are *self-referential* if there is a
-subset $A ⊆ IN$ such that $A := {t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)}$.
+
+\Begin{definition}[directly self-referential]
+
+* A input set $IN$ is *directly self-referential* if there is a
+  term $t$ such that $t{:}A(t) ∈ IN$.
+
+* A input set $IN$ is *self-referential* if there is a
+  subset $A ⊆ IN$ such that $A := \{t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)\}$.
+
 \End{definition}
 
 \Begin{theorem}
@@ -2775,7 +2780,7 @@ $R_{j,l}$. Together we get that $⊞_{k'}$ occurs in a prehistory of
 $⊞_k$ and therefore $i_{k'} ≺ i_k$.
 
 So for all $k < n$ we get $i_{k'} ≺ i_k$ and the list of principal
-families $i_0, ..., i_{n-1}$ is therefore a prehistoric cycle.
+families $i_0, ..., i_{n-1}$ is therefore a prehistoric cycle in $𝒯$.
 \End{proof}
 
 Conclusion
