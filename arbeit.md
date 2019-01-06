@@ -58,12 +58,13 @@ philosophical standpoint as well for more formal mathematical
 reasons. Such a self-referential sentence is for example impossible
 with an arithmetic proof predicate using standard Gödel numbers as the
 Gödel number of a proof is always greater than any number referenced
-in it as discussed in @kuznets2010. In the same paper, the author
-argues that there is nothing inherently wrong with self-referential
-justifications if we understand the justifications as valid reasoning
-templates or schemes which of course then can be used on themselves.
+in it as discussed by Roman Kuznets [-@kuznets2010]. In the same
+paper, the author argues that there is nothing inherently wrong with
+self-referential justifications if we understand the justifications as
+valid reasoning templates or schemes which of course then can be used
+on themselves.
 
-Roman Kuznets studied the topic of self-referentiality at the
+Kuznets studied the topic of self-referentiality at the
 logic-level. He discovered theorems of S4, D4, T and K4 which need a
 self-referential constant specification to be realized in their
 justification logic counterparts [@kuznets2010]. Junhua Yu on the
@@ -2892,6 +2893,12 @@ paper. That is, if there are Gentzen style systems without structural
 rules for T and K4 together with a consistent definition of term
 correspondence and prehistoric relations and a translation to some
 variant of G3s.
+
+**Acknowledgments**
+
+My sincere thanks go to Prof. Dr. Thomas Studer for his support and
+inspiration. Without him I would not be at this point.
+
 
 Bibliography
 ============
