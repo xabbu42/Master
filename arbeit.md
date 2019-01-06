@@ -102,10 +102,10 @@ is a discussion of Kripke frames in @pulver2010 based on
 @blackburn2001.
 
 \Begin{definition}[Syntax of S4]
-The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣ A_0 → A_1 ∣
-□A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
-formulas using the remaining syntax, we can reduce that to the minimal
-language $A := ⊥ ∣ P ∣ A_0 → A_1 ∣ □A$.
+The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣
+A_0 → A_1 ∣ □A ∣ ◇A$.  By using the known derived definitions for $∧$,
+$∨$ and $◇$ we can reduce that to the minimal language $A := ⊥ ∣ P ∣
+A_0 → A_1 ∣ □A$.
 \End{definition}
 
 \Begin{definition}[Syntax of LP]
@@ -145,7 +145,7 @@ not already occurring in the final propositional tautology.
 
 \Begin{definition}[Constant Specification]
 A *constant specification* $CS$ is a set of of formulas of the form
-$c:A$ with $c$ a constant and $A$ an axiom A0-A4.
+$c{:}A$ with $c$ a constant and $A$ an axiom A0-A4.
 \End{definition}
 
 Every LP derivation naturally generates a finite constant
@@ -187,7 +187,7 @@ and derivable from axioms A0 and modus ponens.
 2\.\ case: $B$ is an assumption or an axiom A0-A4. Then $d'$ is the
 derivation $B$, $B → (A → B)$, $A → B$.
 
-3\.\ case: $B ≡ c:B_0$ is derived by axiom necessitation. Then $d'$ is
+3\.\ case: $B ≡ c{:}B_0$ is derived by axiom necessitation. Then $d'$ is
 the derivation $B_0$, $c{:}B_0$, $c{:}B_0 → (A → c{:}B_0)$, $A → c{:}B_0$.
 
 4\.\ case: $B$ is derived by modus ponens. So there are derivations
@@ -204,7 +204,7 @@ also occurring in the deduction $d$ for $A, Γ ⊢_{LP(CS)} B$.
 
 \Begin{proof}
 As constructed in the main proof, the new deduction $d'$ only uses
-subformulas of $d$ and does not introduce any new terms.
+subformulas from $d$ and does not introduce any new terms.
 \End{proof}
 
 \Begin{theorem}[Lifting Lemma] \label{lift}
@@ -246,9 +246,9 @@ t{:}B$.
 
 \Begin{proof}
 The proof is exactly the same as for the main theorem, except in the
-4. case. In that case we just have to reuse a constant $c ∈ CS$ for
+4. case. In that case we just have to reuse a constant $c$ from $CS$ for
 the exact same axiom, if it already exists or else add the new
-constant $c ∉ CS$ to the new constant specification $CS'$.
+constant $c$ to the new constant specification $CS'$.
 \End{proof}
 
 \Begin{corollary} \label{liftvar}
@@ -279,7 +279,7 @@ $$Γ,A := Γ ∪ \{A\}$$
 $$Γ,Δ := Γ ∪ Δ$$
 
 Throughout this text, we will use the G3s calculus from @troelstra2000
-[p287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
+[287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
 are only concerned with classical logic (see figure \ref{G3sfull}).
 For proofs on the other hand we will use a minimal subset of that
 system given by figure \ref{G3smin} using the standard derived
@@ -437,17 +437,15 @@ In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
 the logic of proofs LP using explicit contraction and weakening rules,
 i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will
 follow @pulver2010 instead and use G3lp with the structural rules
-absorbed.
-
-For now the system from figure \ref{G3lift} closely resembling the
-only hinted at "$LPG_0$ + Lifting Lemma Rule" system from @yu2010 is
-actually the most practical for our purpose. The reason for this is
-that it exactly mirrors the rules of G3s. Other than $LPG_0$ from
-@yu2010 and the original Gentzen style systems from @artemov2001
-[p.14], it does not actually deconstruct justification terms but falls back on
-the Hilbert style definition of $LP$ to introduce terms already
-fully constructed. I will call this system G3lift to differentiate it
-from the later used system G3lp.
+absorbed. For now the system from figure \ref{G3lift} closely
+resembling the only hinted at "$LPG_0$ + Lifting Lemma Rule" system
+from @yu2010 is actually the most practical for our purpose. The
+reason for this is that it exactly mirrors the rules of G3s. Other
+than $LPG_0$ from @yu2010 and the original Gentzen style systems from
+@artemov2001 [p.14], it does not deconstruct justification
+terms but falls back on the Hilbert style definition of $LP$ to
+introduce terms already fully constructed. I will call this system
+G3lift to differentiate it from the later used system G3lp.
 
 \begin{figure} \caption{G3lift} \label{G3lift}
 \begin{longtable}{cc}
@@ -569,7 +567,7 @@ As by definition correspondence is reflexive and transitive, we get
 the following definition for the equivalence classes of correspondence:
 
 \Begin{definition}[Family]
-A family is an equivalence class of symbol occurrences which respect
+A family is an equivalence class of $□$ occurrences which respect
 to correspondence.
 \End{definition}
 
@@ -602,7 +600,7 @@ Adequacy of G3lift
 
 We will show in this chapter that G3lift is adequate by showing it is
 equivalent to the Hilbert system LP from @artemov2001 as introduced in
-chapter \ref{syntax}.
+chapter \ref{preliminaries}.
 
 \Begin{theorem}[Soundness of G3lift] \label{sound}
 $\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
@@ -792,7 +790,7 @@ weakening (\ref{liftweak}).
 3\.\ case $A ∈ Γ$ is an assumption. We get the required proof for $A,
 Γ' ⊃ A$ directly from lemma \ref{liftgenax}.
 
-4\.\ case $A ≡ c:A_0$ is derived by rule R1 (Axiom Necessitation). Then
+4\.\ case $A ≡ c{:}A_0$ is derived by rule R1 (Axiom Necessitation). Then
 $A_0$ is an axiom and there is a G3lift proof for $⊃ A_0$ by induction
 hypothesis. Appending a (lift) rule gives a G3lift proof
 for $Γ ⊃ c:A_0$.
@@ -810,8 +808,8 @@ Annotated S4
 
 As we have already seen, all symbol occurrences in a Gentzen style
 proof can be divided in disjoint equivalence classes of corresponding
-symbol occurrences which are called families. In this text we will be
-mainly concerned with the families of $□$ occurrences and their
+symbol occurrences. In this text we will be mainly concerned with the
+equivalence classes of $□$ occurrences, called families, and their
 polarities as defined below. I will therefore define annotated
 formulas, sequents and proof trees in this chapter which make the
 families and polarities of $□$ occurrences explicit in the notation
@@ -920,9 +918,8 @@ formula $A$ as follows:
 
 \End{definition}
 
-
 So for example the annotated version of $□((R → □R) → ⊥) → ⊥$ is
-$⊟_0((R → ⊞_0 R) → ⊥) → ⊥$
+$⊟_0((R → ⊞_0 R) → ⊥) → ⊥$.
 
 
 Realization
