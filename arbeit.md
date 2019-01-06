@@ -96,7 +96,7 @@ As the results and concepts in this paper are mostely purely
 syntactical, I will also limit this brief introduction to the modal
 logic S4 and its justification counterpart LP to the syntactic side.
 Artemov gave an arithmetical interpretation for LP in his original
-papers [@artemov1995 and @artemove2001]. Later Fitting developed
+papers [@artemov1995 and @artemov2001]. Later Fitting developed
 semantics for LP based on Kripke models in @fitting2005. For S4 there
 is a discussion of Kripke frames in @pulver2010 based on
 @blackburn2001.
@@ -862,14 +862,23 @@ positive families are called non-principal positive families. [^essential]
 texts principal families are called essential families following the
 original text [@artemov2001].
 
-Given a S4 proof $T$ we annotate the formulas $A$ in the proof in the
-following way:
+The following definition of annotated formulas and proofs as well as
+the definition of a realization function based on it in the next
+chapter is heavily inspired by Fittings use of explicit annotations in
+@fitting2009. Other then Fitting, I allow myself to treat symbols
+$⊞_i$, $⊟_i$ directly as mathematical objects and define functions on
+them, instead of encoding the symbols as natural numbers.
 
-Enumerate all principal positive families as $p_0, ... ,
-p_{n_p}$, all non-principal positive families as $o_0, ..., o_{n_o}$ and all
-negative families as $n_0, ..., n_{n_n}$.
+For the following definition, we use an arbitrary fixed enumeration
+for all different classes of families. That is, we enumerate all
+principal positive families as $p_0, ... , p_{n_p}$, all non-principal
+positive families as $o_0, ..., o_{n_o}$ and all negative families as
+$n_0, ..., n_{n_n}$.  Given a S4 proof $T$ we then annotate the formulas
+$A$ in the proof in the following way:
 
-Define $an_T(A)$ recursively on all occurrences of subformulas $A$ in a
+\Begin{definition}[Annotated Proof]
+
+$an_T(A)$ is defined recursively on all occurrences of subformulas $A$ in a
 proof $T$ as follows:
 
 * If $A$ is the occurrence of an atomic formula $P$ or $⊥$, then
@@ -886,12 +895,16 @@ proof $T$ as follows:
 * If $A = □A_0$ and the $□$ belongs to a negative family $n_i$, then
   $an_T(A) := ⊟_i an_T(A_0)$.
 
+\End{definition}
+
 Similarly we define annotated formulas without the context of a proof
 tree by distinguishing all $□$ occurrences as separate families and
 dropping the distinction between principal positive and non-principal
 positive. This leads to the following definition:
 
-Define $an_A(B)$ recursively on all occurrences of subformulas $B$ in a
+\Begin{definition}[Annotated Formula]
+
+$an_A(B)$ is defined recursively on all occurrences of subformulas $B$ in a
 formula $A$ as follows:
 
 * If $B$ is the occurrence of an atomic formula $P$ or $⊥$, then
@@ -904,6 +917,8 @@ formula $A$ as follows:
 
 * If $B = □B_0$ and has negative polarity in $A$, then $an_A(B) := ⊟_i
   an_A(B_0)$ for a new $⊟_i$.
+
+\End{definition}
 
 
 So for example the annotated version of $□((R → □R) → ⊥) → ⊥$ is
@@ -951,7 +966,7 @@ A *realization function* $r_A$ for a formula $A$ is a mapping from the
 set of different $□$ symbols used in $an_A(A)$ to arbitrary LP terms.
 Similarly a *realization function* $r_T$ for a proof $T$ is a mapping
 from the set of different $□$ symbols used in $an_T(T)$ to arbitrary
-LP terms.
+LP terms. [cf @fitting2009 371]
 \End{definition}
 
 \Begin{definition}[LP-realization]
