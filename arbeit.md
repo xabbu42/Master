@@ -13,12 +13,17 @@ date: "2019-01-01"
 
 \vspace{0.5cm}
 \LARGE
-\textbf{Masterarbeit von\\Nathan Sebastian Gass\\}
+Masterarbeit der Philosophisch-naturwissenschaftlichen Fakultät der Universität Bern\\
 \vspace*{0.5cm}
-\Large
-01. 01. 2019
+vorgelegt von\\
+\textbf{Nathan Sebastian Gass}\\
+\vspace*{0.5cm}
+\textbf{2019}
 \vfill
-Foobar
+Leiter der Arbeit:\\
+\vspace*{0.5cm}
+\textbf{Prof. Dr. Thomas Studer}\\
+Institut für Informatik und angewandte Mathematik
 \end{center}
 \end{titlepage}
 
