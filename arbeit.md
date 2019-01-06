@@ -92,7 +92,7 @@ LP and S4
 Preliminaries
 -------------
 
-As the results and concepts in this paper are mostely purely
+As the results and concepts in this paper are mostly purely
 syntactical, I will also limit this brief introduction to the modal
 logic S4 and its justification counterpart LP to the syntactic side.
 Artemov gave an arithmetical interpretation for LP in his original
@@ -2787,10 +2787,10 @@ deduction theorem. Unfortunately the deductions as constructed in the
 deduction theorem sometimes use existing formulas with swapped
 polarities. That is, in a deduction constructed by the deduction
 theorem, subformulas can occur with negative polarity which only
-occured with positive polarity in the original deduction.  Moreover
-formulas can be necessary to derive the final formula without occuring
+occurred with positive polarity in the original deduction.  Moreover
+formulas can be necessary to derive the final formula without occurring
 in that formula. So there is no guarantee that all necessary inputs
-actually occur in the final formula or that a formula occuring in
+actually occur in the final formula or that a formula occurring in
 negative position somewhere in the proof is an input.
 
 So we have no clear definition of inputs in the original definition of
@@ -2823,7 +2823,7 @@ specification $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization
 of $A$ and $LP ⊢ B$ by the constructed deduction $d$. To simplify the
 following, we do not enforce a injective constant specification here
 and allow multiple proof constants for the same formula. From this it
-follows that any constant $c_{i,j,k}$ is exlusively used when handling
+follows that any constant $c_{i,j,k}$ is exclusively used when handling
 the $(⊃ □)$ rule $R_{i,j}$.
 
 Assume for contradiction, that the set of inputs $IN$ used for $d$ is
@@ -2835,7 +2835,7 @@ are the only place where the constants and variables of $IN$ can get
 reused. For every consecutive pair of principal families $i_k$ and
 $i_{k'}$ thus given, there is a constant or variable $t_{k'}$ such
 that $t_{k'}$ occurs in the realization term for $i_k$ and there is a
-subterm of the realization term for $i_{k'}$ occuring in
+subterm of the realization term for $i_{k'}$ occurring in
 $t_{k'}{:}A_{k'} ∈ IN$. We distinguish the following cases:
 
 1\.\ case: $t_{k'}$ is a variable $x_j$. Then the formula $t_{k'}{:}A_{k'}$
@@ -2879,7 +2879,7 @@ paper.
 Given this expansion, the question goes back to the other
 direction. That is, are prehistoric cycles also necessary for the
 expanded definition of self-referentiality? Unfortunately that
-question is not easy to answer, as already transfering the definitions
+question is not easy to answer, as already transferring the definitions
 of inputs to the original Hilbert style calculus poses problems. So
 it remains open.
 
