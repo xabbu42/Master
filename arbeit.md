@@ -89,14 +89,23 @@ for self-referential theorems.
 LP and S4
 =========
 
-Syntax
-------
+Preliminaries
+-------------
+
+As the results and concepts in this paper are mostely purely
+syntactical, I will also limit this brief introduction to the modal
+logic S4 and its justification counterpart LP to the syntactic side.
+Artemov gave an arithmetical interpretation for LP in his original
+papers [@artemov1995 and @artemove2001]. Later Fitting developed
+semantics for LP based on Kripke models in @fitting2005. For S4 there
+is a discussion of Kripke frames in @pulver2010 based on
+@blackburn2001.
 
 \Begin{definition}[Syntax of S4]
 The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣ A_0 → A_1 ∣
 □A ∣ ◇A$.  By using the known definitions for $∧$, $∨$ and $◇$ by
 formulas using the remaining syntax, we can reduce that to the minimal
-language $A := ⊥ ∣ p ∣ A_0 → A_1 ∣ □A$.
+language $A := ⊥ ∣ P ∣ A_0 → A_1 ∣ □A$.
 \End{definition}
 
 \Begin{definition}[Syntax of LP]
@@ -146,6 +155,13 @@ necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
 without axiom necessitation.  A constant specification $CS$ is
 injective, if for each constant $c$, there is at most one
 formula $c{:}A ∈ CS$.
+
+We end this brief introduction with some generic lemmas and theorems
+about LP, which will be used in later proofs. Especially in chapter
+\ref{yus-theorem} it will be important to closely track the used
+justification variables, which is why most results come with a
+corollary limiting the possible use of justification variables and
+terms.
 
 \Begin{lemma}[substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
@@ -255,7 +271,7 @@ Gentzen Systems
 
 In the following text capital greek letters $Γ$, $Δ$ are used for
 multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
-latin letters $A$,$B$ for arbitrary formulas. We also use the
+latin letters $A$, $B$ for arbitrary formulas. We also use the
 following short forms:
 
 $$□Γ := \{□x ∣ x ∈ Γ\}$$
