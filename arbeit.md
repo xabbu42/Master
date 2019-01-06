@@ -136,9 +136,9 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 A Hilbert style derivation $d$ from a set of assumptions $Γ$ is a
 sequence of formulas $A_0, ... A_n$ such that any formula is either an
 instance of an axiom A0-A4, a formula $A ∈ Γ$ or derived from earlier
-formulas by a rule R1 or R2. The notation $Γ ⊢_{LP} A$ means that a LP
+formulas by a rule R1 or R2. The notation $Γ ⊢_{\LP} A$ means that a LP
 derivation from assumptions $Γ$ ending in $A$ exists. We also write
-$⊢_{LP} A$ or $LP ⊢ A$ if a LP derivation for $A$ without any assumptions
+$⊢_{\LP} A$ or $\LP ⊢ A$ if a LP derivation for $A$ without any assumptions
 exists.
 
 When formulating such derivations, we will introduce propositional
@@ -151,17 +151,17 @@ the proof length that this derivations do not use any new terms
 not already occurring in the final propositional tautology.
 
 \Begin{definition}[Constant Specification]
-A *constant specification* $CS$ is a set of of formulas of the form
+A *constant specification* CS is a set of of formulas of the form
 $c{:}A$ with $c$ a constant and $A$ an axiom A0-A4.
 \End{definition}
 
 Every LP derivation naturally generates a finite constant
 specification of all formulas derived by axiom necessitation (R2). For
-a given constant specification $CS$, $LP(CS)$ is the logic with axiom
-necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
-without axiom necessitation.  A constant specification $CS$ is
+a given constant specification CS, LP(CS) is the logic with axiom
+necessitation restricted to that CS. $\LP_0 := \LP(∅)$ is the logic
+without axiom necessitation.  A constant specification CS is
 injective if for each constant $c$ there is at most one
-formula $c{:}A ∈ CS$.
+formula $c{:}A ∈ \CS$.
 
 We end this brief introduction with some generic lemmas and theorems
 about LP, which will be used in later proofs. Especially in chapter
@@ -171,9 +171,9 @@ corollary limiting the possible use of justification variables and
 terms.
 
 \Begin{lemma}[Substitution] \label{subst}
-If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
+If $Γ ⊢_{\LP(\CS)} A$ with a derivation $d$, then also $Γ' ⊢_{\LP(\CS')} A'$
 with a derivation $d'$ acquired by replacing all occurrences of a
-variable $x$ by a term $t$ in $Γ$, $CS$ and $d$.
+variable $x$ by a term $t$ in $Γ$, CS and $d$.
 \End{lemma}
 
 \Begin{proof}
@@ -181,12 +181,12 @@ Trivial induction over the derivation $d$.
 \End{proof}
 
 \Begin{theorem}[Deduction Theorem] \label{ded}
-If $Γ, A ⊢_{LP(CS)} B$, then $Γ ⊢_{LP(CS)} A → B$ [@artemov2001, 9]
+If $Γ, A ⊢_{\LP(\CS)} B$, then $Γ ⊢_{\LP(\CS)} A → B$ [@artemov2001, 9]
 \End{theorem}
 
 \Begin{proof}
-From a proof $d$ for $A, Γ ⊢_{LP} B$ we inductively construct a proof
-$d'$ for $Γ ⊢_{LP} A → B$ as follows:
+From a proof $d$ for $A, Γ ⊢_{\LP} B$ we inductively construct a proof
+$d'$ for $Γ ⊢_{\LP} A → B$ as follows:
 
 1\.\ case: $B ≡ A$, then $A → B ≡ A → A$ is a propositional tautology
 and derivable from axioms A0 and modus ponens.
@@ -205,8 +205,8 @@ and $A → C$. The derivation $d'$ is $(A → (C → B)) → ((A
 \End{proof}
 
 \Begin{corollary} \label{dedvar}
-The deduction $d'$ for $Γ ⊢_{LP(CS)} A → B$ only uses variables $x$
-also occurring in the deduction $d$ for $A, Γ ⊢_{LP(CS)} B$.
+The deduction $d'$ for $Γ ⊢_{\LP(\CS)} A → B$ only uses variables $x$
+also occurring in the deduction $d$ for $A, Γ ⊢_{\LP(\CS)} B$.
 \End{corollary}
 
 \Begin{proof}
@@ -215,14 +215,14 @@ subformulas from $d$ and does not introduce any new terms.
 \End{proof}
 
 \Begin{theorem}[Lifting Lemma] \label{lift}
-If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$, then there is a term $t$
-s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t{:}B$. [@artemov2001, 9]
+If $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP} B$, then there is a term $t$
+s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP} t{:}B$. [@artemov2001, 9]
 \End{theorem}
 
 \Begin{proof}
-From a proof $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$
+From a proof $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP} B$
 we inductively construct a term $t$ and a proof
-$d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t(x_1,···,x_n){:}B$
+$d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP} t(x_1,···,x_n){:}B$
 as follows:
 
 1\.\ case: $B ≡ x_i{:}A_i$ is an assumption. Then $t := !x_i$ and $d'$
@@ -245,31 +245,31 @@ $t_r{:}C → t_l⋅t_r{:}B$, $d_r'$, $t_l⋅t_r{:}B$
 \End{proof}
 
 \Begin{corollary} \label{liftcs}
-If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS)} B$ based on an injective
-constant specification $CS$, then there is a term $t$ and a injective
-constant specification $CS' ⊃ CS$ s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS')}
+If $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP(\CS)} B$ based on an injective
+constant specification CS, then there is a term $t$ and a injective
+constant specification $\CS' ⊃ \CS$ s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP(\CS')}
 t{:}B$.
 \End{corollary}
 
 \Begin{proof}
 The proof is exactly the same as for the main theorem, except in the
-4. case. In that case we just have to reuse a constant $c$ from $CS$ for
+4. case. In that case we just have to reuse a constant $c$ from CS for
 the exact same axiom, if it already exists or else add the new
-constant $c$ to the new constant specification $CS'$.
+constant $c$ to the new constant specification CS'.
 \End{proof}
 
 \Begin{corollary} \label{liftvar}
-The deduction $d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP(CS')}
+The deduction $d'$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP(\CS')}
 t(x_1,···,x_n){:}B$ and the constant specification of the new
-constants $CS' ∖ CS$ only uses variables $x$ also occurring in the
-deduction $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$.
+constants $\CS' ∖ \CS$ only uses variables $x$ also occurring in the
+deduction $d$ for $x_1{:}A_1,···,x_n{:}A_n ⊢_{\LP} B$.
 \End{corollary}
 
 \Begin{proof}
 As constructed in the main proof, the new deduction $d'$ only uses
 true subformulas and variables already occurring in $d$. Moreover it only
 introduces new constants $c$ for axioms $A$ occurring in $d$. Therefore
-no new variables are introduced in $d'$ or $CS'$.
+no new variables are introduced in $d'$ or CS'.
 \End{proof}
 
 
@@ -447,13 +447,13 @@ the logic of proofs LP using explicit contraction and weakening rules,
 i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will
 follow Cornelia Pulver [-@pulver2010] instead and use G3lp with the
 structural rules absorbed. For now the system from figure \ref{G3lift}
-closely resembling the only hinted at "$LPG_0$ + Lifting Lemma Rule"
+closely resembling the only hinted at "$\LPG_0$ + Lifting Lemma Rule"
 system from @yu2010 is actually the most practical for our
 purpose. The reason for this is that it exactly mirrors the rules of
-G3s. Other than $LPG_0$ from @yu2010 and the original Gentzen style
+G3s. Other than $\LPG_0$ from @yu2010 and the original Gentzen style
 systems from @artemov2001 [p.14], it does not deconstruct
 justification terms but falls back on the Hilbert style definition of
-$LP$ to introduce terms already fully constructed. I will call this
+$\LP$ to introduce terms already fully constructed. I will call this
 system G3lift to differentiate it from the later used system G3lp.
 
 \begin{figure} \caption{G3lift} \label{G3lift}
@@ -500,7 +500,7 @@ system G3lift to differentiate it from the later used system G3lp.
 
 &
 
-where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
+where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{\LP} t{:}C$
 \end{longtable}
 \end{figure}
 
@@ -612,7 +612,7 @@ equivalent to the Hilbert system LP from @artemov2001 as introduced in
 chapter \ref{preliminaries}.
 
 \Begin{theorem}[Soundness of G3lift] \label{sound}
-$\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{LP} ⋁Δ$
+$\Glift ⊢ Γ ⊃ Δ ⇒ Γ ⊢_{\LP} ⋁Δ$
 \End{theorem}
 
 \Begin{proof}
@@ -629,35 +629,35 @@ required LP derivation.
 3\.\ case: $Γ ⊃ Δ$ is derived by a $(→ ⊃)$ rule. Then it has the form
 $A → B, Γ' ⊃ Δ$ and the the premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃
 Δ$. By the induction hypothesis there exists LP derivations $d_L$ and
-$d_R$ for $Γ' ⊢_{LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{LP} ⋁Δ$. By the deduction
-theorem (\ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{LP} B
+$d_R$ for $Γ' ⊢_{\LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{\LP} ⋁Δ$. By the deduction
+theorem (\ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{\LP} B
 → ⋁Δ$. Using $d_R'$, the assumption $A → B$ and propositional
-reasoning, we get $(A → B), Γ' ⊢_{LP} A → ⋁Δ$.  By appending $d_L$ and
-propositional reasoning we get the final $(A → B), Γ' ⊢_{LP} ⋁Δ$
+reasoning, we get $(A → B), Γ' ⊢_{\LP} A → ⋁Δ$.  By appending $d_L$ and
+propositional reasoning we get the final $(A → B), Γ' ⊢_{\LP} ⋁Δ$
 
 4\.\ case: $Γ ⊃ Δ$ is derived by a $(⊃ →)$ rule. Then it has the form
 $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
-hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{LP} ⋁Δ' ∨
-B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{LP} A → (⋁Δ' ∨
-B)$. By propositional reasoning we get the final $Γ ⊢_{LP} ⋁Δ' ∨ (A →
+hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{\LP} ⋁Δ' ∨
+B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{\LP} A → (⋁Δ' ∨
+B)$. By propositional reasoning we get the final $Γ ⊢_{\LP} ⋁Δ' ∨ (A →
 B)$.
 
 5\.\ case: $Γ ⊃ Δ$ is derived by a $(: ⊃)$ rule. Then it has the form
 $t{:}A, Γ' ⊃ Δ$ and the premise is $A, t{:}A, Γ' ⊃ Δ$. By the
 induction hypothesis there exists a LP derivation $d$ for $A, t{:}A,
-Γ' ⊢_{LP} ⋁Δ$. By adding $t{:}A, t{:}A → A, A$ to the beginning of $d$
-we get the necessary derivation $d'$ for $t{:}A, Γ' ⊢_{LP} ⋁Δ$.
+Γ' ⊢_{\LP} ⋁Δ$. By adding $t{:}A, t{:}A → A, A$ to the beginning of $d$
+we get the necessary derivation $d'$ for $t{:}A, Γ' ⊢_{\LP} ⋁Δ$.
 
 6\.\ case: $Γ ⊃ Δ$ is is derived by a (lift) rule. Then it has the
-form $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ and by the precondition
-on $t$ there exists a derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP}
+form $t_1{:}A_1, ..., t_n{:}A_n ⊢_{\LP} t{:}A$ and by the precondition
+on $t$ there exists a derivation of $t_1{:}A_1, ..., t_n{:}A_n ⊢_{\LP}
 t{:}A$.
 \End{proof}
 
 \Begin{corollary} \label{soundvar}
-The deduction $d$ for $Γ ⊢_{LP} ⋁Δ$ only uses variables $x$ which also
+The deduction $d$ for $Γ ⊢_{\LP} ⋁Δ$ only uses variables $x$ which also
 occur in the proof tree $𝒯 = (T, R)$ for $\Glift ⊢ Γ ⊃ Δ$ or any
-deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{LP} t{:}A$ used in
+deduction $d_t$ for $t_1{:}A_1, ..., t_n{:}A_n ⊢_{\LP} t{:}A$ used in
 case 6.
 \End{corollary}
 
@@ -715,11 +715,11 @@ $\Glift ⊢ A, Γ ⊃ Δ, A$ for any LP formula $A$.
 \End{lemma}
 
 \Begin{theorem}[Completeness of G3lift] \label{complete}
-$Γ ⊢_{LP} A ⇒ \Glift ⊢ Γ ⊃ A$
+$Γ ⊢_{\LP} A ⇒ \Glift ⊢ Γ ⊃ A$
 \End{theorem}
 
 \Begin{proof}
-By complete induction over the length of the derivation $d$ for $Γ ⊢_{LP} A$.
+By complete induction over the length of the derivation $d$ for $Γ ⊢_{\LP} A$.
 
 1\.\ case $A$ is an axiom A0. By the completeness of G3c included in
 G3lift there exists a derivation of $Γ ⊃ A$ and $⊃ A$ using the subset
@@ -884,22 +884,22 @@ $A$ in the proof in the following way:
 
 \Begin{definition}[Annotated Proof]
 
-$an_T(A)$ is defined recursively on all occurrences of subformulas $A$ in a
+$\an_T(A)$ is defined recursively on all occurrences of subformulas $A$ in a
 proof $T$ as follows:
 
 * If $A$ is the occurrence of an atomic formula $P$ or $⊥$, then
-  $an_T(A) := A$.
+  $\an_T(A) := A$.
 
-* If $A = A_0 → A_1$, then $an_T(A) := an_T(A_0) → an_T(A_1)$
+* If $A = A_0 → A_1$, then $\an_T(A) := \an_T(A_0) → \an_T(A_1)$
 
 * If $A = □A_0$ and the $□$ belongs to a principal positive family
-  $p_i$, then $an_T(A) := ⊞_i an_T(A_0)$.
+  $p_i$, then $\an_T(A) := ⊞_i \an_T(A_0)$.
 
 * If $A = □A_0$ and the $□$ belongs to a non-principal positive family
-  $o_i$, then $an_T(A) := ⊡_i an_T(A_0)$.
+  $o_i$, then $\an_T(A) := ⊡_i \an_T(A_0)$.
 
 * If $A = □A_0$ and the $□$ belongs to a negative family $n_i$, then
-  $an_T(A) := ⊟_i an_T(A_0)$.
+  $\an_T(A) := ⊟_i \an_T(A_0)$.
 
 \End{definition}
 
@@ -910,19 +910,19 @@ positive. This leads to the following definition:
 
 \Begin{definition}[Annotated Formula]
 
-$an_A(B)$ is defined recursively on all occurrences of subformulas $B$ in a
+$\an_A(B)$ is defined recursively on all occurrences of subformulas $B$ in a
 formula $A$ as follows:
 
 * If $B$ is the occurrence of an atomic formula $P$ or $⊥$, then
-  $an_A(B) := B$.
+  $\an_A(B) := B$.
 
-* If $B = B_0 → B_1$, then $an_A(B) := an_A(B_0) → an_A(B_1)$
+* If $B = B_0 → B_1$, then $\an_A(B) := \an_A(B_0) → \an_A(B_1)$
 
-* If $B = □B_0$ and has positive polarity in $A$, then $an_A(B) := ⊞_i
-  an_A(B_0)$ for a new $⊞_i$.
+* If $B = □B_0$ and has positive polarity in $A$, then $\an_A(B) := ⊞_i
+  \an_A(B_0)$ for a new $⊞_i$.
 
-* If $B = □B_0$ and has negative polarity in $A$, then $an_A(B) := ⊟_i
-  an_A(B_0)$ for a new $⊟_i$.
+* If $B = □B_0$ and has negative polarity in $A$, then $\an_A(B) := ⊟_i
+  \an_A(B_0)$ for a new $⊟_i$.
 
 \End{definition}
 
@@ -953,11 +953,11 @@ formulas in the natural way.
 \End{definition}
 
 \Begin{theorem}
-If $LP ⊢ A$ then $S4 ⊢ A˚$.
+If $\LP ⊢ A$ then $S4 ⊢ A˚$.
 \End{theorem}
 
 \Begin{proof}
-If $LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
+If $\LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
 completeness of G3lift (\ref{complete}). The forgetful projection of the
 sequents of any G3lift rule map directly to the sequents of an
 equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by
@@ -978,9 +978,9 @@ only possible realization or the simplest one.
 
 \Begin{definition}[Realization Function]
 A *realization function* $r_A$ for a formula $A$ is a mapping from the
-set of different $□$ symbols used in $an_A(A)$ to arbitrary LP terms.
+set of different $□$ symbols used in $\an_A(A)$ to arbitrary LP terms.
 Similarly a *realization function* $r_T$ for a proof $T$ is a mapping
-from the set of different $□$ symbols used in $an_T(T)$ to arbitrary
+from the set of different $□$ symbols used in $\an_T(T)$ to arbitrary
 LP terms. [cf @fitting2009 371]
 \End{definition}
 
@@ -995,21 +995,21 @@ realization $r$ [@artemov2001, 25].
 A LP-realization of $A$ is fully determined by a realization function
 $r_A$ (respective a realization function $r_T$ relative to a proof
 tree for $⊃ A$) and a constant specification of all constants
-occurring in $r_A$ or $r_T$ with $A^r := r_A(an_A(A))$ respective $A^r
-:= r_T(an_T(A))$.
+occurring in $r_A$ or $r_T$ with $A^r := r_A(\an_A(A))$ respective $A^r
+:= r_T(\an_T(A))$.
 
 \Begin{definition}[Normal]
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
 variables. A LP-realization is *normal* if the corresponding
-realization function is normal and the $CS$ is injective.
+realization function is normal and the CS is injective.
 \End{definition}
 
 With above precise definition for a normal realization, we are able to
 formulate and proof the following realization theorem:
 
 \Begin{theorem}[Realization] \label{realization}
-If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
+If $S4 ⊢ A$ then $\LP ⊢ A^r$ for some normal
 LP-realization $r$.
 \End{theorem}
 
@@ -1017,7 +1017,7 @@ LP-realization $r$.
 Because of $S4 ⊢ A$ and the completeness of G3s, there
 exists a G3s proof $𝒯 = (T, R)$ of $⊃ A$.
 
-For all principal families $⊞_i$ in $an_T(T)$, enumerate the
+For all principal families $⊞_i$ in $\an_T(T)$, enumerate the
 $(⊃ □)$ rules principally introducing an occurrence of $⊞_i$ as
 $R_{i,0}, ... R_{i,l_i-1}$.  We will use $I_{i,0}, ... I_{i,l_i-1}$ to
 denote the premises and $O_{i,0}, ... O_{i,l_i-1}$ to denote the
@@ -1032,16 +1032,16 @@ later in this order).
 
 Define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
 u_{i,0} + ... + u_{i,l_i-1}$ and the injective constant specification
-$CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
+$\CS^0 := ∅$. The rules of the minimal Gentzen systems G3s for S4 all
 have a direct equivalent in G3lift, so by a trivial induction the proof
-tree $r_T^0(an_T(T))$ is a G3lift preproof. However it is not a G3lift
+tree $r_T^0(\an_T(T))$ is a G3lift preproof. However it is not a G3lift
 proof as none of the (lift) rules fulfill the necessary precondition
 on the introduced term $t$.
 
 We therefore define inductively the normal realization functions
-$r_T^{ε(i,j)}$ and injective constant specifications $CS^{ε(i,j)}$
-such that $r_T^{ε(i,j)}(an_T(T↾O_{i_0,j_0}))$ is a correct G3lift proof
-based on $CS^{ε(i,j)}$ for all $(i_0,j_0)$ such that $ε(i_0,j_0) ≤ ε(i,j)$.
+$r_T^{ε(i,j)}$ and injective constant specifications $\CS^{ε(i,j)}$
+such that $r_T^{ε(i,j)}(\an_T(T↾O_{i_0,j_0}))$ is a correct G3lift proof
+based on $\CS^{ε(i,j)}$ for all $(i_0,j_0)$ such that $ε(i_0,j_0) ≤ ε(i,j)$.
 
 The rule $R_{i,j}$ has the following annotated form:
 
@@ -1052,67 +1052,67 @@ The rule $R_{i,j}$ has the following annotated form:
 \end{center}
 
 By the induction hypothesis there exists an injective constant
-specification $CS^{ε(i,j) - 1}$ and a normal realization function
-$r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(an_T(T↾O_{i0,j0}))$ is
-a correct G3lift proof based on $CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
+specification $\CS^{ε(i,j) - 1}$ and a normal realization function
+$r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(\an_T(T↾O_{i0,j0}))$ is
+a correct G3lift proof based on $\CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
-induction on the proof tree that $r_T^{ε(i,j) - 1}(an_T(T ↾ I_{i,j}))$
+induction on the proof tree that $r_T^{ε(i,j) - 1}(\an_T(T ↾ I_{i,j}))$
 is also a correct G3lift proof. By soundness of G3lift (\ref{sound})
-we therefore have a $LP(CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
-1}(an_T(I_{i,j}))$, which has the following form:
+we therefore have a $\LP(\CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
+1}(\an_T(I_{i,j}))$, which has the following form:
 
 \begin{equation} \label{start}
-r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS^{ε(i,j) - 1})} r_T^{ε(i,j) - 1}(A)
+r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{\LP(\CS^{ε(i,j) - 1})} r_T^{ε(i,j) - 1}(A)
 \end{equation}
 
 By the corollary \ref{liftcs} of the lifting lemma, we get a new proof
 term $t_{i,j}(x_{k_0}, ..., x_{k_q})$ and a new injective
-$CS'^{ε(i,j)} = CS^{ε(i,j) - 1} ∪ \{c_{i,j,0}{:}A_{i,j,0}, ...,
+$\CS'^{ε(i,j)} = \CS^{ε(i,j) - 1} ∪ \{c_{i,j,0}{:}A_{i,j,0}, ...,
 c_{i,j,m_{i,j}}{:}A_{i,j,m_{i,j}}\}$ such that:
 
 \begin{equation} \label{lifted}
-r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{LP(CS'^{ε(i,j)})} t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
+r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) ⊢_{\LP(\CS'^{ε(i,j)})} t_{i,j}{:}r_T^{ε(i,j) - 1}(A)
 \end{equation}
 
-Define $r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
-$t$ in $r_T^{ε(i,j) - 1}$ and $CS'^{ε(i,j)}$. By the substitution
+Define $r_T^{ε(i,j)}$ and $\CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
+$t$ in $r_T^{ε(i,j) - 1}$ and $\CS'^{ε(i,j)}$. By the substitution
 lemma (\ref{subst}), the assertion \ref{lifted} still holds for
-$r_T^{ε(i,j)}$ and $CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the
+$r_T^{ε(i,j)}$ and $\CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the
 form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· +
-s_{l_i-1}){:}A$. Therefore $LP_0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows
+s_{l_i-1}){:}A$. Therefore $\LP_0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows
 from repeated use of $A4$. Together with the substituted \ref{lifted}
 we get the precondition required for the final $(⊃ :)$ rule in
-$r_T^{ε(i,j)}(an_T(T ↾ O_{i,j}))$:
+$r_T^{ε(i,j)}(\an_T(T ↾ O_{i,j}))$:
 
 
 \begin{equation} \label{precond}
 r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q}
-B_{k_q}) ⊢_{LP(CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
+B_{k_q}) ⊢_{\LP(\CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
 \end{equation}
 
 Moreover, this precondition remains fulfilled for the $(⊃ :)$ rule
-$R_{i,j}$ in any proof tree $r_T^k(an_T(T))$ for $k > ε(i,j)$ again by
+$R_{i,j}$ in any proof tree $r_T^k(\an_T(T))$ for $k > ε(i,j)$ again by
 the substitution lemma (\ref{subst}).
 
 For the final normal realization function $r_T^N$ and injective
-constant specification $CS^N$ we have that $r_T^N(an_T(T))$ is a
-correct G3lift proof based on $CS^N$ of $⊃ r_T(A)$. So by soundness of
-G3lift (\ref{sound}) we have $LP ⊢ A^r$ for the normal LP-realization
-$r$ given by $r_T^N$ and the injective constant specification $CS^N$.
+constant specification $\CS^N$ we have that $r_T^N(\an_T(T))$ is a
+correct G3lift proof based on $\CS^N$ of $⊃ r_T(A)$. So by soundness of
+G3lift (\ref{sound}) we have $\LP ⊢ A^r$ for the normal LP-realization
+$r$ given by $r_T^N$ and the injective constant specification $\CS^N$.
 \End{proof}
 
 \Begin{corollary} \label{realvar}
 There exist derivations $d^k_{i,j}$ for the precondition \ref{precond}
-of all rules $R_{i,j}$ in the G3lift proof tree $r_T^k(an_T(T))$ for
+of all rules $R_{i,j}$ in the G3lift proof tree $r_T^k(\an_T(T))$ for
 any $k ≥ ε(i,j)$ which do not use any new variables not already
-occurring in $r_T^k(an_T(T))$.
+occurring in $r_T^k(\an_T(T))$.
 \End{corollary}
 
 \Begin{proof}
 Proof by complete induction over the order $ε(i,j)$.  Given a rule
 $R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do not use
 new variables for the precondition of any rule $R_{i_0,j_0}$ in
-$r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all this
+$r_T^k(\an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all this
 rules. Using the exact same steps as in the main proof but using the
 realization function $r_T^k$, we get a derivation $d$ for \ref{start}
 which does not use new variables by the corollary \ref{soundvar}, a
@@ -1140,23 +1140,23 @@ follows:
 
 \Begin{definition}[Self-Referential Constant Specification]
 
-* A constant specification $CS$ is *directly self-referential* if there is a
-  constant $c$ such that $c{:}A(c) ∈ CS$.
+* A constant specification CS is *directly self-referential* if there is a
+  constant $c$ such that $c{:}A(c) ∈ \CS$.
 
-* A constant specification $CS$ is *self-referential* if there is a
-  subset $A ⊆ CS$ such that $A := \{c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)\}$.
+* A constant specification CS is *self-referential* if there is a
+  subset $A ⊆ \CS$ such that $A := \{c_0{:}A(c_1), ..., c_{n-1}{:}A(c_0)\}$.
 
 \End{definition}
 
 A constant specification which is not directly self-referential is
-denoted by $CS^*$. Similarly a constant specification which is not
-self-referential at all is denoted by $CS^⊛$. So $CS^*$ and $CS^⊛$
+denoted by $\CS^*$. Similarly a constant specification which is not
+self-referential at all is denoted by $\CS^⊛$. So $\CS^*$ and $\CS^⊛$
 stand for a class of constant specifications and not a single specific
-one. Following @yu2010, I will use the notation $LP(CS^⊛) ⊢ A$
-if there exists any non-self-referential constant specification $CS$
-such that $LP(CS) ⊢ B$. There does exist a single maximal constant
-specification $CS_{nds}$ which is not directly self-referential and
-for any theorem $A$ we have $LP(CS^*) ⊢ A$ iff $LP(CS_{nds}) ⊢ A$.
+one. Following @yu2010, I will use the notation $\LP(\CS^⊛) ⊢ A$
+if there exists any non-self-referential constant specification CS
+such that $\LP(\CS) ⊢ B$. There does exist a single maximal constant
+specification $\CS_{nds}$ which is not directly self-referential and
+for any theorem $A$ we have $\LP(\CS^*) ⊢ A$ iff $\LP(\CS_{nds}) ⊢ A$.
 
 Given that any S4 theorem is realizable in LP with some constant
 specification, we can carry over the definition of self-referentiality
@@ -1164,8 +1164,8 @@ to S4 with the following definition:
 
 \Begin{definition}[Self-Referential Theorem]
 A S4 theorem $A$ is (directly) self-referential iff for any
-LP-realization $A^r$ we have $LP(CS^⊛) \slashed{⊢} A^r$ (respective
-$LP(CS^*) \slashed{⊢} A^r$).
+LP-realization $A^r$ we have $\LP(\CS^⊛) \slashed{⊢} A^r$ (respective
+$\LP(\CS^*) \slashed{⊢} A^r$).
 \End{definition}
 
 Expanding on a first result for S4 in @brezhnev2006 [31], @kuznets2010
@@ -1305,11 +1305,11 @@ and lemma give that concept a precise meaning and notation:
 For any principal positive families $p_i$ and $p_h$ and any root-leaf path $S$ of
 the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 
-(1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
+(1) If $\an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
 ⊟_{k}B_k(⊞_h C), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
 prehistoric family* of $p_i$ in $S$ with notation $h ≺^S_L i$.
 
-(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0}, ...,
+(2) If $\an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0}, ...,
 ⊟_{k_q}B_{k_q} ⊃ A(⊞_h C)$ then $p_h$ is a *right prehistoric family*
 of $p_i$ in $S$ with notation $h ≺^S_R i$.
 
@@ -1424,7 +1424,7 @@ Yu's Theorem
 Yu's proof for the main theorem of his paper is based on the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
 (\ref{realization}), such that the generated constant specifications
-$CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
+$\CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
 such an order, formulas $c{:}A_{i,j,k}$ introduced during the
 realization procedure never change after their introduction, and we
 get a strong limitation of the constants which can occur in such
@@ -1433,17 +1433,17 @@ that order can not be self-referential.
 
 \Begin{lemma} \label{variablefree}
 Any provisional variable $u_{x,y}$, which does not occur in
-$r^{ε(i,j) - 1}(an_T(I_{i,j}))$, does not occur in $CS^{ε(i,j)}$.
+$r^{ε(i,j) - 1}(\an_T(I_{i,j}))$, does not occur in $\CS^{ε(i,j)}$.
 \End{lemma}
 
 \Begin{proof}
 By the subformula property (\ref{sub}) for G3lift proofs, $u_{x,y}$
-does not occur in $r^{ε(i,j)−1}(an_T(T↾I_{i,j}))$. By the corollary
+does not occur in $r^{ε(i,j)−1}(\an_T(T↾I_{i,j}))$. By the corollary
 \ref{soundvar} using corollary \ref{realvar} for case 6, the
 derivation $d_{i,j}$ as constructed in the realization proof does not
 contain $u_{x,y}$. By the corollary \ref{liftvar} of the lifting
-theorem, $CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
-$CS_{i,j}$ constructed by a substitution of $u_{i,j}$ with $t_{i,j}$
+theorem, $\CS'_{i,j}$ and $t_{i,j}$ do not contain $u_{x,y}$. So also
+$\CS_{i,j}$ constructed by a substitution of $u_{i,j}$ with $t_{i,j}$
 does not contain $u_{x,y}$.
 \End{proof}
 
@@ -1472,22 +1472,22 @@ Assume the proof tree is prehistoric-cycle-free. Taken the $ε$ as
 defined in lemma \ref{epsilon}, we have: If $ε(i_0,j_0) ≥ ε(i,j)$,
 then for any $k_0 ≤ m_{i_0,j_0}$ and any $k ≤ m_{i,j}$,
 $c_{i_0,j_0,k_0}$ does not occur in the unique $A^N_{i,j,k}$
-such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
+such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ \CS^N$
 \End{lemma}
 
 \Begin{proof}
 By the construction in the proof of the realization theorem
 (\ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
-1}(an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
+1}(\an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h < l_h$. So any provisional variable $u_{h,j_h}$
-occurring in $r_T^0(an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
-- 1}(an_T(I_{i,j}))$, which is therefore provisional variable free. So
-by lemma \ref{variablefree} also $CS^{ε(i,j)}$ is provisional
+occurring in $r_T^0(\an_T(I_{i,j}))$ is already replaced in $r_T^{ε(i,j)
+- 1}(\an_T(I_{i,j}))$, which is therefore provisional variable free. So
+by lemma \ref{variablefree} also $\CS^{ε(i,j)}$ is provisional
 variable free and $A^N_{i,j,k} ≡ A_{i,j,k}$ for any
-$c_{i,j,k}{:}A_{i,j,k}$ introduced in $CS^{ε(i,j)}$. As any
+$c_{i,j,k}{:}A_{i,j,k}$ introduced in $\CS^{ε(i,j)}$. As any
 $c_{i_0,j_0,k_0}$ for any $ε(i_0,j_0) ≥ ε(i,j)$ is not yet introduced
-in $r_T^{ε(i,j) - 1}(an_T(I_{i,j}))$, it does not occur in $A_{i,j,k}$
+in $r_T^{ε(i,j) - 1}(\an_T(I_{i,j}))$, it does not occur in $A_{i,j,k}$
 and therefor also not in $A^N_{i,j,k} ≡ A_{i,j,k}$
 \End{proof}
 
@@ -1496,24 +1496,24 @@ With this three lemmas we can finally proof the main result of @yu2010
 
 \Begin{theorem}[Necessity of Left Prehistoric Cycle for Self-referentiality]
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
-there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(CS^⊛) ⊢ B$
+there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\CS^⊛) ⊢ B$
 \End{theorem}
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $T$ for $A$, use lemma
 \ref{epsilon} and the realization theorem (\ref{realization}) to
 construct a realization function $r_T^N$ and a constant specification
-$CS^N$ such that $B := r_T^N(an_T(A))$ is a realization of $A$.
+$\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization of $A$.
 
-Assume for contradiction, that the generated $CS^N$ is
+Assume for contradiction, that the generated $\CS^N$ is
 self-referential, i.e. there exist constants
 $c_{i_0,j_0,k_0},...,c_{i_{n-1},j_{n-1},k_{n-1}}$ such that for all $x
-< n$ the unique $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ CS^N$ contains
+< n$ the unique $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ \CS^N$ contains
 the next constant $c_{i_{x'},j_{x'},k_{x'}}$ with $x' := x + 1 \mod
 n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 ε(i_x,j_x)$ for all $x ≤ n$. So $ε(i_n,j_n) < ... < ε(i_1,j_1) <
 ε(i_0,j_0) < ε(i_n,j_n)$, which is impossible. Therefore the generated
-$CS^N$ is not self-referential and we have $LP(CS^⊛) ⊢ B$.
+$\CS^N$ is not self-referential and we have $\LP(\CS^⊛) ⊢ B$.
 \End{proof}
 
 Prehistoric Relations in G3lp
@@ -1523,9 +1523,9 @@ Prehistoric Relations in G3lp
 Cut Rules
 ---------
 
-In this chapter we will define prehistoric relations in the systems
-G3s + (Cut) and G3s + (□Cut). The (context sharing) cut rule has the
-following definition [@troelstra2000 67]:
+In this chapter we will define families and prehistoric relations in
+the systems G3s + (Cut) and G3s + (□Cut) using cut rules. The (context
+sharing) cut rule has the following definition [@troelstra2000 67]:
 
 \Begin{definition}[(Cut) Rule]
 
@@ -1619,12 +1619,12 @@ G3s will be prehistoric-cycle-free by any definition if the original
 proof G3s + (□Cut) was prehistoric-cycle-free by the new definition.
 
 It is important to note, that all the following corollaries are not
-restricted to the annotations $an_T$ of the proofs $𝒯 = (T, R)$ given
+restricted to the annotations $\an_T$ of the proofs $𝒯 = (T, R)$ given
 by the premise of the lemma but still hold for arbitrary annotations
-$an$. That means there is no implicit assumption that the families
+$\an$. That means there is no implicit assumption that the families
 have only a single occurrence in the root sequents used in the lemma or theorem
 and the results can also be used in subtrees $T↾S$ together with an
-annotation $an_T$ for the complete tree.
+annotation $\an_T$ for the complete tree.
 
 \Begin{lemma}[Weakening for G3s] \label{weak}
 $\Gs ⊢ Γ ⊃ Δ ⇒ \Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$
@@ -1644,7 +1644,7 @@ weakening formulas to the rule for a proof of $Γ, Γ' ⊃ Δ, Δ'$.
 \End{proof}
 
 \Begin{lcorollary} \label{weakprehist}
-For any annotation $an$ the proof for $\Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
+For any annotation $\an$ the proof for $\Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$ as
 constructed in the main proof has the exact same prehistoric relations
 as the original proof for $\Gs ⊢ Γ ⊃ Δ$.
 \End{lcorollary}
@@ -1698,7 +1698,7 @@ necessary proof(s).
 \End{proof}
 
 \Begin{lcorollary} \label{inversprehist}
-For any annotation $an$ the constructed proofs do not introduce any
+For any annotation $\an$ the constructed proofs do not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
@@ -1736,7 +1736,7 @@ necessary proof.
 \End{proof}
 
 \Begin{lcorollary} \label{contrprehist}
-For any annotation $an$ the constructed proofs do not introduce any
+For any annotation $\an$ the constructed proofs do not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
@@ -1771,7 +1771,7 @@ $B, B, Γ ⊃ Δ$ and by contraction we get $B, Γ ⊃ Δ$.
 \End{proof}
 
 \Begin{lcorollary} \label{dropprehist}
-For any annotation $an$ the constructed proof does not introduce any
+For any annotation $\an$ the constructed proof does not introduce any
 new prehistoric relations.
 \End{lcorollary}
 
@@ -1932,7 +1932,7 @@ $Γ ⊃ Δ$.
 
 
 \Begin{corollary} \label{cutprehist}
-For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ only
+For any annotation $\an$ the constructed proof for $Γ ⊃ Δ$ only
 introduces new prehistoric relations $i ≺ j$ between families $□_i$
 and $□_j$ occurring in $Γ ⊃ Δ$ where there exists a family $□_k$ in
 $A$ such that $i ≺ k ≺ j$ in the original proof.
@@ -1959,7 +1959,7 @@ right.
 \End{proof}
 
 \Begin{corollary} \label{cutcycle}
-For any annotation $an$ the constructed proof for $Γ ⊃ Δ$ does not
+For any annotation $\an$ the constructed proof for $Γ ⊃ Δ$ does not
 introduce prehistoric cycles.
 \End{corollary}
 
@@ -2029,7 +2029,7 @@ $Γ ⊃ Δ, □B$ as $□Γ_L ⊆ Γ$ and $□Γ_R ⊆ Γ$.
 \End{proof}
 
 \Begin{corollary} \label{boxcutcycle}
-For any annotation $an$ the constructed proof for $Γ ⊃ Δ, □B$ does not
+For any annotation $\an$ the constructed proof for $Γ ⊃ Δ, □B$ does not
 introduce prehistoric cycles.
 \End{corollary}
 
@@ -2159,14 +2159,14 @@ rules in figure \ref{G3lprules}.
 \end{longtable}
 \end{figure}
 
-This system is adequate for the logic of proofs $LP$ as shown in
+This system is adequate for the logic of proofs LP as shown in
 corollary 4.37 in @pulver2010 [73]. It also allows for weakening,
 contraction and inversion [@pulver2010, 65ff]. By corollary 4.36 in
 the same paper, G3lp without the $(⊃ :)_c$ rule is equivalent to
-$LP_0$. Neither @pulver2010 nor @artemov2001 define Gentzen systems for
-a restricted logic of proofs $LP(CS)$, perhaps because it seems
+$\LP_0$. Neither @pulver2010 nor @artemov2001 define Gentzen systems for
+a restricted logic of proofs LP(CS), perhaps because it seems
 obvious that restricting whatever rule is used for introducing proof
-constants to $CS$ gives a Gentzen system for $LP(CS)$.
+constants to CS gives a Gentzen system for LP(CS).
 
 To work with prehistoric relations in G3lp proofs we need the
 following new or adapted definitions:
@@ -2629,54 +2629,56 @@ relations for G3lp.
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
 does not differentiate between the two variants $(⊃ :)_c$ and $(⊃
-:)_t$ used for introducing elements from $CS$ and input formulas $t{:}A$
+:)_t$ used for introducing elements from CS and input formulas $t{:}A$
 . It is therefore necessary to expand the definition of
 self-referentiality by considering all basic justifications and not
 only the justification constants:
 
 \Begin{definition}[Inputs]
-The *inputs* $IN$ of a G3lp proof are all LP formulas which are the
+The *inputs* IN of a G3lp proof are all LP formulas which are the
 principal formula of a $(⊃ :)_t$ or $(⊃ :)_c$ rule.
 \End{definition}
 
-Notice that the used constant specifications $CS$ is a subset of the
-inputs $IN$. Based on this definition, we can expand the definition of
+Notice that the used constant specifications CS is a subset of the
+inputs IN.
+
+Based on this definition, we can expand the definition of
 self-referentiality to input sets:
 
 \Begin{definition}[Self-Referential Inputs]
 
-* A input set $IN$ is *directly self-referential* if there is a
-  term $t$ such that $t{:}A(t) ∈ IN$.
+* A input set IN is *directly self-referential* if there is a
+  term $t$ such that $t{:}A(t) ∈ \IN$.
 
-* A input set $IN$ is *self-referential* if there is a
-  subset $A ⊆ IN$ such that $A := \{t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)\}$.
+* A input set IN is *self-referential* if there is a
+  subset $A ⊆ \IN$ such that $A := \{t_0{:}A(t_1), ..., t_{n-1}{:}A(t_0)\}$.
 
 \End{definition}
 
 With this definitions we finally arrive at a counterpart to Yu's theorem:
 
 \Begin{theorem}
-If the input set $IN$ of a G3lp proof is non-self-referential then the
+If the input set IN of a G3lp proof is non-self-referential then the
 proof is prehistoric-cycle-free.
 \End{theorem}
 
 \Begin{proof}
 We show the contraposition. Assume there is a prehistoric cycle $i_0 ≺
 i_1 ≺ ... ≺ i_{n-1} ≺ i_0$. By the corollary \ref{corollary} there
-exists formulas $s_k{:}A_k$ in $IN$ such that $t_{i_{k}} ∈ \sub(A_k)$
+exists formulas $s_k{:}A_k$ in IN such that $t_{i_{k}} ∈ \sub(A_k)$
 and $s_k ∈ \sub(t_{i_{k'}})$ with $k' := k + 1 \mod n$. From the latter
 and $t_{i_{k' }} ∈ \sub(A_{k'})$ follows $s_k ∈ \sub(A_{k' })$. So
-$\{s_k{:}A_k\ | 0 ≤ k < n\} ⊆ IN$ is a self-referential subset of $IN$.
+$\{s_k{:}A_k\ | 0 ≤ k < n\} ⊆ \IN$ is a self-referential subset of IN.
 \End{proof}
 
 \Begin{corollary}
 The forgetful projection $A˚$ of a LP formula provable with a
-non-self-referential input set $IN$ is provable prehistoric-cycle-free
+non-self-referential input set IN is provable prehistoric-cycle-free
 in G3s.
 \End{corollary}
 
 \Begin{proof}
-If $𝒯$ is a proof of $A$ from non-self-referential inputs $IN$, then
+If $𝒯$ is a proof of $A$ from non-self-referential inputs IN, then
 $𝒯$ is prehistoric-cycle-free as proven above. So by corollary
 \ref{forgetful} $𝒯˚$ is a prehistoric-cycle-free proof of $A˚$ in $\Gs +
 (□\Cut)$. Finally there is a prehistoric-cycle-free proof of $A˚$ in
@@ -2690,26 +2692,26 @@ Counterexample
 The main result of the last chapter does not exactly match Yu's
 result. I have shown that prehistoric cycles in G3s are sufficient for
 self-referentiality but only for the expanded definition of
-self-referentiality considering the set of all inputs $IN$. The
+self-referentiality considering the set of all inputs IN. The
 question arises if this expansion is actually necessary. The following
 counterexample shows that indeed, prehistoric cycles in G3s are not
-sufficient for needing a self-referential $CS$.
+sufficient for needing a self-referential CS.
 
 \Begin{lemma}
 The S4 formula $A ≡ □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ has a realization in
-$LPG_0$.
+$\LPG_0$.
 \End{lemma}
 
 \Begin{proof}
 Set $A^r ≡ y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$. We have
-$y{:}(P ∧ ¬y⋅x{:}P → P) ⊢_{LPG_0} ¬x{:}(P ∧ ¬y⋅x{:}P)$ by the same
-derivation as for $LP ⊢ ¬x{:}(P ∧ ¬t⋅x{:}P)$ replacing the
+$y{:}(P ∧ ¬y⋅x{:}P → P) ⊢_{\LPG_0} ¬x{:}(P ∧ ¬y⋅x{:}P)$ by the same
+derivation as for $\LP ⊢ ¬x{:}(P ∧ ¬t⋅x{:}P)$ replacing the
 introduction of $t{:}(P ∧ ¬t⋅x{:}P → P)$ by the assumption $y{:}(P ∧
-¬y⋅x{:}P → P)$ and $t$ by $y$. So by the deduction theorem $LPG_0 ⊢
+¬y⋅x{:}P → P)$ and $t$ by $y$. So by the deduction theorem $\LPG_0 ⊢
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$.
 ^[If we assume that $P ∧ ¬y⋅x{:}P → P$ is an axiom A0,
 this matches the more general result in corollary 7.2 in @artemov2001
-[14]: $LP(CS) ⊢ F$ if and only if $LPG_0 ⊢ CS ⊃ F$.]
+[14]: $\LP(\CS) ⊢ F$ if and only if $\LPG_0 ⊢ \CS ⊃ F$.]
 \End{proof}
 
 \Begin{lemma}
@@ -2767,7 +2769,7 @@ also no prehistoric-cycle-free proof of $⊃ □(P ∧ ¬□P → P) → ¬□(P
 
 \Begin{theorem}
 There exists a S4−theorem $A$ and a LP-formula $B$ such that $A$ has
-no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $LP(CS^⊛) ⊢ B$
+no prehistoric-cycle-free G3s−proof, $B^◦ = A$ and $\LP(\CS^⊛) ⊢ B$
 \End{theorem}
 
 \Begin{proof}
@@ -2775,7 +2777,7 @@ $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as $�
 already is a theorem of S4. By the previous lemma, there is no
 prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
-provable in $LP_0$ and therefor also in $LP(CS^⊛)$.
+provable in $\LP_0$ and therefor also in $\LP(\CS^⊛)$.
 \End{proof}
 
 Finally the question arises if prehistoric cycles are also a
@@ -2787,9 +2789,9 @@ equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus as
 there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for G3lp,
 $(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing axioms
 of LP. In the other direction, a $(⊃ :)_t$ rule is translated first to
-the trivial proof for $t{:}A ⊢_{LP} t{:}A$, but the usage of deduction
+the trivial proof for $t{:}A ⊢_{\LP} t{:}A$, but the usage of deduction
 theorem could change that to a different proof for example for
-$⊢_{LP} t{:}A → t{:}A$.
+$⊢_{\LP} t{:}A → t{:}A$.
 
 So far, the situation seems pretty clear cut, and we have inputs as
 assumptions or as subformulas with negative polarity of formulas
@@ -2822,31 +2824,31 @@ prehistoric cycles for the expanded definition of self-referentiality:
 
 \Begin{conjecture}
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
-there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(IN^⊛) ⊢ B$.
+there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\IN^⊛) ⊢ B$.
 \End{conjecture}
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
 use lemma \ref{epsilon} and the realization theorem (\ref{realization})
 to construct a realization function $r_T^N$ and a constant
-specification $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization
-of $A$ and $LP ⊢ B$ by the constructed deduction $d$. To simplify the
+specification $\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization
+of $A$ and $\LP ⊢ B$ by the constructed deduction $d$. To simplify the
 following, we do not enforce a injective constant specification here
 and allow multiple proof constants for the same formula. From this it
 follows that any constant $c_{i,j,k}$ is exclusively used when handling
 the $(⊃ □)$ rule $R_{i,j}$.
 
-Assume for contradiction that the set of inputs $IN$ used for $d$ is
+Assume for contradiction that the set of inputs IN used for $d$ is
 self-referential. That is there is a subset $\{t_0{:}A_0(t_1), ...,
-t_{n-1}{:}A_{n-1}(t_0)\}$ of $IN$. The occurrences of $t_{k+1 \mod n}$
+t_{n-1}{:}A_{n-1}(t_0)\}$ of IN. The occurrences of $t_{k+1 \mod n}$
 in $t_k{:}A_i$ have to be a subterm of realization term for a
 principal family $i_k$ as the construction of such realization terms
-are the only place where the constants and variables of $IN$ can get
+are the only place where the constants and variables of IN can get
 reused. For every consecutive pair of principal families $i_k$ and
 $i_{k'}$ thus given, there is a constant or variable $t_{k'}$ such
 that $t_{k'}$ occurs in the realization term for $i_k$ and there is a
 subterm of the realization term for $i_{k'}$ occurring in
-$t_{k'}{:}A_{k'} ∈ IN$. We distinguish the following cases:
+$t_{k'}{:}A_{k'} ∈ \IN$. We distinguish the following cases:
 
 1\.\ case: $t_{k'}$ is a variable $x_j$. Then the formula $t_{k'}{:}A_{k'}$
 is the realization of an annotated S4 formula $⊟_jA(⊞_{i_{k'}})$. That
@@ -2855,7 +2857,7 @@ occurrence of $⊞_k$ as $x_j$ is in the realization term of
 $⊞_k$. Therefore we have $i_{k'} ≺ i_k$.
 
 2\.\ case: $t_{k'}$ is a constant $c_{j,l,m}$. Then the formula
-$t_{k'}{:}A_{k'}$ is added to the $CS$ when handling a $(⊃ □)$ rule
+$t_{k'}{:}A_{k'}$ is added to the CS when handling a $(⊃ □)$ rule
 $R_{j,l}$ introducing an occurrence of $⊞_j$. $c_{j,l,m}$ is in the
 realization term of $⊞_k$ so $R_{j,l}$ lies in a prehistory of
 $⊞_k$. At the same time, the term $t_{k'}$ occurs in the formula
