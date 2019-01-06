@@ -163,7 +163,7 @@ justification variables, which is why most results come with a
 corollary limiting the possible use of justification variables and
 terms.
 
-\Begin{lemma}[substitution] \label{subst}
+\Begin{lemma}[Substitution] \label{subst}
 If $Γ ⊢_{LP(CS)} A$ with a derivation $d$, then also $Γ' ⊢_{LP(CS')} A'$
 with a derivation $d'$ acquired by replacing all occurrences of a
 variable $x$ by a term $t$ in $Γ$, $CS$ and $d$.
@@ -173,7 +173,7 @@ variable $x$ by a term $t$ in $Γ$, $CS$ and $d$.
 Trivial induction over the derivation $d$.
 \End{proof}
 
-\Begin{theorem}[deduction theorem] \label{ded}
+\Begin{theorem}[Deduction Theorem] \label{ded}
 If $Γ, A ⊢_{LP(CS)} B$, then $Γ ⊢_{LP(CS)} A → B$ [@artemov2001, 9]
 \End{theorem}
 
@@ -207,7 +207,7 @@ As constructed in the main proof, the new deduction $d'$ only uses
 subformulas of $d$ and does not introduce any new terms.
 \End{proof}
 
-\Begin{theorem}[lifting lemma] \label{lift}
+\Begin{theorem}[Lifting Lemma] \label{lift}
 If $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} B$, then there is a term $t$
 s.t. $x_1{:}A_1,···,x_n{:}A_n ⊢_{LP} t{:}B$. [@artemov2001, 9]
 \End{theorem}
@@ -497,7 +497,7 @@ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
 \end{longtable}
 \end{figure}
 
-\Begin{definition}[G3lift preproof]
+\Begin{definition}[G3lift Preproof]
 A *G3lift preproof* is a proof tree using the rules of G3lift, but where
 the (lift) rule may be used without fulfilling the necessary
 precondition on the introduced term $t$.
@@ -543,7 +543,7 @@ Consistent with the notation for the Hilbert style system LP, the
 notation $G ⊢ Γ ⊂ Δ$ is used if there exists a Gentzen style proof
 tree with the sequent $Γ ⊂ Δ$ as root in the system $G$.
 
-\Begin{definition}[correspondence] \label{corr}
+\Begin{definition}[Correspondence] \label{corr}
 The subformula (symbol) occurrences in a proof correspond to each
 other as follows:
 
@@ -568,12 +568,12 @@ other as follows:
 As by definition correspondence is reflexive and transitive, we get
 the following definition for the equivalence classes of correspondence:
 
-\Begin{definition}[family]
+\Begin{definition}[Family]
 A family is an equivalence class of symbol occurrences which respect
 to correspondence.
 \End{definition}
 
-\Begin{theorem}[subformula property] \label{sub}
+\Begin{theorem}[Subformula Property] \label{sub}
 Any subformula (symbol) occurrence in a partial Gentzen style
 (pre-)proof $T↾S$ in the systems G3lift and G3s corresponds to *at least
 one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
@@ -675,11 +675,11 @@ theorems of this text, we will omit the proofs here and refer the
 reader to the proofs for G3s in @pulver2010 [40ff.] as well as later
 in this text.
 
-\Begin{lemma}[weakening for G3lift] \label{liftweak}
+\Begin{lemma}[Weakening for G3lift] \label{liftweak}
 $\Glift ⊢ Γ ⊃ Δ ⇒ \Glift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
-\Begin{lemma}[inversion for G3lift] \label{liftinverse}
+\Begin{lemma}[Inversion for G3lift] \label{liftinverse}
 
 * $\Glift ⊢ Γ ⊃ Δ, A → B ⇒ \Glift ⊢ A, Γ ⊃ Δ, B$
 
@@ -691,7 +691,7 @@ $\Glift ⊢ Γ ⊃ Δ ⇒ \Glift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 
 \End{lemma}
 
-\Begin{lemma}[contraction for G3lift] \label{liftcontr}
+\Begin{lemma}[Contraction for G3lift] \label{liftcontr}
 
 * $\Glift ⊢ A, A, Γ ⊃ Δ ⇒ \Glift ⊢ A, Γ ⊃ Δ$
 
@@ -699,7 +699,7 @@ $\Glift ⊢ Γ ⊃ Δ ⇒ \Glift ⊢ Γ, Γ' ⊃ Δ, Δ'$
 
 \End{lemma}
 
-\Begin{lemma}[cut elimination for G3lift] \label{liftcut}
+\Begin{lemma}[Cut Elimination for G3lift] \label{liftcut}
 If $\Glift ⊢ A, Γ ⊃ Δ$ and $\Glift ⊢ Γ' ⊃ Δ', A$ then $\Glift ⊢ Γ,Γ' ⊃ Δ,Δ'$.
 \End{lemma}
 
@@ -817,7 +817,7 @@ formulas, sequents and proof trees in this chapter which make the
 families and polarities of $□$ occurrences explicit in the notation
 and usable in definitions.
 
-\Begin{definition}[polarity]
+\Begin{definition}[Polarity]
 Assign *positive* or *negative polarity* relative to $A$ to all
 subformulas occurrences $B$ in $A$ as follows:
 
@@ -936,7 +936,7 @@ translating valid LP formulas into valid S4 formulas and vice
 versa. The former is called forgetful projection, the latter is more
 complex and called realization.
 
-\Begin{definition}[forgetful projection] \label{proj}
+\Begin{definition}[Forgetful Projection] \label{proj}
 The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
 
 * if $A$ is atomic or $⊥$, then $A˚ := A$.
@@ -961,7 +961,7 @@ is a valid G3s proof with root sequent $⊃ A˚$. By the soundness of G3s
 we have $S4 ⊢ A˚$.
 \End{proof}
 
-\Begin{definition}[realization function]
+\Begin{definition}[Realization Function]
 A *realization function* $r_A$ for a formula $A$ is a mapping from the
 set of different $□$ symbols used in $an_A(A)$ to arbitrary LP terms.
 Similarly a *realization function* $r_T$ for a proof $T$ is a mapping
@@ -969,7 +969,7 @@ from the set of different $□$ symbols used in $an_T(T)$ to arbitrary
 LP terms. [cf @fitting2009 371]
 \End{definition}
 
-\Begin{definition}[LP-realization]
+\Begin{definition}[LP-Realization]
 By an *LP-realization* of a modal formula $A$ we mean an assignment of
 proof polynomials to all occurrences of the modality in $A$ along with
 a constant specification of all constants occurring in those proof
@@ -983,7 +983,7 @@ tree for $⊃ A$) and a constant specification of all constants
 occurring in $r_A$ or $r_T$ with $A^r := r_A(an_A(A))$ respective $A^r
 := r_T(an_T(A))$.
 
-\Begin{definition}[normal]
+\Begin{definition}[Normal]
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
 variables. A LP-realization is *normal* if the corresponding
@@ -1120,7 +1120,7 @@ level of justification constants. That is to realize all S4 theorems
 in LP, we need self-referential constant specifications defined as
 follows:
 
-\Begin{definition}[self-referential constant specification]
+\Begin{definition}[Self-Referential Constant Specification]
 
 * A constant specification $CS$ is *directly self-referential* if there is a
   constant $c$ such that $c{:}A(c) ∈ CS$.
@@ -1144,7 +1144,7 @@ Given that any S4 theorem is realizable in LP with some constant
 specification, we can carry over the definition of self-referentiality
 to S4 with the following definition:
 
-\Begin{definition}[self-referential theorem]
+\Begin{definition}[Self-Referential Theorem]
 A S4 theorem $A$ is (directly) self-referential iff for any
 LP-realization $A^r$ we have $LP(CS^⊛) \slashed{⊢} A^r$ (respective
 $LP(CS^*) \slashed{⊢} A^r$).
@@ -1507,7 +1507,7 @@ In this chapter we will define prehistoric relations in the systems
 G3s + (Cut) and G3s + (□Cut). The (context sharing) cut rule has the
 following definition [@troelstra2000 67]:
 
-\Begin{definition}[(Cut) rule]
+\Begin{definition}[(Cut) Rule]
 
 \AXC{$Γ ⊃ Δ, A$}
 \AXC{$A, Γ ⊃ Δ$}
@@ -1520,7 +1520,7 @@ following definition [@troelstra2000 67]:
 It is necessary to expand the definition of correspondence
 (\ref{corr}) to (Cut) rules as follows:
 
-\Begin{definition}[correspondence for (Cut)]
+\Begin{definition}[Correspondence for (Cut)]
 
 * The active formulas (and their symbols) in the premises of a (Cut) rule correspond
 to each other.
@@ -1557,7 +1557,7 @@ To handle terms $s⋅t$ in the next chapter an additional rule for
 modus ponens under $□$ is necessary. I therefore introduce here the new rule
 (□Cut) as follows:
 
-\Begin{definition}[(□Cut) rule]
+\Begin{definition}[(□Cut) Rule]
 
 \AXC{$Γ ⊃ Δ, □A, □B$}
 \AXC{$Γ ⊃ Δ, □(A → B), □B$}
@@ -1570,7 +1570,7 @@ modus ponens under $□$ is necessary. I therefore introduce here the new rule
 Again it is also necessary to expand the definition of correspondence
 (\ref{corr}) for this rule:
 
-\Begin{definition}[correspondence for (□Cut)] \label{boxcutcorr}
+\Begin{definition}[Correspondence for (□Cut)] \label{boxcutcorr}
 
 * The topmost $□$ occurrence in the active formulas and the principal
   formula correspond to each other.
@@ -1605,7 +1605,7 @@ have only a single occurrence in the root sequents used in the lemma or theorem
 and the results can also be used in subtrees $T↾S$ together with an
 annotation $an_T$ for the complete tree.
 
-\Begin{lemma}[weakening for G3s] \label{weak}
+\Begin{lemma}[Weakening for G3s] \label{weak}
 $\Gs ⊢ Γ ⊃ Δ ⇒ \Gs ⊢ Γ, Γ' ⊃ Δ, Δ'$
 \End{lemma}
 
@@ -1648,7 +1648,7 @@ prehistoric relations themselves, which globally means that they can not
 add any prehistoric relations from adding correspondences later in the
 proof. This is exactly what the last corollary asserts.
 
-\Begin{lemma}[inversion for G3s] \label{invers}
+\Begin{lemma}[Inversion for G3s] \label{invers}
 
 * $\Gs ⊢ Γ ⊃ Δ, A → B ⇒ \Gs ⊢ A, Γ ⊃ Δ, B$
 
@@ -1688,7 +1688,7 @@ removed entirely, which again can not introduce new prehistoric
 relations.
 \End{proof}
 
-\Begin{lemma}[contraction for G3s] \label{contr}
+\Begin{lemma}[Contraction for G3s] \label{contr}
 
 * $\Gs ⊢ A, A, Γ ⊃ Δ ⇒ \Gs ⊢ A, Γ ⊃ Δ$
 
@@ -1761,7 +1761,7 @@ introduce new prehistoric relations by corollary \ref{contrprehist}.
 So the new proof can not introduce any new prehistoric relations.
 \End{proof}
 
-\Begin{theorem}[cut elimination for G3s] \label{cut}
+\Begin{theorem}[Cut Elimination for G3s] \label{cut}
 If $\Gs ⊢ Γ ⊃ Δ, A$ and $\Gs ⊢ A, Γ ⊃ Δ$ then $\Gs ⊢ Γ ⊃ Δ$.
 \End{theorem}
 
@@ -1952,7 +1952,7 @@ original proof. Therefore we also have a prehistoric cycle in the
 original proof.
 \End{proof}
 
-\Begin{theorem}[(□Cut) elimination] \label{boxcut}
+\Begin{theorem}[(□Cut) Elimination] \label{boxcut}
 If $\Gs ⊢ Γ ⊃ Δ, □A, □B$ and $\Gs ⊢ Γ ⊃ Δ, □(A → B), □B$ then $\Gs ⊢ Γ ⊃ Δ, □B$
 \End{theorem}
 
@@ -2152,7 +2152,7 @@ constants to $CS$ gives a Gentzen system for $LP(CS)$.
 To work with prehistoric relations in G3lp proofs we need the
 following new or adapted definitions:
 
-\Begin{definition}[subformula]
+\Begin{definition}[Subformula]
 The set of subformulas $\sub(A)$ of a LP formula $A$ is inductively defined as follows:
 
 1. $\sub(P) = \{P\}$ for any atomic formula $P$
@@ -2163,7 +2163,7 @@ The set of subformulas $\sub(A)$ of a LP formula $A$ is inductively defined as f
 
 \End{definition}
 
-\Begin{definition}[subterm]
+\Begin{definition}[Subterm]
 The set of subterms $\sub(t)$ of a LP justification term $t$ is inductively defined as
 follows:
 
@@ -2185,7 +2185,7 @@ $s+t{:}A$.
 We expand the definition of correspondence (\ref{corr}) to G3lp proofs
 as follows:
 
-\Begin{definition}[correspondence in G3lp]
+\Begin{definition}[Correspondence in G3lp]
 All topmost terms in active or principal formulas in
 the rules $(⊃ ⋅)$, $(⊃ +)$ $(⊃ !)$ and $({:} ⊃)$ correspond to each
 other.
@@ -2301,7 +2301,7 @@ For the following lemmas and proofs we fix an arbitrary G3lp proof $𝒯 =
 (T, R)$ and its forgetful projection $𝒯˚ = (T', R')$ as defined
 below.
 
-\Begin{definition}[forgetful projection of a G3lp proof]
+\Begin{definition}[Forgetful Projection of a G3lp Proof]
 The forgetful projection of a G3lp proof $𝒯 = (T, R)$ for a LP sequent
 $Γ ⊃ Δ$ is the G3s + $(□\Cut)$ proof $𝒯˚ = (T', R')$ for $Γ˚ ⊃ Δ˚$
 inductively defined as follows:
@@ -2619,7 +2619,7 @@ Notice that the used constant specifications $CS$ is a subset of the
 inputs $IN$. Based on this definition, we can expand the definition of
 self-referentiality to input sets:
 
-\Begin{definition}[directly self-referential]
+\Begin{definition}[Self-Referential Inputs]
 
 * A input set $IN$ is *directly self-referential* if there is a
   term $t$ such that $t{:}A(t) ∈ IN$.
