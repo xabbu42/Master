@@ -445,16 +445,16 @@ system.
 In @artemov2001 [p.14], a Gentzen-Style system LPG is introduced for
 the logic of proofs LP using explicit contraction and weakening rules,
 i.e. based on G1c as defined in @troelstra2000 [p.61]. Later we will
-follow @pulver2010 instead and use G3lp with the structural rules
-absorbed. For now the system from figure \ref{G3lift} closely
-resembling the only hinted at "$LPG_0$ + Lifting Lemma Rule" system
-from @yu2010 is actually the most practical for our purpose. The
-reason for this is that it exactly mirrors the rules of G3s. Other
-than $LPG_0$ from @yu2010 and the original Gentzen style systems from
-@artemov2001 [p.14], it does not deconstruct justification
-terms but falls back on the Hilbert style definition of $LP$ to
-introduce terms already fully constructed. I will call this system
-G3lift to differentiate it from the later used system G3lp.
+follow Cornelia Pulver [-@pulver2010] instead and use G3lp with the
+structural rules absorbed. For now the system from figure \ref{G3lift}
+closely resembling the only hinted at "$LPG_0$ + Lifting Lemma Rule"
+system from @yu2010 is actually the most practical for our
+purpose. The reason for this is that it exactly mirrors the rules of
+G3s. Other than $LPG_0$ from @yu2010 and the original Gentzen style
+systems from @artemov2001 [p.14], it does not deconstruct
+justification terms but falls back on the Hilbert style definition of
+$LP$ to introduce terms already fully constructed. I will call this
+system G3lift to differentiate it from the later used system G3lp.
 
 \begin{figure} \caption{G3lift} \label{G3lift}
 \begin{longtable}{cc}
@@ -2094,16 +2094,16 @@ G3s proof for $B$ using cut elimination and corollary
 G3lp
 ----
 
-@pulver2010 [62] introduce the system LPG3 by expanding G3c with rules
-for the build up of justification terms as well as the new axioms
-(Axc) and (Axt). To ensure that the contraction lemma holds, all rules
-have to be invertible [@pulver2010 61] which is the reason why
-contracting variants of all the justification rules are used for
-LPG3. Our variant G3lp will use the same rules to build up terms, but
-replace the axioms with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the
-prehistoric relations of the proof intact. As there is a proof for $⊃
-A$ for any axiom $A$ and also for $A ⊃ A$ for any formula $A$, this
-two rules are equivalent to the two axioms and invertible.
+Cornelia Pulver [-@pulver2010 62] introduces the system LPG3 by
+expanding G3c with rules for the build up of justification terms as
+well as the new axioms (Axc) and (Axt). To ensure that the contraction
+lemma holds, all rules have to be invertible [@pulver2010 61] which is
+the reason why contracting variants of all the justification rules are
+used for LPG3. Our variant G3lp will use the same rules to build up
+terms, but replace the axioms with rules $(⊃ :)_c$ and $(⊃ :)_t$ to
+keep the prehistoric relations of the proof intact. As there is a
+proof for $⊃ A$ for any axiom $A$ and also for $A ⊃ A$ for any formula
+$A$, this two rules are equivalent to the two axioms and invertible.
 
 As we already did with G3s, we will use the full system with all
 classical operators for examples, but only the minimal subset with $→$
