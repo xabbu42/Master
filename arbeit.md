@@ -1187,7 +1187,7 @@ $P$, for example "it will rain", to be true and unknown. This sentence
 "It will rain and I do not know that it will rain" is inspired by
 Moore's paradox and its formalization $P ∧ ¬□P$ is called a Moore
 sentence. The sentence is easily satisfiable, for example if the
-weather forecast wrongly predicts no rain, but it is impossible to now
+weather forecast wrongly predicts no rain. But it is impossible to now
 that sentence, as is stated by our example theorem $¬□(P ∧
 ¬□P)$. Because if one knows the Moore sentence, one also knows the
 first part of the conjunction, i.e.  $P$. This knowledge then
@@ -1252,7 +1252,7 @@ Prehistoric Relations
 In his paper "Prehistoric Phenomena and Self-referentiality"
 [@yu2010], Yu gave a formal definition for the situation described in
 the last chapter, which he calls a prehistoric loop. In the later
-paper @yu2017 he adopted the proper graph theoretic term cycle as we
+paper @yu2017, he adopted the proper graph theoretic term cycle as we
 do here. Beside that change we will reproduce his definitions of
 prehistoric relation, prehistoric cycle as well as some basic lemmas
 about this new notions exactly as they were presented in the original
@@ -1263,8 +1263,8 @@ families in a G3s proof, we will use the same notation already
 introduced in the proof of the realization theorem (\ref{realization}).
 That is, we enumerate all $(⊃ □)$ rules introducing an occurrence of
 the principal family $p_i$ as $R_{i,0}, ... R_{i,l_i-1}$ and use
-$I_{i,0}, ... I_{i,l_i-1}$ to denote the premises of that rules and
-$O_{i,0}, ... O_{i,l_i-1}$ to denote the conclusions of that rules.
+$I_{i,0}, ... I_{i,l_i-1}$ to denote the premises of those rules and
+$O_{i,0}, ... O_{i,l_i-1}$ to denote their conclusions.
 
 \Begin{definition}[History]
 In a root-leaf path $S$ of the form $S_rR^*O_{i,j}RI_{i,j}R^*S$ in a
@@ -1299,10 +1299,10 @@ For any principal positive families $p_i$ and $p_h$ and any root-leaf path $S$ o
 the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 
 (1) If $an_T(I_{i,j})$ has the form $⊟_{k_0}B_{k_0}, ...,
-⊟_{k}B_{k_q}(⊞_h C), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
+⊟_{k}B_k(⊞_h C), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
 prehistoric family* of $p_i$ in $S$ with notation $h ≺^S_L i$.
 
-(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0} ∧ ... ∧
+(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0}, ..., 
 ⊟_{k_q}B_{k_q} ⊃ A(⊞_h C)$ then $p_h$ is a *right prehistoric family*
 of $p_i$ in $S$ with notation $h ≺^S_R i$.
 
@@ -1316,7 +1316,7 @@ is a leaf}\}$ and $≺ := ≺_L ∪ ≺_R$.
 Even though both definitions so far use the notion of a prehistory,
 they do not directly refer to each other. But the following lemma
 provides the missing connection between these two definitions and
-explains the common terminology:
+therefore explains the common terminology:
 
 \Begin{lemma} \label{global}
 There is an occurrence of $⊞_h$ in a pre-history of $p_i$ in the root-leaf path
@@ -1327,7 +1327,7 @@ $S$ iff $h ≺^S i$.
 (⇒): $⊞_h$ occurs in a sequent $S'$ in a pre-history of $p_i$ in the
 root-leaf path $S$, so $S$ has the form
 $S_rR^*O_{i,j}RI_{i,j}R^*S'R^*S$ for some $j < l_i$. By the subformula
-theorem \ref{sub}, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
+theorem (\ref{sub}), there is an occurrence of $⊞_h$ in $I_{i,j}$ as
 $S'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
 $h ≺^S_L i$, if it is on right we have $h ≺^S_R i$. In both cases $h
 ≺^S i$ holds.
@@ -1353,7 +1353,7 @@ single principal family which has a left prehistoric relation to
 itself. The following lemmas will show that any prehistoric cycle
 necessarily contains left prehistoric relations and that we can get rid
 of any right prehistoric relations. That is, if a proof has a
-prehistoric cycle it also has a left prehistoric cycle.
+prehistoric cycle it also has a left prehistoric cycle:
 
 \Begin{lemma} \label{noref}
 For any principal positive family $p_i$, $i \nprec_R i$.
@@ -1362,7 +1362,7 @@ For any principal positive family $p_i$, $i \nprec_R i$.
 \Begin{proof}
 Assume for a contradiction that $i ≺_R i$. It follows from the
 definition of $≺_R$, that there is a rule $R_{i,j}$ with $⊞_iA(⊞_iB)$
-as the principal formula. By the subformula property \ref{sub}
+as the principal formula. By the subformula property (\ref{sub})
 $⊞_iA(⊞_iB)$ corresponds to a subformula in the root sequent. Also by
 the subformula property there is only one occurrence of $⊞_i$ in the
 root sequent.
@@ -1375,11 +1375,13 @@ $≺_L$, $≺_R$, $≺^s$ , $≺^s_L$ or $≺^s_R$.
 
 \Begin{proof}
 Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
-principally introduced $⊞_j$. All corresponding occurrences of $⊞_j$
-are part of corresponding occurrences of the subformula $⊞_jA(⊞_kB)$,
-with exactly one occurrence in the root sequent $S_r$ by the
-subformula property \ref{sub}. So wherever $⊞_j$ occurs in the proof
-$T$, there is a $⊞_k$ occurring in the scope of it.
+principally introduced $⊞_j$, that is a $(⊃ □)$ rule with the
+principal formula $⊞_jA(⊞_kB)$. So by the subformula property
+(\ref{sub}), all corresponding occurrences of $⊞_j$ are part of
+corresponding occurrences of the subformula $⊞_jA(⊞_kB)$, with exactly
+one occurrence in the root sequent $S_r$. Therefore, wherever $⊞_j$
+occurs in the proof $T$, there is a $⊞_k$ occurring in the scope of
+it.
 
 For any $▹$, we have $j ▹ i$ because of some occurrence of $⊞_j$ in a
 subformula of the premise of a rule $R_{i,q}$. By the previous
@@ -1400,12 +1402,12 @@ $n = 1$: $i_0 ≺ i_0$ so either $i_0 ≺_R i_0$ or $i_0 ≺_L i_0$. As $i_0
 cycle already is a left prehistoric cycle.
 
 $n - 1 ⇒ n$: If $i_k ≺_L i_{k+1 \mod n}$ for all $k < n$, then the
-cycle already is a left prehistoric cycle and we are finished. Otherwise
-there is a $k < n$ such that $i_k ≺_R i_{k+1 \mod n} ≺ i_{k+2 \mod
-n}$. By lemma \ref{trans} we also have $i_k ≺ i_{k+2 \mod n}$ and
-therefore the sublist of length $n - 1$ without $i_{k+1 \mod n}$ is
-also a prehistoric cycle. By the induction hypothesis, $T$ has a left
-prehistoric cycle.
+cycle already is a left prehistoric cycle and we are
+finished. Otherwise there is a $k < n$ such that $i_k ≺_R i_{k+1 \mod
+n} ≺ i_{k+2 \mod n}$. By lemma \ref{trans} we also have $i_k ≺ i_{k+2
+\mod n}$ and therefore the sublist of length $n - 1$ without $i_{k+1
+\mod n}$ is also a prehistoric cycle. So $T$ has a left prehistoric
+cycle by the induction hypothesis.
 \End{proof}
 
 
@@ -1454,7 +1456,7 @@ $S_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*S$, we have $i_2 ≺ i_1$ by lemma
 defined for each family $p_{k_x}$ and each $j < l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
-\ref{realization} and at the same time the condition given in this
+(\ref{realization}) and at the same time the condition given in this
 lemma.
 \End{proof}
 
@@ -1468,7 +1470,7 @@ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ CS^N$
 
 \Begin{proof}
 By the construction in the proof of the realization theorem
-\ref{realization}, $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
+(\ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
 1}(an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h < l_h$. So any provisional variable $u_{h,j_h}$
@@ -1492,14 +1494,14 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(CS^⊛) ⊢ B$
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $T$ for $A$, use lemma
-\ref{epsilon} and the realization theorem \ref{realization} to
+\ref{epsilon} and the realization theorem (\ref{realization}) to
 construct a realization function $r_T^N$ and a constant specification
 $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization of $A$.
 
 Assume for contradiction, that the generated $CS^N$ is
 self-referential, i.e. there exist constants
 $c_{i_0,j_0,k_0},...,c_{i_{n-1},j_{n-1},k_{n-1}}$ such that for all $x
-< n$ the single $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ CS^N$ contains
+< n$ the unique $c_{i_x,j_x,k_x}{:}A^N_{i_x,j_x,k_x} ∈ CS^N$ contains
 the next constant $c_{i_{x'},j_{x'},k_{x'}}$ with $x' := x + 1 \mod
 n$. By lemma \ref{constants} we get $ε(i_{x'},j_{x'}) <
 ε(i_x,j_x)$ for all $x ≤ n$. So $ε(i_n,j_n) < ... < ε(i_1,j_1) <
@@ -1594,10 +1596,11 @@ Again it is also necessary to expand the definition of correspondence
 \End{definition}
 
 Notice that with this expansion, $□$ occurrences of the same family no
-longer are always part of the same subformula $□C$ and therefor lemma
-\ref{trans} no longer holds.^[TODO make sure] Also similar to the
-(Cut) rule, correspondence is expanded to relate negative and positive
-occurrences of $□$ symbols.
+longer are always part of the same subformula $□C$ and therefore lemma
+\ref{trans} no longer holds. Also similar to the (Cut) rule,
+correspondence is expanded to relate negative and positive occurrences
+of $□$ symbols as $A$ is used with different polarities in the two
+premises.
 
 With the following lemmas and theorems we will establish a
 constructive proof for $\Gs + (□\Cut) ⊢ Γ ⊃ Δ ⇒ \Gs + (\Cut) ⊢ Γ ⊃ Δ ⇒
@@ -1719,8 +1722,8 @@ with the two $A$ contracted. Append the same rule for the necessary proof.
 
 3\.\ case: One of the occurrences of $A$ is the principal formula of
 the last rule, the other is a side formula. Use the inversion lemma
-(\ref{invers}) on the side formula $A$ in the premises and the
-induction hypothesis to contract the deconstructed parts of
+(\ref{invers}) on the side formula $A$ in the premises to deconstruct
+it. Use the induction hypothesis to contract the deconstructed parts of
 $A$. Append the same last rule without $A$ as side formula to get the
 necessary proof.
 \End{proof}
@@ -2155,8 +2158,8 @@ This system is adequate for the logic of proofs $LP$ as shown in
 corollary 4.37 in @pulver2010 [73]. It also allows for weakening,
 contraction and inversion [@pulver2010, 65ff]. By corollary 4.36 in
 the same paper, G3lp without the $(⊃ :)_c$ rule is equivalent to
-LP_0. Neither @pulver2010 nor @artemov2001 contain Gentzen systems for
-a restricted logic of proofs $LP(CS)$. Perhaps because it seems
+$LP_0$. Neither @pulver2010 nor @artemov2001 contain Gentzen systems for
+a restricted logic of proofs $LP(CS)$, perhaps because it seems
 obvious that restricting whatever rule is used for introducing proof
 constants to $CS$ gives a Gentzen system for $LP(CS)$.
 
@@ -2221,13 +2224,13 @@ of $s$ relative to the subtree $T↾S$ as all related terms in the
 premises of G3lp rules are subterms of the related term in the
 conclusion.
 
-We also see that most rules of G3lp only relate terms to each
-other used for the same subformula $A$. The two exceptions are the $(⊃
-⋅)$ rule and the $(⊃ !)$ rule. Similar to the cut rules from the
-previous chapter, $(⊃ ⋅)$ relates subformulas and symbols of different
+We also see that most rules of G3lp only relate terms to each other
+used for the same subformula $A$. The two exceptions are the $(⊃ ⋅)$
+rule and the $(⊃ !)$ rule. Similar to the cut rules from the previous
+chapter, $(⊃ ⋅)$ relates subformulas and symbols of different
 polarities as well as terms used for different formulas. So we will
-use the same approach as in the last chapter to define prehistoric
-relations of term families for any polarity:
+use the same approach to define prehistoric relations of term families
+for any polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
 A family $\bar{t_i}$ has a *prehistoric relation* to another family $\bar{t_j}$, in
@@ -2242,10 +2245,10 @@ with this relations if we look at the forgetful projection of a G3lp
 proof. That is, what happens on the G3s side if we construct a proof
 tree with the forgetful projections of the original sequents. Of
 course we do not get a pure G3s proof as most of the G3lp rules have
-no direct equivalent in G3s.  We will therefore introduce new rules,
+no direct equivalent in G3s.  We will therefore define new rules,
 which are the forgetful projection of a G3lp rule denoted for example
 by $(⊃ !)˚$ for the forgetful projection of a $(⊃ !)$ rule. The
-following two lemmas show that all new rules are admissible in G3s +
+following two lemmas show that all this new rules are admissible in G3s +
 $(□\Cut)$.
 
 \Begin{lemma} \label{boxbox}
@@ -2373,7 +2376,7 @@ original sequent $Γ', □Γ ⊃ Δ, □A$ derived by the original $(⊃ □)$
 rule.
 
 \Begin{lemma}
-For any family $f_i$ of $□$ symbols in $𝒯˚$ there is a unique proof
+For any family $f_i$ of $□$ occurrences in $𝒯˚$ there is a unique proof
 term family $\bar{t}_{i'}$ in $𝒯$ such that $s ∈ \bar{t}_{i'}$ for all proof
 term occurrences $s$ mapped to $□$ occurrences in $f_i$.
 \End{lemma}
@@ -2414,7 +2417,7 @@ closure.
 As direct correspondence in the G3s proof is a subset of
 correspondence in the G3lp proof, so is its transitive and reflexive
 closure. So for any two corresponding $□$ occurrences of a family
-$f_i$ the mapped term occurrences also correspond and therefor belong
+$f_i$ the mapped term occurrences also correspond and therefore belong
 to the same family $\bar{t}_{i'}$.
 \End{proof}
 
@@ -2459,7 +2462,7 @@ $i' = j'$ by induction hypothesis on the shorter proof up to the that
 $(⊃ □)$ rule with the occurrences $□'_i$, $s'_i$, $□_k$ and $s_k$.
 \End{proof}
 
-\Begin{lcorollary} \ref{forgetful}
+\Begin{lcorollary} \label{forgetful}
 If $𝒯$ is prehistoric-cycle-free then also $𝒯˚$ is
 prehistoric-cycle-free.
 \End{lcorollary}
@@ -2616,7 +2619,7 @@ $t_i$ is not necessary in $\bar{t_i}$).
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
 does not differentiate between the two variants $(⊃ :)_c$ and $(⊃
-:)_t$ used for introducing elements from $CS$ and input formulas $t:A$
+:)_t$ used for introducing elements from $CS$ and input formulas $t{:}A$
 . It is therefore necessary to expand the definition of
 self-referentiality by considering all basic justifications and not
 only the justification constants:
@@ -2762,7 +2765,7 @@ $A := □(P ∧ ¬□P → P) → ¬□(P ∧ ¬□P)$ is a theorem of S4, as $�
 already is a theorem of S4. By the previous lemma, there is no
 prehistoric-cycle-free proof for $A$ and by the first lemma $B :=
 y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of $A$
-provable in LP_0 and therefor also in $LP(CS^⊛)$.
+provable in $LP_0$ and therefor also in $LP(CS^⊛)$.
 \End{proof}
 
 Finally the question arises, if prehistoric cycles are also a
@@ -2793,12 +2796,13 @@ negative position somewhere in the proof is an input.
 So we have no clear definition of inputs in the original definition of
 LP matching the definition of inputs in G3lp, and therefore also
 currently no way to expand Yu's result to all inputs.  But we can
-stipulate that the inputs of derivation $d$ as constructed by the
+stipulate that the inputs of a derivation $d$ as constructed by the
 realization theorem (\ref{realization}) are exactly the realizations
 of formulas $⊟_iA$ with negative polarity in the original G3s
 proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
-final formula of the proof. We have to assume without proof that this
+final formula of the proof, a property which does not hold for all
+derivations as discussed above. We have to assume without proof that this
 definitions of inputs somehow matches the exact definition given in
 the context of G3lp proofs. That is, there exists a G3lp proof for a
 G3s proof where only realizations of formulas with negative polarity
@@ -2813,7 +2817,7 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $LP(IN^⊛) ⊢ B$.
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
-use lemma \ref{epsilon} and the realization theorem \ref{realization}
+use lemma \ref{epsilon} and the realization theorem (\ref{realization})
 to construct a realization function $r_T^N$ and a constant
 specification $CS^N$ such that $B := r_T^N(an_T(A))$ is a realization
 of $A$ and $LP ⊢ B$ by the constructed deduction $d$. To simplify the
