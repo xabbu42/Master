@@ -498,7 +498,7 @@ where $t_1{:}B_1, ..., t_n{:}B_n ⊢_{LP} t{:}C$
 \Begin{definition}[G3lift Preproof]
 A *G3lift preproof* is a proof tree using the rules of G3lift, but where
 the (lift) rule may be used without fulfilling the necessary
-precondition on the introduced term $t$.
+precondition on the new term $t$.
 \End{definition}
 
 In all this rules, arbitrary formulas which occur in the premises and
@@ -657,10 +657,10 @@ As constructed in the main proof, the deduction $d$ only uses true
 subformulas and variables already occurring in $T$. For cases 1 and 2
 this is immediate as the given derivations directly use subformulas
 from $T$. In cases 3, 4 and 5, the starting derivations do not
-introduce new variables by induction hypothesis and the use of the
+use new variables by induction hypothesis and the use of the
 deduction theorem does not introduce new variables by corollary
 \ref{dedvar}. The derivation for case 6 is already included in the
-corollary and therefore trivially does not introduce new variables.
+corollary and therefore trivially does not use new variables.
 \End{proof}
 
 The proofs for the following standard lemmas for G3lift exactly mirror
@@ -928,10 +928,10 @@ Realization
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
 which proof details removed or forgotten. We will establish this close
-relationship in this chapter formally by two main theorems
-translating valid LP formulas into valid S4 formulas and vice
-versa. The former is called forgetful projection, the latter is more
-complex and called realization.
+relationship in this chapter formally by two main theorems translating
+valid LP formulas into valid S4 formulas and vice versa. The former is
+called forgetful projection, the latter is more complex and called
+realization.
 
 \Begin{definition}[Forgetful Projection] \label{proj}
 The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
@@ -957,6 +957,16 @@ replacing all sequents with the forgetful projection of that sequence
 is a valid G3s proof with root sequent $⊃ A˚$. By the soundness of G3s
 we have $S4 ⊢ A˚$.
 \End{proof}
+
+In the other direction, one can realize S4 formulas in LP by replacing
+the $□$ occurrences by explicit justification terms as defined
+below. Of course most of this realizations will not transform a
+theorem of S4 into a theorem of LP. So the realization theorem
+will only assert the existence of a specific realization producing a
+theorem of LP from a theorem of S4. The constructive proof for the
+realization theorem also provides us with an algorithm to generate
+one such realization. However, that realization is not necessarily the
+only possible realization or the simplest one.
 
 \Begin{definition}[Realization Function]
 A *realization function* $r_A$ for a formula $A$ is a mapping from the
@@ -988,6 +998,9 @@ realization function is normal and the $CS$ is injective. ^[TODO
 probably should not misuse normal here for non-principal positive families]
 \End{definition}
 
+With above precise definition for a normal realization, we are able to
+formulate and proof the following realization theorem:
+
 \Begin{theorem}[Realization] \label{realization}
 If $S4 ⊢ A$ then $LP ⊢ A^r$ for some normal
 LP-realization $r$.
@@ -1007,7 +1020,7 @@ $I_{i,j}RO_{i,j}$). In total there are $N = Σ_{i = 0}^{n}l_i$ $(⊃
 
 Choose an order $ε(i,j) → \{1, ..., N\}$ of all the $(⊃
 □)$ rules such that $ε(i_2,j_2) < ε(i_1,j_1)$ whenever
-$O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $s_r$ are
+$O_{i_1,j_1}R^+O_{i_2,j_2}$ (i.e. rules closer to the root $S_r$ are
 later in this order).
 
 Define the normal realization function $r_T^0$ by $r_T^0(⊞_i) :=
@@ -1082,23 +1095,24 @@ $r$ given by $r_T^N$ and the injective constant specification $CS^N$.
 \End{proof}
 
 \Begin{corollary} \label{realvar}
-There exist derivations $d^k_{i,j}$ for the precondition
-\ref{precond} of all rules $R_{i,j}$ in $r_T^k(an_T(T))$ and for any
-$k ≥ ε(i,j)$ which do not introduce new variables.
+There exist derivations $d^k_{i,j}$ for the precondition \ref{precond}
+of all rules $R_{i,j}$ in the G3lift proof tree $r_T^k(an_T(T))$ for
+any $k ≥ ε(i,j)$ which do not use any new variables not already
+occurring in $r_T^k(an_T(T))$.
 \End{corollary}
 
 \Begin{proof}
 Proof by complete induction over the order $ε(i,j)$.  Given a rule
-$R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do not
-introduce new variables for the precondition of any rule $R_{i_0,j_0}$
-in $r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all
-this rules. Using the exact same steps as in the main proof but using
-the realization function $r_T^k$, we get a derivation $d$ for
-\ref{start} which does not introduce new variables by the corollary
-\ref{soundvar}, a derivation $d'$ for \ref{lifted} which does not
-introduce new variables by the corollary \ref{liftvar} and finally a
-derivation $d^k_{i,j}$ for \ref{precond} which also does not introduce
-new variables.
+$R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do not use
+new variables for the precondition of any rule $R_{i_0,j_0}$ in
+$r_T^k(an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all this
+rules. Using the exact same steps as in the main proof but using the
+realization function $r_T^k$, we get a derivation $d$ for \ref{start}
+which does not use new variables by the corollary \ref{soundvar}, a
+derivation $d'$ for \ref{lifted} which does not introduce new
+variables by the corollary \ref{liftvar} and finally a derivation
+$d^k_{i,j}$ for \ref{precond} which also does not introduce new
+variables.
 \End{proof}
 
 Prehistoric Relations in G3s
