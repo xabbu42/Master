@@ -40,7 +40,7 @@ constructive replacements of the $□$ modality in S4.[^source] Later
 more applications of this explicit notations were discovered for
 different epistemic logics [@brezhnev2001]. So @artemov2008 introduced
 the more general notion of justification logics where justification
-terms take over the role of the proof terms in $LP$. In any
+terms take over the role of the proof terms in LP. In any
 justification logic $t{:}A$ is read as $t$ is a justification of $A$,
 leaving open what exactly that entails. Using different axioms and
 different operators, various different justification logic counterparts
@@ -126,6 +126,8 @@ rules modus ponens and axiom necessitation. [@artemov2001 p.8]
 * $A2$: $s{:}(F → G) → (t{:}F → (s·t){:}G)$ (Application)
 * $A3$: $t{:}F →\;!t{:}(t{:}F)$ (Proof Checker)
 * $A4$: $s{:}F → (s+t){:}F$, $t{:}F → (s+t){:}F$ (Sum)
+
+<!-- -->
 
 * $R1$: $F → G, F ⊢ G$ (Modus Ponens)
 * $R2$: $A ⊢ c{:}A$, if $A$ is an axiom $A0-A4$ and $c$ a constant
@@ -279,9 +281,11 @@ multisets of formulas, latin letters $P$, $Q$ for atomic formulas and
 latin letters $A$, $B$ for arbitrary formulas. We also use the
 following short forms:
 
-$$□Γ := \{□x ∣ x ∈ Γ\}$$
-$$Γ,A := Γ ∪ \{A\}$$
-$$Γ,Δ := Γ ∪ Δ$$
+* $□Γ := \{□A ∣ A ∈ Γ\}$
+* $Γ,A := Γ ∪ \{A\}$
+* $Γ,Δ := Γ ∪ Δ$
+* $⋀Γ := A_0 ∧ ... ∧ A_n$ and $⋁Γ := A_0 ∨ ... ∨ A_n$ for the formulas $A_i ∈ Γ$ in an arbitrary
+  but fixed order.
 
 Throughout this text, we will use the G3s calculus from @troelstra2000
 [287] for our examples with additional rules $(¬⊃)$ and $(⊃¬)$ as we
@@ -849,8 +853,7 @@ assigned a *polarity* as follows:
 This gives the subformulas of a sequent $Γ ⊃ Δ$ the same polarity as
 they would have in the equivalent formula $⋀Γ → ⋁Δ$. Also notice that
 for the derived operators all subformulas have the same polarity,
-except for $¬$ which switches the polarity for its subformula.  ^[TODO
-explain used syntax and equivalence or remove]
+except for $¬$ which switches the polarity for its subformula.
 
 The rules of S4 respect the polarities of the subformulas, so that all
 corresponding occurrences of subformulas have the same polarity
@@ -999,8 +1002,7 @@ occurring in $r_A$ or $r_T$ with $A^r := r_A(an_A(A))$ respective $A^r
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
 variables. A LP-realization is *normal* if the corresponding
-realization function is normal and the $CS$ is injective. ^[TODO
-probably should not misuse normal here for non-principal positive families]
+realization function is normal and the $CS$ is injective.
 \End{definition}
 
 With above precise definition for a normal realization, we are able to
@@ -2611,13 +2613,18 @@ same term $s$. As $t$ itself is a corresponding occurrence of
 $s$ in that path, we get $t = s$.
 \End{proof}
 
-\Begin{lcorollary}[TODO] \label{corollary}
+\Begin{lcorollary} \label{corollary}
 If $i ≺ j$ for two term families $\bar{t_i}$ and $\bar{t_j}$ of a G3lp
 proof then there is $(⊃ :)$ rule introducing an occurrence $s ∈
 \bar{t_j}$ in a formula $s{:}A$ such that there is an occurrence of
 $t_i$ in $s{:}A$ (as a term, not as a family, i.e. the occurrence of
 $t_i$ is not necessary in $\bar{t_i}$).
 \End{lcorollary}
+
+\Begin{proof}
+Follows directly from the lemma and the definition of prehistoric
+relations for G3lp.
+\End{proof}
 
 The last corollary gives us a close relationship between prehistoric
 relations in G3lp and occurrences of terms in $(⊃ :)$ rules. But it
@@ -2742,16 +2749,16 @@ P), □(P ∧¬□P) ⊃$ which again by inversion and an easy deduction is
 provable prehistoric-cycle-free iff $P, □(P ∧ ¬□P → P), □(P ∧¬□P) ⊃
 □P$ is provable prehistoric-cycle-free. It is clear that using $(□ ⊃)$
 rules on this sequent just adds additional copies of the existing
-formulas.^[TODO more formally?] So by contraction if there is a
+formulas by the same arguments. So by contraction if there is a
 prehistoric-cycle-free proof for this sequent, then there is also one
 ending in a $(⊃ □)$ rule. The premise of this rule has to have the
 form $□(P ∧ ¬□P → P) ⊃ P$ to avoid a prehistoric cycle. But the
 following Kripke model shows that $□(P ∧ ¬□P → P) → P$ is not a
-theorem of S4 and therefore not provable at all: $w = \{¬P\}, R =
+theorem of S4 and therefore not provable at all: $W := {w}, val(P) := ∅, R :=
 \{(w, w)\}$.  We have $w \Vdash P ∧ ¬□P → P$ because $w \Vdash ¬P$ and
 therefore also $w \Vdash ¬(P ∧ ¬□P)$. As $w$ is the only world we get
 $w \Vdash □(P ∧ ¬□P → P)$ which leads to the final $w \Vdash ¬(□(P ∧
-¬□P → P) → P)$ again because $w \Vdash ¬P$
+¬□P → P) → P)$ again because $w \Vdash ¬P$.
 
 As all possibilities for a prehistoric-cycle-free proof of $□(P ∧ ¬□P →
 P), □(P ∧¬□P) ⊃$ are exhausted, there is no such proof and therefore
