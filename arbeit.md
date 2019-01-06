@@ -34,16 +34,16 @@ Institut für Informatik und angewandte Mathematik
 Introduction
 ============
 
-Sergei Artemov first introduced the Logic of Proofs $LP$ in
+Sergei Artemov first introduced the Logic of Proofs (LP) in
 @artemov1995, where he introduced proof terms as explicit and
 constructive replacements of the $□$ modality in S4.[^source] Later
 more applications of this explicit notations were discovered for
 different epistemic logics [@brezhnev2001]. So @artemov2008 introduced
-the more general notion of justification logics, where justification
+the more general notion of justification logics where justification
 terms take over the role of the proof terms in $LP$. In any
-justification logic, $t{:}A$ is read as $t$ is a justification of $A$,
+justification logic $t{:}A$ is read as $t$ is a justification of $A$,
 leaving open what exactly that entails. Using different axioms and
-different operators various different justification logic counterparts
+different operators, various different justification logic counterparts
 where developed for the different modal systems used in epistemic
 logic (K, T, K4, S4, K45, KD45, S5, etc.).
 
@@ -63,33 +63,32 @@ argues that there is nothing inherently wrong with self-referential
 justifications if we understand the justifications as valid reasoning
 templates or schemes which of course then can be used on themselves.
 
-Kuznets studied the topic of self-referentiality at the
+Roman Kuznets studied the topic of self-referentiality at the
 logic-level. He discovered theorems of S4, D4, T and K4 which need a
 self-referential constant specification to be realized in their
-justification logic counterparts [@kuznets2010]. Yu on the other hand
-studied self-referentiality at the theorem level. He discovered
-prehistoric cycles as a necessary condition for self-referential S4
-theorems in @yu2010 and later expanded that results to the modal
-logics T and K4 in @yu2014. He also conjectured that the condition is
-actually sufficient for self-referential S4 theorems. In this paper I
-will concentrate on that topic, that is prehistoric cycles as
-necessary and sufficient condition for self-referential theorems in
-S4.
+justification logic counterparts [@kuznets2010]. Junhua Yu on the
+other hand studied self-referentiality at the theorem level. He
+discovered prehistoric cycles as a necessary condition for
+self-referential S4 theorems [@yu2010] and later expanded that
+results to the modal logics T and K4 [@yu2014]. He also conjectured
+that the condition is actually sufficient for self-referential S4
+theorems. In this paper I will concentrate on that topic, that is
+prehistoric cycles as necessary and sufficient condition for
+self-referential theorems in S4.
 
 This paper is divided in three parts. In the first part I introduce
 the modal logic S4 and its justification counterpart LP as well as two
-Gentzen systems for S4 and LP used in the later parts. The second
-part reproduces Yu's main theorem from @yu2010, that is, that
-prehistoric cycles are a necessary condition for self-referential
-theorems in S4. The third part goes beyond Yu's original paper by
-adapting the notion of prehistoric cycles to Gentzen systems with cut
-rules and finally to a Gentzen system for LP. This allows to study
-prehistoric cycles directly in LP which leads to the two main results
-of this paper. Firstly, with the standard definition of
-self-referential theorems, prehistoric cycles are not a sufficient
-condition. Second, with an expansion on the definition of
-self-referential theorems, prehistoric cycles become sufficient
-for self-referential theorems.
+Gentzen systems for S4 and LP used in the later parts. The second part
+reproduces Yu's main theorem, i.e. that prehistoric cycles are a
+necessary condition for self-referential theorems in S4. The third
+part goes beyond Yu's original paper by adapting the notion of
+prehistoric cycles to Gentzen systems with cut rules and finally to a
+Gentzen system for LP. This allows to study prehistoric cycles
+directly in LP which leads to the two main results of this
+paper. Firstly, with the standard definition of self-referential
+theorems, prehistoric cycles are not a sufficient condition. Second,
+with an expansion on the definition of self-referential theorems,
+prehistoric cycles become sufficient for self-referential theorems.
 
 LP and S4
 =========
@@ -100,10 +99,10 @@ Preliminaries
 As the results and concepts in this paper are mostly purely
 syntactical, I will also limit this brief introduction to the modal
 logic S4 and its justification counterpart LP to the syntactic side.
-Artemov gave an arithmetical interpretation for LP in his original
-papers [@artemov1995 and @artemov2001]. Later Fitting developed
-semantics for LP based on Kripke models in @fitting2005. For S4 there
-is a discussion of Kripke frames in @pulver2010 based on
+Artemov gives an arithmetical interpretation for LP in his original
+papers [@artemov1995; @artemov2001]. Later Melvin Fitting
+[-@fitting2005] developed semantics for LP based on Kripke models. For
+S4 there is a discussion of Kripke frames in @pulver2010 based on
 @blackburn2001.
 
 \Begin{definition}[Syntax of S4]
@@ -158,7 +157,7 @@ specification of all formulas derived by axiom necessitation (R2). For
 a given constant specification $CS$, $LP(CS)$ is the logic with axiom
 necessitation restricted to that $CS$. $LP_0 := LP(∅)$ is the logic
 without axiom necessitation.  A constant specification $CS$ is
-injective, if for each constant $c$, there is at most one
+injective if for each constant $c$ there is at most one
 formula $c{:}A ∈ CS$.
 
 We end this brief introduction with some generic lemmas and theorems
@@ -798,7 +797,7 @@ weakening (\ref{liftweak}).
 4\.\ case $A ≡ c{:}A_0$ is derived by rule R1 (Axiom Necessitation). Then
 $A_0$ is an axiom and there is a G3lift proof for $⊃ A_0$ by induction
 hypothesis. Appending a (lift) rule gives a G3lift proof
-for $Γ ⊃ c:A_0$.
+for $Γ ⊃ c{:}A_0$.
 
 5\.\ case $A$ is derived by rule R0 (Modus Ponens). By induction
 hypothesis, we have G3lift proofs for $Γ ⊃ B → A$ and $Γ ⊃ B$ for the
@@ -868,7 +867,7 @@ original text [@artemov2001].
 The following definition of annotated formulas and proofs as well as
 the definition of a realization function based on it in the next
 chapter is heavily inspired by Fittings use of explicit annotations in
-@fitting2009. Other then Fitting, I allow myself to treat symbols
+@fitting2009. Other than Fitting, I allow myself to treat symbols
 $⊞_i$, $⊟_i$ directly as mathematical objects and define functions on
 them, instead of encoding the symbols as natural numbers.
 
@@ -932,7 +931,7 @@ Realization
 
 LP and S4 are closely related and LP can be understood as an explicit
 version of S4. The other way around, S4 can be seen as a version of LP
-which proof details removed or forgotten. We will establish this close
+with proof details removed or forgotten. We will establish this close
 relationship in this chapter formally by two main theorems translating
 valid LP formulas into valid S4 formulas and vice versa. The former is
 called forgetful projection, the latter is more complex and called
@@ -1150,7 +1149,7 @@ A constant specification which is not directly self-referential is
 denoted by $CS^*$. Similarly a constant specification which is not
 self-referential at all is denoted by $CS^⊛$. So $CS^*$ and $CS^⊛$
 stand for a class of constant specifications and not a single specific
-one. Following @yu2010, we will use the notation $LP(CS^⊛) ⊢ A$
+one. Following @yu2010, I will use the notation $LP(CS^⊛) ⊢ A$
 if there exists any non-self-referential constant specification $CS$
 such that $LP(CS) ⊢ B$. There does exist a single maximal constant
 specification $CS_{nds}$ which is not directly self-referential and
@@ -1192,7 +1191,7 @@ $P$, for example "it will rain", to be true and unknown. This sentence
 "It will rain and I do not know that it will rain" is inspired by
 Moore's paradox and its formalization $P ∧ ¬□P$ is called a Moore
 sentence. The sentence is easily satisfiable, for example if the
-weather forecast wrongly predicts no rain. But it is impossible to now
+weather forecast wrongly predicts no rain. But it is impossible to know
 that sentence, as is stated by our example theorem $¬□(P ∧
 ¬□P)$. Because if one knows the Moore sentence, one also knows the
 first part of the conjunction, i.e.  $P$. This knowledge then
@@ -1254,11 +1253,11 @@ actually necessary for the self-referentiality of any S4 formula.
 Prehistoric Relations
 ---------------------
 
-In his paper "Prehistoric Phenomena and Self-referentiality"
-[@yu2010], Yu gave a formal definition for the situation described in
-the last chapter, which he calls a prehistoric loop. In the later
-paper @yu2017, he adopted the proper graph theoretic term cycle as we
-do here. Beside that change we will reproduce his definitions of
+In his paper "Prehistoric Phenomena and Self-referentiality",
+[@yu2010] gives a formal definition for the situation described in the
+last chapter, which he calls a prehistoric loop. In the later paper
+@yu2017 adopts the proper graph theoretic term cycle as we do
+here. Beside that change we will reproduce his definitions of
 prehistoric relation, prehistoric cycle as well as some basic lemmas
 about this new notions exactly as they were presented in the original
 paper.
@@ -1307,7 +1306,7 @@ the form $S_rR^*O_{i,j}RI_{i,j}R∗S$ in a S4 proof $𝒯 = (T, R)$:
 ⊟_{k}B_k(⊞_h C), ..., ⊟_{k_q}B_{k_q} ⊃ A$, then $p_h$ is a *left
 prehistoric family* of $p_i$ in $S$ with notation $h ≺^S_L i$.
 
-(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0}, ..., 
+(2) If $an_T(I_{i,j})$ has the form $⊟_{k_0} B_{k_0}, ...,
 ⊟_{k_q}B_{k_q} ⊃ A(⊞_h C)$ then $p_h$ is a *right prehistoric family*
 of $p_i$ in $S$ with notation $h ≺^S_R i$.
 
@@ -1419,9 +1418,9 @@ cycle by the induction hypothesis.
 Yu's Theorem
 ------------
 
-Yu's proof for the main theorem of his paper, builds upon the idea to
+Yu's proof for the main theorem of his paper is based on the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
-(\ref{realization}), such hat the generated constant specifications
+(\ref{realization}), such that the generated constant specifications
 $CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
 such an order, formulas $c{:}A_{i,j,k}$ introduced during the
 realization procedure never change after their introduction, and we
@@ -1600,14 +1599,14 @@ Again it is also necessary to expand the definition of correspondence
 
 \End{definition}
 
-Notice that with this expansion, $□$ occurrences of the same family no
+Notice that with this expansion $□$ occurrences of the same family no
 longer are always part of the same subformula $□C$ and therefore lemma
 \ref{trans} no longer holds. Also similar to the (Cut) rule,
 correspondence is expanded to relate negative and positive occurrences
 of $□$ symbols as $A$ is used with different polarities in the two
 premises.
 
-With the following lemmas and theorems we will establish a
+With the following lemmas and theorems I will establish a
 constructive proof for $\Gs + (□\Cut) ⊢ Γ ⊃ Δ ⇒ \Gs + (\Cut) ⊢ Γ ⊃ Δ ⇒
 \Gs ⊢ Γ ⊃ Δ$. Moreover there will be corollaries showing that the
 constructions do not introduce prehistoric cycles by the new definition
@@ -1701,8 +1700,8 @@ new prehistoric relations.
 \End{lcorollary}
 
 \Begin{proof}
-In the 1.\ case and 2.\ case we only remove occurrences of $□$ so no
-new prehistoric relations are introduced. In the 3\.\ case, a rule is
+In the 1st case and 2nd case we only remove occurrences of $□$ so no
+new prehistoric relations are introduced. In the 3rd case, a rule is
 removed entirely, which again can not introduce new prehistoric
 relations.
 \End{proof}
@@ -1739,8 +1738,8 @@ new prehistoric relations.
 \End{lcorollary}
 
 \Begin{proof}
-In the 1\. case and 2\. case we only remove occurrences of $□$ so no
-new prehistoric relations are introduced. In the 3\.\ case, by
+In the 1st case and 2nd case we only remove occurrences of $□$ so no
+new prehistoric relations are introduced. In the 3rd case, by
 corollary \ref{inversprehist} no new prehistoric relations are
 introduced for the new proof where both occurrences of $A$ are
 deconstructed. Moreover, in the case of appending a $(⊃ □)$ rule, all
@@ -2073,37 +2072,35 @@ corollary \ref{boxcutcycle}. All together we get:
 $\Gs^⊗ = (\Gs + (\Cut))^⊗ = (\Gs + (□\Cut))^⊗$
 \End{proof}
 
-In the theorem 2.21 [@yu2017 793], Yu shows that
-non-self-referentiality is not normal in T, K4 and S4. The results in
-this chapter hint at an explanation for this fact for S4 and at the
-possibility to still use modus ponens with further restrictions in the
-non-self-referential subset of S4. Namely, to consider the global
-aspects of self-referentiality coming from correspondence of
-occurrences, it is necessary when combining two proofs, that the two
-proofs together with the correct correspondences added are
-prehistoric-cycle-free. So we can only use modus ponens on two
-non-self-referential S4 theorems $A$ and $A → B$ if there are proofs
-of $A$ and $A → B$ such that the prehistoric relations of these proofs
-combined, together with identifying the occurrences of $A$ in both
-proofs, are prehistoric-cycle-free. In that case we get a
-prehistoric-cycle-free G3s proof for $B$ using cut elimination and
-corollary \ref{cutprehist}, which shows that $B$ is also
-non-self-referential.
+In the theorem 2.21 @yu2017 [793] shows that non-self-referentiality
+is not normal in T, K4 and S4. The results in this chapter hint at an
+explanation for this fact for S4 and at the possibility to still use
+modus ponens with further restrictions in the non-self-referential
+subset of S4. Namely, to consider the global aspects of
+self-referentiality coming from correspondence of occurrences, it is
+necessary when combining two proofs, that the two proofs together with
+the correct correspondences added are prehistoric-cycle-free. So we
+can only use modus ponens on two non-self-referential S4 theorems $A$
+and $A → B$ if there are proofs of $A$ and $A → B$ such that the
+prehistoric relations of these proofs combined, together with
+identifying the occurrences of $A$ in both proofs, are
+prehistoric-cycle-free. In that case we get a prehistoric-cycle-free
+G3s proof for $B$ using cut elimination and corollary
+\ref{cutprehist}, which shows that $B$ is also non-self-referential.
 
 G3lp
 ----
 
-@pulver2010 [62] introduces the system LPG3 by expanding G3c with
-rules for the build up of justification terms as well as the new
-axioms (Axc) and (Axt). To ensure that the contraction lemma
-holds, all rules have to be invertible [@pulver2010 61] which is the
-reason that for LPG3 contracting variants of all the
-justification rules are used. Our variant G3lp will use the same
-rules to build up terms, but replace the axioms with rules $(⊃ :)_c$
-and $(⊃ :)_t$ to keep the prehistoric relations of the proof
-intact. As there is a proof for $⊃ A$ for any axiom $A$ and also for
-$A ⊃ A$ for any formula $A$, this two rules are equivalent to the two
-axioms and invertible.
+@pulver2010 [62] introduce the system LPG3 by expanding G3c with rules
+for the build up of justification terms as well as the new axioms
+(Axc) and (Axt). To ensure that the contraction lemma holds, all rules
+have to be invertible [@pulver2010 61] which is the reason why
+contracting variants of all the justification rules are used for
+LPG3. Our variant G3lp will use the same rules to build up terms, but
+replace the axioms with rules $(⊃ :)_c$ and $(⊃ :)_t$ to keep the
+prehistoric relations of the proof intact. As there is a proof for $⊃
+A$ for any axiom $A$ and also for $A ⊃ A$ for any formula $A$, this
+two rules are equivalent to the two axioms and invertible.
 
 As we already did with G3s, we will use the full system with all
 classical operators for examples, but only the minimal subset with $→$
@@ -2163,7 +2160,7 @@ This system is adequate for the logic of proofs $LP$ as shown in
 corollary 4.37 in @pulver2010 [73]. It also allows for weakening,
 contraction and inversion [@pulver2010, 65ff]. By corollary 4.36 in
 the same paper, G3lp without the $(⊃ :)_c$ rule is equivalent to
-$LP_0$. Neither @pulver2010 nor @artemov2001 contain Gentzen systems for
+$LP_0$. Neither @pulver2010 nor @artemov2001 define Gentzen systems for
 a restricted logic of proofs $LP(CS)$, perhaps because it seems
 obvious that restricting whatever rule is used for introducing proof
 constants to $CS$ gives a Gentzen system for $LP(CS)$.
@@ -2609,7 +2606,7 @@ on the right as a strict subformula. Therefore all corresponding
 occurrences of $s$ on the right in the remaining path up to the root
 are part of a strict subformula and so all corresponding occurrences
 of $s$, left or right, in the remaining path are occurrences of the
-same term $s$. As $t$ itself is a corresponding occurrences of
+same term $s$. As $t$ itself is a corresponding occurrence of
 $s$ in that path, we get $t = s$.
 \End{proof}
 
@@ -2683,7 +2680,7 @@ Counterexample
 --------------
 
 The main result of the last chapter does not exactly match Yu's
-result. We have shown that prehistoric cycles in G3s are sufficient for
+result. I have shown that prehistoric cycles in G3s are sufficient for
 self-referentiality but only for the expanded definition of
 self-referentiality considering the set of all inputs $IN$. The
 question arises if this expansion is actually necessary. The following
@@ -2773,7 +2770,7 @@ y{:}(P ∧ ¬y⋅x{:}P → P) → ¬x{:}(P ∧ ¬y⋅x{:}P)$ is a realization of
 provable in $LP_0$ and therefor also in $LP(CS^⊛)$.
 \End{proof}
 
-Finally the question arises, if prehistoric cycles are also a
+Finally the question arises if prehistoric cycles are also a
 necessary condition on self-referential S4 theorems under the expanded
 definition. For this it is necessary to clarify the term inputs for
 Hilbert style proofs used in the original definition of LP and in the
@@ -2786,17 +2783,17 @@ the trivial proof for $t{:}A ⊢_{LP} t{:}A$, but the usage of deduction
 theorem could change that to a different proof for example for
 $⊢_{LP} t{:}A → t{:}A$.
 
-So far the situation seems pretty clear cut, and we have inputs as
-assumptions or in negative position of formulas proven by the
-deduction theorem. Unfortunately the deductions as constructed in the
-deduction theorem sometimes use existing formulas with swapped
-polarities. That is, in a deduction constructed by the deduction
-theorem, subformulas can occur with negative polarity which only
-occurred with positive polarity in the original deduction.  Moreover
-formulas can be necessary to derive the final formula without occurring
-in that formula. So there is no guarantee that all necessary inputs
-actually occur in the final formula or that a formula occurring in
-negative position somewhere in the proof is an input.
+So far, the situation seems pretty clear cut, and we have inputs as
+assumptions or as subformulas with negative polarity of formulas
+proven by the deduction theorem. Unfortunately the deductions as
+constructed in the deduction theorem sometimes use existing formulas
+with swapped polarities. That is, in a deduction constructed by the
+deduction theorem, subformulas can occur with negative polarity which
+only occurred with positive polarity in the original deduction.
+Moreover formulas can be necessary to derive the final formula without
+occurring in that formula. So there is no guarantee that all necessary
+inputs actually occur in the final formula or that a formula occurring
+in negative position somewhere in the proof is an input.
 
 So we have no clear definition of inputs in the original definition of
 LP matching the definition of inputs in G3lp, and therefore also
@@ -2808,7 +2805,7 @@ proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
 final formula of the proof, a property which does not hold for all
 derivations as discussed above. We have to assume without proof that this
-definitions of inputs somehow matches the exact definition given in
+definition of inputs somehow matches the exact definition given in
 the context of G3lp proofs. That is, there exists a G3lp proof for a
 G3s proof where only realizations of formulas with negative polarity
 are introduced by $(⊃ :)_t$. Given this stipulations and assumptions,
@@ -2831,7 +2828,7 @@ and allow multiple proof constants for the same formula. From this it
 follows that any constant $c_{i,j,k}$ is exclusively used when handling
 the $(⊃ □)$ rule $R_{i,j}$.
 
-Assume for contradiction, that the set of inputs $IN$ used for $d$ is
+Assume for contradiction that the set of inputs $IN$ used for $d$ is
 self-referential. That is there is a subset $\{t_0{:}A_0(t_1), ...,
 t_{n-1}{:}A_{n-1}(t_0)\}$ of $IN$. The occurrences of $t_{k+1 \mod n}$
 in $t_k{:}A_i$ have to be a subterm of realization term for a
@@ -2871,27 +2868,27 @@ Conclusion
 In this paper, I reproduced the main result of Yu's paper "Prehistoric
 Phenomena and Self-referentiality" and then expanded on it defining
 prehistoric relations for Gentzen systems with cut rules and finally
-for a Gentzen system G3lp for the logic of proofs LP. This allowed to
-study prehistoric relations directly in LP and lead to a negative
+for a Gentzen system G3lp for the logic of proofs LP. This allows to
+study prehistoric relations directly in LP and leads to a negative
 answer on Yu's conjecture that prehistoric cycles are sufficient for
-self-referential S4 theorems. It also lead to an expanded definition
+self-referential S4 theorems. It also leads to an expanded definition
 of self-referentiality considering all inputs used to construct
 justification terms. With that expanded definition of
-self-referentiality, prehistoric cycles are *sufficient* for
+self-referentiality prehistoric cycles are *sufficient* for
 self-referential theorems in S4, which is the main result of this
 paper.
 
 Given this expansion, the question goes back to the other
 direction. That is, are prehistoric cycles also necessary for the
-expanded definition of self-referentiality? Unfortunately that
+expanded definition of self-referentiality? Unfortunately this
 question is not easy to answer, as already transferring the definitions
 of inputs to the original Hilbert style calculus poses problems. So
 it remains open.
 
 Yu later expanded his result to modal logics T and K4 and their
-justification counterparts in @yu2014. Another open question is, if
-the same generalization can be done with the results of this
-paper. That is if there are Gentzen style systems without structural
+justification counterparts in @yu2014. Another open question is
+whether the same generalization can be done with the results of this
+paper. That is, if there are Gentzen style systems without structural
 rules for T and K4 together with a consistent definition of term
 correspondence and prehistoric relations and a translation to some
 variant of G3s.
