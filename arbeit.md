@@ -2927,9 +2927,11 @@ paper.
 Given this expansion, the question goes back to the other
 direction. That is, are prehistoric cycles also necessary for the
 expanded definition of self-referentiality? Unfortunately this
-question is not easy to answer, as already transferring the definitions
-of inputs to the original Hilbert style calculus poses problems. So
-it remains open.
+question is not easy to answer, as already transferring the
+definitions of inputs to the original Hilbert style calculus poses
+problems. A more detailed discussion of Skolem style functions and
+their role in LP realizations will hopefully help to clear this up,
+but as of now the question remains open.
 
 Yu later expanded his result to modal logics T and K4 and their
 justification counterparts in @yu2014. Another open question is
