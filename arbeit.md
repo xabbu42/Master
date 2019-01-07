@@ -2410,7 +2410,7 @@ rule.
 
 \Begin{lemma}
 For any family $f_i$ of $□$ occurrences in $𝒯˚$ there is a unique proof
-term family $\bar{t}_{i'}$ in $𝒯$ such that $s ∈ \bar{t}_{i'}$ for all proof
+term family $\bar{t}_{\tilde{i}}$ in $𝒯$ such that $s ∈ \bar{t}_{\tilde{i}}$ for all proof
 term occurrences $s$ mapped to $□$ occurrences in $f_i$.
 \End{lemma}
 
@@ -2451,25 +2451,26 @@ As direct correspondence in the G3s proof is a subset of
 correspondence in the G3lp proof, so is its transitive and reflexive
 closure. So for any two corresponding $□$ occurrences of a family
 $f_i$ the mapped term occurrences also correspond and therefore belong
-to the same family $\bar{t}_{i'}$.
+to the same family $\bar{t}_{\tilde{i}}$.
 \End{proof}
 
 \Begin{lemma}
-If $i ≺ j$ in $𝒯˚$ then either $i' = j'$ or $i' ≺ j'$ in $𝒯$ for the term
-families $\bar{t}_{i'}$ and $\bar{t}_{j'}$ from the previous lemma.
+If $i ≺ j$ in $𝒯˚$ then either $\tilde{i} = \tilde{j}$ or $\tilde{i} ≺
+\tilde{j}$ in $𝒯$ for the term families $\bar{t}_{\tilde{i}}$ and
+$\bar{t}_{\tilde{j}}$ from the previous lemma.
 \End{lemma}
 
 \Begin{proof}
 
 $i ≺ j$ in $𝒯˚$, so there is a $(⊃ □)$ rule in $𝒯˚$ introducing an
 occurrence $□_j$ of $f_j$ with an occurrence $□_i$ of $f_i$ in the
-premise. For the mapped term occurrences $s_i$ and $s_j$ in $𝒯$
-we have $s_i ∈ \bar{t}_{i'}$ and $s_j ∈ \bar{t}_{j'}$ by the previous
-lemma. From this it follows that $i' ≺ j'$ or $i' = j'$ by an induction on
-the proof height:
+premise. For the mapped term occurrences $s_i$ and $s_j$ in $𝒯$ we
+have $s_i ∈ \bar{t}_{\tilde{i}}$ and $s_j ∈ \bar{t}_{\tilde{j}}$ by
+the previous lemma. From this it follows that $\tilde{i} ≺ \tilde{j}$
+or $\tilde{i} = \tilde{j}$ by an induction on the proof height:
 
 1\.\ case: The $(⊃ □)$ rule is the forgetful projection of a $(⊃ :)$
-rule. Then we have $i' ≺ j'$ directly by the definition of
+rule. Then we have $\tilde{i} ≺ \tilde{j}$ directly by the definition of
 prehistoric relations for G3lp proofs using the occurrences $s_i$ in
 the premise of the rule $(⊃ :)$ introducing the occurrence $s_j$.
 
@@ -2484,14 +2485,14 @@ the rule together with the previous rule has the following form:
 \DP
 
 For the term occurrence $s_k$ mapped to the occurrence $□_k$ we have
-$s_j = !s_k$ and $s_k ∈ \bar{t}_{j'}$ as $s_j$ is the top level term of the
+$s_j = !s_k$ and $s_k ∈ \bar{t}_{\tilde{j}}$ as $s_j$ is the top level term of the
 principal formula of a $(⊃ !)$ rule. If the occurrence $□_i$ is the
-occurrence $□_k$ then $i' = j'$ and we are finished. If the occurrence
+occurrence $□_k$ then $\tilde{i} = \tilde{j}$ and we are finished. If the occurrence
 $□_i$ is not the occurrence $□_k$ then there is a corresponding
 occurrence $□'_i$ with a corresponding mapped term $s'_i$ in the
 sequent $□Γ ⊃ A$ and we have $i ≺ k$ from the previous $(⊃ □)$. As
-$\bar{t}_{j'}$ is also the term family of $s_k$ we get $i' ≺ j'$ or
-$i' = j'$ by induction hypothesis on the shorter proof up to the that
+$\bar{t}_{\tilde{j}}$ is also the term family of $s_k$ we get $\tilde{i} ≺ \tilde{j}$ or
+$\tilde{i} = \tilde{j}$ by induction hypothesis on the shorter proof up to the that
 $(⊃ □)$ rule with the occurrences $□'_i$, $s'_i$, $□_k$ and $s_k$.
 \End{proof}
 
@@ -2503,8 +2504,8 @@ prehistoric-cycle-free.
 \Begin{proof}
 The contraposition follows directly from the lemma as for any cycle
 $i_0 ≺ ... ≺ i_n ≺ i_0$ in $𝒯˚$ we get a cycle in $𝒯$ by removing
-duplicates in the list $i'_0, ..., i'_n$ of mapped term families
-$\bar{t}_{i'_0}, ... \bar{t}_{i'_n}$.
+duplicates in the list $\tilde{i}_0, ..., \tilde{i}_n$ of mapped term families
+$\bar{t}_{\tilde{i}_0}, ... \bar{t}_{\tilde{i}_n}$.
 \End{proof}
 
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
