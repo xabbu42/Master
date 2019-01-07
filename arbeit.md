@@ -998,6 +998,31 @@ tree for $⊃ A$) and a constant specification of all constants
 occurring in $r_A$ or $r_T$ with $A^r := r_A(\an_A(A))$ respective $A^r
 := r_T(\an_T(A))$.
 
+If we read $□A$ as there exists a proof for $A$ and $t{:}A$ as $t$ is
+a proof for $□A$, this process seems immediately reasonable. For the
+example $¬□A$, read as there is no proof of $A$, and its realization
+$¬t{:}A$, read as $t$ is not a proof of $A$, on the other hand, that
+process seems wrong at first. But justification logic without any
+quantifications over proofs is still enough to capture the meaning of
+$¬□A$ by using Skolem's idea of replacing quantifiers with
+functions. That is, we realize $¬□A$ using an implicitly all
+quantified justification variable $¬x{:}A$. The same example formulated
+without the derived connective $¬$ is $x{:}A → ⊥$. That formula can be
+read as function which produces a contradiction from a given proof $x$
+for $A$.
+
+This last interpretation also hints at the role of complex justification terms
+using variables in a realization. They define functions from input
+proofs named by the variables to output proofs for different
+formulas. So a realization $x{:}A → t(x){:}B$ of a S4 formula $□A →
+□B$ actually defines a function $t(x)$ producing a proof for $B$ from
+a proof $x$ for $A$. This then is the Skolem style equivalent of the
+quantified formula $∃(x) x{:}A → ∃(y) y{:}B$ which is the direct
+reading of $□A → □B$ [cf @artemov2008 497]. This discussion implies
+that we should replace $□$ with negative polarity with justification
+variables, which leads to the following definition of a normal
+realization:
+
 \Begin{definition}[Normal]
 A realization function is *normal* if all symbols for negative families
 and non-principal positive families are mapped to distinct
@@ -1005,8 +1030,9 @@ variables. A LP-realization is *normal* if the corresponding
 realization function is normal and the CS is injective.
 \End{definition}
 
-With above precise definition for a normal realization, we are able to
-formulate and proof the following realization theorem:
+We are know ready to complete the connection between S4 and LP by the
+following realization theorem giving a constructive way of producing
+the necessary proof functions to realize a S4 theorem in LP:
 
 \Begin{theorem}[Realization] \label{realization}
 If $S4 ⊢ A$ then $\LP ⊢ A^r$ for some normal
@@ -1523,9 +1549,11 @@ Prehistoric Relations in G3lp
 Cut Rules
 ---------
 
-In this chapter we will define families and prehistoric relations in
-the systems G3s + (Cut) and G3s + (□Cut) using cut rules. The (context
-sharing) cut rule has the following definition [@troelstra2000 67]:
+In this chapter we will prepare our discussion of prehistoric
+relations for LP, by first expanding the notion of families and
+prehistoric relations to the systems G3s + (Cut) and G3s + (□Cut)
+using cut rules. The (context sharing) cut rule has the following
+definition [@troelstra2000 67]:
 
 \Begin{definition}[(Cut) Rule]
 
@@ -2640,9 +2668,13 @@ principal formula of a $(⊃ :)_t$ or $(⊃ :)_c$ rule.
 \End{definition}
 
 Notice that the used constant specifications CS is a subset of the
-inputs IN.
-
-Based on this definition, we can expand the definition of
+inputs IN. The interpretation here is that $(⊃ :)_t$ introduces
+arguments to Skolem style functions by proving the trivial identity
+function $t{:}A → t{:}A$. So we have two different clearly marked
+sources of basic proofs in G3lp, on the one hand there are the
+constants justifying known axioms, on the other hand there are
+presupposed existing proofs or arguments to proof functions.
+Based on this expanded notion, we can also expand the definition of
 self-referentiality to input sets:
 
 \Begin{definition}[Self-Referential Inputs]
@@ -2795,15 +2827,17 @@ $⊢_{\LP} t{:}A → t{:}A$.
 
 So far, the situation seems pretty clear cut, and we have inputs as
 assumptions or as subformulas with negative polarity of formulas
-proven by the deduction theorem. Unfortunately the deductions as
-constructed in the deduction theorem sometimes use existing formulas
-with swapped polarities. That is, in a deduction constructed by the
-deduction theorem, subformulas can occur with negative polarity which
-only occurred with positive polarity in the original deduction.
-Moreover formulas can be necessary to derive the final formula without
+proven by the deduction theorem. This also matches the notion that $(⊃
+:)_t$ rules introduce the arguments of Skolem functions used in the LP
+realization. Unfortunately the deductions as constructed in the
+deduction theorem sometimes use existing formulas with swapped
+polarities. That is, in a deduction constructed by the deduction
+theorem, subformulas can occur with negative polarity which only
+occurred with positive polarity in the original deduction.  Moreover
+formulas can be necessary to derive the final formula without
 occurring in that formula. So there is no guarantee that all necessary
 inputs actually occur in the final formula or that a formula occurring
-in negative position somewhere in the proof is an input.
+with negative polarity somewhere in the proof is an input.
 
 So we have no clear definition of inputs in the original definition of
 LP matching the definition of inputs in G3lp, and therefore also
@@ -2813,14 +2847,15 @@ realization theorem (\ref{realization}) are exactly the realizations
 of formulas $⊟_iA$ with negative polarity in the original G3s
 proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
-final formula of the proof, a property which does not hold for all
-derivations as discussed above. We have to assume without proof that this
-definition of inputs somehow matches the exact definition given in
-the context of G3lp proofs. That is, there exists a G3lp proof for a
-G3s proof where only realizations of formulas with negative polarity
-are introduced by $(⊃ :)_t$. Given this stipulations and assumptions,
-the following sketch of a proof tries to argue for the necessity of
-prehistoric cycles for the expanded definition of self-referentiality:
+final formula of the proof, a property which does not necessarily hold
+for all derivations as discussed above. We have to assume without
+proof that this definition of inputs somehow matches the exact
+definition given in the context of G3lp proofs. That is, there exists
+a G3lp proof for a G3s proof where only realizations of formulas with
+negative polarity are introduced by $(⊃ :)_t$. Given this stipulations
+and assumptions, the following sketch of a proof tries to argue for
+the necessity of prehistoric cycles for the expanded definition of
+self-referentiality:
 
 \Begin{conjecture}
 If a S4−theorem $A$ has a left-prehistoric-cycle-free G3s−proof, then
