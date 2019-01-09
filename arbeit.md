@@ -100,11 +100,12 @@ Preliminaries
 As the results and concepts in this paper are mostly purely
 syntactical, I will also limit this brief introduction to the modal
 logic S4 and its justification counterpart LP to the syntactic side.
-Artemov gives an arithmetical interpretation for LP in his original
-papers [@artemov1995; @artemov2001]. Later Melvin Fitting
-[-@fitting2005] developed semantics for LP based on Kripke models. For
-S4 there is a discussion of Kripke frames in @pulver2010 based on
-@blackburn2001.
+For the semantic side, Artemov already gives an arithmetical
+interpretation for LP in his original papers [@artemov1995;
+@artemov2001]. Later Melvin Fitting [-@fitting2005] developed
+semantics for LP based on Kripke models. A more comprehensive
+discussion of semantics as well as syntax of LP and S4 can be found in
+@studer [ch 1 and 2].
 
 \Begin{definition}[Syntax of S4]
 The language of S4 is given by $A := ⊥ ∣ P ∣ A_0 ∧ A_1 ∣ A_0 ∨ A_1 ∣
@@ -963,7 +964,7 @@ sequents of any G3lift rule map directly to the sequents of an
 equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by
 replacing all sequents with the forgetful projection of that sequence
 is a valid G3s proof with root sequent $⊃ A˚$. By the soundness of G3s
-we have $S4 ⊢ A˚$.
+we have $S4 ⊢ A˚$.^[A direct proof for this theorem without using G3lift can be found in @studer [ch 3.1]]
 \End{proof}
 
 In the other direction, one can realize S4 formulas in LP by replacing
@@ -1215,17 +1216,19 @@ necessary apply to logically equivalent formulas [@artemov2016 ch
 outer $□$ occurrences in $¬□(P ∧ ¬□P)$ and $¬□¬(S → □S)$ using the
 logical equivalence of $P ∧ ¬□P$ and $¬(S → □S)$.
 
-The subformula $P ∧ ¬□P$ in our example asserts for an atomic sentence
+The following short discussion of the significance of this example is
+largely based on the more in depth account of @studer [ch 7.1]. The
+subformula $P ∧ ¬□P$ in our example asserts for an atomic sentence
 $P$, for example "it will rain", to be true and unknown. This sentence
 "It will rain and I do not know that it will rain" is inspired by
 Moore's paradox and its formalization $P ∧ ¬□P$ is called a Moore
 sentence. The sentence is easily satisfiable, for example if the
-weather forecast wrongly predicts no rain. But it is impossible to know
-that sentence, as is stated by our example theorem $¬□(P ∧
+weather forecast wrongly predicts no rain. But it is impossible to
+know that sentence, as is stated by our example theorem $¬□(P ∧
 ¬□P)$. Because if one knows the Moore sentence, one also knows the
 first part of the conjunction, i.e.  $P$. This knowledge then
 contradicts the second part of the conjunction,
-$¬□P$. [cf. @artemov2016 ch 7]
+$¬□P$.
 
 Looking at the G3s proof for $¬□(P ∧ ¬□P)$ and a realization of that
 proof in figure \ref{proofs}, we can see why a self referential term
@@ -2902,7 +2905,7 @@ the realization of $⊞_{k'}$. As $c_{j,l,m}{:}A_{k'}$ is introduced
 when realizing $R_{j,l}$, $A_{k'}$ occurs in the proof of the premise
 and there has to be an occurrence of $⊞_{k'}$ in the prehistory of
 $R_{j,l}$. Together we get that $⊞_{k'}$ occurs in a prehistory of
-$⊞_k$ and therefore $i_{k'} ≺ i_k$.
+$⊞_k$ and therefore $i_{k'} ≺ i_k$ by lemma \ref{global}.
 
 So for all $k < n$ we get $i_{k'} ≺ i_k$ and the list of principal
 families $i_0, ..., i_{n-1}$ is therefore a prehistoric cycle in $𝒯$.
@@ -2930,8 +2933,10 @@ expanded definition of self-referentiality? Unfortunately this
 question is not easy to answer, as already transferring the
 definitions of inputs to the original Hilbert style calculus poses
 problems. A more detailed discussion of Skolem style functions and
-their role in LP realizations will hopefully help to clear this up,
-but as of now the question remains open.
+their role in LP realizations will hopefully help to clear this up. It
+is possible that the definition of input variables relative to a subformula
+occurrence and the machinery used to work with input variables in
+@studer [ch 3.2] already provides a part of the answer.
 
 Yu later expanded his result to modal logics T and K4 and their
 justification counterparts in @yu2014. Another open question is
