@@ -1107,8 +1107,8 @@ lemma, the assertion (\ref{lifted}) still holds for $r_T^{ε(i,j)}$ and
 $\CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the form $(s_0 + ···
 +s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i-1}){:}A$. Therefore $\LP_0
 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows from repeated use of
-$A4$. Together with the substituted (\ref{lifted}) we get the
-precondition required for the final $(⊃ :)$ rule in
+$A4$. Together with the substituted proof for (\ref{lifted}) we get
+the precondition required for the final $(⊃ :)$ rule in
 $r_T^{ε(i,j)}(\an_T(T ↾ O_{i,j}))$:
 
 
