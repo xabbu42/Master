@@ -581,10 +581,15 @@ A family is an equivalence class of $□$ occurrences which respect
 to correspondence.
 \End{definition}
 
+For the following lemma and all the other results in this paper
+concerning correspondence, we fix a proof tree $𝒯 = (T, R)$ and
+consider correspondence according to this complete proof tree even
+when talking about subtrees $T↾S$ of $𝒯$.
+
 \Begin{lemma}[Subformula Property]
 Any subformula (symbol) occurrence in a partial Gentzen style
 (pre-)proof $T↾S$ in the systems G3lift and G3s corresponds to *at least
-one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
+one* subformula (symbol) occurrence of the sequent $S$ of $T↾S$.
 
 Any subformula (symbol) occurrence in a complete Gentzen style
 (pre-)proof $T$ in the systems G3lift and G3s corresponds to *exactly*
