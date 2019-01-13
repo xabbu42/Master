@@ -631,7 +631,7 @@ required LP derivation.
 $A → B, Γ' ⊃ Δ$ and the the premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃
 Δ$. By the induction hypothesis there exists LP derivations $d_L$ and
 $d_R$ for $Γ' ⊢_{\LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{\LP} ⋁Δ$. By the deduction
-theorem (th. \ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{\LP} B
+theorem (thm. \ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{\LP} B
 → ⋁Δ$. Using $d_R'$, the assumption $A → B$ and propositional
 reasoning, we get $(A → B), Γ' ⊢_{\LP} A → ⋁Δ$.  By appending $d_L$ and
 propositional reasoning we get the final $(A → B), Γ' ⊢_{\LP} ⋁Δ$
@@ -639,7 +639,7 @@ propositional reasoning we get the final $(A → B), Γ' ⊢_{\LP} ⋁Δ$
 4\.\ case: $Γ ⊃ Δ$ is derived by a $(⊃ →)$ rule. Then it has the form
 $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
 hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{\LP} ⋁Δ' ∨
-B$. From the deduction theorem (th. \ref{ded}) we get $Γ ⊢_{\LP} A → (⋁Δ' ∨
+B$. From the deduction theorem (thm. \ref{ded}) we get $Γ ⊢_{\LP} A → (⋁Δ' ∨
 B)$. By propositional reasoning we get the final $Γ ⊢_{\LP} ⋁Δ' ∨ (A →
 B)$.
 
@@ -959,7 +959,7 @@ If $\LP ⊢ A$ then $S4 ⊢ A˚$.
 
 \Begin{proof}
 If $\LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
-completeness of G3lift (th. \ref{complete}). The forgetful projection of the
+completeness of G3lift (thm. \ref{complete}). The forgetful projection of the
 sequents of any G3lift rule map directly to the sequents of an
 equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by
 replacing all sequents with the forgetful projection of that sequence
@@ -1084,7 +1084,7 @@ $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(\an_T(T↾O_{i0,j0}))$ is
 a correct G3lift proof based on $\CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(\an_T(T ↾ I_{i,j}))$
-is also a correct G3lift proof. By soundness of G3lift (th. \ref{sound})
+is also a correct G3lift proof. By soundness of G3lift (thm. \ref{sound})
 we therefore have a $\LP(\CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
 1}(\an_T(I_{i,j}))$, which has the following form:
 
@@ -1124,7 +1124,7 @@ the substitution lemma.
 For the final normal realization function $r_T^N$ and injective
 constant specification $\CS^N$ we have that $r_T^N(\an_T(T))$ is a
 correct G3lift proof based on $\CS^N$ of $⊃ r_T(A)$. So by soundness of
-G3lift (th. \ref{sound}) we have $\LP ⊢ A^r$ for the normal LP-realization
+G3lift (thm. \ref{sound}) we have $\LP ⊢ A^r$ for the normal LP-realization
 $r$ given by $r_T^N$ and the injective constant specification $\CS^N$.
 \End{proof}
 
@@ -1295,7 +1295,7 @@ paper.
 
 To work with the $(⊃ □)$ rules introducing occurrences of principal
 families in a G3s proof, we will use the same notation already
-introduced in the proof of the realization theorem (th. \ref{realization}).
+introduced in the proof of the realization theorem (thm. \ref{realization}).
 That is, we enumerate all $(⊃ □)$ rules introducing an occurrence of
 the principal family $p_i$ as $R_{i,0}, ... R_{i,l_i-1}$ and use
 $I_{i,0}, ... I_{i,l_i-1}$ to denote the premises of those rules and
@@ -1450,7 +1450,7 @@ Yu's Theorem
 
 Yu's proof for the main theorem of his paper is based on the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
-(th. \ref{realization}), such that the generated constant specifications
+(thm. \ref{realization}), such that the generated constant specifications
 $\CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
 such an order, formulas $c{:}A_{i,j,k}$ introduced during the
 realization procedure never change after their introduction, and we
@@ -1490,7 +1490,7 @@ $S_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*S$, we have $i_2 ≺ i_1$ by lemma
 defined for each family $p_{k_x}$ and each $j < l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
-(th. \ref{realization}) and at the same time the condition given in this
+(thm. \ref{realization}) and at the same time the condition given in this
 lemma.
 \End{proof}
 
@@ -1504,7 +1504,7 @@ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ \CS^N$
 
 \Begin{proof}
 By the construction in the proof of the realization theorem
-(th. \ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
+(thm. \ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
 1}(\an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h < l_h$. So any provisional variable $u_{h,j_h}$
@@ -1528,7 +1528,7 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\CS^⊛) ⊢ B$
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $T$ for $A$, use lemma
-\ref{epsilon} and the realization theorem (th. \ref{realization}) to
+\ref{epsilon} and the realization theorem (thm. \ref{realization}) to
 construct a realization function $r_T^N$ and a constant specification
 $\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization of $A$.
 
@@ -2819,7 +2819,7 @@ Finally the question arises if prehistoric cycles are also a
 necessary condition on self-referential S4 theorems under the expanded
 definition. For this it is necessary to clarify the term inputs for
 Hilbert style proofs used in the original definition of LP and in the
-realization theorem (th. \ref{realization}) as there is no direct
+realization theorem (thm. \ref{realization}) as there is no direct
 equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus as
 there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for G3lp,
 $(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing axioms
@@ -2846,7 +2846,7 @@ So we have no clear definition of inputs in the original definition of
 LP matching the definition of inputs in G3lp, and therefore also
 currently no way to expand Yu's result to all inputs.  But we can
 stipulate that the inputs of a derivation $d$ as constructed by the
-realization theorem (th. \ref{realization}) are exactly the realizations
+realization theorem (thm. \ref{realization}) are exactly the realizations
 of formulas $⊟_iA$ with negative polarity in the original G3s
 proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
@@ -2867,7 +2867,7 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\IN^⊛) ⊢ B$.
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
-use lemma \ref{epsilon} and the realization theorem (th. \ref{realization})
+use lemma \ref{epsilon} and the realization theorem (thm. \ref{realization})
 to construct a realization function $r_T^N$ and a constant
 specification $\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization
 of $A$ and $\LP ⊢ B$ by the constructed deduction $d$. To simplify the
