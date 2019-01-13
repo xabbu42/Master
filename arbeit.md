@@ -171,7 +171,7 @@ justification variables, which is why most results come with a
 corollary limiting the possible use of justification variables and
 terms.
 
-\Begin{lemma}[Substitution] \label{subst}
+\Begin{lemma}[Substitution]
 If $Γ ⊢_{\LP(\CS)} A$ with a derivation $d$, then also $Γ' ⊢_{\LP(\CS')} A'$
 with a derivation $d'$ acquired by replacing all occurrences of a
 variable $x$ by a term $t$ in $Γ$, CS and $d$.
@@ -581,7 +581,7 @@ A family is an equivalence class of $□$ occurrences which respect
 to correspondence.
 \End{definition}
 
-\Begin{lemma}[Subformula Property] \label{sub}
+\Begin{lemma}[Subformula Property]
 Any subformula (symbol) occurrence in a partial Gentzen style
 (pre-)proof $T↾S$ in the systems G3lift and G3s corresponds to *at least
 one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
@@ -942,7 +942,7 @@ valid LP formulas into valid S4 formulas and vice versa. The former is
 called forgetful projection, the latter is more complex and called
 realization.
 
-\Begin{definition}[Forgetful Projection] \label{proj}
+\Begin{definition}[Forgetful Projection]
 The *forgetful projection* $A˚$ of a LP formula $A$ is the following S4 formula:
 
 * if $A$ is atomic or $⊥$, then $A˚ := A$.
@@ -1155,7 +1155,6 @@ Prehistoric Relations in G3s
 
 Self-referentiality
 -------------------
-\label{self}
 
 As already mentioned in the introduction, the formulation of LP allows
 for terms $t$ to justify formulas $A(t)$ about themselves. We
@@ -2267,7 +2266,7 @@ polarities as well as terms used for different formulas. So we will
 use the same approach to define prehistoric relations of term families
 for any polarity:
 
-\Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
+\Begin{definition}[Prehistoric Relation in G3lp]
 A family $\bar{t_i}$ has a *prehistoric relation* to another family
 $\bar{t_j}$, in notation $i ≺ j$, if there is a $(⊃ :)$ rule
 introducing an occurrence belonging to $\bar{t_j}$ with premise
@@ -2512,9 +2511,9 @@ $\bar{t}_{\tilde{i}_0}, ... \bar{t}_{\tilde{i}_n}$.
 \End{proof}
 
 We will now come back to our example formula $¬□(P ∧ ¬□P)$ from
-chapter \ref{self}. Figure \ref{g3lpproof} contains a proof of the
-same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp as well as the
-forgetful projection of that proof in G3s + (□Cut). For simplicity
+chapter \ref{self-referentiality}. Figure \ref{g3lpproof} contains a
+proof of the same realization $¬x{:}(P ∧ ¬t⋅x{:}P)$ in G3lp as well as
+the forgetful projection of that proof in G3s + (□Cut). For simplicity
 we assumed that $(A ∧ B → A)$ is an axiom A0 and therefore $t$ is a
 constant.
 
