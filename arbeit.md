@@ -581,7 +581,7 @@ A family is an equivalence class of $□$ occurrences which respect
 to correspondence.
 \End{definition}
 
-\Begin{theorem}[Subformula Property] \label{sub}
+\Begin{lemma}[Subformula Property] \label{sub}
 Any subformula (symbol) occurrence in a partial Gentzen style
 (pre-)proof $T↾S$ in the systems G3lift and G3s corresponds to *at least
 one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
@@ -589,7 +589,7 @@ one* subformula (symbol) occurrence of the root sequent $S$ of $T↾S$.
 Any subformula (symbol) occurrence in a complete Gentzen style
 (pre-)proof $T$ in the systems G3lift and G3s corresponds to *exactly*
 one subformula (symbol) occurrence in the root sequent $S_r$ of $T$.
-\End{theorem}
+\End{lemma}
 
 \Begin{proof}
 As defined, occurrences of subformulas only correspond directly via a
@@ -631,7 +631,7 @@ required LP derivation.
 $A → B, Γ' ⊃ Δ$ and the the premises are $Γ' ⊃ Δ, A$ and $B, Γ' ⊃
 Δ$. By the induction hypothesis there exists LP derivations $d_L$ and
 $d_R$ for $Γ' ⊢_{\LP} ⋁Δ ∨ A$ and $B, Γ' ⊢_{\LP} ⋁Δ$. By the deduction
-theorem (\ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{\LP} B
+theorem (th. \ref{ded}) there exists a LP derivation $d_R'$ for $Γ' ⊢_{\LP} B
 → ⋁Δ$. Using $d_R'$, the assumption $A → B$ and propositional
 reasoning, we get $(A → B), Γ' ⊢_{\LP} A → ⋁Δ$.  By appending $d_L$ and
 propositional reasoning we get the final $(A → B), Γ' ⊢_{\LP} ⋁Δ$
@@ -639,7 +639,7 @@ propositional reasoning we get the final $(A → B), Γ' ⊢_{\LP} ⋁Δ$
 4\.\ case: $Γ ⊃ Δ$ is derived by a $(⊃ →)$ rule. Then it has the form
 $Γ ⊃ Δ', A → B$ and the premise is $A, Γ ⊃ Δ', B$. By the induction
 hypothesis there exists a LP derivation $d$ for $A, Γ ⊢_{\LP} ⋁Δ' ∨
-B$. From the deduction theorem (\ref{ded}) we get $Γ ⊢_{\LP} A → (⋁Δ' ∨
+B$. From the deduction theorem (th. \ref{ded}) we get $Γ ⊢_{\LP} A → (⋁Δ' ∨
 B)$. By propositional reasoning we get the final $Γ ⊢_{\LP} ⋁Δ' ∨ (A →
 B)$.
 
@@ -729,7 +729,7 @@ G3c and lemma \ref{liftgenax} for the base cases.
 2\.\ case $A$ is an axiom $A1-A4$. As the derivations in figure
 \ref{axiomproofs} show, $⊃ A$ can be derived for each axiom using
 lemma \ref{liftgenax} for the base cases. $Γ ⊃ A$ follows from
-weakening (\ref{liftweak}).
+weakening.
 
 \begin{figure} \caption{G3lift proofs for LP axioms} \label{axiomproofs}
 \begin{longtable}{cc}
@@ -959,7 +959,7 @@ If $\LP ⊢ A$ then $S4 ⊢ A˚$.
 
 \Begin{proof}
 If $\LP ⊢ A$ then $\Glift ⊢ A$ with a proof tree $𝒯 = (T, R)$ by
-completeness of G3lift (\ref{complete}). The forgetful projection of the
+completeness of G3lift (th. \ref{complete}). The forgetful projection of the
 sequents of any G3lift rule map directly to the sequents of an
 equivalent G3s rule, so the proof tree $𝒯' = (T˚, R)$ given by
 replacing all sequents with the forgetful projection of that sequence
@@ -1000,7 +1000,7 @@ occurring in $r_A$ or $r_T$ with $A^r := r_A(\an_A(A))$ respective $A^r
 := r_T(\an_T(A))$.
 
 If we read $□A$ as there exists a proof for $A$ and $t{:}A$ as $t$ is
-a proof for $□A$, this process seems immediately reasonable. For the
+a proof for $A$, this process seems immediately reasonable. For the
 example $¬□A$, read as there is no proof of $A$, and its realization
 $¬t{:}A$, read as $t$ is not a proof of $A$, on the other hand, that
 process seems wrong at first. But justification logic without any
@@ -1031,7 +1031,7 @@ variables. A LP-realization is *normal* if the corresponding
 realization function is normal and the CS is injective.
 \End{definition}
 
-We are know ready to complete the connection between S4 and LP by the
+We are now ready to complete the connection between S4 and LP by the
 following realization theorem giving a constructive way of producing
 the necessary proof functions to realize a S4 theorem in LP:
 
@@ -1084,7 +1084,7 @@ $r_T^{ε(i,j) - 1}$ such that $r_T^{ε(i,j) - 1}(\an_T(T↾O_{i0,j0}))$ is
 a correct G3lift proof based on $\CS^{ε(i,j) - 1}$ for all $(i_0,j_0)$
 such that $ε(i_0,j_0) < ε(i,j)$. From this it follows by a trivial
 induction on the proof tree that $r_T^{ε(i,j) - 1}(\an_T(T ↾ I_{i,j}))$
-is also a correct G3lift proof. By soundness of G3lift (\ref{sound})
+is also a correct G3lift proof. By soundness of G3lift (th. \ref{sound})
 we therefore have a $\LP(\CS^{ε(i,j)-1})$ derivation for $r_T^{ε(i,j) -
 1}(\an_T(I_{i,j}))$, which has the following form:
 
@@ -1103,12 +1103,12 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) 
 
 Define $r_T^{ε(i,j)}$ and $\CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
 $t$ in $r_T^{ε(i,j) - 1}$ and $\CS'^{ε(i,j)}$. By the substitution
-lemma (\ref{subst}), the assertion \ref{lifted} still holds for
-$r_T^{ε(i,j)}$ and $\CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the
-form $(s_0 + ··· +s_{j−1} + t_{i,j} + s_{j+1} + ··· +
-s_{l_i-1}){:}A$. Therefore $\LP_0 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows
-from repeated use of $A4$. Together with the substituted \ref{lifted}
-we get the precondition required for the final $(⊃ :)$ rule in
+lemma, the assertion \ref{lifted} still holds for $r_T^{ε(i,j)}$ and
+$\CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the form $(s_0 + ···
++s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i-1}){:}A$. Therefore $\LP_0
+⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows from repeated use of
+$A4$. Together with the substituted \ref{lifted} we get the
+precondition required for the final $(⊃ :)$ rule in
 $r_T^{ε(i,j)}(\an_T(T ↾ O_{i,j}))$:
 
 
@@ -1119,12 +1119,12 @@ B_{k_q}) ⊢_{\LP(\CS^{ε(i,j)})} r_T^{ε(i,j) - 1}(⊞_i A)
 
 Moreover, this precondition remains fulfilled for the $(⊃ :)$ rule
 $R_{i,j}$ in any proof tree $r_T^k(\an_T(T))$ for $k > ε(i,j)$ again by
-the substitution lemma (\ref{subst}).
+the substitution lemma.
 
 For the final normal realization function $r_T^N$ and injective
 constant specification $\CS^N$ we have that $r_T^N(\an_T(T))$ is a
 correct G3lift proof based on $\CS^N$ of $⊃ r_T(A)$. So by soundness of
-G3lift (\ref{sound}) we have $\LP ⊢ A^r$ for the normal LP-realization
+G3lift (th. \ref{sound}) we have $\LP ⊢ A^r$ for the normal LP-realization
 $r$ given by $r_T^N$ and the injective constant specification $\CS^N$.
 \End{proof}
 
@@ -1296,7 +1296,7 @@ paper.
 
 To work with the $(⊃ □)$ rules introducing occurrences of principal
 families in a G3s proof, we will use the same notation already
-introduced in the proof of the realization theorem (\ref{realization}).
+introduced in the proof of the realization theorem (th. \ref{realization}).
 That is, we enumerate all $(⊃ □)$ rules introducing an occurrence of
 the principal family $p_i$ as $R_{i,0}, ... R_{i,l_i-1}$ and use
 $I_{i,0}, ... I_{i,l_i-1}$ to denote the premises of those rules and
@@ -1363,7 +1363,7 @@ $S$ iff $h ≺^S i$.
 (⇒): $⊞_h$ occurs in a sequent $S'$ in a pre-history of $p_i$ in the
 root-leaf path $S$, so $S$ has the form
 $S_rR^*O_{i,j}RI_{i,j}R^*S'R^*S$ for some $j < l_i$. By the subformula
-theorem (\ref{sub}), there is an occurrence of $⊞_h$ in $I_{i,j}$ as
+property, there is an occurrence of $⊞_h$ in $I_{i,j}$ as
 $S'$ is part of $T↾I_{i,j}$. If this occurrence is on the left we have
 $h ≺^S_L i$, if it is on right we have $h ≺^S_R i$. In both cases $h
 ≺^S i$ holds.
@@ -1398,10 +1398,10 @@ For any principal positive family $p_i$, $i \nprec_R i$.
 \Begin{proof}
 Assume for a contradiction that $i ≺_R i$. It follows from the
 definition of $≺_R$, that there is a rule $R_{i,j}$ with $⊞_iA(⊞_iB)$
-as the principal formula. By the subformula property (\ref{sub})
-$⊞_iA(⊞_iB)$ corresponds to a subformula in the root sequent. Also by
-the subformula property there is only one occurrence of $⊞_i$ in the
-root sequent.
+as the principal formula. By the subformula property $⊞_iA(⊞_iB)$
+corresponds to a subformula in the root sequent. Also by the
+subformula property there is only one occurrence of $⊞_i$ in the root
+sequent.
 \End{proof}
 
 \Begin{lemma} \label{trans}
@@ -1412,12 +1412,11 @@ $≺_L$, $≺_R$, $≺^s$ , $≺^s_L$ or $≺^s_R$.
 \Begin{proof}
 Since $k ≺_R j$, there is a $⊞_k$ occurring in the scope of a
 principally introduced $⊞_j$, that is a $(⊃ □)$ rule with the
-principal formula $⊞_jA(⊞_kB)$. So by the subformula property
-(\ref{sub}), all corresponding occurrences of $⊞_j$ are part of
-corresponding occurrences of the subformula $⊞_jA(⊞_kB)$, with exactly
-one occurrence in the root sequent $S_r$. Therefore, wherever $⊞_j$
-occurs in the proof $T$, there is a $⊞_k$ occurring in the scope of
-it.
+principal formula $⊞_jA(⊞_kB)$. So by the subformula property, all
+corresponding occurrences of $⊞_j$ are part of corresponding
+occurrences of the subformula $⊞_jA(⊞_kB)$, with exactly one
+occurrence in the root sequent $S_r$. Therefore, wherever $⊞_j$ occurs
+in the proof $T$, there is a $⊞_k$ occurring in the scope of it.
 
 For any $▹$, we have $j ▹ i$ because of some occurrence of $⊞_j$ in a
 subformula of the premise of a rule $R_{i,q}$. By the previous
@@ -1452,7 +1451,7 @@ Yu's Theorem
 
 Yu's proof for the main theorem of his paper is based on the idea to
 carefully choose the order $ε(i,j)$ used in the realization theorem
-(\ref{realization}), such that the generated constant specifications
+(th. \ref{realization}), such that the generated constant specifications
 $\CS^{ε(i,j)}$ never contain any provisional variables $u_{x,y}$. With
 such an order, formulas $c{:}A_{i,j,k}$ introduced during the
 realization procedure never change after their introduction, and we
@@ -1466,7 +1465,7 @@ $r^{ε(i,j) - 1}(\an_T(I_{i,j}))$, does not occur in $\CS^{ε(i,j)}$.
 \End{lemma}
 
 \Begin{proof}
-By the subformula property (\ref{sub}) for G3lift proofs, $u_{x,y}$
+By the subformula property for G3lift proofs, $u_{x,y}$
 does not occur in $r^{ε(i,j)−1}(\an_T(T↾I_{i,j}))$. By the corollary
 \ref{soundvar} using corollary \ref{realvar} for case 6, the
 derivation $d_{i,j}$ as constructed in the realization proof does not
@@ -1492,7 +1491,7 @@ $S_rR^*O_{i_1,j_1}R^+O_{i_2,j_2}R^*S$, we have $i_2 ≺ i_1$ by lemma
 defined for each family $p_{k_x}$ and each $j < l_{k_x}$ by handling the
 families $p_i$ in the given topological order $k_x$ fulfills the
 necessary condition to be used in the realization theorem
-(\ref{realization}) and at the same time the condition given in this
+(th. \ref{realization}) and at the same time the condition given in this
 lemma.
 \End{proof}
 
@@ -1506,7 +1505,7 @@ such that $c_{i,j,k}{:}A^N_{i,j,k} ∈ \CS^N$
 
 \Begin{proof}
 By the construction in the proof of the realization theorem
-(\ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
+(th. \ref{realization}), $d_{i,j}$ is a derivation of $r_T^{ε(i,j) -
 1}(\an_T(I_{i,j}))$. For any $⊞_h$ occurring in $I_{i,j}$, we have by
 definition $h ≺ i$, and therefore by lemma \ref{epsilon} $ε(h,j_h) ≤
 ε(i,j)$ for all $j_h < l_h$. So any provisional variable $u_{h,j_h}$
@@ -1530,7 +1529,7 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\CS^⊛) ⊢ B$
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $T$ for $A$, use lemma
-\ref{epsilon} and the realization theorem (\ref{realization}) to
+\ref{epsilon} and the realization theorem (th. \ref{realization}) to
 construct a realization function $r_T^N$ and a constant specification
 $\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization of $A$.
 
@@ -1569,7 +1568,7 @@ definition [@troelstra2000 67]:
 \End{definition}
 
 It is necessary to expand the definition of correspondence
-(\ref{corr}) to (Cut) rules as follows:
+(def. \ref{corr}) to (Cut) rules as follows:
 
 \Begin{definition}[Correspondence for (Cut)]
 
@@ -1598,11 +1597,11 @@ branch of the cut. On the other hand, adding prehistoric relations
 with negative families in a cut free G3s proof does not introduce
 prehistoric cycles, as in G3s a negative family is never introduced by
 a $(⊃ □)$ rule and therefore has no prehistoric families itself. In
-G3s + (Cut) proofs, the subformula property (\ref{sub}) and
-therefore also lemma \ref{global} no longer holds. That means we can
-have an occurrence of a family $□$ as part of a cut formula in the
-*global* prehistory of a $(⊃ □)$ rule, which by the *local* definition
-\label{defcut} is not a local prehistoric family.
+G3s + (Cut) proofs, the subformula property and therefore also lemma
+\ref{global} no longer hold. That means we can have an occurrence of a
+family $□$ as part of a cut formula in the *global* prehistory of a
+$(⊃ □)$ rule, which by the *local* definition \label{defcut} is not a
+local prehistoric family.
 
 To handle terms $s⋅t$ in the next chapter an additional rule for
 modus ponens under $□$ is necessary. I therefore introduce here the new rule
@@ -1619,7 +1618,7 @@ modus ponens under $□$ is necessary. I therefore introduce here the new rule
 \End{definition}
 
 Again it is also necessary to expand the definition of correspondence
-(\ref{corr}) for this rule:
+(def. \ref{corr}) for this rule:
 
 \Begin{definition}[Correspondence for (□Cut)] \label{boxcutcorr}
 
@@ -2072,7 +2071,7 @@ Any prehistoric relation because of the new $(⊃ □)$ rule in case 3
 already exists in the original proof, as every $□$ occurrence in
 $□Γ_L$ or $□Γ_R$ also occurs in one of the two $(⊃ □)$ rules in the
 original proof, which both introduce a □ of the same family as $□B$
-by the definition of correspondence for (□Cut) (\ref{boxcutcorr}).
+by the definition of correspondence for (□Cut) (def. \ref{boxcutcorr}).
 
 So the new proof with (□Cut) rules replaced by (Cut) rules does
 not introduce new prehistoric relations and therefore also no new
@@ -2082,7 +2081,7 @@ get a G3s proof does not introduce prehistoric cycles.
 
 \Begin{definition}
 The cycle-free fragment of a system $Y$, denoted by $Y^⊗$, is the
-collection of all sequents that each has a prehistoric-cycle-free
+collection of all sequents that each have a prehistoric-cycle-free
 $Y$-proof [@yu2017 787].
 \End{definition}
 
@@ -2094,8 +2093,8 @@ identical.
 \Begin{proof}
 
 A prehistoric-cycle-free proof in G3s by the original definition
-(\ref{local1}) is also prehistoric-cycle-free by the new definition
-(\ref{local2}) as a negative family can not have any prehistoric
+(def. \ref{local1}) is also prehistoric-cycle-free by the new definition
+(def. \ref{local2}) as a negative family can not have any prehistoric
 families itself in a G3s-proof . So any sequent $Γ ⊂ Δ ∈ G3s^⊗$ is
 trivially also provable prehistoric-cycle-free in G3s + (Cut) and G3s
 + (□Cut) and we have $\Gs^⊗ ⊆ (\Gs + (□\Cut))^⊗$ and $\Gs^⊗ ⊆ (\Gs +
@@ -2134,12 +2133,12 @@ used for LPG3. Our variant G3lp will use the same rules to build up
 terms, but replace the axioms with rules $(⊃ :)_c$ and $(⊃ :)_t$ to
 keep the prehistoric relations of the proof intact. As there is a
 proof for $⊃ A$ for any axiom $A$ and also for $A ⊃ A$ for any formula
-$A$, this two rules are equivalent to the two axioms and invertible.
+$A$, these two rules are equivalent to the two axioms and invertible.
 
 As we already did with G3s, we will use the full system with all
 classical operators for examples, but only the minimal subset with $→$
-and $⊥$ for proofs. So this two systems use the classical rules from
-G3s in figure \ref{G3sfull} and \ref{G3smin} as well as the new LP
+and $⊥$ for proofs. So these two systems use the classical rules from
+G3s in figures \ref{G3sfull} and \ref{G3smin} as well as the new LP
 rules in figure \ref{G3lprules}.
 
 \renewcommand{\arraystretch}{3}
@@ -2232,7 +2231,7 @@ subformulas, as it will be clear from context which of the definitions
 is meant.  Notice that by this definition $s{:}A$ is a subformula of
 $s+t{:}A$.
 
-We expand the definition of correspondence (\ref{corr}) to G3lp proofs
+We expand the definition of correspondence (def. \ref{corr}) to G3lp proofs
 as follows:
 
 \Begin{definition}[Correspondence in G3lp]
@@ -2269,10 +2268,11 @@ use the same approach to define prehistoric relations of term families
 for any polarity:
 
 \Begin{definition}[Prehistoric Relation in G3lp] \label{g3lp}
-A family $\bar{t_i}$ has a *prehistoric relation* to another family $\bar{t_j}$, in
-notation $i ≺ j$, if there is a $(⊃ :)$ rule introducing an occurrence
-of $\bar{t_j}$ with premise $S$, such that there is an occurrence of $\bar{t_i}$
-in $S$.
+A family $\bar{t_i}$ has a *prehistoric relation* to another family
+$\bar{t_j}$, in notation $i ≺ j$, if there is a $(⊃ :)$ rule
+introducing an occurrence belonging to $\bar{t_j}$ with premise
+$S$, such that there is an occurrence belonging to $\bar{t_i}$ in
+$S$.
 \End{definition}
 
 Given that we now have defined families of terms and prehistoric
@@ -2343,8 +2343,8 @@ That rule is admissible by lemma \ref{boxbox} and a contraction.
 Instead of working with a G3s system with all this extra rules
 included, we will define a forgetful projection from a G3lp proof to a
 G3s + $(□\Cut)$ proof by eliminating all the contractions using the
-algorithm implicitly defined in the proof of the contraction lemma
-(\ref{contr}) and eliminating the $(⊃ !)˚$ rules by the algorithm
+algorithm implicitly defined in the proof of lemma \ref{contr}
+(contraction) and eliminating the $(⊃ !)˚$ rules by the algorithm
 implicitly described in the proof for lemma \ref{boxbox}.
 
 For the following lemmas and proofs we fix an arbitrary G3lp proof $𝒯 =
@@ -2820,7 +2820,7 @@ Finally the question arises if prehistoric cycles are also a
 necessary condition on self-referential S4 theorems under the expanded
 definition. For this it is necessary to clarify the term inputs for
 Hilbert style proofs used in the original definition of LP and in the
-realization theorem (\ref{realization}) as there is no direct
+realization theorem (th. \ref{realization}) as there is no direct
 equivalent for $(⊃ :)_t$ rules in the Hilbert style LP calculus as
 there is for $(⊃ :)_c$ rules. Looking at the adequacy proof for G3lp,
 $(⊃ :)_t$ is used only for the base cases $A ⊃ A$ in proofing axioms
@@ -2847,7 +2847,7 @@ So we have no clear definition of inputs in the original definition of
 LP matching the definition of inputs in G3lp, and therefore also
 currently no way to expand Yu's result to all inputs.  But we can
 stipulate that the inputs of a derivation $d$ as constructed by the
-realization theorem (\ref{realization}) are exactly the realizations
+realization theorem (th. \ref{realization}) are exactly the realizations
 of formulas $⊟_iA$ with negative polarity in the original G3s
 proof. As G3s enjoys the subformula property, that means all inputs
 used in the proof thus constructed are actually also inputs in the
@@ -2868,7 +2868,7 @@ there is a LP−formula $B$ s.t. $B^◦ = A$ and $\LP(\IN^⊛) ⊢ B$.
 
 \Begin{proof}
 Given a left-prehistoric-cycle-free G3s−proof $𝒯 = (T, R)$ for $A$,
-use lemma \ref{epsilon} and the realization theorem (\ref{realization})
+use lemma \ref{epsilon} and the realization theorem (th. \ref{realization})
 to construct a realization function $r_T^N$ and a constant
 specification $\CS^N$ such that $B := r_T^N(\an_T(A))$ is a realization
 of $A$ and $\LP ⊢ B$ by the constructed deduction $d$. To simplify the
