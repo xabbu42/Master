@@ -1103,11 +1103,11 @@ r_T^{ε(i,j) - 1}(⊟_{k_0} B_{k_0}), ..., r_T^{ε(i,j) - 1}(⊟_{k_q} B_{k_q}) 
 
 Define $r_T^{ε(i,j)}$ and $\CS^{ε(i,j)}$ by replacing $u_{i,j}$ with
 $t$ in $r_T^{ε(i,j) - 1}$ and $\CS'^{ε(i,j)}$. By the substitution
-lemma, the assertion \ref{lifted} still holds for $r_T^{ε(i,j)}$ and
+lemma, the assertion (\ref{lifted}) still holds for $r_T^{ε(i,j)}$ and
 $\CS^{ε(i,j)}$. The formula $r_T^k(⊞_i A)$ has the form $(s_0 + ···
 +s_{j−1} + t_{i,j} + s_{j+1} + ··· + s_{l_i-1}){:}A$. Therefore $\LP_0
 ⊢ t_{i,j}{:}A → r_T^k(⊞_i){:}A$ follows from repeated use of
-$A4$. Together with the substituted \ref{lifted} we get the
+$A4$. Together with the substituted (\ref{lifted}) we get the
 precondition required for the final $(⊃ :)$ rule in
 $r_T^{ε(i,j)}(\an_T(T ↾ O_{i,j}))$:
 
@@ -1141,11 +1141,11 @@ $R_{i,j}$, there exist derivations $d^k_{i_0,j_0}$ which do not use
 new variables for the precondition of any rule $R_{i_0,j_0}$ in
 $r_T^k(\an_T(T ↾ I_{i,j}))$ as $ε(i_0,j_0) < ε(i,j) ≤ k$ for all this
 rules. Using the exact same steps as in the main proof but using the
-realization function $r_T^k$, we get a derivation $d$ for \ref{start}
+realization function $r_T^k$, we get a derivation $d$ for (\ref{start})
 which does not use new variables by the corollary \ref{soundvar}, a
-derivation $d'$ for \ref{lifted} which does not introduce new
+derivation $d'$ for (\ref{lifted}) which does not introduce new
 variables by the corollary \ref{liftvar} and finally a derivation
-$d^k_{i,j}$ for \ref{precond} which also does not introduce new
+$d^k_{i,j}$ for (\ref{precond}) which also does not introduce new
 variables.
 \End{proof}
 
