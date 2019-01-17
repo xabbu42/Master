@@ -33,7 +33,7 @@ date: "2019-01-13"
 
 \vfill
 \Large
-Leiter der Arbeit:\\
+Supervisor:\\
 Prof. Dr. Thomas Studer\\
 Institut für Informatik und angewandte Mathematik
 
