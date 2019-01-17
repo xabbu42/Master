@@ -55,7 +55,7 @@ Institut für Informatik und angewandte Mathematik
 The Logic of Proofs (LP) and other justification logics can have
 self-referential justifications of the form
 $t{:}A(t)$. Self-referential justifications are necessary for the
-realization of S4 in LP. Yu discovered prehistoric cycles in a
+realization of S4 in LP. Junhua Yu discovered prehistoric cycles in a
 particular Gentzen system as a necessary condition for S4 theorems
 that can only be realized using self-referentiality. This paper
 reproduces that result. It then goes on to broaden the definition of
