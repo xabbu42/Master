@@ -6,25 +6,48 @@ date: "2019-01-13"
 
 \begin{titlepage}
 \begin{center}
-\vspace*{1cm}
 
-\Huge
-\textbf{Self-referentiality in Justification Logic}
+\capstartfalse
+\begin{figure}[t]
+\vspace*{-2cm}        % to move header logo at the top
+\center{\includegraphics[scale=0.2]{logos/MSc_quer.png}}
+\vspace{0.4in}
+\end{figure}
 
-\vspace{0.5cm}
-\LARGE
-Masterarbeit der Philosophisch-naturwissenschaftlichen Fakultät der Universität Bern\\
-\vspace*{0.5cm}
-vorgelegt von\\
-\textbf{Nathan Sebastian Gass}\\
-\vspace*{0.5cm}
-\textbf{2019}
+\thispagestyle{empty}
+
+{\bfseries\Huge Self-referentiality in Justification Logic \par}
+
+\vspace{0.3in}
+\LARGE{\textbf{Master Thesis} \\}
+\vspace{0.4in}
+
+{\Large Nathan Sebastian Gass}
+
+\vspace{0.3in}
+{\Large Philosophisch-naturwissenschaftlichen Fakultät \\
+        der Universität Bern \par}
 \vfill
+{\Large January 2019 \par}
+
+
+\vfill
+\Large
 Leiter der Arbeit:\\
-\vspace*{0.5cm}
-\textbf{Prof. Dr. Thomas Studer}\\
+Prof. Dr. Thomas Studer\\
 Institut für Informatik und angewandte Mathematik
+
+\vspace{0.9in}
+
+\begin{figure}[htp]
+  \centering
+  \includegraphics[scale=0.30]{logos/UNI_Bern.png}\hfill
+  \includegraphics[scale=0.30]{logos/UNI_Neuenburg.png}\hfill
+  \includegraphics[scale=0.80]{logos/UNI_Fribourg.png}
+\end{figure}
+
 \end{center}
+\capstarttrue
 \end{titlepage}
 
 \tableofcontents
