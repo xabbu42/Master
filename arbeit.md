@@ -1,7 +1,7 @@
 ---
 title: Self-referentiality in Justification Logic
-author: [Nathan Sebastian Gass]
-date: "2019-01-01"
+author: Nathan Sebastian Gass <gass@search.ch>
+date: "2019-01-13"
 ...
 
 \begin{titlepage}
