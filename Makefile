@@ -12,5 +12,8 @@ spell:
 %.pdf : %.md Makefile header.tex bibliography.json
 	pandoc $(PANDOC) --include-in-header header.tex -t latex $< -o $@
 
+%.twoside.pdf : %.md Makefile header.tex bibliography.json
+	pandoc $(PANDOC) --variable classoption=twoside,openright --include-in-header header.tex -t latex $< -o $@
+
 %.html : %.md Makefile
 	pandoc $(PANDOC) -t html $< > $@
