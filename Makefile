@@ -1,5 +1,5 @@
 
-PANDOC=--standalone --number-sections --bibliography bibliography.json --from markdown+raw_tex --pdf-engine=xelatex --variable papersize=a4 --variable documentclass=report --include-in-header header.tex --include-after-body footer.tex
+PANDOC=--standalone --number-sections --bibliography bibliography.json --from markdown+raw_tex --pdf-engine=xelatex --variable papersize=a4 --variable documentclass=report --include-in-header header.tex --include-after-body footer.tex --metadata link-citations=true
 
 all: arbeit.pdf #notizen.pdf essay.pdf 
 
